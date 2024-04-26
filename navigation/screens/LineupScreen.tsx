@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { RootNavigationScreenProps } from '../types';
 
 export default function LineupScreen({ navigation }: RootNavigationScreenProps<'Lineup'>) {
@@ -7,10 +7,11 @@ export default function LineupScreen({ navigation }: RootNavigationScreenProps<'
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text
         onPress={() => navigation.navigate('Home')}
-        style={{ fontSize: 26, fontWeight: 'bold' }}
+        style={{ fontSize: 26, fontWeight: 'bold', marginBottom: 20 }}
       >
         Lineup Screen
       </Text>
+      <Button title="Search for Artist" onPress={() => navigation.navigate('SearchScreen')} />
     </View>
   );
 }
