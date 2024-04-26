@@ -1,11 +1,8 @@
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { RootNavigationList } from '../MainContainer';
+import { RootNavigationScreenProps } from '../types';
 
-type Props = BottomTabScreenProps<RootNavigationList, 'Map'>;
-
-export default function MapScreen({ navigation }: Props) {
+export default function MapScreen({ navigation }: RootNavigationScreenProps<'Map'>) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text

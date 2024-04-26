@@ -9,14 +9,7 @@ import CalendarScreen from './screens/CalendarScreen';
 import LineupScreen from './screens/LineupScreen';
 import MapScreen from './screens/MapScreen';
 import SettingsScreen from './screens/SettingsScreen';
-
-export type RootNavigationList = {
-  Home: undefined;
-  Calendar: undefined;
-  Lineup: undefined;
-  Map: undefined;
-  Settings: undefined;
-};
+import { RootNavigationList } from './types';
 
 //Screen names
 const homeName = "Home";

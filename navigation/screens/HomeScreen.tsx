@@ -1,11 +1,8 @@
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { RootNavigationList } from '../MainContainer';
+import { RootNavigationScreenProps } from '../types';
 
-type Props = BottomTabScreenProps<RootNavigationList, 'Home'>;
-
-export default function HomeScreen({ navigation }: Props) {
+export default function HomeScreen({ navigation }: RootNavigationScreenProps<'Home'>) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text
