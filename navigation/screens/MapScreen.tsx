@@ -7,7 +7,10 @@ export default function MapScreen({ navigation }: RootNavigationScreenProps<'Map
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text
         onPress={() => navigation.navigate('Home')}
-        style={{ fontSize: 26, fontWeight: 'bold' }}>Map Screen</Text>
+        style={{ fontSize: 26, fontWeight: 'bold' }}
+      >
+        Map Screen
+      </Text>
     </View>
   );
 }

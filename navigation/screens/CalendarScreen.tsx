@@ -7,7 +7,10 @@ export default function CalendarScreen({ navigation }: RootNavigationScreenProps
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text
         onPress={() => navigation.navigate('Home')}
-        style={{ fontSize: 26, fontWeight: 'bold' }}>Calendar Screen</Text>
+        style={{ fontSize: 26, fontWeight: 'bold' }}
+      >
+        Calendar Screen
+      </Text>
     </View>
   );
 }

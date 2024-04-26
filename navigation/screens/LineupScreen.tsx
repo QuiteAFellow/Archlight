@@ -7,7 +7,10 @@ export default function LineupScreen({ navigation }: RootNavigationScreenProps<'
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text
         onPress={() => navigation.navigate('Home')}
-        style={{ fontSize: 26, fontWeight: 'bold' }}>Lineup Screen</Text>
+        style={{ fontSize: 26, fontWeight: 'bold' }}
+      >
+        Lineup Screen
+      </Text>
     </View>
   );
 }
