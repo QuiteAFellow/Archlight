@@ -1,27 +1,71 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { RootStackParamList, RootNavigationScreenProps } from './types';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+// Screens
 import HomeScreen from './screens/HomeScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import LineupScreen from './screens/LineupScreen';
 import MapScreen from './screens/MapScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import SearchScreen from './screens/SearchScreen'; // Import the SearchScreen component
+import SearchScreen from './screens/SearchScreen';
+import { RootStackParamList } from './types';
 
-const Stack = createStackNavigator();
+//Screen names
+const homeName = "Home";
+const CalendarName = "Calendar";
+const LineupName = "Lineup";
+const MapName = "Map";
+const settingsName = "Settings";
+const Search = "SearchScreen";
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 function MainContainer() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Calendar" component={CalendarScreen} />
-        <Stack.Screen name="Lineup" component={LineupScreen} />
-        <Stack.Screen name="Map" component={MapScreen} />
-        <Stack.Screen name="Settings" component={SettingsScreen} />
-        <Stack.Screen name="SearchScreen" component={SearchScreen} /> {/* Add SearchScreen as a screen */}
-      </Stack.Navigator>
+      <Tab.Navigator
+        initialRouteName={homeName}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName: string;
+            switch (route.name) {
+              case 'Home':
+                iconName = focused ? 'home' : 'home-outline';
+                break;
+              case 'Calendar':
+                iconName = focused ? 'calendar' : 'calendar-outline';
+                break;
+              case 'Lineup':
+                iconName = focused ? 'musical-notes' : 'musical-notes-outline';
+                break;
+              case 'Map':
+                iconName = focused ? 'map' : 'map-outline';
+                break;
+              case 'Settings':
+                iconName = focused ? 'settings' : 'settings-outline';
+                break;
+              default:
+                iconName = 'help-outline';
+                break;
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBaractiveTintColor: '#eee2ad',
+          tabBarinactiveTintColor: '#000000',
+          tabBarlabelStyle: { paddingBottom: 15, fontSize: 10 },
+          tabBarstyle: { padding: 10, height: 100 }
+        })}>
+
+        <Tab.Screen name={homeName} component={HomeScreen} />
+        <Tab.Screen name={CalendarName} component={CalendarScreen} />
+        <Tab.Screen name={LineupName} component={LineupScreen} />
+        <Tab.Screen name={MapName} component={MapScreen} />
+        <Tab.Screen name={settingsName} component={SettingsScreen} />
+
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
