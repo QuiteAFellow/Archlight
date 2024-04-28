@@ -1,87 +1,118 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, FlatList, StyleSheet } from 'react-native';
-import SQLite, { SQLiteDatabase } from 'react-native-sqlite-storage';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, TextInput } from 'react-native';
+import  Ionicons from 'react-native-vector-icons/Ionicons';
+import artistsData from '../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 
-const LineupScreen = () => {
+// Define types/interfaces for the data structure
+interface Artist {
+  Artist: string;
+  Favorited: number;
+}
+
+const LineupScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredArtists, setFilteredArtists] = useState<string[]>([]);
-  const [allArtists, setAllArtists] = useState<string[]>([]);
+  const [artistList, setArtistList] = useState<(Artist & { favorited: boolean })[]>(() => {
+    const uniqueArtists = new Set<string>();
+    const uniqueArtistList: (Artist & { favorited: boolean })[] = [];
 
-  useEffect(() => {
-    const fetchArtists = async () => {
-      try {
-        const db: SQLiteDatabase = await SQLite.openDatabase({ name: '../database/ArtistDatabase.db', location: 'default' });
-        db.transaction(tx => {
-          tx.executeSql(
-            'SELECT Artist FROM ArtistDatabase',
-            [],
-            (tx, results) => {
-              const len = results.rows.length;
-              const artists: string[] = [];
-              for (let i = 0; i < len; i++) {
-                artists.push(results.rows.item(i).Artist);
-              }
-              setAllArtists(artists);
-              setFilteredArtists(artists); // Set filtered artists initially
-            },
-            error => {
-              console.error('Error fetching artists:', error);
-            }
-          );
-        });
-      } catch (error) {
-        console.error('Error opening database:', error);
+    artistsData.forEach(artist => {
+      if (!uniqueArtists.has(artist.Artist)) {
+        uniqueArtists.add(artist.Artist);
+        uniqueArtistList.push({ ...artist, favorited: false });
       }
-    };
+    });
 
-    fetchArtists();
-  }, []);
+    return uniqueArtistList.sort((a, b) => a.Artist.toLowerCase().localeCompare(b.Artist.toLowerCase()));
+  });
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    const filtered = allArtists.filter(artist =>
-      artist.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredArtists(filtered);
+  // Function to toggle favorite status
+  const toggleFavorite = (index: number) => {
+    setArtistList(prevList => {
+      const newList = [...prevList];
+      newList[index].favorited = !newList[index].favorited;
+      return newList;
+    });
   };
 
+  const filteredArtistList = artistList.filter(artist =>
+    artist.Artist.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1 }}>
       <TextInput
-        style={styles.searchInput}
-        placeholder="Search artists..."
+        style={styles.searchBar}
+        placeholder="Search for artists"
+        onChangeText={text => setSearchQuery(text)}
         value={searchQuery}
-        onChangeText={handleSearch}
       />
-      <FlatList
-        data={filteredArtists}
-        renderItem={({ item }) => (
-          <View style={styles.artistItem}>
-            <Text>{item}</Text>
+      <ScrollView contentContainerStyle={styles.container}>
+        {filteredArtistList.map((artist, index) => (
+          <View key={artist.Artist}>
+            <View style={styles.artistContainer}>
+              <View style={styles.artistContent}>
+                <Image
+                  source={{ uri: `assets/artist-images/${artist.Artist}.jpg` }}
+                  style={styles.profileImage}
+                  onError={(error) => console.log('Image loading error:', error)}
+                />
+                <Text style={styles.artistName}>{artist.Artist}</Text>
+              </View>
+              <TouchableOpacity onPress={() => toggleFavorite(index)} style={styles.heartContainer}>
+                <Ionicons
+                  name={artist.favorited ? 'heart' : 'heart-outline'}
+                  size={35}
+                  color={artist.favorited ? 'red' : 'black'}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.line} />
           </View>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-      />
+        ))}
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 10,
+    flexGrow: 1,
+    paddingHorizontal: 20,
   },
-  searchInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
-  artistItem: {
+  searchBar: {
+    paddingHorizontal: 20,
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderColor: '#ccc',
+  },
+  artistContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 35,
+  },
+  artistContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  artistName: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    flex: 1,
+  },
+  heartContainer: {
+    marginLeft: -70,
+  },
+  line: {
+    borderBottomWidth: 1,
+    width: '100%',
+    marginBottom: 10, // Add margin to separate the line from the next artist container
   },
 });
 

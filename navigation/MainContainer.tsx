@@ -18,7 +18,6 @@ const CalendarName = "Calendar";
 const LineupName = "Lineup";
 const MapName = "Map";
 const settingsName = "Settings";
-const Search = "SearchScreen";
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 function MainContainer() {
