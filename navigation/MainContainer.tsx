@@ -1,33 +1,29 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import CalendarStackNavigator from './screens/Stack/CalendarStackNavigator';
+import LineupStackNavigator from './screens/Stack/LineupStackNavigator';
+import { HomeScreen, MapScreen } from './screens/BottomTab';
+import FoodVendorScreen from './screens/BottomTab/FoodVendorScreen';
+import SettingsModal from './screens/SettingsModal';
 
-// Screens
-import HomeScreen from './screens/HomeScreen';
-import CalendarScreen from './screens/CalendarScreen';
-import LineupScreen from './screens/LineupScreen';
-import MapScreen from './screens/MapScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import SearchScreen from './screens/SearchScreen';
-import { RootStackParamList } from './types';
+const Tab = createBottomTabNavigator();
 
-//Screen names
-const homeName = "Home";
-const CalendarName = "Calendar";
-const LineupName = "Lineup";
-const MapName = "Map";
-const settingsName = "Settings";
-const Tab = createBottomTabNavigator<RootStackParamList>();
+const MainContainer = () => {
+  const [settingsVisible, setSettingsVisible] = useState(false);
+  const [notificationTimes, setNotificationTimes] = useState<number[]>([]);
 
-function MainContainer() {
+  const openSettings = () => setSettingsVisible(true);
+  const closeSettings = () => setSettingsVisible(false);
+  const saveNotificationTimes = (times: number[]) => setNotificationTimes(times);
+
   return (
-    <NavigationContainer>
+    <>
       <Tab.Navigator
-        initialRouteName={homeName}
+        initialRouteName="Home"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName: string;
+            let iconName;
             switch (route.name) {
               case 'Home':
                 iconName = focused ? 'home' : 'home-outline';
@@ -36,37 +32,39 @@ function MainContainer() {
                 iconName = focused ? 'calendar' : 'calendar-outline';
                 break;
               case 'Lineup':
-                iconName = focused ? 'musical-notes' : 'musical-notes-outline';
+                iconName = focused ? 'list' : 'list-outline';
                 break;
               case 'Map':
                 iconName = focused ? 'map' : 'map-outline';
                 break;
-              case 'Settings':
-                iconName = focused ? 'settings' : 'settings-outline';
+              case 'FoodVendors':
+                iconName = focused ? 'fast-food' : 'fast-food-outline';
                 break;
               default:
-                iconName = 'help-outline';
+                iconName = 'ellipse-outline';
                 break;
             }
-
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBaractiveTintColor: '#eee2ad',
-          tabBarinactiveTintColor: '#000000',
-          tabBarlabelStyle: { paddingBottom: 15, fontSize: 10 },
-          tabBarstyle: { padding: 10, height: 100 }
-        })}>
-
-        <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={CalendarName} component={CalendarScreen} />
-        <Tab.Screen name={LineupName} component={LineupScreen} />
-        <Tab.Screen name={MapName} component={MapScreen} />
-        <Tab.Screen name={settingsName} component={SettingsScreen} />
-
+          tabBarActiveTintColor: '#007bff',
+          tabBarInactiveTintColor: '#000000',
+        })}
+      >
+        <Tab.Screen name="Home">
+          {({ navigation }) => <HomeScreen navigation={navigation} openSettings={openSettings} />}
+        </Tab.Screen>
+        <Tab.Screen name="Calendar" component={CalendarStackNavigator} />
+        <Tab.Screen name="Lineup" component={LineupStackNavigator} />
+        <Tab.Screen name="Map" component={MapScreen} />
+        <Tab.Screen name="FoodVendors" component={FoodVendorScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
+      <SettingsModal
+        visible={settingsVisible}
+        onClose={closeSettings}
+        onSave={saveNotificationTimes}
+      />
+    </>
   );
-}
+};
 
 export default MainContainer;

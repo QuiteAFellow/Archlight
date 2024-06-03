@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+interface HomeScreenProps {
+  navigation: any;
+  openSettings: () => void;
+}
+
 // CustomButton component
 const CustomButton: React.FC<{ title: string; onPress: () => void }> = ({ title, onPress }) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
@@ -8,14 +13,14 @@ const CustomButton: React.FC<{ title: string; onPress: () => void }> = ({ title,
   </TouchableOpacity>
 );
 
-export default function HomeScreen({ navigation }: { navigation: any }) {
+const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bonnaroo 2024</Text>
       <View style={styles.buttonContainer}>
         <CustomButton
           title="My Personal Lineup (Currently Calendar)"
-          onPress={() => navigation.navigate('Calendar')}
+          onPress={() => navigation.navigate('MainCalendar')}
         />
         <CustomButton
           title="Favorite Artists (Currently Lineup)"
@@ -26,13 +31,13 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
           onPress={() => navigation.navigate('Map')}
         />
         <CustomButton
-          title="Food Vendor List (Currently Settings)"
-          onPress={() => navigation.navigate('Settings')}
+          title="Notification Settings"
+          onPress={openSettings}
         />
       </View>
     </View>
   );
-}
+};
 
 // Styles
 const styles = StyleSheet.create({
@@ -67,3 +72,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default HomeScreen;

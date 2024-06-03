@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { RootNavigationScreenProps } from '../types';
+import { RootNavigationScreenProps } from '../../types';
 
 export default function SettingsScreen({ navigation }: RootNavigationScreenProps<'Settings'>) {
   return (

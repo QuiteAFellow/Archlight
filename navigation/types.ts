@@ -7,10 +7,32 @@ export type RootStackParamList = {
   Lineup: undefined;
   Map: undefined;
   Settings: undefined;
-  SearchScreen: undefined;
+  ArtistBio: undefined;
 };
 
 // Define the type for navigation prop of stack navigator
 export type RootNavigationScreenProps<T extends keyof RootStackParamList> = {
   navigation: StackNavigationProp<any, T>;
 };
+
+export interface Artist {
+  "AOTD #": number;
+  Artist: string;
+  Scheduled: string;
+  Description: string;
+  Genres: string;
+  Stage: string;
+  StartTime: string;
+  EndTime: string;
+  Favorited: number;
+}
+
+export type LineupStackParamList = {
+  Lineup: undefined;
+  ArtistBio: { artist: Artist & { favorited: boolean } };
+};
+
+export type ArtistBioScreenRouteParams = {
+  artist: Artist;
+};
+
