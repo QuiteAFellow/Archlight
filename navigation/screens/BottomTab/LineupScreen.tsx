@@ -33,7 +33,7 @@ const LineupScreen: React.FC = () => {
     artistsData.forEach((artist: Omit<Artist, 'favorited'>) => { // Adjust here
       if (!uniqueArtists.has(artist.Artist)) {
         uniqueArtists.add(artist.Artist);
-        uniqueArtistList.push({ ...artist, favorited: false }); // Add favorited property
+        uniqueArtistList.push({ ...artist, favorited: favorites[artist.Artist] || false }); // Initialize favorited property based on context
       }
     });
 
@@ -65,7 +65,7 @@ const LineupScreen: React.FC = () => {
                   />
                   <Text style={styles.artistName}>{artist.Artist}</Text>
                 </View>
-                <TouchableOpacity onPress={() => toggleFavorite(artist.Artist)} style={styles.heartContainer}>
+                <TouchableOpacity onPress={() => toggleFavorite(artist)} style={styles.heartContainer}>
                   <Ionicons
                     name={favorites[artist.Artist] ? 'heart' : 'heart-outline'}
                     size={35}
