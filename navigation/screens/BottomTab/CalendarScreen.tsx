@@ -21,7 +21,7 @@ interface FestivalDayProps {
   data: Artist[];
   navigation: any;
   favorites: { [key: string]: boolean };
-  toggleFavorite: (artist: Artist) => void; // Add this line
+  toggleFavorite: (artist: Artist) => void;
 }
 
 const timeSlots = [
@@ -51,8 +51,10 @@ function getArtistStyle(startTime: string, endTime: string): { top: number, heig
   if (durationMinutes < 0) {
     durationMinutes += 24 * 60;
   }
+  const margin = 25;
+  const top = (startMinutes < 12 * 60 ? startMinutes + 12 * 60 : startMinutes - 12 * 60) * scale + margin;
   return {
-    top: (startMinutes - 12 * 60) * scale,
+    top,
     height: durationMinutes * scale
   };
 }
@@ -62,7 +64,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
     const artistStartMinutes = timeToMinutes(artist.StartTime);
     const isSameDay = artist.Scheduled === day;
     const isAfterMidnight = artist.Scheduled === getPreviousDay(day) && artistStartMinutes < 5 * 60;
-    return isSameDay || isAfterMidnight;
+    return (isSameDay && artistStartMinutes >= 12 * 60) || isAfterMidnight;
   });
 
   const renderStageColumn = (stage: string) => {
@@ -74,7 +76,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
           key={`${artist["AOTD #"]}-${day}-${index}`}
           style={[styles.artistSlot, getArtistStyle(artist.StartTime, artist.EndTime), isFavorited && styles.favoritedArtistSlot]}
           onPress={() => navigation.navigate('ArtistBio', { artist: { ...artist, favorited: isFavorited } })}
-          onLongPress={() => toggleFavorite(artist)} // Pass the artist object to toggleFavorite
+          onLongPress={() => toggleFavorite(artist)}
         >
           <Text style={styles.artistName}>{artist.Artist}</Text>
           <Text style={styles.artistTime}>{artist.StartTime} - {artist.EndTime}</Text>
@@ -100,11 +102,11 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
 function getPreviousDay(day: string): string {
   const days = ['Thursday', 'Friday', 'Saturday', 'Sunday'];
   const index = days.indexOf(day);
-  return days[(index - 1 + days.length) % days.length];
+  return days[(index + days.length) % days.length];
 }
 
 const FestivalSchedule: React.FC = () => {
-  const { favorites, toggleFavorite } = useFavorites(); // Destructure toggleFavorite here
+  const { favorites, toggleFavorite } = useFavorites();
   const [selectedDay, setSelectedDay] = useState('Thursday');
   const navigation = useNavigation();
   const scrollViewRef = useRef<ScrollView>(null);
@@ -112,8 +114,12 @@ const FestivalSchedule: React.FC = () => {
 
   const renderDayButtons = () => (
     ['Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-      <TouchableOpacity key={day} onPress={() => setSelectedDay(day)} style={styles.dayButton}>
-        <Text style={styles.dayButtonText}>{day}</Text>
+      <TouchableOpacity
+        key={day}
+        onPress={() => setSelectedDay(day)}
+        style={[styles.dayButton, selectedDay === day && styles.selectedDayButton]}
+      >
+        <Text style={[styles.dayButtonText, selectedDay === day && styles.selectedDayButtonText]}>{day}</Text>
       </TouchableOpacity>
     ))
   );
@@ -135,7 +141,7 @@ const FestivalSchedule: React.FC = () => {
           ref={timeColumnRef}
           style={styles.fixedTimeColumn}
           scrollEnabled={false}
-          contentContainerStyle={{ height: (17 * 60) * scale }}
+          contentContainerStyle={{ height: (17 * 60) * scale }} // Limit to 5 AM (17 hours from 12 PM to 5 AM)
         >
           {timeSlots.map((time, index) => (
             <Text key={index} style={styles.timeLabel}>{time}</Text>
@@ -184,7 +190,7 @@ const styles = StyleSheet.create({
   dayContainer: {
     flexDirection: 'row',
     marginTop: 0,
-    height: (17 * 60) * scale,
+    height: (17 * 60) * scale, // Adjust to cover up to 5 AM
   },
   stagesContainer: {
     flexDirection: 'row',
@@ -223,7 +229,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   artistTime: {
-    fontSize: 11,
+    fontSize: 10.5,
+    fontStyle: 'italic',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -233,12 +240,18 @@ const styles = StyleSheet.create({
   dayButton: {
     padding: 10,
     margin: 5,
-    backgroundColor: '#007bff',
+    backgroundColor: 'grey', // Default grey background for unselected day
     borderRadius: 5,
+  },
+  selectedDayButton: {
+    backgroundColor: '#007bff',
   },
   dayButtonText: {
     color: 'white',
     fontSize: 16,
+  },
+  selectedDayButtonText: {
+    color: 'white',
   },
 });
 

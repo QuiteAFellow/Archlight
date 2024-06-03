@@ -37,7 +37,7 @@ const MainContainer = () => {
               case 'Map':
                 iconName = focused ? 'map' : 'map-outline';
                 break;
-              case 'FoodVendors':
+              case 'Food Vendors':
                 iconName = focused ? 'fast-food' : 'fast-food-outline';
                 break;
               default:
@@ -56,7 +56,7 @@ const MainContainer = () => {
         <Tab.Screen name="Calendar" component={CalendarStackNavigator} />
         <Tab.Screen name="Lineup" component={LineupStackNavigator} />
         <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="FoodVendors" component={FoodVendorScreen} />
+        <Tab.Screen name="Food Vendors" component={FoodVendorScreen} />
       </Tab.Navigator>
       <SettingsModal
         visible={settingsVisible}
