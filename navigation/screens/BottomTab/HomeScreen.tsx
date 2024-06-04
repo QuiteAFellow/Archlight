@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { RootStackParamList } from '../../types';
+
+type HomeScreenNavigationProp = BottomTabNavigationProp<RootStackParamList, 'Home'>;
 
 interface HomeScreenProps {
-  navigation: any;
+  navigation: HomeScreenNavigationProp;
   openSettings: () => void;
 }
 
@@ -20,7 +24,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
       <View style={styles.buttonContainer}>
         <CustomButton
           title="My Personal Lineup (Currently Calendar)"
-          onPress={() => navigation.navigate('MainCalendar')}
+          onPress={() => navigation.navigate('Calendar')}
         />
         <CustomButton
           title="Favorite Artists (Currently Lineup)"

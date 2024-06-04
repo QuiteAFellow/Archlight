@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import MultiSelect from 'react-native-multiple-select';
 
 interface FilterModalProps {
@@ -11,14 +11,25 @@ interface FilterModalProps {
 }
 
 const locationOptions = [
-  "What Stage",
-  "Which Stage",
-  "This Tent",
+  "Area 931",
+  "Centeroo Carts",
+  "Food Trucks",
+  "Planet Roo",
+  "Plaza 1",
+  "Plaza 2",
+  "Plaza 3",
+  "Plaza 4",
+  "Plaza 5",
+  "Plaza 7",
   "That Tent",
-  "The Other Tent",
-  "Silent Disco",
-  "Camping Area",
-  "Food Truck Area"
+  "The Other Stage",
+  "This Stage",
+  "This Tent",
+  "What Stage",
+  "Where in the Woods",
+  "Which",
+  "Which Stage",
+  "Who's Broo Pub"
 ];
 
 const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilters, existingFilters, uniqueOptions }) => {
@@ -27,7 +38,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
   const [selectedDietary, setSelectedDietary] = useState<string[]>(existingFilters.dietary || []);
   const [selectedPrices, setSelectedPrices] = useState<string[]>(existingFilters.price || []);
   const [selectedLocations, setSelectedLocations] = useState<string[]>(existingFilters.location || []);
-  const [openSection, setOpenSection] = useState<string | null>(null);
+  const [openSection, setOpenSection] = useState<string>('type'); // Default to the first section being open
 
   const applyFilters = () => {
     onApplyFilters({
@@ -40,11 +51,11 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
     onClose();
   };
 
-  const renderMultiSelect = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void, section: string) => (
-    <View style={styles.filterSection}>
-      <TouchableOpacity onPress={() => setOpenSection(openSection === section ? null : section)}>
+  const renderDropdown = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void, section: string) => (
+    <View style={[styles.filterSection, openSection === section && styles.expandedFilterSection]}>
+      <View>
         <Text style={styles.label}>{label}</Text>
-      </TouchableOpacity>
+      </View>
       {openSection === section && (
         <View style={styles.multiSelectContainer}>
           <MultiSelect
@@ -67,32 +78,50 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
     </View>
   );
 
+  const renderButtonGroup = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void) => (
+    <View style={styles.filterSection}>
+      <Text style={styles.label}>{label}</Text>
+      <View style={styles.buttonGroup}>
+        {items.map((item: string) => {
+          const isSelected = selectedItems.includes(item);
+          return (
+            <TouchableOpacity
+              key={item}
+              style={[styles.button, isSelected && styles.selectedButton]}
+              onPress={() => {
+                if (isSelected) {
+                  onSelectedItemsChange(selectedItems.filter(i => i !== item));
+                } else {
+                  onSelectedItemsChange([...selectedItems, item]);
+                }
+              }}
+            >
+              <Text style={[styles.buttonText, isSelected && styles.selectedButtonText]}>{item}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </View>
+  );
+
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose} transparent>
       <View style={styles.modalOverlay}>
         <View style={styles.container}>
           <Text style={styles.title}>Filter Vendors</Text>
-          <FlatList
-            data={['type', 'tags', 'dietary', 'price', 'location']}
-            keyExtractor={(item) => item}
-            renderItem={({ item }) => {
-              switch (item) {
-                case 'type':
-                  return renderMultiSelect('Type', uniqueOptions.type, selectedTypes, setSelectedTypes, 'type');
-                case 'tags':
-                  return renderMultiSelect('Tags', uniqueOptions.tags, selectedTags, setSelectedTags, 'tags');
-                case 'dietary':
-                  return renderMultiSelect('Dietary', uniqueOptions.dietary, selectedDietary, setSelectedDietary, 'dietary');
-                case 'price':
-                  return renderMultiSelect('Price', uniqueOptions.price.sort(), selectedPrices, setSelectedPrices, 'price');
-                case 'location':
-                  return renderMultiSelect('Location', locationOptions, selectedLocations, setSelectedLocations, 'location');
-                default:
-                  return null;
-              }
-            }}
-            contentContainerStyle={styles.scrollView}
-          />
+          <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <TouchableOpacity onPress={() => setOpenSection('type')}>
+              {renderDropdown('Type', uniqueOptions.type, selectedTypes, setSelectedTypes, 'type')}
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setOpenSection('tags')}>
+              {renderDropdown('Tags', uniqueOptions.tags, selectedTags, setSelectedTags, 'tags')}
+            </TouchableOpacity>
+            {renderButtonGroup('Dietary', ['V', 'VG', 'GF'], selectedDietary, setSelectedDietary)}
+            {renderButtonGroup('Price', ['$', '$$', '$$$'], selectedPrices, setSelectedPrices)}
+            <TouchableOpacity onPress={() => setOpenSection('location')}>
+              {renderDropdown('Location', locationOptions, selectedLocations, setSelectedLocations, 'location')}
+            </TouchableOpacity>
+          </ScrollView>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
               <Text style={styles.applyButtonText}>Apply Filters</Text>
@@ -116,7 +145,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '90%',
-    height: '80%',
+    height: '90%',
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
@@ -126,11 +155,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  scrollView: {
+  scrollViewContent: {
     flexGrow: 1,
+    paddingBottom: 20,
   },
   filterSection: {
     marginBottom: 10,
+  },
+  expandedFilterSection: {
+    marginBottom: 50, // Add more space when the filter section is expanded
   },
   label: {
     fontSize: 16,
@@ -140,6 +173,9 @@ const styles = StyleSheet.create({
   multiSelectContainer: {
     maxHeight: 200, // Adjust this value to set the maximum height of the dropdown
   },
+  expandedMultiSelectContainer: {
+    maxHeight: 300, // Larger maximum height for expanded dropdowns
+  },
   multiSelectDropdown: {
     borderColor: '#ccc',
     borderWidth: 1,
@@ -147,7 +183,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   multiSelectListContainer: {
-    maxHeight: 200, // Adjust height as necessary
+    maxHeight: 300, // Adjust height as necessary
   },
   multiSelectSelectorContainer: {
     padding: 10,
@@ -165,6 +201,28 @@ const styles = StyleSheet.create({
   multiSelectTextDropdownSelected: {
     paddingLeft: 10,
     paddingRight: 30,
+  },
+  buttonGroup: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+  },
+  button: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    margin: 5,
+  },
+  selectedButton: {
+    backgroundColor: '#007bff',
+    borderColor: '#007bff',
+  },
+  buttonText: {
+    color: 'black',
+  },
+  selectedButtonText: {
+    color: 'white',
   },
   buttonContainer: {
     flexDirection: 'row',

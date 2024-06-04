@@ -3,13 +3,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CalendarStackNavigator from './screens/Stack/CalendarStackNavigator';
 import LineupStackNavigator from './screens/Stack/LineupStackNavigator';
-import { HomeScreen, MapScreen } from './screens/BottomTab';
-import FoodVendorScreen from './screens/BottomTab/FoodVendorScreen';
+import { HomeScreen, MapScreen, FoodVendorScreen } from './screens/BottomTab';
 import SettingsModal from './screens/SettingsModal';
+import { BottomTabParamList } from './types';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
-const MainContainer = () => {
+const MainContainer: React.FC = () => {
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [notificationTimes, setNotificationTimes] = useState<number[]>([]);
 
@@ -51,7 +51,7 @@ const MainContainer = () => {
         })}
       >
         <Tab.Screen name="Home">
-          {({ navigation }) => <HomeScreen navigation={navigation} openSettings={openSettings} />}
+          {props => <HomeScreen {...props} openSettings={openSettings} />}
         </Tab.Screen>
         <Tab.Screen name="Calendar" component={CalendarStackNavigator} />
         <Tab.Screen name="Lineup" component={LineupStackNavigator} />

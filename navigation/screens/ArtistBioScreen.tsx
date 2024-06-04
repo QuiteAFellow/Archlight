@@ -14,6 +14,9 @@ const ArtistBioScreen: React.FC = () => {
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites[artist.Artist] || false;
 
+  // Split the description by [PAGE_BREAK]
+  const descriptionSegments = artist.Description.split('[PAGE_BREAK]');
+
   return (
     <ScrollView style={styles.container}>
       <Image source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
@@ -40,7 +43,14 @@ const ArtistBioScreen: React.FC = () => {
           <Ionicons name="disc-outline" size={20} color="darkgrey" />
           <Text style={styles.infoText}>{artist.Genres}</Text>
         </View>
-        <Text style={styles.description}>{artist.Description}</Text>
+        <Text style={styles.description}>
+          {descriptionSegments.map((segment, index) => (
+            <Text key={index}>
+              {segment}
+              {index < descriptionSegments.length - 1 && '\n\n'} {/* Add a new line between segments */}
+            </Text>
+          ))}
+        </Text>
       </View>
     </ScrollView>
   );
@@ -86,6 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
     marginTop: 10,
+    marginBottom: 10, // Add margin between description segments
   },
 });
 

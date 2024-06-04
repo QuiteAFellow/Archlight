@@ -22,10 +22,31 @@ const getUniqueValues = (data: FoodVendor[], key: keyof FoodVendor) => {
   return Array.from(new Set(values)).filter(Boolean); // Remove duplicates and empty strings
 };
 
+const locationOptions = [
+  "Area 931",
+  "Centeroo Carts",
+  "Food Trucks",
+  "Planet Roo",
+  "Plaza 1",
+  "Plaza 2",
+  "Plaza 3",
+  "Plaza 4",
+  "Plaza 5",
+  "Plaza 7",
+  "That Tent",
+  "The Other Stage",
+  "This Stage",
+  "This Tent",
+  "What Stage",
+  "Where in the Woods",
+  "Which",
+  "Which Stage",
+  "Who's Broo Pub"
+];
+
 const FoodVendorScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredVendors, setFilteredVendors] = useState<FoodVendor[]>(foodVendorsData);
-  const [editingVendor, setEditingVendor] = useState<FoodVendor | null>(null);
   const [filters, setFilters] = useState({
     type: [],
     tags: [],
@@ -40,7 +61,7 @@ const FoodVendorScreen: React.FC = () => {
     tags: getUniqueValues(foodVendorsData, 'Food tags'),
     dietary: getUniqueValues(foodVendorsData, 'Dietary Tags'),
     price: getUniqueValues(foodVendorsData, 'Price'),
-    location: getUniqueValues(foodVendorsData, 'Location'),
+    location: locationOptions,
   };
 
   useEffect(() => {
@@ -94,24 +115,6 @@ const FoodVendorScreen: React.FC = () => {
     setFilteredVendors(filtered);
   };
 
-  const handleEditVendor = (vendor: FoodVendor) => {
-    setEditingVendor(vendor);
-  };
-
-  const handleSaveVendor = () => {
-    if (editingVendor) {
-      const updatedVendors = filteredVendors.map((vendor: FoodVendor) =>
-        vendor["Food Vendor"] === editingVendor["Food Vendor"] ? editingVendor : vendor
-      );
-      setFilteredVendors(updatedVendors);
-      setEditingVendor(null);
-    }
-  };
-
-  const handleCancelEdit = () => {
-    setEditingVendor(null);
-  };
-
   const handleOpenFilterModal = () => {
     setFilterModalVisible(true);
   };
@@ -157,7 +160,7 @@ const FoodVendorScreen: React.FC = () => {
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {filteredVendors.map((vendor: FoodVendor) => (
-          <TouchableOpacity key={vendor["Food Vendor"]} onPress={() => handleEditVendor(vendor)}>
+          <View key={vendor["Food Vendor"]}>
             <View style={styles.vendorContainer}>
               <View style={styles.vendorHeader}>
                 <Text style={styles.vendorName}>{vendor["Food Vendor"]}</Text>
@@ -176,58 +179,9 @@ const FoodVendorScreen: React.FC = () => {
                 <Text>Recommended Item(s): {vendor["Recommended Item(s)"]}</Text>
               )}
             </View>
-          </TouchableOpacity>
+          </View>
         ))}
       </ScrollView>
-      {editingVendor && (
-        <View style={styles.editContainer}>
-          <Text style={styles.editTitle}>Edit Vendor</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Name"
-            value={editingVendor["Food Vendor"]}
-            onChangeText={text => setEditingVendor({ ...editingVendor, "Food Vendor": text })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Food Type"
-            value={editingVendor.Type}
-            onChangeText={text => setEditingVendor({ ...editingVendor, Type: text })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Tags (comma separated)"
-            value={editingVendor["Food tags"]}
-            onChangeText={text => setEditingVendor({ ...editingVendor, ["Food tags"]: text })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Dietary Tags (comma separated)"
-            value={editingVendor["Dietary Tags"]}
-            onChangeText={text => setEditingVendor({ ...editingVendor, ["Dietary Tags"]: text })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Price"
-            value={editingVendor.Price}
-            onChangeText={text => setEditingVendor({ ...editingVendor, Price: text })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Location"
-            value={editingVendor.Location}
-            onChangeText={text => setEditingVendor({ ...editingVendor, Location: text })}
-          />
-          <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.saveButton} onPress={handleSaveVendor}>
-              <Text style={styles.saveButtonText}>Save</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.cancelButton} onPress={handleCancelEdit}>
-              <Text style={styles.cancelButtonText}>Cancel</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
       <FilterModal
         visible={filterModalVisible}
         onClose={handleCloseFilterModal}
@@ -304,56 +258,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 10,
     marginBottom: 5,
-  },
-  editContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    padding: 20,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: '#ccc',
-  },
-  editTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  input: {
-    padding: 10,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  saveButton: {
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 5,
-    flex: 1,
-    marginRight: 5,
-  },
-  cancelButton: {
-    backgroundColor: '#f44336',
-    padding: 10,
-    borderRadius: 5,
-    flex: 1,
-    marginLeft: 5,
-  },
-  saveButtonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  cancelButtonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
   },
 });
 

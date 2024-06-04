@@ -1,18 +1,27 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NavigatorScreenParams } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-// Define the type for the navigation stack parameter list
 export type RootStackParamList = {
   Home: undefined;
   Calendar: undefined;
   Lineup: undefined;
   Map: undefined;
-  Settings: undefined;
   ArtistBio: undefined;
+  'Food Vendors': undefined;
 };
 
-// Define the type for navigation prop of stack navigator
+export type BottomTabParamList = {
+  Home: NavigatorScreenParams<RootStackParamList>;
+  Calendar: NavigatorScreenParams<RootStackParamList>;
+  Lineup: NavigatorScreenParams<RootStackParamList>;
+  Map: NavigatorScreenParams<RootStackParamList>;
+  'Food Vendors': NavigatorScreenParams<RootStackParamList>;
+};
+
+export type HomeScreenNavigationProp = BottomTabNavigationProp<BottomTabParamList, 'Home'>;
+
 export type RootNavigationScreenProps<T extends keyof RootStackParamList> = {
-  navigation: StackNavigationProp<any, T>;
+  navigation: BottomTabNavigationProp<RootStackParamList, T>;
 };
 
 export interface Artist {
@@ -35,4 +44,3 @@ export type LineupStackParamList = {
 export type ArtistBioScreenRouteParams = {
   artist: Artist;
 };
-
