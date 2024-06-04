@@ -924,7 +924,7 @@
     node-forge "^1.2.1"
     nullthrows "^1.1.1"
 
-"@expo/config-plugins@8.0.4", "@expo/config-plugins@~8.0.0":
+"@expo/config-plugins@8.0.4", "@expo/config-plugins@~8.0.0", "@expo/config-plugins@~8.0.0-beta.0":
   version "8.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-8.0.4.tgz#1e781cd971fab27409ed2f8d621db6d29cce3036"
   integrity sha512-Hi+xuyNWE2LT4LVbGttHJgl9brnsdWAhEB42gWKb5+8ae86Nr/KwUBQJsJppirBYTeLjj5ZlY0glYnAkDa2jqw==
@@ -996,6 +996,20 @@
     dotenv "~16.4.5"
     dotenv-expand "~11.0.6"
     getenv "^1.0.0"
+
+"@expo/fingerprint@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@expo/fingerprint/-/fingerprint-0.8.0.tgz#631a64c5db23e121228546502ae6a0eeab19aaf7"
+  integrity sha512-LBNweJnpG16p7SbvFGINF5Q44bDErIcm1li9SuvYQgrrSey3ErIPmZsiMsNBxlvVie6eTp4wmFO6IFmeaqEhbg==
+  dependencies:
+    "@expo/spawn-async" "^1.7.2"
+    chalk "^4.1.2"
+    debug "^4.3.4"
+    find-up "^5.0.0"
+    minimatch "^3.0.4"
+    p-limit "^3.1.0"
+    resolve-from "^5.0.0"
+    semver "^7.6.0"
 
 "@expo/image-utils@^0.5.0":
   version "0.5.1"
@@ -1516,6 +1530,13 @@
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.11.tgz#2f4c6e10bee0786abff4604e39a37ded6f3980ce"
   integrity sha512-rQfMIGSR/1r/SyN87+VD8xHHzDYeHaJq6elOSCAD+0iLagXkSI2pfA0LmSXP21uw5i3em7GkkRjfJ8wpqWXZNw==
+
+"@react-native-community/push-notification-ios@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/push-notification-ios/-/push-notification-ios-1.11.0.tgz#d8ec4acfb52260cb779ed0379b9e197db7841b83"
+  integrity sha512-nfkUs8P2FeydOCR4r7BNmtGxAxI22YuGP6RmqWt6c8EEMUpqvIhNKWkRSFF3pHjkgJk2tpRb9wQhbezsqTyBvA==
+  dependencies:
+    invariant "^2.2.4"
 
 "@react-native-picker/picker@^2.7.6":
   version "2.7.6"
@@ -2117,6 +2138,11 @@ are-we-there-yet@^3.0.0:
   dependencies:
     delegates "^1.0.0"
     readable-stream "^3.6.0"
+
+arg@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.0.tgz#583c518199419e0037abb74062c37f8519e575f0"
+  integrity sha512-ZWc51jO3qegGkVh8Hwpv636EkbesNV5ZNQPCtRa+0qytRYPEs9IYT9qITY9buezqUH5uqyzlWLcufrzU2rffdg==
 
 arg@5.0.2:
   version "5.0.2"
@@ -3362,6 +3388,11 @@ expo-constants@~16.0.0:
   dependencies:
     "@expo/config" "~9.0.0-beta.0"
 
+expo-eas-client@~0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/expo-eas-client/-/expo-eas-client-0.12.0.tgz#e8b6f7d33873e6f630f37f7bfc41646ae7b0b2a9"
+  integrity sha512-Jkww9Cwpv0z7DdLYiRX0r4fqBEcI9cKqTn7cHx63S09JaZ2rcwEE4zYHgrXwjahO+tU2VW8zqH+AJl6RhhW4zA==
+
 expo-file-system@^16.0.9:
   version "16.0.9"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-16.0.9.tgz#cbd6c4b228b60a6b6c71fd1b91fe57299fb24da7"
@@ -3379,10 +3410,23 @@ expo-font@~12.0.5:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-json-utils@~0.13.0:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/expo-json-utils/-/expo-json-utils-0.13.1.tgz#e49b697198e11c573d346f08ab91c467095934a9"
+  integrity sha512-mlfaSArGVb+oJmUcR22jEONlgPp0wj4iNIHfQ2je9Q8WTOqMc0Ws9tUciz3JdJnhffdHqo/k8fpvf0IRmN5HPA==
+
 expo-keep-awake@~13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-13.0.2.tgz#5ef31311a339671eec9921b934fdd90ab9652b0e"
   integrity sha512-kKiwkVg/bY0AJ5q1Pxnm/GvpeB6hbNJhcFsoOWDh2NlpibhCLaHL826KHUM+WsnJRbVRxJ+K9vbPRHEMvFpVyw==
+
+expo-manifests@~0.14.0:
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/expo-manifests/-/expo-manifests-0.14.3.tgz#17854c45c8c9ced4a07031ae0838c38ac3115fbc"
+  integrity sha512-L3b5/qocBPiQjbW0cpOHfnqdKZbTJS7sA3mgeDJT+mWga/xYsdpma1EfNmsuvrOzjLGjStr1k1fceM9Bl49aqQ==
+  dependencies:
+    "@expo/config" "~9.0.0"
+    expo-json-utils "~0.13.0"
 
 expo-modules-autolinking@1.11.1:
   version "1.11.1"
@@ -3413,6 +3457,37 @@ expo-status-bar@~1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.11.1.tgz#a11318741d361048c11db2b16c4364a79a74af30"
   integrity sha512-ddQEtCOgYHTLlFUe/yH67dDBIoct5VIULthyT3LRJbEwdpzAgueKsX2FYK02ldh440V87PWKCamh7R9evk1rrg==
+
+expo-structured-headers@~3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/expo-structured-headers/-/expo-structured-headers-3.8.0.tgz#11797a4c3a7a6770b21126cecffcda148030e361"
+  integrity sha512-R+gFGn0x5CWl4OVlk2j1bJTJIz4KO8mPoCHpRHmfqMjmrMvrOM0qQSY3V5NHXwp1yT/L2v8aUmFQsBRIdvi1XA==
+
+expo-updates-interface@~0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.16.2.tgz#ad1ac2ca8ee5a8cc84052ea3c18a11da64da569b"
+  integrity sha512-929XBU70q5ELxkKADj1xL0UIm3HvhYhNAOZv5DSk7rrKvLo7QDdPyl+JVnwZm9LrkNbH4wuE2rLoKu1KMgZ+9A==
+
+expo-updates@~0.25.15:
+  version "0.25.15"
+  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.25.15.tgz#d4d5ae7f5babad4331eb74cbd546eaf3329e112b"
+  integrity sha512-P38Qv2TxeEpUCvAEUR99VSpOXnliiDsvMwFqhTO+iA0ZBDMJ7YZ/Fy5U4L9h8IW8mPfFC9wrWZzWZBn129mpYQ==
+  dependencies:
+    "@expo/code-signing-certificates" "0.0.5"
+    "@expo/config" "~9.0.0-beta.0"
+    "@expo/config-plugins" "~8.0.0-beta.0"
+    "@expo/fingerprint" "^0.8.0"
+    "@expo/spawn-async" "^1.7.2"
+    arg "4.1.0"
+    chalk "^4.1.2"
+    expo-eas-client "~0.12.0"
+    expo-manifests "~0.14.0"
+    expo-structured-headers "~3.8.0"
+    expo-updates-interface "~0.16.2"
+    fast-glob "^3.3.2"
+    fbemitter "^3.0.0"
+    ignore "^5.3.1"
+    resolve-from "^5.0.0"
 
 expo@^51.0.2:
   version "51.0.8"
@@ -4048,7 +4123,7 @@ ieee754@^1.1.13:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
-ignore@^5.2.0:
+ignore@^5.2.0, ignore@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.1.tgz#5073e554cd42c5b33b394375f538b8593e34d4ef"
   integrity sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==
@@ -5655,7 +5730,7 @@ p-limit@^2.0.0, p-limit@^2.2.0:
   dependencies:
     p-try "^2.0.0"
 
-p-limit@^3.0.2:
+p-limit@^3.0.2, p-limit@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-3.1.0.tgz#e1daccbe78d0d1388ca18c64fea38e3e57e3706b"
   integrity sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==
