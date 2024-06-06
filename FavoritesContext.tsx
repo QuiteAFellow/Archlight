@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { scheduleNotificationsForArtist } from './notifications';
 import artistsData from '../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 
@@ -22,13 +23,63 @@ interface FavoriteContextProps {
 
 const FavoritesContext = createContext<FavoriteContextProps | undefined>(undefined);
 
+const FAVORITES_KEY = 'favorites';
+const NOTIFICATION_TIMES_KEY = 'notificationTimes';
+
 export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({});
   const [notificationTimes, setNotificationTimesState] = useState<number[]>([]);
 
   useEffect(() => {
-    // Optional: Load initial favorites from local storage or API
+    const loadFavorites = async () => {
+      try {
+        const savedFavorites = await AsyncStorage.getItem(FAVORITES_KEY);
+        if (savedFavorites) {
+          setFavorites(JSON.parse(savedFavorites));
+        }
+      } catch (error) {
+        console.error('Failed to load favorites', error);
+      }
+    };
+
+    const loadNotificationTimes = async () => {
+      try {
+        const savedNotificationTimes = await AsyncStorage.getItem(NOTIFICATION_TIMES_KEY);
+        if (savedNotificationTimes) {
+          setNotificationTimesState(JSON.parse(savedNotificationTimes));
+        }
+      } catch (error) {
+        console.error('Failed to load notification times', error);
+      }
+    };
+
+    loadFavorites();
+    loadNotificationTimes();
   }, []);
+
+  useEffect(() => {
+    const saveFavorites = async () => {
+      try {
+        await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+      } catch (error) {
+        console.error('Failed to save favorites', error);
+      }
+    };
+
+    saveFavorites();
+  }, [favorites]);
+
+  useEffect(() => {
+    const saveNotificationTimes = async () => {
+      try {
+        await AsyncStorage.setItem(NOTIFICATION_TIMES_KEY, JSON.stringify(notificationTimes));
+      } catch (error) {
+        console.error('Failed to save notification times', error);
+      }
+    };
+
+    saveNotificationTimes();
+  }, [notificationTimes]);
 
   const toggleFavorite = (artist: Artist) => {
     setFavorites(prev => {
@@ -42,13 +93,6 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const setNotificationTimes = (times: number[]) => {
     setNotificationTimesState(times);
-    // Reschedule notifications for all favorited artists with the new times
-    Object.keys(favorites).forEach(artistName => {
-      const artist = artistsData.find((a: Artist) => a.Artist === artistName);
-      if (artist && favorites[artist.Artist]) {
-        scheduleNotificationsForArtist(artist, times);
-      }
-    });
   };
 
   return (

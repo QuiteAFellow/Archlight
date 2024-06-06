@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions, Image } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
 import { IOnClick } from 'react-native-image-pan-zoom';
-import ImageViewer from 'react-native-image-zoom-viewer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const centerooImage = require('../../../assets/Maps/Roo24_Centeroo.jpg');
 const outerooImage = require('../../../assets/Maps/Roo24_Outeroo.jpg');
@@ -27,6 +27,33 @@ const MapScreen: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingPinId, setEditingPinId] = useState<number | null>(null);
   const [newPinCoords, setNewPinCoords] = useState<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    const loadPins = async () => {
+      try {
+        const savedPins = await AsyncStorage.getItem('pins');
+        if (savedPins) {
+          setPins(JSON.parse(savedPins));
+        }
+      } catch (error) {
+        console.error('Failed to load pins', error);
+      }
+    };
+
+    loadPins();
+  }, []);
+
+  useEffect(() => {
+    const savePins = async () => {
+      try {
+        await AsyncStorage.setItem('pins', JSON.stringify(pins));
+      } catch (error) {
+        console.error('Failed to save pins', error);
+      }
+    };
+
+    savePins();
+  }, [pins]);
 
   const switchMap = () => {
     setCurrentMap(currentMap === 'centeroo' ? 'outeroo' : 'centeroo');
@@ -175,25 +202,21 @@ const styles = StyleSheet.create({
   switchButton: {
     position: 'absolute',
     top: 10,
-    left: 10,
+    right: 10,
     padding: 10,
-    backgroundColor: '#007bff',
+    backgroundColor: 'gray',
     zIndex: 10,
-    marginTop: 45,
-    borderRadius: 5
   },
   switchButtonText: {
     color: 'white',
   },
   addButton: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     right: 10,
     padding: 10,
-    backgroundColor: '#007bff',
+    backgroundColor: 'gray',
     zIndex: 10,
-    marginTop: 45,
-    borderRadius: 5
   },
   addButtonText: {
     color: 'white',
