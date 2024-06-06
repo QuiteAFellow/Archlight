@@ -201,11 +201,12 @@ const styles = StyleSheet.create({
   },
   switchButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
+    top: 50,
+    left: 10,
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: '#007bff',
     zIndex: 10,
+    borderRadius: 5
   },
   switchButtonText: {
     color: 'white',
@@ -215,8 +216,9 @@ const styles = StyleSheet.create({
     top: 50,
     right: 10,
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: '#007bff',
     zIndex: 10,
+    borderRadius: 5
   },
   addButtonText: {
     color: 'white',
