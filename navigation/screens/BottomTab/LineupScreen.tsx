@@ -33,7 +33,7 @@ const LineupScreen: React.FC = () => {
     artistsData.forEach((artist: Omit<Artist, 'favorited'>) => { // Adjust here
       if (!uniqueArtists.has(artist.Artist)) {
         uniqueArtists.add(artist.Artist);
-        uniqueArtistList.push({ ...artist, favorited: favorites[artist.Artist] || false }); // Initialize favorited property based on context
+        uniqueArtistList.push({ ...artist, favorited: false }); // Add favorited property
       }
     });
 
@@ -92,12 +92,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderColor: '#ccc',
+    marginTop: 45
   },
   artistContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 35,
+    marginBottom: 25,
+    marginTop: 10,
   },
   artistContent: {
     flexDirection: 'row',
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
   line: {
     borderBottomWidth: 1,
     width: '100%',
-    marginBottom: 10, // Add margin to separate the line from the next artist container
+    marginBottom: 10,
   },
 });
 

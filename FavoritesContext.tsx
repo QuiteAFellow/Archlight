@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { scheduleNotificationsForArtist } from './notifications';
 import artistsData from '../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 
@@ -26,6 +26,10 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children 
   const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({});
   const [notificationTimes, setNotificationTimesState] = useState<number[]>([]);
 
+  useEffect(() => {
+    // Optional: Load initial favorites from local storage or API
+  }, []);
+
   const toggleFavorite = (artist: Artist) => {
     setFavorites(prev => {
       const newFavorites = { ...prev, [artist.Artist]: !prev[artist.Artist] };
@@ -38,6 +42,13 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const setNotificationTimes = (times: number[]) => {
     setNotificationTimesState(times);
+    // Reschedule notifications for all favorited artists with the new times
+    Object.keys(favorites).forEach(artistName => {
+      const artist = artistsData.find((a: Artist) => a.Artist === artistName);
+      if (artist && favorites[artist.Artist]) {
+        scheduleNotificationsForArtist(artist, times);
+      }
+    });
   };
 
   return (

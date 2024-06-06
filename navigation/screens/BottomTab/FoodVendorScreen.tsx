@@ -22,28 +22,6 @@ const getUniqueValues = (data: FoodVendor[], key: keyof FoodVendor) => {
   return Array.from(new Set(values)).filter(Boolean); // Remove duplicates and empty strings
 };
 
-const locationOptions = [
-  "Area 931",
-  "Centeroo Carts",
-  "Food Trucks",
-  "Planet Roo",
-  "Plaza 1",
-  "Plaza 2",
-  "Plaza 3",
-  "Plaza 4",
-  "Plaza 5",
-  "Plaza 7",
-  "That Tent",
-  "The Other Stage",
-  "This Stage",
-  "This Tent",
-  "What Stage",
-  "Where in the Woods",
-  "Which",
-  "Which Stage",
-  "Who's Broo Pub"
-];
-
 const FoodVendorScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredVendors, setFilteredVendors] = useState<FoodVendor[]>(foodVendorsData);
@@ -59,9 +37,9 @@ const FoodVendorScreen: React.FC = () => {
   const uniqueOptions = {
     type: getUniqueValues(foodVendorsData, 'Type'),
     tags: getUniqueValues(foodVendorsData, 'Food tags'),
-    dietary: getUniqueValues(foodVendorsData, 'Dietary Tags'),
-    price: getUniqueValues(foodVendorsData, 'Price'),
-    location: locationOptions,
+    dietary: ['V', 'VG', 'GF'],
+    price: ['$', '$$', '$$$'],
+    location: getUniqueValues(foodVendorsData, 'Location'),
   };
 
   useEffect(() => {
@@ -128,30 +106,11 @@ const FoodVendorScreen: React.FC = () => {
     applyFilters(searchQuery, newFilters);
   };
 
-  const formatMenuWithSubtext = (menu: string) => {
-    return menu.split('|').map((item, index) => {
-      const parts = item.split(/(\([^)]*\))/).filter(Boolean); // Split on parentheses and filter out empty strings
-      const mainItem = parts.filter(part => !part.startsWith('(')).join(' ').trim();
-      const descriptions = parts.filter(part => part.startsWith('('));
-
-      return (
-        <View key={index} style={styles.menuItem}>
-          <Text style={styles.foodItem}>{mainItem}</Text>
-          {descriptions.map((description, i) => (
-            <Text key={i} style={styles.foodDescription}>
-              {description}
-            </Text>
-          ))}
-        </View>
-      );
-    });
-  };
-
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.searchBar}
-        placeholder="Search for food vendors"
+        placeholder="Search"
         value={searchQuery}
         onChangeText={handleSearch}
       />
@@ -160,25 +119,23 @@ const FoodVendorScreen: React.FC = () => {
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {filteredVendors.map((vendor: FoodVendor) => (
-          <View key={vendor["Food Vendor"]}>
-            <View style={styles.vendorContainer}>
-              <View style={styles.vendorHeader}>
-                <Text style={styles.vendorName}>{vendor["Food Vendor"]}</Text>
-                {vendor.Recommended && <Text style={styles.recommended}>⭐</Text>}
-              </View>
-              <Text>Type: {vendor.Type}</Text>
-              <Text>Tags: {vendor["Food tags"]}</Text>
-              <Text>Dietary: {vendor["Dietary Tags"]}</Text>
-              <Text>Price: {vendor.Price}</Text>
-              <Text>Location: {vendor.Location}</Text>
-              <Text style={styles.menuSectionHeader}>Food Menu:</Text>
-              {formatMenuWithSubtext(vendor["Food Menu"])}
-              <Text style={styles.menuSectionHeader}>Drink/Desert Menu:</Text>
-              {formatMenuWithSubtext(vendor["Drink/Desert Menu"])}
-              {vendor.Recommended && vendor["Recommended Item(s)"] && (
-                <Text>Recommended Item(s): {vendor["Recommended Item(s)"]}</Text>
-              )}
+          <View key={vendor["Food Vendor"]} style={styles.vendorContainer}>
+            <View style={styles.vendorHeader}>
+              <Text style={styles.vendorName}>{vendor["Food Vendor"]}</Text>
+              {vendor.Recommended && <Text style={styles.recommended}>⭐</Text>}
             </View>
+            <Text>Type: {vendor.Type}</Text>
+            <Text>Tags: {vendor["Food tags"]}</Text>
+            <Text>Dietary: {vendor["Dietary Tags"]}</Text>
+            <Text>Price: {vendor.Price}</Text>
+            <Text>Location: {vendor.Location}</Text>
+            <Text style={styles.menuSectionHeader}>Food Menu:</Text>
+            <Text>{vendor["Food Menu"]}</Text>
+            <Text style={styles.menuSectionHeader}>Drink/Desert Menu:</Text>
+            <Text>{vendor["Drink/Desert Menu"]}</Text>
+            {vendor.Recommended && vendor["Recommended Item(s)"] && (
+              <Text>Recommended Item(s): {vendor["Recommended Item(s)"]}</Text>
+            )}
           </View>
         ))}
       </ScrollView>
@@ -204,6 +161,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 20,
+    marginTop: 40
   },
   filterButton: {
     backgroundColor: '#007bff',
@@ -238,20 +196,6 @@ const styles = StyleSheet.create({
   recommended: {
     color: 'gold',
     fontSize: 18,
-  },
-  menuItem: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    marginBottom: 5,
-  },
-  foodItem: {
-    fontSize: 14,
-  },
-  foodDescription: {
-    color: 'darkgrey',
-    fontStyle: 'italic',
-    fontSize: 12,
-    marginLeft: 15,
   },
   menuSectionHeader: {
     fontWeight: 'bold',

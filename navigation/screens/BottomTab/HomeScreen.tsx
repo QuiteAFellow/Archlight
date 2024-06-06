@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '../../types';
+import { useFavorites } from '../../../context/FavoritesContext';
 
 type HomeScreenNavigationProp = BottomTabNavigationProp<RootStackParamList, 'Home'>;
 
@@ -18,20 +19,23 @@ const CustomButton: React.FC<{ title: string; onPress: () => void }> = ({ title,
 );
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => {
+  const { favorites } = useFavorites();
+  const hasFavoritedArtists = Object.keys(favorites).length > 0;
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bonnaroo 2024</Text>
       <View style={styles.buttonContainer}>
         <CustomButton
-          title="My Personal Lineup (Currently Calendar)"
+          title="Calendar"
           onPress={() => navigation.navigate('Calendar')}
         />
         <CustomButton
-          title="Favorite Artists (Currently Lineup)"
+          title="Lineup"
           onPress={() => navigation.navigate('Lineup')}
         />
         <CustomButton
-          title="My Map Markers (Currently Map)"
+          title="Centeroo/Outeroo Maps"
           onPress={() => navigation.navigate('Map')}
         />
         <CustomButton
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center'
   },
 });
 

@@ -7,9 +7,10 @@ const Stack = createNativeStackNavigator();
 
 const LineupStackNavigator = () => {
     return (
-        <Stack.Navigator initialRouteName="Lineup">
-            <Stack.Screen name="Lineup" component={LineupScreen} />
-            <Stack.Screen name="ArtistBio" component={ArtistBioScreen} />
+        <Stack.Navigator screenOptions={{ headerShown: false}}
+            initialRouteName="Lineup">
+                <Stack.Screen name="FestivalLineup" component={LineupScreen} />
+                <Stack.Screen name="ArtistBio" component={ArtistBioScreen} />
         </Stack.Navigator>
     );
 };

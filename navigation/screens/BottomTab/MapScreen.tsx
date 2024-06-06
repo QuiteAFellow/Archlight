@@ -1,16 +1,32 @@
 import React, { useState } from 'react';
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions, Image } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
-import { GestureHandlerRootView, TapGestureHandler, GestureHandlerStateChangeEvent, TapGestureHandlerEventPayload } from 'react-native-gesture-handler';
+import { IOnClick } from 'react-native-image-pan-zoom';
+import ImageViewer from 'react-native-image-zoom-viewer';
 
 const centerooImage = require('../../../assets/Maps/Roo24_Centeroo.jpg');
 const outerooImage = require('../../../assets/Maps/Roo24_Outeroo.jpg');
 
+interface Pin {
+  id: number;
+  x: number;
+  y: number;
+  color: string;
+  label: string;
+  description: string;
+  map: string;
+}
+
+const colors = ['white', 'red', 'orange', 'yellow', 'green', 'lightgreen', 'blue', 'purple'];
+
 const MapScreen: React.FC = () => {
   const [currentMap, setCurrentMap] = useState('centeroo');
-  const [markers, setMarkers] = useState<{ id: number; x: number; y: number; color: string; title: string; map: string }[]>([]);
+  const [pins, setPins] = useState<Pin[]>([]);
   const [addingPin, setAddingPin] = useState(false);
-  const [markerCount, setMarkerCount] = useState(0);
+  const [pinDetails, setPinDetails] = useState({ label: '', description: '', color: 'red' });
+  const [showModal, setShowModal] = useState(false);
+  const [editingPinId, setEditingPinId] = useState<number | null>(null);
+  const [newPinCoords, setNewPinCoords] = useState<{ x: number; y: number } | null>(null);
 
   const switchMap = () => {
     setCurrentMap(currentMap === 'centeroo' ? 'outeroo' : 'centeroo');
@@ -18,95 +34,137 @@ const MapScreen: React.FC = () => {
 
   const currentImage = currentMap === 'centeroo' ? centerooImage : outerooImage;
 
-  const handleTap = (event: GestureHandlerStateChangeEvent<TapGestureHandlerEventPayload>) => {
-    console.log('handleTap called', { addingPin, eventState: event.nativeEvent.state });
-    if (addingPin && event.nativeEvent.state === 4) {
-      const { x, y } = event.nativeEvent;
-      console.log('Tap detected', { x, y });
+  const handleMapPress = (eventParams: IOnClick) => {
+    if (addingPin) {
+      const { locationX, locationY } = eventParams;
+      setNewPinCoords({ x: locationX, y: locationY });
+      setShowModal(true);
+    }
+  };
 
-      Alert.prompt(
-        'New Marker',
-        'Enter marker title:',
-        [
-          {
-            text: 'Cancel',
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: (title) => {
-              if (title && title.trim() !== '') {
-                const newMarker = {
-                  id: markerCount,
-                  x,
-                  y,
-                  color: 'red', // Default color for simplicity
-                  title: title.trim(),
-                  map: currentMap,
-                };
-                console.log('Adding marker:', newMarker);
-                setMarkers((prevMarkers) => {
-                  const updatedMarkers = [...prevMarkers, newMarker];
-                  console.log('Updated markers:', updatedMarkers);
-                  return updatedMarkers;
-                });
-                setMarkerCount(markerCount + 1);
-                setAddingPin(false);
-              } else {
-                Alert.alert('Error', 'Title cannot be empty.');
-              }
-            },
-          },
-        ],
-        'plain-text'
-      );
+  const handlePinPress = (pinId: number) => {
+    const pin = pins.find(p => p.id === pinId);
+    if (pin) {
+      setPinDetails({ label: pin.label, description: pin.description, color: pin.color });
+      setEditingPinId(pinId);
+      setShowModal(true);
+    }
+  };
+
+  const savePin = () => {
+    if (newPinCoords || editingPinId !== null) {
+      const newPin = {
+        id: editingPinId !== null ? editingPinId : pins.length,
+        x: newPinCoords ? newPinCoords.x : pins.find(pin => pin.id === editingPinId)!.x,
+        y: newPinCoords ? newPinCoords.y : pins.find(pin => pin.id === editingPinId)!.y,
+        color: pinDetails.color,
+        label: pinDetails.label,
+        description: pinDetails.description,
+        map: currentMap,
+      };
+
+      const updatedPins = editingPinId !== null
+        ? pins.map(pin => pin.id === editingPinId ? newPin : pin)
+        : [...pins, newPin];
+
+      setPins(updatedPins);
+      setPinDetails({ label: '', description: '', color: 'red' });
+      setShowModal(false);
+      setAddingPin(false);
+      setEditingPinId(null);
+      setNewPinCoords(null);
+    }
+  };
+
+  const removePin = () => {
+    if (editingPinId !== null) {
+      setPins(pins.filter(pin => pin.id !== editingPinId));
+      setShowModal(false);
+      setEditingPinId(null);
+      setNewPinCoords(null);
     }
   };
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <View style={styles.container}>
-        <TapGestureHandler onHandlerStateChange={handleTap}>
-          <View style={styles.container}>
-            <TouchableOpacity onPress={switchMap} style={styles.switchButton}>
-              <Text style={styles.switchButtonText}>Switch Map</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setAddingPin(true)} style={styles.addButton}>
-              <Text style={styles.addButtonText}>Add Pin</Text>
-            </TouchableOpacity>
-            <ImageZoom
-              cropWidth={Dimensions.get('window').width}
-              cropHeight={Dimensions.get('window').height}
-              imageWidth={Dimensions.get('window').width}
-              imageHeight={Dimensions.get('window').height}
-              minScale={0.09}
-              maxScale={3}
-              style={{ flex: 1 }}
+    <View style={styles.container}>
+      <TouchableOpacity onPress={switchMap} style={styles.switchButton}>
+        <Text style={styles.switchButtonText}>Switch Map</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => setAddingPin(true)} style={styles.addButton}>
+        <Text style={styles.addButtonText}>Add Pin</Text>
+      </TouchableOpacity>
+      <ImageZoom
+        cropWidth={Dimensions.get('window').width}
+        cropHeight={Dimensions.get('window').height}
+        imageWidth={Dimensions.get('window').width}
+        imageHeight={Dimensions.get('window').height}
+        onClick={handleMapPress}
+        minScale={1}
+        maxScale={3}
+        style={styles.mapContainer}
+      >
+        <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
+        {pins
+          .filter((pin) => pin.map === currentMap)
+          .map((pin) => (
+            <TouchableOpacity
+              key={pin.id}
+              onPress={() => handlePinPress(pin.id)}
+              style={[
+                styles.pin,
+                { left: pin.x - 15, top: pin.y - 15, backgroundColor: pin.color },
+              ]}
             >
-              <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
-              {markers
-                .filter((marker) => marker.map === currentMap)
-                .map((marker) => (
-                  <View
-                    key={marker.id}
-                    style={[
-                      styles.marker,
-                      {
-                        position: 'absolute',
-                        left: marker.x,
-                        top: marker.y,
-                        backgroundColor: marker.color,
-                      },
-                    ]}
-                  >
-                    <Text style={styles.markerText}>{marker.title}</Text>
-                  </View>
+              <Text style={[styles.pinLabel, { color: pin.color === 'yellow' ? 'black' : 'white' }]}>{pin.label}</Text>
+            </TouchableOpacity>
+          ))}
+      </ImageZoom>
+
+      <Modal visible={showModal} animationType="slide" transparent>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>{editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}</Text>
+            <TextInput
+              placeholder="Label"
+              value={pinDetails.label}
+              onChangeText={(text) => setPinDetails({ ...pinDetails, label: text })}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Description"
+              value={pinDetails.description}
+              onChangeText={(text) => setPinDetails({ ...pinDetails, description: text })}
+              style={styles.input}
+            />
+            <View style={styles.colorContainer}>
+              <Text style={styles.colorLabel}>Color</Text>
+              <View style={styles.colors}>
+                {colors.map((color) => (
+                  <TouchableOpacity
+                    key={color}
+                    onPress={() => setPinDetails({ ...pinDetails, color })}
+                    style={[styles.colorSwatch, { backgroundColor: color, borderColor: pinDetails.color === color ? 'black' : 'transparent' }]}
+                  />
                 ))}
-            </ImageZoom>
+              </View>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton]}>
+                <Text style={styles.buttonText}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
+              </TouchableOpacity>
+              {editingPinId !== null && (
+                <TouchableOpacity onPress={removePin} style={[styles.button, styles.removeButton]}>
+                  <Text style={styles.buttonText}>Remove Pin</Text>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity onPress={() => setShowModal(false)} style={[styles.button, styles.cancelButton]}>
+                <Text style={styles.buttonText}>Cancel</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </TapGestureHandler>
-      </View>
-    </GestureHandlerRootView>
+        </View>
+      </Modal>
+    </View>
   );
 };
 
@@ -117,39 +175,112 @@ const styles = StyleSheet.create({
   switchButton: {
     position: 'absolute',
     top: 10,
-    right: 10,
+    left: 10,
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: '#007bff',
     zIndex: 10,
+    marginTop: 45,
+    borderRadius: 5
   },
   switchButtonText: {
     color: 'white',
   },
   addButton: {
     position: 'absolute',
-    top: 50,
+    top: 10,
     right: 10,
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: '#007bff',
     zIndex: 10,
+    marginTop: 45,
+    borderRadius: 5
   },
   addButtonText: {
     color: 'white',
   },
-  mapImage: {
-    width: '100%',
-    height: '100%',
+  mapContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  marker: {
+  mapImage: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  pin: {
+    position: 'absolute',
     width: 30,
     height: 30,
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  markerText: {
-    color: 'white',
+  pinLabel: {
     fontSize: 10,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+  },
+  colorContainer: {
+    marginBottom: 20,
+  },
+  colorLabel: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  colors: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  colorSwatch: {
+    width: 25,
+    height: 25,
+    borderRadius: 12.5,
+    borderWidth: 2,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  button: {
+    flex: 1,
+    padding: 10,
+    margin: 5,
+    borderRadius: 5,
+  },
+  saveButton: {
+    backgroundColor: 'blue',
+  },
+  removeButton: {
+    backgroundColor: 'red',
+  },
+  cancelButton: {
+    backgroundColor: 'gray',
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
   },
 });
 

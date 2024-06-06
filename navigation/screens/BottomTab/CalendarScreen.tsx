@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import { useFavorites } from '../../../context/FavoritesContext';
 
@@ -105,9 +106,10 @@ function getPreviousDay(day: string): string {
   return days[(index + days.length) % days.length];
 }
 
-const FestivalSchedule: React.FC = () => {
+const CalendarScreen: React.FC = () => {
   const { favorites, toggleFavorite } = useFavorites();
   const [selectedDay, setSelectedDay] = useState('Thursday');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const navigation = useNavigation();
   const scrollViewRef = useRef<ScrollView>(null);
   const timeColumnRef = useRef<ScrollView>(null);
@@ -131,9 +133,20 @@ const FestivalSchedule: React.FC = () => {
     }
   };
 
+  const favoritedArtists = artistsData.filter(artist => favorites[artist.Artist]);
+  const filteredData = showFavoritesOnly ? favoritedArtists : artistsData;
+  const hasFavorites = favoritedArtists.length > 0;
+
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          onPress={() => hasFavorites && setShowFavoritesOnly(!showFavoritesOnly)}
+          style={[styles.favoriteToggle, showFavoritesOnly && styles.favoriteToggleActive, !hasFavorites && styles.favoriteToggleDisabled]}
+          disabled={!hasFavorites}
+        >
+          <Ionicons name="heart" size={20} style={[styles.favoriteIcon, showFavoritesOnly && styles.favoriteIconActive]} />
+        </TouchableOpacity>
         {renderDayButtons()}
       </View>
       <View style={styles.scheduleContainer}>
@@ -153,7 +166,7 @@ const FestivalSchedule: React.FC = () => {
           onScroll={syncScroll}
           scrollEventThrottle={16}
         >
-          <FestivalDay day={selectedDay} data={artistsData} navigation={navigation} favorites={favorites} toggleFavorite={toggleFavorite} />
+          <FestivalDay day={selectedDay} data={filteredData} navigation={navigation} favorites={favorites} toggleFavorite={toggleFavorite} />
         </ScrollView>
       </View>
     </View>
@@ -190,7 +203,7 @@ const styles = StyleSheet.create({
   dayContainer: {
     flexDirection: 'row',
     marginTop: 0,
-    height: (17 * 60) * scale, // Adjust to cover up to 5 AM
+    height: (17 * 60) * scale,
   },
   stagesContainer: {
     flexDirection: 'row',
@@ -236,11 +249,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginVertical: 10,
+    alignItems: 'center',
+    marginTop: 50
   },
   dayButton: {
     padding: 10,
     margin: 5,
-    backgroundColor: 'grey', // Default grey background for unselected day
+    backgroundColor: 'grey',
     borderRadius: 5,
   },
   selectedDayButton: {
@@ -253,6 +268,28 @@ const styles = StyleSheet.create({
   selectedDayButtonText: {
     color: 'white',
   },
+  favoriteToggle: {
+    padding: 10,
+    margin: 5,
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  favoriteToggleActive: {
+    backgroundColor: '#007bff',
+    borderColor: '#007bff',
+  },
+  favoriteToggleDisabled: {
+    opacity: 0.2,
+  },
+  favoriteIcon: {
+    color: 'grey',
+  },
+  favoriteIconActive: {
+    color: 'white',
+  },
 });
 
-export default FestivalSchedule;
+export default CalendarScreen;

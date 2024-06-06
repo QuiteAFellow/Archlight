@@ -22,6 +22,7 @@ const MainContainer: React.FC = () => {
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({ route }) => ({
+          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             switch (route.name) {
