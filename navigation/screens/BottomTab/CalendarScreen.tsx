@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import { useFavorites } from '../../../context/FavoritesContext';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Artist {
   "AOTD #": number;
@@ -133,19 +133,23 @@ const CalendarScreen: React.FC = () => {
     }
   };
 
-  const favoritedArtists = artistsData.filter(artist => favorites[artist.Artist]);
-  const filteredData = showFavoritesOnly ? favoritedArtists : artistsData;
-  const hasFavorites = favoritedArtists.length > 0;
+  const filteredData = showFavoritesOnly
+    ? artistsData.filter(artist => favorites[artist.Artist])
+    : artistsData;
 
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => hasFavorites && setShowFavoritesOnly(!showFavoritesOnly)}
-          style={[styles.favoriteToggle, showFavoritesOnly && styles.favoriteToggleActive, !hasFavorites && styles.favoriteToggleDisabled]}
-          disabled={!hasFavorites}
+          onPress={() => setShowFavoritesOnly(!showFavoritesOnly)}
+          style={[
+            styles.favoriteToggle,
+            showFavoritesOnly && styles.favoriteToggleActive,
+            { opacity: Object.values(favorites).some(favorited => favorited) ? 1 : 0.2 }
+          ]}
+          disabled={!Object.values(favorites).some(favorited => favorited)}
         >
-          <Ionicons name="heart" size={20} style={[styles.favoriteIcon, showFavoritesOnly && styles.favoriteIconActive]} />
+          <Ionicons name="heart" size={20} color={showFavoritesOnly ? 'white' : 'grey'} />
         </TouchableOpacity>
         {renderDayButtons()}
       </View>
@@ -245,50 +249,48 @@ const styles = StyleSheet.create({
     fontSize: 10.5,
     fontStyle: 'italic',
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginVertical: 10,
-    alignItems: 'center',
-    marginTop: 50
-  },
   dayButton: {
-    padding: 10,
-    margin: 5,
-    backgroundColor: 'grey',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#888',
+    padding: 5,
     borderRadius: 5,
+    marginHorizontal: 5,
+    height: 40,
   },
   selectedDayButton: {
     backgroundColor: '#007bff',
   },
   dayButtonText: {
     color: 'white',
-    fontSize: 16,
   },
   selectedDayButtonText: {
-    color: 'white',
+    fontWeight: 'bold',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 5,
+    backgroundColor: '#f0f0f0',
+    zIndex: 2,
+    marginTop: 45
   },
   favoriteToggle: {
-    padding: 10,
-    margin: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: 'grey',
     borderRadius: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
+    padding: 10,
+    marginRight: 5,
+    marginLeft: 10,
+    width: 40,
+    height: 40,
   },
   favoriteToggleActive: {
     backgroundColor: '#007bff',
-    borderColor: '#007bff',
-  },
-  favoriteToggleDisabled: {
-    opacity: 0.2,
-  },
-  favoriteIcon: {
-    color: 'grey',
-  },
-  favoriteIconActive: {
-    color: 'white',
+    borderColor: '#007bff'
   },
 });
 

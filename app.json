@@ -10,6 +10,19 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "notification": {
+      "icon": "./assets/notification-icons/android/android-launchericon-48-48.png",
+      "color": "#000000",
+      "androidMode": "default",
+      "androidCollapsedTitle": "#${unread_notifications} new notifications"
+    },
+    "android": {
+      "package": "com.bonnaroo.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/loading-icons/android/android-launchericon-1024-1024.png",
+        "backgroundColor": "#000000"
+      }
+    },
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/8ca33188-9b28-439a-a688-0b09b8eda6c8"
@@ -21,12 +34,6 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.marina.bonnarooapp",
       "buildNumber": "1.0.0"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

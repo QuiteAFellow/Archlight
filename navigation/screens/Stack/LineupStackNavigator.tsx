@@ -1,16 +1,16 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LineupScreen } from '../BottomTab'; // Adjust the path
-import ArtistBioScreen from '../ArtistBioScreen'; // Adjust the path
+import { LineupScreen } from '../BottomTab';
+import ArtistBioScreen from '../ArtistBioScreen';
+import { LineupStackParamList } from '../../types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<LineupStackParamList>();
 
-const LineupStackNavigator = () => {
+const LineupStackNavigator: React.FC = () => {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false}}
-            initialRouteName="Lineup">
-                <Stack.Screen name="FestivalLineup" component={LineupScreen} />
-                <Stack.Screen name="ArtistBio" component={ArtistBioScreen} />
+        <Stack.Navigator screenOptions={{ headerShown: false}}>
+            <Stack.Screen name="FestivalLineup" component={LineupScreen} />
+            <Stack.Screen name="ArtistBio" component={ArtistBioScreen} />
         </Stack.Navigator>
     );
 };

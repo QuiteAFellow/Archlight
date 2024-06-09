@@ -1,7 +1,7 @@
 import React from 'react';
-import { FavoritesProvider } from './context/FavoritesContext'; // Adjust the path if necessary
 import { NavigationContainer } from '@react-navigation/native';
-import MainContainer from './navigation/MainContainer'; // Adjust the path if necessary
+import { FavoritesProvider } from './context/FavoritesContext';
+import MainContainer from './navigation/MainContainer';
 import Toast from 'react-native-toast-message';
 
 const App = () => {

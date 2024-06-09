@@ -52,6 +52,14 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
     onClose();
   };
 
+  const toggleSelectAll = (selectedItems: string[], setSelectedItems: (items: string[]) => void, items: string[]) => {
+    if (selectedItems.length === items.length) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(items);
+    }
+  };
+
   const renderMultiSelectList = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void) => (
     <View style={styles.filterSection}>
       <TouchableOpacity onPress={() => setExpandedCategory(expandedCategory === label ? null : label)} style={styles.filterCategory}>
@@ -64,6 +72,13 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
       </TouchableOpacity>
       {expandedCategory === label && (
         <ScrollView style={styles.scrollableList}>
+          <View style={styles.listItem}>
+            <Text style={styles.selectAllText}>Select All</Text>
+            <Checkbox
+              status={selectedItems.length === items.length ? 'checked' : 'unchecked'}
+              onPress={() => toggleSelectAll(selectedItems, onSelectedItemsChange, items)}
+            />
+          </View>
           {items.map((item) => (
             <View key={item} style={styles.listItem}>
               <Text>{item}</Text>
@@ -158,6 +173,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+  },
+  selectAllText: {
+    fontWeight: 'bold',
   },
   buttonContainer: {
     flexDirection: 'row',

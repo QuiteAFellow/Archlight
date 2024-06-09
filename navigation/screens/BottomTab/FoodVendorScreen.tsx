@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import foodVendorsData from '../../../database/Food Vendor Info 2024.json';
 import FilterModal from '../FilterModal';
+import { Ionicons } from '@expo/vector-icons';
 
 interface FoodVendor {
   "Food Vendor": string;
@@ -22,6 +23,20 @@ const getUniqueValues = (data: FoodVendor[], key: keyof FoodVendor) => {
   return Array.from(new Set(values)).filter(Boolean); // Remove duplicates and empty strings
 };
 
+const splitParenthesisText = (text: string) => {
+  const parts = text.split(/(\(.*?\))/g).filter(Boolean);
+  return parts.map((part, index) => {
+    if (part.startsWith('(') && part.endsWith(')')) {
+      return (
+        <Text key={index} style={styles.parenthesisText}>
+          {'\n'}{part}{'\n'}
+        </Text>
+      );
+    }
+    return <Text key={index}>{part}</Text>;
+  });
+};
+
 const FoodVendorScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredVendors, setFilteredVendors] = useState<FoodVendor[]>(foodVendorsData);
@@ -33,6 +48,7 @@ const FoodVendorScreen: React.FC = () => {
     location: []
   });
   const [filterModalVisible, setFilterModalVisible] = useState(false);
+  const [showRecommendedOnly, setShowRecommendedOnly] = useState(false);
 
   const uniqueOptions = {
     type: getUniqueValues(foodVendorsData, 'Type'),
@@ -44,7 +60,7 @@ const FoodVendorScreen: React.FC = () => {
 
   useEffect(() => {
     applyFilters(searchQuery, filters);
-  }, [searchQuery, filters]);
+  }, [searchQuery, filters, showRecommendedOnly]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -90,6 +106,9 @@ const FoodVendorScreen: React.FC = () => {
         filters.location.some((location: string) => vendor.Location.toLowerCase().includes(location.toLowerCase()))
       );
     }
+    if (showRecommendedOnly) {
+      filtered = filtered.filter(vendor => vendor.Recommended);
+    }
     setFilteredVendors(filtered);
   };
 
@@ -114,9 +133,15 @@ const FoodVendorScreen: React.FC = () => {
         value={searchQuery}
         onChangeText={handleSearch}
       />
-      <TouchableOpacity style={styles.filterButton} onPress={handleOpenFilterModal}>
-        <Text style={styles.filterButtonText}>Filter</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.filterButton} onPress={handleOpenFilterModal}>
+          <Text style={styles.filterButtonText}>Filter</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setShowRecommendedOnly(!showRecommendedOnly)}
+          style={[styles.recommendedButton,showRecommendedOnly && styles.recommendedButtonActive]}>
+          <Ionicons name="star" size={24} color={showRecommendedOnly ? 'white' : 'grey'} />
+        </TouchableOpacity>
+      </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {filteredVendors.map((vendor: FoodVendor) => (
           <View key={vendor["Food Vendor"]} style={styles.vendorContainer}>
@@ -129,12 +154,35 @@ const FoodVendorScreen: React.FC = () => {
             <Text>Dietary: {vendor["Dietary Tags"]}</Text>
             <Text>Price: {vendor.Price}</Text>
             <Text>Location: {vendor.Location}</Text>
-            <Text style={styles.menuSectionHeader}>Food Menu:</Text>
-            <Text>{vendor["Food Menu"]}</Text>
-            <Text style={styles.menuSectionHeader}>Drink/Desert Menu:</Text>
-            <Text>{vendor["Drink/Desert Menu"]}</Text>
-            {vendor.Recommended && vendor["Recommended Item(s)"] && (
-              <Text>Recommended Item(s): {vendor["Recommended Item(s)"]}</Text>
+            {vendor["Food Menu"] && (
+              <>
+                <Text style={styles.menuSectionHeader}>Food Menu:</Text>
+                {vendor["Food Menu"].split('|').map((item, index) => (
+                  <View key={index} style={styles.menuItem}>
+                    <Text>{item.split('(')[0]}</Text>
+                    {item.includes('(') && item.includes(')') && (
+                      <Text style={styles.parenthesisText}>
+                        {`(${item.split('(')[1].split(')')[0]})`}
+                      </Text>
+                    )}
+                  </View>
+                ))}
+              </>
+            )}
+            {vendor["Drink/Desert Menu"] && (
+              <>
+                <Text style={styles.menuSectionHeader}>Drink/Desert Menu:</Text>
+                {vendor["Drink/Desert Menu"].split('|').map((item, index) => (
+                  <View key={index} style={styles.menuItem}>
+                    <Text>{item.split('(')[0]}</Text>
+                    {item.includes('(') && item.includes(')') && (
+                      <Text style={styles.parenthesisText}>
+                        {`(${item.split('(')[1].split(')')[0]})`}
+                      </Text>
+                    )}
+                  </View>
+                ))}
+              </>
             )}
           </View>
         ))}
@@ -160,19 +208,38 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
-    marginBottom: 20,
-    marginTop: 40
+    marginBottom: 10,
+    marginTop: 40,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
   filterButton: {
+    flex: 1,
     backgroundColor: '#007bff',
     padding: 10,
     borderRadius: 5,
-    marginBottom: 20,
     alignItems: 'center',
   },
   filterButtonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  recommendedButton: {
+    width: 40,
+    height: 40,
+    marginLeft: 10,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'grey',
+    borderWidth: 1,
+  },
+  recommendedButtonActive: {
+    backgroundColor: '#007bff',
+    borderColor: '#007bff',
   },
   scrollContainer: {
     flexGrow: 1,
@@ -202,6 +269,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 10,
     marginBottom: 5,
+  },
+  menuItem: {
+    marginBottom: 5, // Adjust this value to control the space between menu items
+  },
+  parenthesisText: {
+    marginTop: -3, // Adjust this value to control the bottom margin for text in parenthesis
+    color: 'grey',
+    fontStyle: 'italic',
+    marginBottom: 0
   },
 });
 

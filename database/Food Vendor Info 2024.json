@@ -28,7 +28,7 @@
   {
     "Food Vendor": "Ahli Babas Kabob Shop",
     "Type": "Mediterranean",
-    "Food tags": "Pita, Gyros, Salad, Fries",
+    "Food tags": "Pitas, Gyros, Salad, Fries",
     "Dietary Tags": "Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$$",
@@ -80,7 +80,7 @@
   {
     "Food Vendor": "Ben & Jerry's",
     "Type": "Dessert",
-    "Food tags": "Ice Cream, Sundaes, Waffle Cones, Ice Cream Cakes, Sorbets, Non-Dairy Options",
+    "Food tags": "Ice Cream, Sundaes, Waffle Cones, Ice Cream Cakes, Sorbets",
     "Dietary Tags": "Vegetarian",
     "Location": "This Tent (Stage Left) | What Stage (Stage Left)",
     "Price": "$$",
@@ -93,7 +93,7 @@
   {
     "Food Vendor": "The Benevolent Burrito",
     "Type": "Mexican",
-    "Food tags": "Burritos, Breakfast Burritos, Quesadillas, Wraps, Herbal Iced Teas, Fresh Squeezed Lemonade",
+    "Food tags": "Burritos, Breakfast Burritos, Quesadillas, Wraps, Tea, Lemonade",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$$",
@@ -132,7 +132,7 @@
   {
     "Food Vendor": "Bulldog Burgery",
     "Type": "American",
-    "Food tags": "Burgers, Fries, Chips, Poutine",
+    "Food tags": "Burgers, Fries, Chicken Tenders, Chips, Poutine",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "Which (Stage Right) | Plaza 3",
     "Price": "$$",
@@ -145,7 +145,7 @@
   {
     "Food Vendor": "Bun'd Up",
     "Type": "Asian",
-    "Food tags": "Rice Bowls, Buns, Chicken Wings",
+    "Food tags": "Rice Bowls, Buns, Chicken Tenders",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "What Stage (Back Row)",
     "Price": "$$",
@@ -157,8 +157,8 @@
   },
   {
     "Food Vendor": "Cafe Racer Food Truck",
-    "Type": "American",
-    "Food tags": "Breakfast, Coffee, Bagels, Burgers, Chicken, Fries",
+    "Type": "Breakfast",
+    "Food tags": "Breakfast Sandwiches, Coffee, Burgers, Fries",
     "Dietary Tags": "Vegetarian",
     "Location": "Food Trucks",
     "Price": "$$",
@@ -197,7 +197,7 @@
   {
     "Food Vendor": "Chicken & Waffles",
     "Type": "American",
-    "Food tags": "Chicken, Mac & Cheese, Fries, Breakfast",
+    "Food tags": "Chicken, Mac & Cheese, Fries, Breakfast, Tater Tots",
     "Dietary Tags": "None",
     "Location": "That Tent (Stage Left)",
     "Price": "$",
@@ -262,7 +262,7 @@
   {
     "Food Vendor": "Delicias Colombiana",
     "Type": "Colombian",
-    "Food tags": "Mexican, Plantain, Chorizo,",
+    "Food tags": "Mexican, Empanadas, Plantains, Chorizo",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "Plaza 7",
     "Price": "$$",
@@ -275,7 +275,7 @@
   {
     "Food Vendor": "Driving You Donuts",
     "Type": "Breakfast",
-    "Food tags": "Coffee, Donuts,",
+    "Food tags": "Coffee, Donuts",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "Plaza 3",
     "Price": "$",
@@ -288,7 +288,7 @@
   {
     "Food Vendor": "The Empanada Spot",
     "Type": "Latin American",
-    "Food tags": "Empanadas (variety of flavors including Chicken, Beef, Greek, Cuban, Pernil, Cheeseburger, and more)",
+    "Food tags": "Empanadas",
     "Dietary Tags": "Vegetarian",
     "Location": "This Tent (Stage Left)",
     "Price": "$",
@@ -301,7 +301,7 @@
   {
     "Food Vendor": "Fat Beef Burger",
     "Type": "American",
-    "Food tags": "Burgers, Beef Burgers, Cheese Burgers",
+    "Food tags": "Burgers, Fries",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "What Stage (Stage Left)",
     "Price": "$$",
@@ -327,7 +327,7 @@
   {
     "Food Vendor": "Flaming Wok",
     "Type": "Asian",
-    "Food tags": "Rice Bowls, Chicken, Shrimp, Ragoons, Wontons",
+    "Food tags": "Rice Bowls, Noodle Bowls, Shrimp, Ragoons, Wontons",
     "Dietary Tags": "Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$",
@@ -352,8 +352,8 @@
   },
   {
     "Food Vendor": "Fro-Daddy Donuts",
-    "Type": "American",
-    "Food tags": "Breakfast, Donuts, Coffee",
+    "Type": "Breakfast",
+    "Food tags": "Donuts, Coffee, Tea",
     "Dietary Tags": "",
     "Location": "This Stage (Stage Left)",
     "Price": "$",
@@ -366,7 +366,7 @@
   {
     "Food Vendor": "Gus's Fried Chicken",
     "Type": "Southern",
-    "Food tags": "Fried Chicken, Baked Beans, Coleslaw, Mac and Cheese, White Bread",
+    "Food tags": "Fried Chicken",
     "Dietary Tags": "",
     "Location": "This Tent (Stage Left)",
     "Price": "$$",
@@ -379,7 +379,7 @@
   {
     "Food Vendor": "Hattie B's Hot Chicken",
     "Type": "American",
-    "Food tags": "Chicken, Sandwiches, Fries, Mac & Cheese",
+    "Food tags": "Chicken Sandwiches, Sandwiches, Fries, Mac & Cheese",
     "Dietary Tags": "Vegetarian",
     "Location": "Which Stage (Stage Right)",
     "Price": "$$",
@@ -392,7 +392,7 @@
   {
     "Food Vendor": "Hebros Kitchen",
     "Type": "Mediterranean",
-    "Food tags": "Pita, Mac & Cheese",
+    "Food tags": "Gyros, Pitas, Fries",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "What Stage (Stage Left, Stage Right) | That Tent (Stage Left) | Which Stage (Stage Right)",
     "Price": "$$",
@@ -444,7 +444,7 @@
   {
     "Food Vendor": "The Inka Trailer",
     "Type": "Latin American",
-    "Food tags": "Sandwiches, Ceviches, Chicken, Rice, Fries, Tacos",
+    "Food tags": "Sandwiches, Ceviches, Rice, Fries, Tacos",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$$",
@@ -483,7 +483,7 @@
   {
     "Food Vendor": "Jalapeno Corndog Concessions",
     "Type": "American",
-    "Food tags": "Corndogs, Tater Tots, Chicken Tenders, Funnel Cakes",
+    "Food tags": "Corn Dogs, Tater Tots, Chicken Tenders, Funnel Cakes",
     "Dietary Tags": "Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$",
@@ -574,7 +574,7 @@
   {
     "Food Vendor": "The Loving Cup Twisted Diner",
     "Type": "American",
-    "Food tags": "Mac and Cheese on a Stick, Honey Sriracha Drizzle, Comfort Food, Diner Classics",
+    "Food tags": "French Toast, Tater Tots, Bagel, Coffee, Smoothies",
     "Dietary Tags": "Vegetarian",
     "Location": "Plaza 1",
     "Price": "$$",
@@ -587,7 +587,7 @@
   {
     "Food Vendor": "Mac N' Me",
     "Type": "American",
-    "Food tags": "Loaded Mac and Cheese, Chicken Bacon-Jam Ranch, Buffalo Blues, Outlaw Philly, Tenders and Fries, Jam Fries, Desserts (Chocolate-Cheesecake Ravioli)",
+    "Food tags": "Mac & Cheese, French Toast, Fries, Tea",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$$",
@@ -639,7 +639,7 @@
   {
     "Food Vendor": "Outback Kates",
     "Type": "Southern / Cajun",
-    "Food tags": "Fried Gator, Cheddar Jalapeño Hushpuppies",
+    "Food tags": "Burritos, Burrito Bowls, Mac & Cheese, Lemonade, Tea",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$$",
@@ -665,7 +665,7 @@
   {
     "Food Vendor": "Phat Daddy's Creole",
     "Type": "Soul Food",
-    "Food tags": "Southern, Cajun, Jambalaya",
+    "Food tags": "Jambalaya, Mac & Cheese, Sandwiches, Rice Bowls, Fries, Tea, Lemonade",
     "Dietary Tags": "Vegetarian",
     "Location": "Which Stage (Stage Right)",
     "Price": "$$",
@@ -678,7 +678,7 @@
   {
     "Food Vendor": "Pho Cue Vietnamese & Barbecue",
     "Type": "Vietnamese",
-    "Food tags": "Pho, Vietnamese Tacos, Banh Mi, Vietnamese Barbecue, Rice and Noodle Dishes",
+    "Food tags": "Pho, Vietnamese Tacos, Banh Mi, Vietnamese Barbecue, Eggrolls, Fries, Lemonade, Coffee, Soda",
     "Dietary Tags": "",
     "Location": "That Tent (Stage Left)",
     "Price": "$",
@@ -691,7 +691,7 @@
   {
     "Food Vendor": "Pie Daddy",
     "Type": "American Fusion",
-    "Food tags": "Trini Fried Pies (Beef, Sausage, BBQ Chicken), Potato Pie, Sweet Potato Pie, Apple Pie, Specialty Sauces",
+    "Food tags": "Fried Pies, Rice Bowls, Curry, Chicken Tenders, Donuts, Ice Cream, Lemonade",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "That Tent (Stage Left)",
     "Price": "$$",
@@ -704,7 +704,7 @@
   {
     "Food Vendor": "Pierogi Posse",
     "Type": "European",
-    "Food tags": "Pierogi (various fillings including Potato, Cheese, Sauerkraut, Meat), Polish Cuisine",
+    "Food tags": "Pierogis, Lemonade, Tea",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "Which Stage (Stage Right)",
     "Price": "$",
@@ -730,7 +730,7 @@
   {
     "Food Vendor": "Ponchos Mexican Cafe",
     "Type": "Mexican",
-    "Food tags": "Tacos, Fajitas, Enchiladas, Burritos",
+    "Food tags": "Tacos, Fajitas, Enchiladas, Burritos, Rice Bowls, Nachos, Fries, Loaded Fries, Lemonade, Tea",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "What Stage (Back Row)",
     "Price": "$$",
@@ -743,7 +743,7 @@
   {
     "Food Vendor": "Roti Rolls",
     "Type": "Soul Food",
-    "Food tags": "Sandwiches, Rice Bowls, Mac & Cheese",
+    "Food tags": "Sandwiches, Rice Bowls, Mac & Cheese, Kimchi, Lemonade, Popsicles",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "Food Trucks",
     "Price": "$$",
@@ -756,7 +756,7 @@
   {
     "Food Vendor": "Rolling Oven",
     "Type": "Pizza",
-    "Food tags": "Wood-Fired Pizza, Neapolitan Pizza, Sandwiches",
+    "Food tags": "Pizza, Cheese Sticks",
     "Dietary Tags": "Vegetarian",
     "Location": "Food Trucks",
     "Price": "$$",
@@ -769,7 +769,7 @@
   {
     "Food Vendor": "Sausfries",
     "Type": "Latin American",
-    "Food tags": "Hot Dogs, Loaded Fries, Salchipapas, Loaded Corn, Empanadas",
+    "Food tags": "Hot Dogs, Loaded Fries, Burgers",
     "Dietary Tags": "Vegetarian",
     "Location": "This Tent (Stage Left)",
     "Price": "$",
@@ -782,7 +782,7 @@
   {
     "Food Vendor": "Sawce Pizza",
     "Type": "Pizza",
-    "Food tags": "Pizza, Wood-Fired Pizza, Pepperoni Pizza, Margherita Pizza",
+    "Food tags": "Pizza, Cheese Sticks, Lemonade",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "This Tent (Stage Left)",
     "Price": "$$",
@@ -795,7 +795,7 @@
   {
     "Food Vendor": "Solar Cafe",
     "Type": "Drinks",
-    "Food tags": "Smoothies, fresh juices, fair trade coffee, vegetarian/vegan",
+    "Food tags": "Stir Fry, Noodles, Smoothies, Coffee",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "What Stage (Stage Right)",
     "Price": "$$",
@@ -808,7 +808,7 @@
   {
     "Food Vendor": "Southern Specialties",
     "Type": "American",
-    "Food tags": "Barbeque, Burgers, Sausages, Chicken, Pork",
+    "Food tags": "BBQ, Burgers, Gyros, Sandwiches, Pitas, Fries, Breakfast, Corn Dogs, Smoothies, Lemonade, Tea, Juice",
     "Dietary Tags": "GF, Vegetarian",
     "Location": "Plaza 4 (General Store West)",
     "Price": "$$",
@@ -821,7 +821,7 @@
   {
     "Food Vendor": "Space Fruit LLC",
     "Type": "Dessert",
-    "Food tags": "Frozen Fruit, Fruit Pearls, Fruit Chunks, Liquid Nitrogen Treats",
+    "Food tags": "Smoothies, Coffee",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "What Stage (Stage Left) | Plaza 3",
     "Price": "$",
@@ -847,7 +847,7 @@
   {
     "Food Vendor": "Steak Boys",
     "Type": "American",
-    "Food tags": "Burgers, Corndogs, Chicken Tenders, Sausage, Gyros, Fries",
+    "Food tags": "Burgers, Corn Dogs, Chicken Tenders, Sausage, Gyros, Fries, Sandwiches",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "Plaza 3 | Plaza 5",
     "Price": "$$",
@@ -860,7 +860,7 @@
   {
     "Food Vendor": "Strawberry Fields",
     "Type": "Drinks",
-    "Food tags": "Smoothies, Acai Bowls, Preztels, Hot Dogs, Lemonade",
+    "Food tags": "Curry, Noodles, Chicken Tenders, Fries, Pitas, Sandwiches, Smoothies, Acai Bowls, Preztels, Hot Dogs, Lemonade",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "That Tent (Stage Left) | Centeroo Carts | Which Stage (Stage Left*, Stage Right) | The Other (Stage Left)*",
     "Price": "$",
@@ -873,7 +873,7 @@
   {
     "Food Vendor": "Taco Girl",
     "Type": "Mexican",
-    "Food tags": "Tacos, Nachos, Chips, Street Corn",
+    "Food tags": "Tacos, Nachos, Street Corn, Lemonade, Coffee, Tea, Juice, Donuts",
     "Dietary Tags": "Vegan, Vegetarian",
     "Location": "Plaza 2",
     "Price": "$$",
@@ -886,7 +886,7 @@
   {
     "Food Vendor": "Tica's Brunch Bar",
     "Type": "Breakfast",
-    "Food tags": "Tacos, Burritos, Quesadillas",
+    "Food tags": "Omlettes, Burgers, Fries, Scrambled Eggs, Pancakes, Coffee, Lemonade",
     "Dietary Tags": "",
     "Location": "Area 931",
     "Price": "$$",
@@ -899,7 +899,7 @@
   {
     "Food Vendor": "Tica's Tacos",
     "Type": "Mexican",
-    "Food tags": "Tacos, Burritos, Nachos, Lemonade, Pizza",
+    "Food tags": "Tacos, Lemonade",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "What Stage (Stage Left)",
     "Price": "$",
@@ -912,7 +912,7 @@
   {
     "Food Vendor": "The Wandering Mug",
     "Type": "Drinks",
-    "Food tags": "Coffee, Esspresso",
+    "Food tags": "Coffee",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "Planet Roo",
     "Price": "$",
@@ -925,7 +925,7 @@
   {
     "Food Vendor": "Wicked Maine Lobster",
     "Type": "American",
-    "Food tags": "Lobster Rolls, Mac & Cheese, Tacos, Sandwiches, Fish & Chips",
+    "Food tags": "Lobster Rolls, Mac & Cheese, Tacos, Sandwiches, Chicken Tenders, Fish & Chips, Lemonade",
     "Dietary Tags": "",
     "Location": "Which Stage (Stage Right)",
     "Price": "$$$",
@@ -938,7 +938,7 @@
   {
     "Food Vendor": "Wookiedogs",
     "Type": "American Fusion",
-    "Food tags": "Korean Corn Dogs, Fruit Drinks",
+    "Food tags": "Korean Corn Dogs, Corn Dogs, Fruit Drinks, Coffee",
     "Dietary Tags": "",
     "Location": "Plaza 3",
     "Price": "$",
@@ -951,7 +951,7 @@
   {
     "Food Vendor": "Ugadi Indian Grill",
     "Type": "Indian",
-    "Food tags": "Naan, Kababs, Chicken, Masala,",
+    "Food tags": "Naan, Kababs, Chicken, Masala, Sandwiches, Soda, Lemonade",
     "Dietary Tags": "GF, Vegan, Vegetarian",
     "Location": "What Stage (Back Row)",
     "Price": "$$",

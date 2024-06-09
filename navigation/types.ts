@@ -4,7 +4,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 export type RootStackParamList = {
   Home: undefined;
   Calendar: undefined;
-  Lineup: undefined;
+  FestivalLineup: undefined;
   Map: undefined;
   ArtistBio: undefined;
   'Food Vendors': undefined;
@@ -13,7 +13,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Home: NavigatorScreenParams<RootStackParamList>;
   Calendar: NavigatorScreenParams<RootStackParamList>;
-  Lineup: NavigatorScreenParams<RootStackParamList>;
+  FestivalLineup: NavigatorScreenParams<RootStackParamList>;
   Map: NavigatorScreenParams<RootStackParamList>;
   'Food Vendors': NavigatorScreenParams<RootStackParamList>;
 };
@@ -37,7 +37,7 @@ export interface Artist {
 }
 
 export type LineupStackParamList = {
-  Lineup: undefined;
+  FestivalLineup: undefined;
   ArtistBio: { artist: Artist & { favorited: boolean } };
 };
 

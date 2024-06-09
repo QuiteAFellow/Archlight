@@ -2,13 +2,28 @@ declare module 'react-native-push-notification' {
   interface PushNotificationObject {
     message: string;
     date: Date;
-    // Add other properties as needed
+    channelId?: string;
+    allowWhileIdle?: boolean;
+    [key: string]: any;
   }
 
-  interface PushNotification {
-    localNotificationSchedule(notification: PushNotificationObject): void;
-  }
+  export default class PushNotification {
+    static configure(options: {
+      onNotification: (notification: any) => void;
+      popInitialNotification?: boolean;
+      requestPermissions?: boolean;
+    }): void;
 
-  const PushNotification: PushNotification;
-  export default PushNotification;
+    static localNotificationSchedule(notification: PushNotificationObject): void;
+    static createChannel(
+      channel: {
+        channelId: string;
+        channelName: string;
+        channelDescription?: string;
+        importance?: number;
+        vibrate?: boolean;
+      },
+      callback: (created: boolean) => void
+    ): void;
+  }
 }

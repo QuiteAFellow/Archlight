@@ -32,7 +32,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
         />
         <CustomButton
           title="Lineup"
-          onPress={() => navigation.navigate('Lineup')}
+          onPress={() => navigation.navigate('FestivalLineup')}
         />
         <CustomButton
           title="Centeroo/Outeroo Maps"
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });
 

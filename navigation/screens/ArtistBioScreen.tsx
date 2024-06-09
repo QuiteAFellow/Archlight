@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import artistImages from '../../assets/utils/artistImages';
 import { Artist } from '../types';
@@ -13,17 +13,31 @@ const ArtistBioScreen: React.FC = () => {
   const { artist } = route.params;
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites[artist.Artist] || false;
+  const navigation = useNavigation();
 
-  // Split the description by [PAGE_BREAK]
   const descriptionSegments = artist.Description.split('[PAGE_BREAK]');
+
+  const handleToggleFavorite = () => {
+    console.log('Favorite button clicked for:', artist.Artist);
+    toggleFavorite(artist);
+  };
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
 
   return (
     <ScrollView style={styles.container}>
-      <Image source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
+      <View>
+        <Image source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
+        <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
       <View style={styles.content}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{artist.Artist}</Text>
-          <TouchableOpacity onPress={() => toggleFavorite(artist)} style={styles.heartContainer}>
+          <TouchableOpacity onPress={handleToggleFavorite} style={styles.heartContainer}>
             <Ionicons name={isFavorited ? 'heart' : 'heart-outline'} size={35} color={isFavorited ? 'red' : 'black'} />
           </TouchableOpacity>
         </View>
@@ -63,7 +77,18 @@ const styles = StyleSheet.create({
   },
   imageHeader: {
     width: '100%',
-    height: 250,
+    height: 400,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40, // Adjust based on your need
+    left: 20, // Adjust based on your need
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   content: {
     padding: 20,
@@ -96,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
     marginTop: 10,
-    marginBottom: 10, // Add margin between description segments
+    marginBottom: 10,
   },
 });
 

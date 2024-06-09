@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, TextInput 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
-import artistImages from '../../../assets/utils/artistImages'; // Adjust the path based on your directory structure
-import { LineupStackParamList } from '../../types'; // Adjust the import path
+import artistImages from '../../../assets/utils/artistImages';
+import { LineupStackParamList } from '../../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFavorites } from '../../../context/FavoritesContext';
 
@@ -18,7 +18,7 @@ interface Artist {
   StartTime: string;
   EndTime: string;
   Favorited: number;
-  favorited: boolean; // Add this line to include the favorited property
+  favorited: boolean; // Add this property
 }
 
 const LineupScreen: React.FC = () => {
@@ -30,10 +30,10 @@ const LineupScreen: React.FC = () => {
     const uniqueArtists = new Set<string>();
     const uniqueArtistList: Artist[] = [];
 
-    artistsData.forEach((artist: Omit<Artist, 'favorited'>) => { // Adjust here
+    artistsData.forEach((artist: Omit<Artist, 'Favorited' | 'favorited'>) => {
       if (!uniqueArtists.has(artist.Artist)) {
         uniqueArtists.add(artist.Artist);
-        uniqueArtistList.push({ ...artist, favorited: false }); // Add favorited property
+        uniqueArtistList.push({ ...artist, Favorited: 0, favorited: false });
       }
     });
 
@@ -44,6 +44,11 @@ const LineupScreen: React.FC = () => {
     artist.Artist.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleToggleFavorite = (artist: Artist) => {
+    //console.log('Favorite button clicked for:', artist.Artist);
+    toggleFavorite(artist);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <TextInput
@@ -53,30 +58,33 @@ const LineupScreen: React.FC = () => {
         value={searchQuery}
       />
       <ScrollView contentContainerStyle={styles.container}>
-        {filteredArtistList.map((artist, index) => (
-          <View key={artist.Artist}>
-            <TouchableOpacity onPress={() => navigation.navigate('ArtistBio', { artist })}>
-              <View style={styles.artistContainer}>
-                <View style={styles.artistContent}>
-                  <Image
-                    source={artistImages[artist.Artist]}
-                    style={styles.profileImage}
-                    onError={(error) => console.log('Image loading error:', error)}
-                  />
-                  <Text style={styles.artistName}>{artist.Artist}</Text>
+        {filteredArtistList.map((artist, index) => {
+          const isFavorited = favorites[artist.Artist] || false;
+          return (
+            <View key={artist.Artist}>
+              <TouchableOpacity onPress={() => navigation.navigate('ArtistBio', { artist: { ...artist, favorited: isFavorited } })}>
+                <View style={styles.artistContainer}>
+                  <View style={styles.artistContent}>
+                    <Image
+                      source={artistImages[artist.Artist]}
+                      style={styles.profileImage}
+                      onError={(error) => console.log('Image loading error:', error)}
+                    />
+                    <Text style={styles.artistName}>{artist.Artist}</Text>
+                  </View>
+                  <TouchableOpacity onPress={() => handleToggleFavorite(artist)} style={styles.heartContainer}>
+                    <Ionicons
+                      name={isFavorited ? 'heart' : 'heart-outline'}
+                      size={35}
+                      color={isFavorited ? 'red' : 'black'}
+                    />
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => toggleFavorite(artist)} style={styles.heartContainer}>
-                  <Ionicons
-                    name={favorites[artist.Artist] ? 'heart' : 'heart-outline'}
-                    size={35}
-                    color={favorites[artist.Artist] ? 'red' : 'black'}
-                  />
-                </TouchableOpacity>
-              </View>
-            </TouchableOpacity>
-            <View style={styles.line} />
-          </View>
-        ))}
+              </TouchableOpacity>
+              <View style={styles.line} />
+            </View>
+          );
+        })}
       </ScrollView>
     </View>
   );
@@ -98,8 +106,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 25,
-    marginTop: 10,
+    marginBottom: 20,
+    marginTop: 10
   },
   artistContent: {
     flexDirection: 'row',
