@@ -7,12 +7,12 @@ import { LineupStackParamList } from '../../types';
 const Stack = createNativeStackNavigator<LineupStackParamList>();
 
 const LineupStackNavigator: React.FC = () => {
-    return (
-        <Stack.Navigator screenOptions={{ headerShown: false}}>
-            <Stack.Screen name="FestivalLineup" component={LineupScreen} />
-            <Stack.Screen name="ArtistBio" component={ArtistBioScreen} />
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="FestivalLineup" component={LineupScreen} /> // Keep this as FestivalLineup for the nested screen
+      <Stack.Screen name="ArtistBio" component={ArtistBioScreen} />
+    </Stack.Navigator>
+  );
 };
 
 export default LineupStackNavigator;

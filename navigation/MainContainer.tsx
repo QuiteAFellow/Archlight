@@ -5,7 +5,6 @@ import CalendarStackNavigator from './screens/Stack/CalendarStackNavigator';
 import LineupStackNavigator from './screens/Stack/LineupStackNavigator';
 import { HomeScreen, MapScreen, FoodVendorScreen } from './screens/BottomTab';
 import SettingsModal from './screens/SettingsModal';
-import TestAsyncStorage from '../TestAsyncStorage';
 import { BottomTabParamList } from './types';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
@@ -33,7 +32,7 @@ const MainContainer: React.FC = () => {
               case 'Calendar':
                 iconName = focused ? 'calendar' : 'calendar-outline';
                 break;
-              case 'FestivalLineup':
+              case 'Lineup':
                 iconName = focused ? 'list' : 'list-outline';
                 break;
               case 'Map':
@@ -56,7 +55,7 @@ const MainContainer: React.FC = () => {
           {props => <HomeScreen {...props} openSettings={openSettings} />}
         </Tab.Screen>
         <Tab.Screen name="Calendar" component={CalendarStackNavigator} />
-        <Tab.Screen name="FestivalLineup" component={LineupStackNavigator} />
+        <Tab.Screen name="Lineup" component={LineupStackNavigator} />
         <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Food Vendors" component={FoodVendorScreen} />
       </Tab.Navigator>

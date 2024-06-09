@@ -32,7 +32,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
         />
         <CustomButton
           title="Lineup"
-          onPress={() => navigation.navigate('FestivalLineup')}
+          onPress={() => navigation.navigate('Lineup')}
         />
         <CustomButton
           title="Centeroo/Outeroo Maps"
