@@ -23,6 +23,17 @@
   },
   {
     "AOTD #": 3,
+    "Artist": "Winyah",
+    "Scheduled": "Thursday",
+    "Description": "Winyah is an indie folk singer-songwriter known for her soulful melodies and introspective lyrics. Hailing from the heart of the Appalachian Mountains, her music is deeply rooted in the traditions of Americana and folk. Her debut album, \"Mountain Echoes,\" garnered critical acclaim for its heartfelt storytelling and raw, acoustic sound. Winyah's music is characterized by its simplicity and emotional depth, often exploring themes of love, loss, and nature. Her live performances are intimate and moving, often leaving audiences captivated by her genuine artistry and powerful voice. Winyah’s ability to connect with her audience through her poignant lyrics and soothing melodies has made her a favorite in the indie folk scene. With a growing fanbase and a reputation for unforgettable live shows, Winyah is poised to make a significant impact on the music world.",
+    "Genres": "Indie Folk, Mountain Blues, Singer-Songwriter",
+    "Stage": "Who Stage",
+    "StartTime": "2:45 PM",
+    "EndTime": "3:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 4,
     "Artist": "Eggy",
     "Scheduled": "Thursday",
     "Description": "Eggy is a four-piece jam band out of Woodbridge, Connecticut. Form as a high school band in 2016, they have become a force to be reckoned with in the jam community. Each member of Eggy is on vocals in addition to their instruments, giving them an edge over most jam bands. Their debut album came in 2019 titled Watercolor Days, followed by constant touring. Despite the pandemic happening the year after the release, Eggy has performed in over 40 states. In 2021, they stopped in Nashville to record two singles that were released as the Nashville Tapes in 2022. The band has released hand-picked live shows from their aggressive touring schedule, available as live albums on streaming platforms.",
@@ -33,7 +44,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 4,
+    "AOTD #": 5,
     "Artist": "Say She She",
     "Scheduled": "Thursday",
     "Description": "Say She She is a female-led band based out of Brooklyn, NewYork. They are led by Piya Malik (formerly of El Michels Affair and ChicanoBatman), Sabrina Mileo Cunningham, and Nya Gazelle Brown, all three areclassically trained singers. Their music, self-described as \"discodelic soul\"with \"dreamy harmonies,\" prominently combines disco and 70s funk,among other influences. The group cites Nile Rodgers and Chic as majorinfluences on their sound.",
@@ -44,7 +55,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 5,
+    "AOTD #": 6,
+    "Artist": "Vincent Lima",
+    "Scheduled": "Thursday",
+    "Description": "Vincent Lima is an indie pop artist whose music blends catchy melodies with thoughtful lyrics. Originally from Portland, Oregon, Vincent has been making waves in the indie music scene with his unique sound that incorporates elements of alternative rock and pop. His debut EP, \"Sunset Dreams,\" features standout tracks like \"City Lights\" and \"Echoes,\" which have received significant airplay on college radio stations. Vincent's energetic live shows and charismatic presence make him a favorite among fans. His music often explores themes of youth, nostalgia, and personal growth, making him relatable to a wide audience. With his infectious energy and captivating stage presence, Vincent Lima is quickly becoming a notable name in the indie pop landscape.",
+    "Genres": "Indie Pop, Alternative",
+    "Stage": "Who Stage",
+    "StartTime": "4:00 PM",
+    "EndTime": "4:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 7,
     "Artist": "Ocie Elliot",
     "Scheduled": "Thursday",
     "Description": "Ocie Elliott is a Canadian indie-folk duo comprised of Jon Middleton and Sierra Lundy. The pair hails from Victoria, British Columbia, and is known for their harmonious blend of acoustic melodies and heartfelt lyrics. They first gained attention with their debut EP in 2017, which showcased their ability to create intimate, soulful music that resonates with listeners. Drawing inspiration from personal experiences and the natural beauty of their surroundings, Ocie Elliott’s music often evokes a sense of warmth and nostalgia. Their debut full-length album, \"We Fall In,\" was released in 2019, further establishing their place in the indie-folk scene. The duo's captivating live performances and genuine connection with their audience have earned them a dedicated following, making them a notable presence in the contemporary folk music landscape.",
@@ -55,7 +77,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 5,
+    "AOTD #": 8,
     "Artist": "Sid Sriram",
     "Scheduled": "Thursday",
     "Description": "Sid Sriram is an Indian songwriter/composer who got his start in film, singing in several languages that include Tamil, Telugu, Hindi, and English. He was born in Chennai, India in 1990 but moved to Fremont, California as an infant. His mother was a Carnatic music teacher who taught Sid this genre at the age of four. He also became fond of R&B, jazz, blues, rap, and gospel at an early age. He graduated from Mission San Jose High School in 2008 and went on to Berklee College of Music in Boston to study music production. While in college, Sid would travel back to Chennai every year to do Carnatic concerts. In 2012, he got a voice demo to A.R. Rahman and was invited to appear as a singer in the Tamil film Kadal in 2013. This was his industry breakthrough as over 2010s decade he would perform in over 70 South Asian films. With his popularity as a singer in India, Sid relocated to his home country and started recording his own music, using material dating back to early in his career for his 2019 debut album Entropy. This release got him signed to Def Jam Recordings. Meanwhile, Sid was still topping the charts with his movie soundtrack career and moved into composing scores. To date, his voice has appeared in over 200 movies.",
@@ -66,7 +88,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 6,
+    "AOTD #": 9,
+    "Artist": "Hans Williams",
+    "Scheduled": "Thursday",
+    "Description": "Hans Williams is a folk rock musician known for his powerful vocals and intricate guitar work. Born and raised in Nashville, Tennessee, Hans draws inspiration from the rich musical heritage of his hometown. His music combines the storytelling elements of folk with the driving rhythms of rock, creating a sound that is both timeless and contemporary. Hans' latest album, \"Wanderlust,\" explores themes of love, loss, and self-discovery, resonating deeply with listeners. His live performances are known for their emotional intensity and musical precision, making him a standout artist in the folk rock genre. Hans Williams continues to captivate audiences with his heartfelt music and dynamic stage presence.",
+    "Genres": "Folk Rock, Indie",
+    "Stage": "Who Stage",
+    "StartTime": "5:15 PM",
+    "EndTime": "6:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 10,
     "Artist": "Durand Bernarr",
     "Scheduled": "Thursday",
     "Description": "Durand Bernarr is a queer R&B artist from Cleveland, Ohio who now resides in Los Angeles. His mother was a professional music teacher and vocal coach who was the music director at her family’s church. His father worked as an audio engineer for major artists including Jay-Z, Beyonce, Rihanna, Earth, Wind & Fire, and the late Whitney Houston. At the age of 16, Durand worked with his father as a production assistant on tour for Earth, Wind & Fire. He learned his craft from collaborating with artists including Earth, Wind & Fire, Anderson. Paak, Teedra Moses, and many others. After independently releasing a few mixtapes, EPs, and LPs including covers and original material, Durand released his breakout EP Sound Check with the single “Around” being featured on BET’s hot new revamp of Boomerang. In 2019, he was named an “Artist to Know” by Billboard. In 2020, he released his self-titled album DUR& which debuted at number one on the Apple Music R&B charts. His latest album is 2022’s Wanderlust.",
@@ -77,7 +110,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 7,
+    "AOTD #": 11,
     "Artist": "Medium Build",
     "Scheduled": "Thursday",
     "Description": "Medium Build is an indie pop band that formed around the songwriting of Nick Carpenter, who is an Anchorage, Alaska native. Nick channels the heartbreak, grief, and other struggles of his life into each album, from Medium Build’s debut Falling Apart in 2016 to their most recent album Wild in 2019. He continued writing songs throughout the pandemic, all released with his band, with each ending up as single releases or on the 2023 EP Health. Medium Build has started touring post-pandemic, with Bonnaroo 2024 as a major stop.",
@@ -88,7 +121,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 8,
+    "AOTD #": 12,
+    "Artist": "Happy Landing",
+    "Scheduled": "Thursday",
+    "Description": "Happy Landing is an indie rock band known for their psychedelic soundscapes and infectious energy. Formed in Austin, Texas, the band quickly gained a following with their debut album, \"Cosmic Journey,\" which features a blend of dreamy melodies and driving rhythms. Happy Landing's music is characterized by its lush instrumentation and hypnotic grooves, making their live performances a sensory experience not to be missed. Their innovative approach to music has earned them critical acclaim and a dedicated fanbase. Happy Landing's ability to transport listeners to otherworldly realms through their music sets them apart in the indie rock scene. With each performance, they continue to push the boundaries of their genre and captivate audiences with their unique sound.",
+    "Genres": "Indie Rock, Psychedelic Rock",
+    "Stage": "Who Stage",
+    "StartTime": "6:30 PM",
+    "EndTime": "7:15 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 13,
     "Artist": "HoneyLuv",
     "Scheduled": "Thursday",
     "Description": "HoneyLuv, aka Taylor Character, is an up-and-coming DJ/producer from Cleveland who is now based in Los Angeles. In her past life, she was a basketball player who made the National Collegiate Atheltic Association draft, but those dreams were crushed when she tore her ACL for the second time in the same knee. She then joined the U.S. Navy at age 18 in 2016 as a way to join the CIA, an idea she got from her cousin’s wife who works for the CIA. After serving for four years, she ended her military career and fell into a depressive period in her life. Her friends suggested DJing as an outlet, which led her to pursue it as a career. HoneyLuv started releasing music in 2021 and started collaborating with others in the house scene, including Seth Troxler, Will Clarke, and Cakes da Killa. In the following two years, she played clubs and even festivals around the country including EDC and Coachella. She even did two b2b sets with Idris Elba.",
@@ -99,7 +143,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 9,
+    "AOTD #": 14,
     "Artist": "Nation of Language",
     "Scheduled": "Thursday",
     "Description": "Nation of Language is an indie pop band started by Ian Devaney in New Jersey. Ian had a high school band called the Static Jacks that had a label release for their second album, but the deal fell through in 2013, putting Ian back at his parent’s place in New Jersey. One day his father played OMD’s “Electricity” which inspired him to write a similar track. Soon after he started a project called Nation of Language with a rotating lineup of musicians. The track was titled “Laudanum” and eventually ended up on Nation of Language’s debut EP in 2015. Ian moved to Brooklyn and continued to write songs for his project’s everchanging lineup which included former member of the Static Jacks and Ian’s then-fiancée Aidan Noell. After a tour where Nation of Language supported the Wombats, the band worked on their debut album Presence which came out in 2020. The band found success in this release and did a headlining tour through 2021. Nation of Language’s most recent release was Strange Disciple in 2023.",
@@ -110,7 +154,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 10,
+    "AOTD #": 15,
+    "Artist": "Sawyer Hill",
+    "Scheduled": "Thursday",
+    "Description": "Sawyer Hill is an Americana artist whose music captures the essence of the American heartland. With a voice that echoes the great country singers of the past, Sawyer's songs tell stories of life, love, and loss with honesty and emotion. His debut album, \"Backroads,\" received praise for its authentic sound and lyrical depth. Sawyer Hill’s music is deeply influenced by the landscapes and stories of rural America. His heartfelt performances and poignant songwriting have made him a favorite in the Americana and country music scenes. Sawyer Hill continues to draw listeners in with his genuine storytelling and rich musical heritage.",
+    "Genres": "Americana, Country",
+    "Stage": "Who Stage",
+    "StartTime": "7:45 PM",
+    "EndTime": "8:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 16,
     "Artist": "The Heavy Heavy",
     "Scheduled": "Thursday",
     "Description": "The Heavy Heavy is a UK rock band led by Will Turner and Georgie Fuller. The band released their debut EP Life and Life Only in 2022. The EP pulls from sounds from previous decades, from the folk-blues of Delaney & Bonnie to the rock of Fleetwood Mac. The Heavy Heavy built a following by touring rock clubs in the UK with Will and Georgie at the helm. The group soon became a five-piece band. The same year of their debut EP, The Heavy Heavy made their leap to the US and played shows with the Black Pumas, St. Paul and The Broken Bones, and The Record Company. Additionally, their music has been used in shows including Amazon’s Outer Range, NBC’s Manifest, and the CW’s Walker and Superman & Lois. The Heavy Heavy released their debut album in 2023 with the same title as their debut EP.",
@@ -121,7 +176,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 11,
+    "AOTD #": 17,
     "Artist": "Pretty Lights",
     "Scheduled": "Thursday",
     "Description": "Pretty Lights is a music project out of Colorado started by Derek Vincent Smith. He started making hip-hop in high school and dropped out of college during his freshman year at the University of Colorado at Boulder to pursue a career in producing music. Derek released his debut album in 2006 titled Taking Up Your Precious Time under the moniker Pretty Lights. He toured on this album supporting STS9, the Disco Biscuits, and Widespread Panic. By 2010, Derek had released two more albums and had toured major festivals including Coachella, Ultra, Movement, and Electric Zoo. The next year he created his Pretty Lights Music imprint to release albums by Michal Menert, Gramatik, and Eliot Lipp. In 2012, Derek started working on Pretty Lights’ fourth album, which featured drummer Adam Deitch, Soulive’s Eric Krasno, the Harlem Gospel Choir, and members of the Preservation Hall Jazz Band and the Treme Brass Band. The idea behind the album was to capture a vintage sound while making it sound like what Pretty Lights had been known to produce. The resulting album, A Color Map of the Sun, was nominated at the 2013 Grammy Awards. The Hidden Shades EP came the following year featuring remixes and B-side tracks.[PAGE_BREAK]Later in 2014, Derek moved to New Orleans to form a band he called Pretty Lights Live. This lineup toured for a few years with some Red Rocks shows included on the tour. Then, Derek fell off the map and became a whisper in the music community. He had to get himself sorted out with rumors of substance abuse being what stole him from the world and his fans. Then, after five years and a global pandemic, Derek rose from the ashes with Pretty Lights Live, featuring Alvin Ford Jr. on drums, Borahm Lee on keys, Michal Menert on guitar, and turntablist Chris Karns. The band toured in 2023 to sold-out venues across the country. Their live show now features drones, Lidar-crafted visuals, and free live streams that are available on YouTube.[PAGE_BREAK]To give a very simplified overview of how their set works, Derek acts as a conductor of sorts for all the other band members. Each member plays their instruments as a jam band and feeds in their audio to Derek. Derek then live mixes these sounds with a custom modular synthesizer to create what comes out of the PA systems at a show. Additionally, Derek will incorporate his own noise into the mix as well. While all this is going on, there are Lidar sensors onstage that are taking live 3-D mappings of the stage and sometimes the crowd and venue. On the screens behind the band, they project these mappings for visuals during the show. Oh, and they have a ton of lasers that light up the sky. And if that wasn’t enough, the rumor for Bonnaroo is that there will be a drone show above Pretty Lights on Thursday.",
@@ -132,7 +187,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 12,
+    "AOTD #": 18,
+    "Artist": "The Foxies",
+    "Scheduled": "Thursday",
+    "Description": "The Foxies are an indie pop band known for their high-energy performances and catchy tunes. Formed in Nashville, Tennessee, the band combines elements of dance rock and pop to create a sound that is both fun and infectious. Their debut EP, \"Glitter and Gold,\" features hit singles like \"Obsession\" and \"Chewing Gum,\" which have garnered significant streaming numbers. The Foxies' vibrant stage presence and upbeat music make them a favorite at festivals and live shows. Their ability to blend pop sensibilities with rock energy has earned them a diverse and devoted fanbase. The Foxies continue to charm audiences with their dynamic performances and irresistible hooks.",
+    "Genres": "Indie Pop, Dance Rock",
+    "Stage": "Who Stage",
+    "StartTime": "9:00 PM",
+    "EndTime": "9:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 19,
     "Artist": "It's Murph",
     "Scheduled": "Thursday",
     "Description": "It’s Murph, aka Garrett Murphy, is a DJ and producer from Nashville. Murph was exposed to music at a young age, initially learning the piano and singing in the school choir. In high school, he discovered electronic music at a Porter Robinson concert and started on his journey to create the same atmospheric sounds that her heard that night. After graduating high school, Murph moved to Los Angeles to attend USC where he fell in love with the groove of house music. He used social media to grow his brand as an artist. He started releasing collaborative singles in 2022 with his debut single arriving in 2023 titled “Food For The Soul.” This single was an instant hit, with over 25 million plays on Spotify alone with 4 million of those plays happening in the first month. The single also went viral, making the Viral 50 U.S. chart. Murph has done b2b sets with Dombresky, Noizu, and Dr. Fresch.",
@@ -143,7 +209,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 13,
+    "AOTD #": 20,
     "Artist": "BigXthaPlug",
     "Scheduled": "Thursday",
     "Description": "BigXthaPlug, aka Xavier Landum, is a Dallas rapper who spent his later childhood in the northern city of Commerce. He focused his time on a future football career and played briefly for Minnesota’s Crown College. He returned home with his girlfriend to have their first child. BigXthaPlug spent his son’s first year alive in prison for burglary and aggravated battery. While in prison, he focused on writing lyrics. He was released in 2019 and released what he wrote as a handful of singles, which became the 2022 Big Stepper EP released by United Masters. He was arrested again for weapons and drug charges the same year, using time spent in solitary confinement to write more lyrics, which became the 2023 album Amar named after his son. In 2023, he released the single “Mmhmm” wich broke into the top 100 of the Billboard Chart. Later in the year, BigXthaPlug released his EP The Biggest featuring guest spots from Offset and Ro$ama.",
@@ -154,7 +220,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 14,
+    "AOTD #": 21,
     "Artist": "Geese",
     "Scheduled": "Thursday",
     "Description": "Geese is a New York indie rock band that started as a high school band in the late 2010s. After graduation, the band uploaded some home-recorded tracks that received a very positive response. Geese was originally looking to disband as several of their members got accepted into great colleges, however they instead were fielding offers from record labels. They signed with PIAS in the U.K. and Partisan in the U.S. In 2021, the band played a sold-out show in Brooklyn, a festival appearance in Atlanta, and released their debut album Projector. Two years later they released their follow-up album 3D Country which was co-produced by James Ford who has worked with the Arctic Monkeys and the Gorillaz. This year, Geese finds themselves playing Bonnaroo as well as supporting King Gizzard and the Lizard Wizard on their U.S. tour.",
@@ -165,7 +231,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 15,
+    "AOTD #": 22,
     "Artist": "Disco Lines",
     "Scheduled": "Thursday",
     "Description": "Disco Lines, aka Thadeus Labuszewski, is a DJ from Boulder, Colorado. He has been playing piano and guitar since he was a kid but later shifted into the art of music production. His breakout hit was a remix of é”Eastsideé” by Benny Blanco, Halsey, and Khalid that got over a million plays on SoundCloud. Disco Lines mixes future bass, trap, and deep house to create a unique sound. He opened for Hippie Sabotage, Elephante, Dombresky, SoDown, and others while he was attending the University of Colorado, Boulder. In 2023, Disco Lines played at EDC Orlando and Lollapalooza. He has seen great growth and we’re excited to see what he does at The Farm this year!",
@@ -176,7 +242,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 16,
+    "AOTD #": 23,
+    "Artist": "Tors",
+    "Scheduled": "Thursday",
+    "Description": "Tors is an indie folk band known for their harmonious vocals and emotive songwriting. Formed by brothers Matt and Theo Weedon, the band has quickly gained a reputation for their heartfelt music and tight harmonies. Their debut EP, \"Wilder Days,\" features songs that explore themes of love, family, and belonging. Tors' music is both uplifting and introspective, making their live performances a deeply moving experience for audiences. The band’s ability to connect with listeners through their sincere lyrics and beautiful harmonies has made them a standout act in the indie folk genre. With their captivating sound, Tors continues to win the hearts of music lovers everywhere.",
+    "Genres": "Indie Folk, Pop",
+    "Stage": "Who Stage",
+    "StartTime": "10:15 PM",
+    "EndTime": "11:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 24,
     "Artist": "Militarie Gun",
     "Scheduled": "Thursday",
     "Description": "Militarie Gun is an alternative hardcore band from Los Angeles. Vocalist Ian Shelton founded the band after his previous band Regional Justice Center broke up. In 2020, Militarie Gun released their debut EP My Life Is Over before becoming a five-piece band of a vocalist, two guitarists, a bassist, and a drummer. In 2021, the band released the two-part EP All Roads Lead to the Gun which got them on tour supporting Touché Amoré and Fiddlehead. Their live shows got the attention of their now signed-to label Loma Vista. The double EP from 2021 became the band’s debut album in 2022, with the addition of four new songs featuring guests MSPAINT and Woolworm.",
@@ -187,7 +264,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 17,
+    "AOTD #": 25,
     "Artist": "Oliver Heldens",
     "Scheduled": "Thursday",
     "Description": "Oliver Heldens is a Dutch electronic music producer regarded as a primary pioneer of the future house scene. Oliver began his career with in 2013 with a handful of singles released via the CR2 label, one of these singles being his remix of Martin Garrix’s “Animals.” Other hit single releases that came out the next year include “Gecko” which was released by Tiësto on his Musical Freedom label and a remix of Robin Thicke’s “Feel Good.” With many DJs using his tracks, Oliver started appearing at EDM festivals in Europe in 2014, including Tomorrowland and Creamfields. The same year a vocal version of “Gecko” came out featuring The Voice U.K. contestant Becky Hill, and the single hit number one on the U.K. singles charts. In 2015, he launched his Heldeep Records label with the single “Renegade Mastah” by HI-LO, a techno artist which was later revealed to be Oliver’s side project. Oliver continued topping charts throughout the 2010s, working with artists including Zeds Dead and Tiësto. He has yet to release a full album but has gained around a billion plays collectively with his single releases.",
@@ -198,7 +275,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 18,
+    "AOTD #": 26,
     "Artist": "Neal Francis",
     "Scheduled": "Thursday",
     "Description": "Neal Francis O’Hara is a singer/songwriter/pianist from the Chicago suburb of Oak Brook. He started playing piano when he was four years old. He fell in love with blues and roots music soon after, and by the time he turned 18, Neal was the touring keyboardist for Muddy Waters’ son Mud Morganfield. In 20212, he joined up with Heard, a Chicago instrumental funk ensemble that shared stages with the New Mastersounds, the Revivalists, and George Clinton and Parliament Funkadelic. During this time, Neal dove deep into alcoholism and was fired from Heard in 2015. He had also suffered from a life-threatening alcohol-induced seizure. Neal got clean and focused on writing songs that led him to put together a band to record an album in Los Angeles. He signed with Karma Chief Records and shortened his name to Neal Francis officially. He released his debut album Changes in 2019. He worked on his second album while living in a haunted church in Chicago, and In Plain Sight came out in 2021. In 2024, Neal released a live album titled Francis Comes Alive which has become a live set he has played at shows.",
@@ -209,10 +286,10 @@
     "Favorited": false
   },
   {
-    "AOTD #": 19,
-    "Artist": "Fisher",
+    "AOTD #": 27,
+    "Artist": "Chris Lake",
     "Scheduled": "Thursday",
-    "Description": "Fisher, aka Paul Fisher, is an Australian tech-house producer who has recently became a mainstream sensation. He was born and raised on the Gold Coast of Australia, pursuing a career as a professional surfer initially for years. Fisher attended lots of parties which got him into DJing in 2005. Six years later he started producing his own tracks. In 2017, Fisher started focusing more on producing music and released a string of singles on Dirtybird. The next year he released his breakout single “Losing It” via Catch & Release. The track made it to number one on the Australian and American Club Charts and became certified gold or platinum across Australia, Italy, Germany, and the U.K. Additionally, the track earned a Grammy nomination for Best Dance Recording. After releasing more hit singles, Fisher hit gold again with a pair of catchy club hits in 2023 titled “Atmosphere” and “Take It Off.”",
+    "Description": "Chris Lake is a British DJ and electronic music producer renowned for his innovative contributions to the house music scene. Born on August 8, 1982, in Norwich, England, Lake began his musical journey in the early 2000s and quickly gained recognition with his breakout track 'Changes' in 2006, which topped dance charts worldwide. His signature style blends infectious grooves, deep basslines, and soulful melodies, making him a staple in the global dance music community. Lake has collaborated with a plethora of prominent artists, including Deadmau5, Green Velvet, and Steve Aoki, further solidifying his status as a versatile and influential producer. In addition to his solo work, he co-founded the record label Black Book Records, which has become a platform for nurturing emerging talents in the electronic music scene. Known for his electrifying live performances, Chris Lake continues to push the boundaries of house music, consistently delivering innovative tracks that resonate with audiences around the world.",
     "Genres": "DJ, EDM, Tech-House",
     "Stage": "The Other Stage",
     "StartTime": "12:45 AM",
@@ -220,7 +297,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 20,
+    "AOTD #": 28,
     "Artist": "GWAR",
     "Scheduled": "Thursday",
     "Description": "GWAR is a thrash metal band that was founded in Richmond, Virginia in 1984. The band has an elaborate mythology involving the members being interplanetary warriors who came to Earth to enslave and brutally slaughter the human race. Over its decades of existence, GWAR has seen a rotating lineup of musicians and other artists who are all known as Slave Pit Inc. The members of the band perform under various aliases that are led by Blöthar the Berserker (their vocalist Michael Bishop). Each member has outlandish costumes that are often incorporated into their lively stage shows that include fake rituals with various corpses spraying the crowd with washable blood, piss, and other bodily fluids. Within the culture of the fanbase is the need to be covered in blood, so fans will crowd the rail wearing all white as an offering to GWAR at each performance.",
@@ -231,7 +308,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 21,
+    "AOTD #": 29,
     "Artist": "Róisín Murphy",
     "Scheduled": "Thursday",
     "Description": "Róisín Murphy is a Dublin-born solo artist who dabbles in art pop and experimental music. When she was 12 she moved from Ireland to Manchester and remained there after her parents returned home to Dublin four years later. While on her own at age 16, she joined a post-punk band with her classmates. In 1994, she formed the electronic pop duo Moloko with producer Mark Brydon whom she had met at a party. The duo earned acclaim with a variety of releases from 1995 to the early 2000s. In 2002, Moloko split up with Róisín relocating to London to work on her solo career. She started using non-musical items like notebooks to craft sounds for her recordings, resulting in the EPs Sequins #1, Sequins #2, Sequins #3, and the 2005 album Ruby Blue. The album took inspiration from the experimentalism of Outkast’s Speakerboxxx and early 20th-century vocal jazz. The album reached number 88 on the U.K. Albums Chart and was featured in U.S. shows like Grey’s Anatomy and So You Think You Can Dance. In 2006, Róisín signed to EMI and started working on her second album which arrived in 2007 titled Overpowered. The album reached number 20 on the U.K. Albums Chart. Throughout the 2010s until the present day, she has released charting singles and albums and has been nominated for Ireland’s Choice Music Prize and the Mercury Prize.",
@@ -242,7 +319,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 22,
+    "AOTD #": 30,
     "Artist": "MIKE",
     "Scheduled": "Friday",
     "Description": "MIKE, aka Michael Jordan Bonema, is a rapper who was born in New Jersey in 1998 and spent a chunk of his childhood in London. He was influenced by the grime scene in London which he used to craft his own music. MIKE created his own abstract beats that paired with his introspective lyrics. His breakout release was the 2017 mixtape May God Bless Your Hustle which was followed by a series of mixtapes the following year. In 2019, MIKE released his album Tears of Joy which was a reaction to his mother’s death. The next year he released another album Weight of the World which featured guest artists including KeiyaA, Red Lee, and Earl Sweatshirt. His most recent album is 2024’s Pinball which also features a track with Earl Sweatshirt.",
@@ -253,7 +330,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 23,
+    "AOTD #": 31,
     "Artist": "Baby Queen",
     "Scheduled": "Friday",
     "Description": "Baby Queen, aka Arabella Latham, is a South Africa-born pop artist. She started writing music when she was 10 years old but didn’t start performing until the age of 16. When she turned 18, she moved to London to pursue a music career where she inked a distribution deal with Polydor in 2020. Her first track with Polydor was “Internet Religion” and appeared on her 2020 debut EP Medicine. In 2022, Baby Queen released the single “Colours of You” which was featured in the Netflix series Heartstopper. Later in the year her single “LAZY” was included in an expansion pack for the game The Sims 4. The following year she released her debut album Quarter Life Crisis.",
@@ -264,7 +341,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 24,
+    "AOTD #": 32,
     "Artist": "49 Winchester",
     "Scheduled": "Friday",
     "Description": "49 Winchester is an Americana folk band with Appalachian roots hailing from Castlewood, Virginia. The band takes their name from the street address of their lead vocalist/guitarist Isacc Gibson’s childhood home. The group was formed in 2013 by Isaac and his neighbor Chase Chafin after they graduated high school. The lineup came together soon after. They released their self-titled debut album in 2014 and spent years touring afterward playing shows and festivals. Their aggressive touring schedule landed them with New West Records for their 2022 release Fortune Favors the Bold. Their recent popularity is partly credited to social app support from Luke Combs.",
@@ -275,7 +352,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 25,
+    "AOTD #": 33,
+    "Artist": "Abby Holliday",
+    "Scheduled": "Friday",
+    "Description": "Abby Holliday is an indie pop singer-songwriter known for her soulful voice and introspective lyrics. Based in Los Angeles, Abby has been captivating audiences with her unique sound that blends pop sensibilities with singer-songwriter authenticity. Her debut album, \"Heartstrings,\" explores themes of love, heartache, and self-discovery. Abby’s live performances are characterized by their emotional intensity and musical precision. Her ability to convey deep emotion through her music has earned her a dedicated fanbase and critical acclaim. Abby Holliday continues to make waves in the indie pop scene with her heartfelt songs and powerful performances.",
+    "Genres": "Indie Pop, Singer-Songwriter",
+    "Stage": "Who Stage",
+    "StartTime": "2:15 PM",
+    "EndTime": "3:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 34,
     "Artist": "Mdou Moctar",
     "Scheduled": "Friday",
     "Description": "Mdou Moctar, also known as Mahamadou Souleymane, is a guitarist and songwriter from Agadez, a desert village in rural Niger. Growing up, he was inspired by YouTube videos of Eddie Van Halen’s six-string techniques and local traditional Tuareg melodies. Mdou mastered the guitar by building one himself to craft his own style of rock, now dubbed Saharan rock. He then wrote, produced, and starred in the first Tuareg language film Akounak Tedalat Taha Tazoughai, a Purple Rain remake that translates to “Rain The Color Of Blue With A Little Red In It.” Mdou’s music traveled across West Africa via mobile phone data cards, which is a popular form of music distribution in the region. His popularity got him DIY world tours and album releases via the indie label Sahel Sounds, growing his audience to the global scale. He formed a full band, consisting of a local rhythm guitarist, local drummer, and bassist Mikey Coltun who files 20 hours from Brooklyn and takes a 28-hour bus ride to reach Agadez for band practice and recording. Mikey also serves as the band’s producer and road manager, having played over 500 shows on three continents with the band. In the fall of 2023, Mdou Moctar and his band were stranded in the US after a coup in Niger prevented them from flying back to their home country after a tour. They launched a GoFundMe to raise funds to stay in the US until they could once again travel home. The band is still in the US as the crisis in Niger continues.",
@@ -286,7 +374,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 26,
+    "AOTD #": 35,
     "Artist": "Larkin Poe",
     "Scheduled": "Friday",
     "Description": "Rebecca and Megan Lovell of Larkin Poe, who nabbed the Grammy for Best Contemporary Blues Album earlier this month with “Blood Harmony.” Planet Rock Magazine called them “bewitching Southern gothic darkness,” and I couldn’t have put it better myself. Born and bred in the Deep South, the Lovells have planted roots in Georgia and Tennessee, and the cultural sounds and soul have steeped their art not unlike classic southern iced tea — but with a bite. Before Larkin Poe, there was the bluegrass/Americana Lovell Sisters, including their third sister, Jessica. The Lovell Sisters officially began in 2005, before any of the sisters even entered their twenties. You might wonder how two of those Lovell sisters created a rock group of a different name completely sans Lovell, but they still kept it in the family because Larkin Poe happens to be their great-great-great-grandfather. If you’re questioning if there’s any relation to that other Poe guy famous for spooky vibes and short stories, he was in fact a distant cousin. Between seven studio albums and eight Eps, Larkin Poe has a wide discography in their arsenal. They can also claim appearances in work from legends like Elvis Costello, Steven Tyler and Nitty Gritty Dirt Band.",
@@ -297,7 +385,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 27,
+    "AOTD #": 36,
     "Artist": "Bonny Light Horseman",
     "Scheduled": "Friday",
     "Description": "This supergroup trio is composed of Anaïs Mitchell, Eric D. Johnson, and Josh Kaufman, and we can thank Justin Vernon (Bon Iver) and Aaron Dessner (The National) for encouraging the collaboration for the first time at the 2018 Eaux Claires festival. Each of the members of BLH has their own serious chops, and when you put them together, they create folk magic on their Grammy nominated self-titled and latest, Rolling Golden Holy, albums. Mitchell is the genius behind the album-turned-Tony-winning-musical, Hadestown. Johnson, of Fruit Bats, also uses his talents for film scores and spent a stint with The Shins. Kaufman’s collaborations run the gamut, notably directing a tribute show for Grateful Dead founder, Bob Weir, in celebration of Jerry Garcia’s birthday, and being featured on a host of instruments for tracks on Taylor Swift’s Folklore, Evermore and Red (Taylor’s Version) albums.",
@@ -308,7 +396,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 28,
+    "AOTD #": 37,
+    "Artist": "Mon Rovía",
+    "Scheduled": "Friday",
+    "Description": "Mon Rovía is an alternative rock band known for their innovative sound and powerful performances. Formed in the vibrant music scene of New York City, Mon Rovía blends elements of indie rock, alternative, and electronic music to create a unique and compelling sound. Their debut album, \"Urban Legends,\" features tracks that showcase their lyrical depth and musical versatility. Mon Rovía’s live shows are known for their high energy and captivating stage presence. The band’s ability to connect with audiences through their dynamic performances has made them a favorite in the alternative rock scene. Mon Rovía continues to push the boundaries of their genre and captivate listeners with their bold musical vision.",
+    "Genres": "Alternative, Indie Rock",
+    "Stage": "Who Stage",
+    "StartTime": "3:30 PM",
+    "EndTime": "4:15 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 38,
     "Artist": "The Japanese House",
     "Scheduled": "Friday",
     "Description": "The Japanese House is a dream pop solo project of London-based Amber Bain. Amber is a Buckinghamshire native who picked the moniker of The Japanese House in 2015, taking inspiration from a childhood trip to Devon where she posed as a boy for a week. During the trip, a local girl caught feelings for Amber but was heartbroken when the girl learned Amber was a girl as well. The cottage where this all happened was called the Japanese House and was owned by actress Kate Winslet. The music of The Japanese House echoes this experience with its androgynous presentation of dream pop. Amber signed with Dirty HIts Records in 2015 and proceeded to release singles and EPs until her full album Good at Falling arrived in 2019. This album achieved critical success, reaching number 64 on the U.K. charts, and was followed up with her EP Chewing Cotton Wool in 2020. After a three-year hiatus, Amber came back with a single “Boyhood” in 2023.",
@@ -319,7 +418,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 29,
+    "AOTD #": 39,
     "Artist": "LYNY",
     "Scheduled": "Friday",
     "Description": "LYNY, aka Alec Leinhauser, is a Chicago-based DJ who takes heavy influences from hip-hop, trap, and R&B to craft his own flavor of bass music. His successful releases, including a mashup of Destiny Child’s “Jumpin” and the Super Smash Bros. Brawl theme, have gotten him support from major artists including Marshmello, Louis The Child, and Zeds Dead. He has already made a name for himself on bigger stages including Lost Lands in 2023, with his sights on more festival appearances in 2024 including Bonnaroo. You’ll enjoy this set! Make sure to add LYNY to your weekend plans as this is one set that won’t disappoint.",
@@ -330,7 +429,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 30,
+    "AOTD #": 40,
     "Artist": "David Kushner",
     "Scheduled": "Friday",
     "Description": "David Kushner is a soulful singer/songwriter from the great city of Chicago who started pursuing music after graduating high school. He relocated to Los Angeles and became a self-taught musician. In 2022, he released his breakout single “Miserable Man” which went viral on social media and landed him a record deal with Virgin. This single was a part of his debut EP Footprints I Found which came out the same year. David has yet to release a full-length album but has amassed over 26 million monthly listeners on Spotify. He’s doing some great things and we’re excited to see where he goes next.",
@@ -341,7 +440,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 31,
+    "AOTD #": 41,
     "Artist": "mike.",
     "Scheduled": "Friday",
     "Description": "Mike Stud, aka Michael Francis Seander, Jr., is a rapper who was born in Providence, Rhode Island in 1988. He grew up playing sports, lettering in baseball and basketball in high school. When he graduated from St. Raphael Academy in Pawtucket, he was named Rhode Island’s 2006 Gatorade Player of the Year. Additionally, he received a Louisville Slugger scholarship to attend Duke for his pitching. In his freshman year of college, Mike set a record for the lowest ERA in the history of Duke’s baseball program at 1.61. After his second year at Duke, he injured his arm, requiring surgery. While recovering, Mike started writing rap lyrics to pass the time. He wrote the song “College Humor” about his college exploits and recorded it using GarageBand. The song got a positive response, so in 2010 Mike produced a video for the track and distributed it under the name Mike Stud. “College Humor” racked up millions of views on YouTube alone. In 2011, he released his first mixtape A Toast to Tommy which made it to the number two spot on the American iTunes Hip-Hop Charts. Two years later Mike released his debut album Relief which got the attention of Atlantic who released his next album Closer in 2014 via the 300 Entertainment imprint. The album topped the Billbaord 200 Albums Chart and hit number two on the R&B/Hip-Hop Chart. Following more chart success, in 2016 the Esquire Network debuted the reality series This is Mike Stud which followed the rapper at home and on the road. In 2019, after touring on his fourth album 4THEHOMIES Mike changed his stage name to mike officially.",
@@ -352,7 +451,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 32,
+    "AOTD #": 42,
     "Artist": "The Driver Era",
     "Scheduled": "Friday",
     "Description": "The Driver Era is an American alternative music duo formed by brothers Rocky and Ross Lynch. Emerging in 2018, the band quickly garnered attention with their eclectic blend of rock, pop, and funk. Both seasoned performers, the Lynch brothers initially gained fame through their previous band, R5, and their work in television and film. Rocky, the principal songwriter and producer, brings a distinctive sonic depth to their music, while Ross, known for his charismatic stage presence and dynamic vocals, infuses their performances with a captivating energy. The Driver Era's sound is marked by its nostalgic yet innovative approach, blending vintage influences with contemporary flair, resulting in a unique and compelling musical experience. Their debut album, \"X,\" and subsequent releases have showcased their evolving artistry and cemented their status as a rising force in the modern music landscape.",
@@ -363,7 +462,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 33,
+    "AOTD #": 43,
+    "Artist": "Dan Spencer",
+    "Scheduled": "Friday",
+    "Description": "Dan Spencer is a folk artist known for his storytelling prowess and emotive performances. Based in Nashville, Tennessee, Dan’s music is deeply rooted in the traditions of Americana and folk. His debut album, \"Open Road,\" features songs that explore themes of wanderlust, love, and heartache. Dan’s live performances are characterized by their warmth and authenticity. His ability to connect with audiences through his heartfelt lyrics and soulful voice has earned him a dedicated following. Dan Spencer continues to enchant listeners with his timeless sound and compelling storytelling.",
+    "Genres": "Folk, Americana",
+    "Stage": "Who Stage",
+    "StartTime": "4:45 PM",
+    "EndTime": "5:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 44,
     "Artist": "Hamdi",
     "Scheduled": "Friday",
     "Description": "Hamdi, aka Alexander Hamdi, is a half-Tunisian, half-English DJ and producer based in Oxford, UK. He began producing when he was 12 years old, starting with grime and evolving his sound with dubstep and bass influences from artists such as Skrillex and Flux Pavillion. Hamdi strived to keep his music fresh by blending multiple genres and keeping his process loose so he can be present when creating his music. He made a name for himself in the UK underground scene, gaining support from DJ EZ, Skream, Sherelle, and Mala. His track “Shanka” became a dubstep sensation in 2022. Hamdi has played worldwide in Australia, India, and the United States.",
@@ -374,7 +484,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 34,
+    "AOTD #": 45,
     "Artist": "Faye Webster",
     "Scheduled": "Friday",
     "Description": "Faye Webster is an indie folk artist from Atlanta. She was raised in a musical family with her grandfather being a bluegrass guitarist in Texas and her mother being a guitarist and fiddle player. Faye started performing as a teenager and joined the rap collective PSA in high school. At the age of 16 in 2013, she released her debut album Run and Tell. Webster met rapper Ethereal during her senior year and was introduced to his label Awful Records. Faye enrolled at Belmont University in Nashville to study songwriting or graphic design but returned home to Atlanta before finishing her freshman year. She missed the creative scene and diversity that is found in Atlanta. Faye picked up photography and started shooting friends who were starting their own music careers. She shot various hip-hop artists including DRAM, Killer Mike, and her former classmate Lil Yachty. Faye wanted to prioritize her music, so she signed with Awful Records who released her self-titled second album in 2017. Two years later she released the album Atlanta Millionaires Club via Secretly Canadian. She toured on this album, making stops at both Austin City Limits and Bonnaroo. In 2021, Faye released her third album I Know I’m Funny haha which hit number ten on Billboard’s Folk Albums Chart. Her latest album is 2024’s Undressed at the Symphony with each track averaging at over a million plays on Spotify alone.",
@@ -385,7 +495,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 35,
+    "AOTD #": 46,
     "Artist": "Gary Clark Jr.",
     "Scheduled": "Friday",
     "Description": "Gary Clark Jr. is a modern electric blues artist who was born and raised in Austin. He started playing guitar at the age of 12 and spent his teenage years gigging wherever he could around Austin. He eventually met Clifford Antone, the owner of Antone’s blues club in Austin, who started featuring Gary at the venue. This propelled Gary to the top as one of Austin’s best players in the blues and rock scene. In 2005, he released his first independent album Tribute followed by two self-produced albums in 2008, 110 and Worry No More. In 2010, Gary was selected by Eric Clapton to play at the Crossroads Guitar Festival. A video a him playing there led to a recording deal with Warner Bros who released his major debut album Blak and Blu in 2012. The album made it on the Top Ten and won a Grammy Award in the Best Traditional R&B Performance category for the single “Please Come Home.” Gary’s next release was Live which was recorded during the 18-month tour for Blak and Blu. His next tours included opening for the Rolling Stones and the Foo Fighters. His second major-label album arrived in 2015 titled The STory of Sonny Boy Slim which debuted at number eight on the Billboard Charts. In 2018, Gary joined Tom Morello on his collaborative project The Atlas Underground for the track “Where It’s at Ain’t What It Is.” The next year he released the album This Land which got four Grammy nominations. His most recent album arrived in March of 2024 titled JPEG RAW.",
@@ -396,7 +506,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 36,
+    "AOTD #": 47,
+    "Artist": "Frayne Vibez",
+    "Scheduled": "Friday",
+    "Description": "Frayne Vibez is a reggae artist known for his infectious rhythms and positive messages. Hailing from Kingston, Jamaica, Frayne’s music is deeply influenced by the rich musical heritage of his homeland. His debut album, \"Island Dreams,\" features tracks that celebrate love, peace, and unity. Frayne’s live performances are vibrant and uplifting, often leaving audiences dancing and singing along. His ability to spread joy and positivity through his music has made him a favorite in the reggae scene. Frayne Vibez continues to inspire listeners with his soulful melodies and heartfelt lyrics.",
+    "Genres": "Reggae, World Music",
+    "Stage": "Who Stage",
+    "StartTime": "6:00 PM",
+    "EndTime": "6:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 48,
     "Artist": "Grouplove",
     "Scheduled": "Friday",
     "Description": "Grouplove is a Los Angeles-based indie rock outfit that formed in the late 2000s around the talents of Hannah Hooper, Christian Zucconi, Sean Gadd, Ryan Rabin who is the son of Yes guitarist Trevor Rabin, and Andrew Wessen. The whole gang met and bonded at an art residency in Greece on the island of Crete. Before leaving the island, the five former strangers agreed to meet up and record some of the music they had already worked on. The group recorded in Ryan’s Los Angeles studio and created the band Grouplove. The group’s self-titled debut EP arrived in 2010 and helped get them an opening tour slot with Florence + the Machine the following year. In 2011, Grouplove released their debut album Never Trust a Happy Song which peaked at number 75 on the Billboard 200 with four singles including “Tongue Tied” This single became number one on the Billboard Alternative Songs Chart. The band’s second album Spreading Rumours came out in 2013 and hit number 21 on the Billboard 200 as well as number seven on the Top Rock Albums Chart. Their next album Big Mess arrived in 2016 and also charted well reaching number 40 on the Billboard 200. In 2020, Grouplove released their four album Healer which peaked at number five on Billboard’s Alternative Albums Chart. Their next album came the next year titled This is This. This album was self-produced by the band and featured the single “Deadline” which hit number 28 on Billboard’s Alternative Airplay Chart. Grouplove’s latest album was 2023’s I Want It All Right Now which got a deluxe tuneup in 2024.",
@@ -407,7 +528,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 37,
+    "AOTD #": 49,
     "Artist": "Jessica Audiffred",
     "Scheduled": "Friday",
     "Description": "Jessica Audiffred is a dubstep and bass music producer from Mexico City. She built a following online via blogging. Jessica caught the attention of Flux Pavillion in 2016 who included her on his list of top global acts for the DJmag Top 100. Flux Pavillion signed her to his label Circus Recordings and got her to remix his track “Feel Your Love” featuring NGHTMRE. Jessica then went on to play Mexico’s first-ever bass-centric radio show Back to Bassics. She has played stages at EDC, Lost Lands, Beyond Wonderland, and Forbidden Kingdom.",
@@ -418,7 +539,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 38,
+    "AOTD #": 50,
     "Artist": "Dominic Fike",
     "Scheduled": "Friday",
     "Description": "Dominic Fike is an alternative hip-hop artist that was born in Naples, Florida in 1995. At the age of ten, he got his first guitar and started learning songs by his favorite bands including Red Hot Chili Peppers. As Dominic grew up, he lived with various family members and friends as his mother was in and out of jail. He became part of a rap collective in his late teens that started getting booked at music festivals. Meanwhile, Dominic was sharing videos of his solo performances online. After seeing some of his demos in 2017, he signed a multi-million-dollar deal with Sandy Boys and Columbia Records before releasing a single song. His demo were released as Don’t Forget About Me, Demos in October of 2018 with the opening track “3 Nights” hitting millions of streams before the end of the month. This track has almost surpassed a billion plays as of today on Spotify alone. Dominic worked some with BROCKHAMPTON and Kenny Beats on some hit singles that brought Dominic into the spotlight. He got co-signs from Billie Eilish and BROCKHAMPTON before releasing his debut album What Could Possibly Go Wrong in July of 2020. The album was at number 41 on the Billboard 200 for a week. His next big hit was his feature on Justin Bieber’s “Die for You” which was Dominic’s first appearance in the Hot 100 at number 81. In 2022, he joined the cast of the HBO series Euphoria and created the track “Elliot’s Song” with Zendaya for the show’s soundtrack. His Coachella debut was in April of 2023. Later in the year, he released his latest album Sunburn which features vocals from Weezer frontman Rivers Cuomo on “Think Fast.” The album reached number 30 on the Billboard 200.",
@@ -429,7 +550,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 39,
+    "AOTD #": 51,
+    "Artist": "Houseplant",
+    "Scheduled": "Friday",
+    "Description": "Houseplant is an indie rock band known for their psychedelic soundscapes and experimental approach to music. Formed in San Francisco, California, Houseplant draws inspiration from the counterculture movement of the 1960s. Their debut album, \"Bloom,\" features tracks that explore themes of nature, consciousness, and transformation. Houseplant’s live shows are known for their immersive and captivating nature. The band’s ability to create otherworldly experiences through their music has earned them a dedicated fanbase. Houseplant continues to push the boundaries of indie rock with their innovative sound and visionary performances.",
+    "Genres": "Indie Rock, Psychedelic Rock",
+    "Stage": "Who Stage",
+    "StartTime": "7:15 PM",
+    "EndTime": "8:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 52,
     "Artist": "Key Glock",
     "Scheduled": "Friday",
     "Description": "Key Glock, aka Markeyvius LaShun Cathey, is a Memphis-born rapper. He is a cousin of Young Dolph. He was born in 1997 in South Memphis, and at 20 months old his mother was sent to prison for 15 years. His father was in and out of his life, leaving his grandmother and aunt to raise him. In 2017, Key Glock releases his debut mixtape Glock Season which was his breakout release via Young Dolph’s label Paper Route Empire. The next year he released Glock Bond which landed on the Billboard 200 just outside the top 100. Key Glock kept on the Billboard charts with his 2020 release Son of a Gun debuting at number 37 on the Billboard 200. His next critically successful release came in 2023 titled Glockoma 2 which landed at number 13 on the Billboard 200.",
@@ -440,7 +572,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 40,
+    "AOTD #": 53,
     "Artist": "Lizzy McAlpine",
     "Scheduled": "Friday",
     "Description": "Lizzy McAlpine was a budding songwriter during her middle school years in the Philadelphia suburbs. She studied at Boston’s Berklee College of Music where she began a streaming concert series on Instagram, #BerkleeAtHome, near the start of the COVID-19 pandemic. She stepped away her junior year to pursue her music full-time, and she’s been achieving critical and commercial success since. Her signature ethereal vocals mix with heavier instrumentation on her debut album, Give Me a Minute, and sophomore album, Five Seconds Flat. The chorus of McAlpine’s “ceilings” spun up a TikTok trend so pervasive that the song snippet has been used nearly 700K times. Her collaborations include Noah Kahan and Niall Horan, with FINNEAS and Jacob Collier featuring on her sophomore album. McAlpine is set to release her third album, Older in 2024.",
@@ -451,7 +583,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 41,
+    "AOTD #": 54,
     "Artist": "Shy FX",
     "Scheduled": "Friday",
     "Description": "Shy FX, aka Andre Williams, is a jungle/drum and bass DJ from the U.K. who brought the genre to the mainstream in the 1990s. He is the grandson of Jamaican sound system DJ Count Shelly. Shy FX debuted in 1993 with his single “Jungle Love” which got him signed to SOUR where he had worked as a tape operator. Soon after he released his breakout single “Original Nuttah” in 1994. This single became an anthem for the jungle genre and broke into the U.K.’s Top 40. In 1995, he released his debut album Just an Example. The same year Shy FX founded Ebony Recordings under which he released singles that fused jungle with old-school hip-hop. In the early 2000s, Shy FX started working with T-Power on more drum and bass oriented tracks, with the first one “Shake Ur Body” becoming a U.K. Top Ten hit. The pair released the full-length album Set It Off in 2002 under the moniker Ebony Dubsters. Shy FX continued releasing music throughout the next two decades with his most recent releases being singles that came out in 2023.",
@@ -462,7 +594,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 42,
+    "AOTD #": 55,
     "Artist": "TV Girl",
     "Scheduled": "Friday",
     "Description": "TV Girl is an indie pop band from Los Angeles\\ comprised of Brad Petering and Trung Ngo. They formed the band in 2010 and released a self-titled EP the same year. TV Girl kept a steady release of singles and EPs for a few years until their debut album, French Exit, was released in 2014. Their sound evolved from this first release into psychedelic dream pop with their next two releases, 2016’s Who Really Cares and 2018’s Death of a Party Girl. By 2016, Trung had left the band and Jason Wyman and Wyatt Harding joined the project for the 2018 album release. TV Girl’s latest album arrived in 2023 titled Grapes Upon the Vine.",
@@ -473,7 +605,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 43,
+    "AOTD #": 56,
+    "Artist": "Crowe Boys",
+    "Scheduled": "Friday",
+    "Description": "Crowe Boys is a folk and bluegrass band known for their tight harmonies and masterful musicianship. Hailing from Asheville, North Carolina, the band combines traditional bluegrass elements with modern folk sensibilities. Their debut album, \"Mountain Songs,\" features tracks that celebrate the beauty and heritage of the Appalachian Mountains. Crowe Boys’ live performances are filled with joy and energy, often leaving audiences clapping and singing along. The band’s ability to blend old and new musical traditions has made them a favorite in the folk and bluegrass scenes. Crowe Boys continues to enchant listeners with their heartfelt music and spirited performances.",
+    "Genres": "Folk, Bluegrass",
+    "Stage": "Who Stage",
+    "StartTime": "8:30 PM",
+    "EndTime": "9:15 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 57,
     "Artist": "Khruangbin",
     "Scheduled": "Friday",
     "Description": "Khruangbin is a Houston-based musical trio known for their eclectic blend of global influences and distinctive, atmospheric soundscapes. Formed in 2009, the band consists of bassist Laura Lee, guitarist Mark Speer, and drummer Donald \"DJ\" Johnson. Drawing inspiration from Thai funk, surf rock, dub, and soul, Khruangbin's music transcends genres, creating a unique and immersive listening experience. Their name, which means \"airplane\" in Thai, reflects their expansive and exploratory approach to music.The trio's debut album, The Universe Smiles Upon You (2015), garnered critical acclaim for its innovative fusion of styles and laid-back grooves. Following this, their subsequent releases, including Con Todo El Mundo (2018) and Mordechai (2020), further solidified their reputation as pioneers of a new, genre-defying sound. Known for their captivating live performances and visually striking stage presence, Khruangbin continues to captivate audiences worldwide with their musical journey that knows no boundaries.",
@@ -484,7 +627,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 44,
+    "AOTD #": 58,
     "Artist": "Dr. Fresch",
     "Scheduled": "Friday",
     "Description": "Dr. Fresch, aka Tony Fresch, is a house DJ based in Los Angeles. He got his start in 2013 after winning Insomniac’s Discovery Project Contest. Soon after he launched his Dr. Fresch brand. His debut self-titled EP blew up online, getting him featured at number nine on Billboard Magazine’s Next Big Sound Chart. In 2015, Dr. Fresch launched his semi-monthly mix series called “House Call” which is featured on Sirius XM on Mondays. The next year he released his viral hit “Gangsta Gangsta” which was a collaboration with Baby Eazy-E who is Eazy-E’s son. After heavy touring, including playing at EDC Las Vegas, Moonrise, Electric Forest, and Shambhala, Dr. Fresch started his own label in 2019 that released a compilation featuring over ten artists. To date, he has not released an album of solely his own material and continues to release collaborative efforts.",
@@ -495,7 +638,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 45,
+    "AOTD #": 59,
     "Artist": "Joe Russo's Almost Dead",
     "Scheduled": "Friday",
     "Description": "Joe Russo’s Almost Dead (JRAD) is a jam band formed in 2013 that covers the Grateful Dead. The group was formed by drummer Joe Rusoo of Further and Benevento/Russo. The band also includes Ween’s bassist Dave Dreiwitz, keyboardist Marco Benevento, guitarist and vocalist Scott Metzger, and guitar and vocalist Tom Hamilton of Brothers Past, Ghost Light, and American Babies. They played their first show on January 26th, 2013 at the Brooklyn Bowl for the second night of the Freaks Ball XIII as a last minute fill in. A band had dropped out of the event, and Joe put together this supergroup and dubbed it JRAD. The band played one more show in 2013 at the Capitol Theatre in Port Chester on December 27th. The next year the band played more shows including appearances at the Gathering of the Vibes in Connecticut, Hardly Strictly Bluegrass Festival in San Francisco, and Hulaween in Florida. From there JRAD became a staple in the jam community as a sought-after Dead cover band, selling out venues across the country.",
@@ -506,7 +649,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 46,
+    "AOTD #": 60,
     "Artist": "Maggie Rogers",
     "Scheduled": "Friday",
     "Description": "Maggie Rogers is an indie artist who blends folk, pop, and R&B. She grew up in Easton, Maryland, and started playing the harp at age seven. When Maggie was in middle school, she picked up playing piano, guitar, and also songwriting. While studying at St. Andrews School in Delaware, she fell in love with folk music. After her junior year of high school, she attended a Berklee College of Music program where she won the program’s songwriting contest. During Maggie’s senior year, she turned a broom closet into a recording studio and recorded material that would become her 2012 debut album The Echo. She used her recordings as part of her application to get into NYU’s Clive Davis Institute of Recorded Music. When she was a sophomore in college, she released her 2012 album Blood Ballet. Maggie’s sound started to evolve after spending more time in New York City and discovering electronic music after studying abroad in France. This led her to her breakout release in 2016 with the single “Alaska” which she wrote in 15 minutes about a hiking trip for a master class with Pharrell Williams. A video of Pharrell listening to the song went viral later that year, getting Maggie into the spotlight. The final version of “Alaska” reached number 18 on Billboard’s Hot Rock Songs Chart. Maggie then got a deal with Capitol Records that let her keep ownership of her masters and create her own Debay Sounds imprint. After a slew of hit singles, her debut album Heard It in a Past Life came out in 2019 with the single “Light On” making it to number one on Billboard’s Adult Alternative Songs Chart. Additionally, Maggie got a nomination for Best New Artist at the 2020 Grammy Awards. In 2022, she finished a Master of Religion and Public Life degree from the Harvard Divinity School. Later that same year she released her second album Surrender.",
@@ -517,10 +660,10 @@
     "Favorited": false
   },
   {
-    "AOTD #": 47,
+    "AOTD #": 61,
     "Artist": "Interpol",
     "Scheduled": "Friday",
-    "Description": "Interpol is an iconic indie rock band hailing from New York City. The band started out of New York University when the members met in college in the late 90s. Interpol became an official band in 1998 when they issued a series of self-released EPs. The band made regular appearances at New York venues including Brownie’s and the Mercury Lounge which helped them build a local following. In 2001, they did a U.K. tour that included a session for BBC Radio. In 2002, Interpol signed with Matador Records who released the band’s debut album Turn on the Bright Lights that same year. The album reached number 101 on the U.K. Albums Chart and number 158 on the Billboard 200 Albums Chart in the U.S. while also spending a year on Billboard’s Independent Albums Chart. Interpol toured heavily following their strong debut release until 2003 when they recorded and released their second album Antics. The album hit number 15 on the Billboard 200 Albums Chart and number 21 on the U.K. Albums Chart. Another lengthy global tour followed the album’s release. Interpol continued to chart for the next two decades with their most recent album being 2022’s The Other Side of Make-Believe.",
+    "Description": "Interpol is an iconic indie rock band hailing from New York City. The band started out of New York University when the members met in college in the late 90s. Interpol became an official band in 1998 when they issued a series of self-released EPs. The band made regular appearances at New York venues including Brownie’s and the Mercury Lounge which helped them build a local following. In 2001, they did a U.K. tour that included a session for BBC Radio. In 2002, Interpol signed with Matador Records who released the band’s debut album Turn on the Bright Lights that same year. The album reached number 101 on the U.K. Albums Chart and number 158 on the Billboard 200 Albums Chart in the U.S. while also spending a year on Billboard’s Independent Albums Chart. Interpol toured heavily following their strong debut release until 2003 when they recorded and released their second album Antics. The album hit number 15 on the Billboard 200 Albums Chart and number 21 on the U.K. Albums Chart. Another lengthy global tour followed the album’s release. Interpol continued to chart for the next two decades with their most recent album being 2022’s The Other Side of Make-Believe. To celebrate the band's 20th anniversary coming up, Interpol will be playing their entire sophomore album, \"Antics\" in full",
     "Genres": "Post-Punk, Indie Rock",
     "Stage": "This Tent",
     "StartTime": "9:45 PM",
@@ -528,7 +671,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 48,
+    "AOTD #": 62,
+    "Artist": "Lowdown Brass Band",
+    "Scheduled": "Friday",
+    "Description": "Lowdown Brass Band is a brass ensemble known for their energetic performances and eclectic sound. Based in Chicago, Illinois, the band blends elements of funk, jazz, and hip-hop to create a unique musical experience. Their latest album, \"Lowdown Sounds,\" features a mix of original compositions and reimagined classics, showcasing the band's versatility and creativity. With their powerful brass section and infectious rhythms, Lowdown Brass Band always brings the party to the stage. Their ability to create a lively and engaging atmosphere has earned them a dedicated fanbase and critical acclaim. Lowdown Brass Band continues to captivate audiences with their dynamic performances and innovative sound.",
+    "Genres": "Brass Band, Funk, Jazz, Hip Hop, Rap",
+    "Stage": "Who Stage",
+    "StartTime": "9:45 PM",
+    "EndTime": "10:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 63,
     "Artist": "ISOxo",
     "Scheduled": "Friday",
     "Description": "ISOxo, aka Julian Isorena, is a bass DJ from San Diego who started producing music in 2012. He is half Filipino and half Indonesian. At the age of 16, he played his first DJ show where he met his now best friend and collaborator Knock2. Since then, ISOxo has been making waves, from sold-out show runs to playing festivals including Ultra, Head in the Clouds, and Coachella. His debut album didn’t arrive until 2023 titled kidsgonemad! which was released via 88rising. ISOxo, along with Knock2, are the first EDM acts to sign with 88rising. ISOxo is touring this album in 2024, with Bonnaroo as one of the stops.",
@@ -539,7 +693,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 49,
+    "AOTD #": 64,
     "Artist": "Post Malone",
     "Scheduled": "Friday",
     "Description": "Post Malone, aka Austin Post, is a diamond-certified hitmaker of both rap and mainstream pop. He was raised in Dallas and wanted to join a band as a kid thanks to the video game Guitar Hero. However, he changed his mind and wanted to become an MC after his dad gave him a copy of Terror Squad’s “Lean Back.” Post Malone hung out with the Dallas crew IRAS until he relocated to Los Angeles. He put some braids in his hair and dropped the track “White Iverson” in 2015 which got a million views within a month. He signed with Republic later that year. In 2016, he released his debut album Stoney which featured artists including Justin Bieber, Quavo, and Kehlani. The album peaked at number four on the Billboard 200 and would later go multi-platinum. Following this album, Post Malone released two chart-topping singles “Rockstar” with 21 Savage and “Psycho” with Ty Dolla $ign. Combined, these singles went 13-times platinum and became part of his second album Beerbongs & Bentleys which discussed Post Malone’s rise to fame and the trappings that came with it. The album was nominated for Album of the Year at the 2019 Grammy Awards. Before his next album, Post Malone did the pop single “Sunflower” for the Spider Man: Into the Spider-Verse soundtrack which became over 50-times platinum certified worldwide. His next hit “Wow” came later in 2019 helping put Post Malone in the Hot 100’s. The single was part of his third album Hollywood’s Bleeding which featured Da Baby, Future, Halsey, Meek Mill, Lil Baby, SZA, Travis Scott, and even the legendary Ozzy Osbourne. The album topped the Billboard 200 for five non-consecutive weeks. In 2020, Post Malone did a cover of Hootie & the Blowfish’s “Only Wanna Be with You” for the Pokemon 25 album. The next year he released his fourth album Twelve Carat Toothache which featured Doja Cat, the Kid Laroi, Roddy Ricch, the Weeknd, and Fleet Foxes’ Robin Pecknold. In 2023, Post Malone released a hits collected called The Diamond Collection which was followed by his latest album release AUSTIN the same year.",
@@ -550,7 +704,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 50,
+    "AOTD #": 65,
     "Artist": "SVDDEN DEATH",
     "Scheduled": "Friday",
     "Description": "SVDDEN DEATH, aka Daniel James Howland, is a Los Angeles DJ and producer who focuses on modern dubstep. Born in 1993, he fell in love with dubstep in 2008, finding inspiration from bass legends including Noisia, 16BIT, and Skrillex. He then began crafting his sound. He is currently one of the largest independent acts in the EDM scene. Additionally, he has sold out world-famous venues including the Hollywood Palladium and Red Rock Amphitheater on top of playing major festivals including Lollapalooza and Lost Lands. He was also the first DJ to play at the Caverns in Pelham, Tennessee. You can find SVDDEN DEATH in other projects such as MelloDEATH (Marshmello & Svdden Death) or his VOYD sets, which take him to a whole other level.",
@@ -561,7 +715,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 51,
+    "AOTD #": 66,
     "Artist": "T-Pain",
     "Scheduled": "Friday",
     "Description": "T-Pain, also known as Faheem Najm, is an absolute legend whose use of Auto-Tune helped define music for an entire generation. He was born in Tallahassee and started as a rapper in the group Nappy Headz. It wasn’t until he pursued a solo career as T-Pain that he achieved his fame. He recorded a take on Akon’s “Locked Up” that he called “I’m Fucked Up” which got him signed to Konvict Muzik after Akon heard it. T-Pain’s first debut single, 2005’s “I’m Sprung,” went Top Ten. The same year he released his debut album Rappa Ternt Sanga and followed it with another Top Ten single “I’m ‘n Luv (Wit a Stripper).” Both of the singles earned RIAA platinum certifications while his debut album went gold, making T-Pain a major breakthrough artist of the 2000s. Following all of this major success, he continued his streak as a hitmaker with the addition of his famous Auto-Tune vocals, entering the Top Ten four additional times in 2012 alone. He won two Grammy Awards for his singles “Good Life” and “Blame It.” He won the first season of The Masked Singer in 2019. In 2023, he released a well-crafted covers album On Top of the Covers which includes covers from bands including Journey, Black Sabbath, Sam Smith, and David Allan Coe who famously sang “Tennessee Whiskey.” I heard he even rhymed Wisconsin with Mansion once.",
@@ -572,7 +726,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 52,
+    "AOTD #": 67,
     "Artist": "The Mars Volta",
     "Scheduled": "Friday",
     "Description": "The Mars Volta is an American progressive rock band founded by Cedric Bixler-Zavala and Omar Rodríguez-López in 2001, following the dissolution of their previous band, At the Drive-In. Renowned for their complex compositions, experimental approach, and dynamic live performances, The Mars Volta quickly carved a niche in the music scene. Their debut album, \"De-Loused in the Comatorium\" (2003), received critical acclaim for its intricate blend of progressive rock, punk, and Latin influences, establishing them as pioneers of the modern progressive rock movement.Over the years, The Mars Volta released several albums, each characterized by ambitious themes and intricate musicianship. Albums like \"Frances the Mute\" (2005) and \"Amputechture\" (2006) showcased their ability to push the boundaries of rock music, incorporating jazz, funk, and electronic elements. Despite undergoing multiple lineup changes, the core duo of Bixler-Zavala and Rodríguez-López remained at the helm, driving the band's evolution. After a hiatus in 2013, The Mars Volta reunited in 2021, continuing to captivate audiences with their innovative sound and unyielding creative spirit.",
@@ -583,7 +737,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 53,
+    "AOTD #": 68,
     "Artist": "Thundercat",
     "Scheduled": "Friday",
     "Description": "Thundercat, aka Stephen Bruner, is a bassist who has been a sought-after studio bassist for artists recording jazz, punk, R&B, and hip-hop. He was raised in Los Angeles and grew up in a musical family. His father, Ronald Bruner, Sr., is a seasoned drummer who has performed and recorded with artists including Diana Ross, the Temptations, and Helen Baylor. Thundercat’s older brother, Ronald Jr., is a Grammy award-winning drummer for his work with Stanley Clarke. His younger brother, Jameel Bruner, is a Grammy-nominated keyboardist as part of the Internet. The Bruners as a family have played together in a variety of combinations. Thundercat started his career in the early 2000s while still in high school. He joined his brother Ronald Jr. in the band Suicidal Tendencies, replacing Robert Trujillo who went on to play with Metallica. Thundercat was able to play Trujillo’s three-finger riffs with just his thumb. While still playing with Suicidal Tendencies, he and Ronald Jr. toured with Stanley Clarke and were members of Young Jazz Giants and the Next Step. These groups featured artists including Kamasi Washington, Cameron Graves, and Miles Mosley. Additionally, Thundercat contributed to many Sa-Ra projects including work with Flying Lotus. In 2011, he was heard on recordings by Snoop Dogg and Ty Dolla $ign. The same year he released his debut album The Golden Age of Apocalypse. His second album came in 2013 titled Apocalypse and marked his Billboard 200 debut. In the following years, Thundercat did session work with Mac Miller, Flying Lotus, Kendrick Lamar, and Kamasi Washington. He contributed to Kendrick’s “These Walls” which won the 2015 Grammy for Best Rap/Sung Collaboration. Thundercat’s next album came in 2017 titled Drunk which featured Kenny Loggins and Michael McDonald on the single “Show You the Way.” It hit number 50 on the Billboard 200. By the end of the 2010s decade, Thundercat added additional session work with artists including Childish Gambino, Janelle Monáe, Kali Uchis, Anderson .Paak, and Danny Brown. His next album came at the turn of the decade titled What It Is which was a tribute to the death of Mac Miller. This album entered the Billboard 200 at number 38 and won the Grammy for Best Progressive R&B Album. In more recent years, Thundercat has worked with artists including Silk Sonic, the Gorillaz, and Tame Impala. You might have even seen him in The Book of Boba Fett where he portrayed the Modifier.",
@@ -594,7 +748,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 54,
+    "AOTD #": 69,
     "Artist": "Seven Lions",
     "Scheduled": "Friday",
     "Description": "Seven Lions, aka Jeff Montalvo, is a DJ who spins melodic dubstep mixed with glitch hop and bass. He was a drummer who switched to music production in 2007. Soon after his switch, he won a competition held by Above & Beyond by remixing their track “You Got to Go.” In 2012, at the age of 25 Seven Lions released his debut EP Days to Come which made it to Vibe’s Top Electronic Albums list of 2012 and got him a regular spot on BBC Radio 1. Two years later, his EP Worlds Apart got to number two on the Billboard Top Dance/Electronic Albums Chart while also entering the Billboard 200. In 2017, his EP Creation became his first to be number one on the Billboard Dance/Electronic Albums Chart. The next year, Seven Lions launched his own label titled Ophelia. He continued to release chart-topping singles and EPs, often with collaborations with artists including Wooli, SLANDER, Dabin, and Noah Kahan. It wasn’t until 2022 that he released his first album Beyond the Veil.",
@@ -605,7 +759,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 55,
+    "AOTD #": 70,
     "Artist": "Half Moon Run",
     "Scheduled": "Saturday",
     "Description": "Half Moon Run is an indie rock outfit from Montreal comprised of four multi-instrumentalists. In 2012, they released their gold-selling debut album Dark Eyes which peaked at number eight on the Canadian pop chart. The band’s followup album, 2015’s Sun Leads Me On, peaked at number four and went platinum. Half Moon Run toured on these successful releases, and in 2019 released the album A Blemish in the Great Night which won Adult Alternative Album of the Year at the 202 Juno Awards. The band became a trio soon after and released their next album Salt in 2023",
@@ -616,7 +770,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 56,
+    "AOTD #": 71,
     "Artist": "Trousdale",
     "Scheduled": "Saturday",
     "Description": "Trousdale is a Los Angeles-based indie folk outfit that formed out of the University of Southern California’s Popular Music Program. Trousdale started creating music in 2014 but didn’t release a debut release until years later. The all-female band released their debut EP Look Around in 2021. Their sophomore EP What Happiness was released the same year with critical acclaim. In 2022 through 2023, Trousdale toured across Europe and the U.S. The band supported Cory Wong on his headlining tour in 2023 before releasing their debut album Out Of My Mind later in the year.",
@@ -627,7 +781,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 57,
+    "AOTD #": 72,
     "Artist": "Ryan Beatty",
     "Scheduled": "Saturday",
     "Description": "Ryan Beatty is a singer/songwriter who blends R&B into his music production. He was born in Clovis, California in 1995 as the fifth of six children. He found an interest in music in his teens, taking influences from Stevie Wonder, Billy Joel, and John Mayer. In 2009, Ryan started making videos of himself performing songs and posting them on his sister’s YouTube channel. His videos were attracting enough viewers to push him to make his own YouTube channel in 2011 where he soon garnered two millions followers. The next year he released his debut EP Because of You which reached number 94 on the U.S. album chart. One of Ryan’s singles “Every Little Thing” was covered by Justin Bieber. Another single off the EP “Hey L.A.” was used in a corporate public service announcement about not texting while driving. In 2012, Ryan started doing live shows and toured with Cody Simpson the following year. The next year he released his EP Ryan Beatty which hit number 11 on Billboard’s Heatseekers Albums Chart. In the following few years, he did a headline tour and played festivals including Lollapalooza and the Common Ground Music Festival. In 2017, Ryan could be heard singing backup on BROCKHAMPTON’s SATURATION II and SATURATION III albums. He did some more single releases and features before releasing his 2018 debut album Boy in Jeans which got him a record deal with Benny Blanco’s Mad Love Records. The next year Ryan collaborated with Kevin Abstract, BROCKHAMPTON, and Tyler, The Creator who he helped with creating “I Think” from the Grammy album IGOR. His next album Dreaming of David arrived in 2020 followed by a hiatus from all social media. Ryan came back in March of 2023 with his album Calico.",
@@ -638,7 +792,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 58,
+    "AOTD #": 73,
     "Artist": "Josiah & the Bonnevilles",
     "Scheduled": "Saturday",
     "Description": "Josiah Leming started as a solo artist who is from Morristown, Tennessee. At the age of 17, he dropped out of high school to play shows across the U.S. while living out of his car. He moved to Atlanta soon after to audition on American Idol and became a contestant in 2008. This got him a record deal with Warner Brothers that same year as a solo artist. In his mid-20s, he formed Josiah & the Bonnevilles who landed a residency gig in Los Angeles that helped them develop their sound and craft their first release. The band got a deal with Vagrant Records who released their first EP Cold Blood in 2016. Two years later they released their debut album On Trial. Josiah & the Bonnevilles kept a steady release schedule including covers such as George Strait’s “Amarillo by Morning” and Taylor Swift’s “Anti-Hero.”",
@@ -649,7 +803,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 59,
+    "AOTD #": 74,
     "Artist": "The Maine",
     "Scheduled": "Saturday",
     "Description": "The Maine is an emo band that formed in Tempe, Arizona in 2007 as a high school band. They turned their 90s radio rock influences into their own pop-punk sound that got them signed to Fearless Records immediately. The label released their debut EP The Way We Talk in 2007. The next year, The Maine performed at the iconic Vans Warped Tour and released their debut album Can’t Stop Won’t Stop which peaked at number 40 on the Billboard charts and got the band a record deal with Warner Bros. in 2009. Tha band released their next album in 2010 titled Black & White which received Album of the Year from Alternative Press. The Maine did their first headlining tour supporting this album. The band then left Warner Bros. to become an independent band. Since then the band has kept on the Billboard charts with releases, including their 2013 album Forever Halloween which debuted in the Billboard Top 40 and their 2015 album American Candy which debuted in the Top Ten of the Billboard Independent, Alternative, and Rock Charts. Their most recent release is their ninth self-titled album of 2023.",
@@ -660,7 +814,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 60,
+    "AOTD #": 75,
     "Artist": "Tanner Usrey",
     "Scheduled": "Saturday",
     "Description": "Tanner Usrey is an Americana singer-songwriter from Prosper, Texas. He grew up playing guitar at a young age, taking inspiration from artists including George Strait, Tomy Petty, and his favorite band Whiskey Myers. Tanner cut his teeth at any gig he could find before releasing the Medicine Man EP in 2019 and the SÕL Sessions EP in 2021. These releases gained tens of millions of streams that were reflected in many packed shows all over the world. Tanner even got song placements in shows including Yellowstone and Fire Country. He looks forward to sharing his talents at ‘Roo 2024! Make sure you add him to your schedule for the weekend.",
@@ -671,7 +825,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 61,
+    "AOTD #": 76,
+    "Artist": "Infinity Song",
+    "Scheduled": "Saturday",
+    "Description": "Infinity Song is a family band known for their soulful harmonies and uplifting music. Comprised of siblings from the Boyd family, the band blends elements of soul, R&B, and pop to create a sound that is both contemporary and timeless. Their debut album, \"Mad Love,\" features tracks that highlight their vocal prowess and tight musical arrangements. Infinity Song’s performances are filled with joy and positivity, making them a favorite among fans. Their ability to spread love and unity through their music has earned them critical acclaim and a growing fanbase. Infinity Song continues to inspire listeners with their soulful melodies and heartfelt lyrics.",
+    "Genres": "Soul, R&B, Pop",
+    "Stage": "Who Stage",
+    "StartTime": "3:00 PM",
+    "EndTime": "3:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 77,
     "Artist": "d4vd",
     "Scheduled": "Saturday",
     "Description": "d4vd, aka David Burke, is an indie artist from Queens, New York who got his start recording viral songs on just his iPhone. He was born on March 28th, 2005 putting him squarely in Gen Z territory. He started releasing music on streaming platforms in 2021 including his mixtape The Hoodstar Diary. The next year he released two singles, “Romantic Homicide” and “Here With Me,” with the first single debuting at number 77 on the Billboard Hot 100. Both of these singles have made their way through the apps, especially on TikTok where “Here With Me” inspired a massive trend. d4vd hasn’t released a full album yet but has amassed nearly 25 million followers on Spotify.",
@@ -682,7 +847,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 62,
+    "AOTD #": 78,
     "Artist": "Lovra",
     "Scheduled": "Saturday",
     "Description": "LOVRA, aka Laura Lungen, is a tech-house DJ born and raised in Limburg, Germany. She discovered her love for music at an early age. Although she went on to study Communication Design at the Academy of Visual Arts in Frankfurt, LOVRA’s passion for music continued. She moved to Berlin to pursue a career in music as the city is an epicenter of artistic and creative freedom. She developed a sound that blends retro sounds from the 80s and 90s with modern melodies to craft house tunes. LOVRA soon went on to play at major events including Tomorrowland, Melt!, and Helene Beach. She even had a residency at David Guetta’s BIG party in Ibiza where she played 17 shows with David at Ushuaia. These high-profile gigs have made her a known name in clubs around the world, from Singapore to Dubai to London.",
@@ -693,7 +858,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 63,
+    "AOTD #": 79,
+    "Artist": "Jobi Riccio",
+    "Scheduled": "Saturday",
+    "Description": "Jobi Riccio is an Americana artist whose music combines traditional folk elements with contemporary storytelling. Originally from the Rocky Mountains, Jobi’s songs are inspired by the landscapes and stories of the American West. Her debut album, \"Whispering Pines,\" features tracks that highlight her lyrical depth and acoustic guitar skills. Jobi’s warm voice and authentic sound have made her a rising star in the Americana music scene. Her ability to convey deep emotion through her music has earned her critical acclaim and a growing fanbase. Jobi Riccio continues to captivate listeners with her heartfelt songs and powerful performances.",
+    "Genres": "Americana, Folk",
+    "Stage": "Who Stage",
+    "StartTime": "4:00 PM",
+    "EndTime": "4:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 80,
     "Artist": "The Teskey Brothers",
     "Scheduled": "Saturday",
     "Description": "The Teskey Brothers are Australian siblings Josh Teskey on guitar/vocals and Sam Teskey on lead guitar. The pair performed as a duo by busking in Melbourne while teenagers. In 2008, they added a bassist and drummer to their lineup to form the full band. The Teskey Brothers built their following through pub gigs and gained experience by serving as the backing group for singer Ella Thompson. In 2017, the band signed with Glassnote Records and issued their debut album Half Mile Harvest the same year. The album reached number 18 on Australia’s ARIA chart. In 2019, the Teskey Brothers released their second album Run Home Slow which peaked at number two in Australia and won three ARIA Music Awards. The next year the band topped the Australian charts with their album Live at the Forum which won an additional ARIA Music Award. In 2022, the bassist and drummer left the band, leaving the original two siblings to continue the Teskey Brothers as a duo. The next year they released their third album The Winding Way.",
@@ -704,7 +880,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 64,
+    "AOTD #": 81,
     "Artist": "Ethel Cain",
     "Scheduled": "Saturday",
     "Description": "Cain was born in Tallahassee, Florida, to devout Southern Baptists and spent her formative years singing in the church choir and playing classical piano. She found early inspiration from Florence and the Machine and wrote her first full length album at 15. Cain released three EPs including “Inbred” before her debut album, “Preacher’s Daughter,” which she released through her own label, Daughters of Cain. Cain’s unique style blends influences of alternative, gospel, country and pop among others for a sound that’s a perfect undercurrent to her hauntingly delicate vocals and striking lyrics. You’ll likely know her from “American Teenager” and “Crush” the former which has been mixed with Cher’s iconic “Believe” for a trippy new sound. Ethel Cain also proves you can take the girl out of the country. She walked the runway of last year’s New York Fashion Week and Paris Fashion Week events and has modeled for brands like Miu Miu and Givenchy.",
@@ -715,7 +891,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 65,
+    "AOTD #": 82,
     "Artist": "Bakar",
     "Scheduled": "Saturday",
     "Description": "Bakar is an indie singer/producer from North London. In 2015, he started making his own tracks out of chopped-up King Krule samples that were uploaded online anonymously. In 2017, he started releasing singles under his own name including “Big Dreams” and “Something I Said.” The next year he released his debut full-length titled Badkid which got endorsements from artists including Skepta and Elton John. Bakar has since shifted around his sound in each of his releases, like on his EP Will You Be My Yellow? which has six songs that vary in style and genre.",
@@ -726,7 +902,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 66,
+    "AOTD #": 83,
     "Artist": "Vandelux",
     "Scheduled": "Saturday",
     "Description": "Vandelux, also known as Evan White, is a multi-instrumentalist and vocalist from Vancouver, BC who is now located in San Francisco. His moniker comes from a composition of where he has lived, including Vancouver, Deland, and Luxembourg. Vandelux has built a sound that takes from a global perspective, embracing both nostalgic and contemporary electronic production techniques. In 2021, he released his Billboard-charting EP Dream State which was followed by his debut album When The Light Breaks in September of 2023. He is a true rising talent in the electronic scene, with this year’s Bonnaroo being one of his first major debuts as an artist. We’re looking forward to the set!",
@@ -737,7 +913,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 67,
+    "AOTD #": 84,
+    "Artist": "Cale Tyson",
+    "Scheduled": "Saturday",
+    "Description": "Cale Tyson is a country artist known for his classic sound and heartfelt lyrics. With influences ranging from traditional country to modern Americana, Cale’s music resonates with fans of all ages. His debut album, \"Careless Soul,\" received critical acclaim for its honest storytelling and soulful melodies. Cale’s live performances are filled with emotion and authenticity, making him a must-see artist in the country music scene. His ability to connect with audiences through his genuine lyrics and powerful voice has earned him a dedicated following. Cale Tyson continues to enchant listeners with his timeless sound and compelling storytelling.",
+    "Genres": "Country, Americana",
+    "Stage": "Who Stage",
+    "StartTime": "5:00 PM",
+    "EndTime": "5:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 85,
     "Artist": "Brittany Howard",
     "Scheduled": "Saturday",
     "Description": "Brittany Howard is an indie artist who was the frontwoman of the Alabama Shakes. She is a daughter of a black father and white mother who was raised in Athens, Alabama. Brittany’s older sister died in her early teens, marking her childhood with a traumatic experience she still lives with today. She found peace in poetry and playing guitar. Brittany formed the band the Shakes while in high school which morphed into the Alabama Shakes when the band flushed out their full lineup. In 2012, the band released their debut album Boys & Girls via ATO Records which received positive reviews and Grammy nominations. Three years later the band released the album Sound & Color which received Grammy Awards. Brittany’s profile as a budding music celebrity rose with the popularity of her band. She was a guest for Paul McCartney’s heading spot at 2015’s Lollapalooza. She also played in a few side projects including Thunderbitch and Bermuda Triangle. In 2019, Brittany released her debut solo album Jaime which was created from autobiographical material from a memoir she started writing. Her most recent album is 2024’s What Now.",
@@ -748,7 +935,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 68,
+    "AOTD #": 86,
     "Artist": "Teezo Touchdown",
     "Scheduled": "Saturday",
     "Description": "Teezo Touchdown, aka Aaron Thomas, is an indie R&B from Beaumont, Texas. His father was a practicing DJ who exposed Teezo to a wide range of sounds at an early age, inspiring Teezo to DJ himself while in high school. At that time, he started uploading music to YouTube under various names including AyeTee, TeeKnow, and Teezo Suave. He also produced songs for rappers in his city. In 2016, he changed his artist name to Teezo Touchdown. Three years later, he released his breakthrough hit “100 Drums” which used Panic! At The Disco’s “I Write Sins, Not Tragedies.” This got him collaborating with the likes of Tyler the Creater and Kenny Beats, and Teezo was a support act on the 2022 Call Me If You Get Lost Tour with Tyler the Creator and Vince Staples. The next year Teezo was featured on albums by Lil Yachty and Travis Scott while also releasing his debut album How Do You Sleep at Night? which featured artists including Janelle Monáe, Fousheé, and Isaiah Rusk.",
@@ -759,7 +946,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 69,
+    "AOTD #": 87,
+    "Artist": "Manwolves",
+    "Scheduled": "Saturday",
+    "Description": "Manwolves is a genre-blending band known for their eclectic sound and high-energy performances. Formed in Evanston, Illinois, the band combines elements of alternative rock, hip-hop, and jazz fusion to create a unique musical experience. Their debut album, \"A Safety Meeting,\" features tracks that highlight their musical versatility and lyrical depth. Manwolves’ innovative approach to music has earned them critical acclaim and a dedicated following. The band’s ability to seamlessly blend different genres and create a cohesive sound sets them apart in the music world. Manwolves continue to captivate audiences with their dynamic performances and genre-defying music.",
+    "Genres": "Alternative, Hip-Hop, Jazz Fusion",
+    "Stage": "Who Stage",
+    "StartTime": "6:00 PM",
+    "EndTime": "6:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 88,
     "Artist": "Neil Frances",
     "Scheduled": "Saturday",
     "Description": "Neil Frances is a Los Angeles-based indie pop duo comprised of Jordan Feller of Australia and Marc Gilfry of Southern California. Their debut EP Took a While arrived in 2018 via Nettwerk. They toured on this release alongside Jungle, Unknown Mortal Orchestra, and Poolside. Neil Frances didn’t release a full length until 2022 titled There Is No Neil Frances featuring singles “It’s Like a Dream” and “Finding Rhythm.” The next year they released their latest album It’s All a Bit Fuzzy. Both albums have accompanying remix albums.",
@@ -770,7 +968,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 70,
+    "AOTD #": 89,
     "Artist": "Jon Batiste",
     "Scheduled": "Saturday",
     "Description": "Jon Batiste is a Grammy and Oscar award-winning jazz keyboardist, singer, and composer. He was born in 1986 in Metairie, Louisiana and grew up in a musical family. His uncles are the New Orleans legends Lionel Batiste and Harold Batiste. Jon graduated from the New Orleans Center for Creative Arts in 2004 alongside Trombone Shorty. The next year, Jon released his debut album Times in New Orleans and went to study at Juilliard in New York. During this time he started performing as a trio with bassist Phil Kuehn and drummer Joe Saylor. This trio was featured on his 2005 album Live in New York: At the Rubin Museum of Art. Jon added saxophonist Eddie Barbash to the group, birthing the ensemble Stay Human. This new group played impromptu outdoor concerts where they earned acclaim for their lively performances. In 2011, they released their debut EP followed by their 2013 debut album Social Music which topped the Billboard Jazz Chart. [PAGE_BREAK] Later that year, Jon joined Red Hot Chili Peppers drummer Chad Smith and bassist Bill Laswell to record a film soundtrack for a film that never materialized. The soundtrack was released in 2014 as The Process. The next year, Stay Human became the house band for the CBS talk show The Late Show with Stephen Colbert. In 2015, the band released the Late Show EP which featured recordings from their house band performances and debuted at number three on the Jazz Albums Chart. In 2018, Jon released the album Hollywood Africans which peaked at number two on the Billboard Jazz Albums Chart and got a Grammy nomination for his rendition of “Saint James Infirmary.” His next Grammy nomination was for 2020’s Meditations Meditations which featured Cory Wong. Later that year Jon contributed songs to the Disney-Pixar film Soul and released a companion album Music from and Inspired by Soul. The movie Soul won a Golden Globe and Oscar for Best Original Score. In 2021, Jon released the album We Are featuring guests including Mavis Staples and Trombone Shorty. The album peaked at 25 on the Billboard 200, received 11 Grammy nominations, and took home the Grammy for Album of the Year. In total, he won five Grammy awards. In 2022, Jon left The Late Show to focus on his own music, which lead to the creation of his seventh album World Music Radio featuring artists including Jon Bellion, Lana Del Rey, and Kenny G. This album received four Grammy nominations including Album of the Year.",
@@ -781,7 +979,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 71,
+    "AOTD #": 90,
     "Artist": "Sean Paul",
     "Scheduled": "Saturday",
     "Description": "Sean Paul, aka Sean Paul Francis Henriques, is a Jamaican dancehall vocalist who became a global music icon in the early 2000s. He was born on January 9th, 1973 in St. Andrew, Jamaica. His mother, Frances Henriques, was a renowned painter. Sean Paul was a skilled athlete who took to swimming and water polo. He played for the Jamaican national water polo team. Instead of choosing a normal career path post graduating, Sean Paul became a dancehall music DJ as this genre of music was his first love. Throughout the 1990s he built a following in Jamaica that eventually spilled over into the U.S. in 1999. He was first commissioned to work on the track “Here Comes the Boom” for rapper DMX the same year while also making it to the Top Ten on the Billboard rap charts with “Hot Gal Today.” His first album Stage One came out in 2000 but it wasn’t until his second album, 2022’s Dutty Rock, that he saw critical success. The album won a Grammy, featured the track “Baby Boy” with Beyoncé, and quickly went multi-platinum. Sean Paul’s next album The Trinity came in 2005 and peaked at number seven of the Billboard 200. For the next ten years, he kept in the mainstream for reggae, and in 2016 made a hurt resurgence with appearances on Sia’s “Cheap Thrills”, Little Mix’s “Hair”, Clean Bandit’s “Rockabye”, and Dua Lipa’s “No Lie.” Since then, he has worked with David Guetta, Ellie Goulding, Migos, and even Idris Elba on the 2019 track “Boasty.” His most recent album is 2022’s Scorcha.",
@@ -792,7 +990,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 72,
+    "AOTD #": 91,
+    "Artist": "Paul McDonald & The Mourning Doves",
+    "Scheduled": "Saturday",
+    "Description": "Paul McDonald & The Mourning Doves is a rock band known for their powerful sound and dynamic performances. Led by singer-songwriter Paul McDonald, the band combines elements of rock, Americana, and folk to create a unique musical experience. Their debut album, \"Bright Lights,\" features tracks that showcase their lyrical depth and musical prowess. With their energetic live shows and captivating music, Paul McDonald & The Mourning Doves are a standout act in the rock music scene. The band’s ability to blend different genres and create a cohesive sound has earned them critical acclaim and a growing fanbase. Paul McDonald & The Mourning Doves continue to enchant audiences with their powerful performances and heartfelt music.",
+    "Genres": "Rock, Americana",
+    "Stage": "Who Stage",
+    "StartTime": "7:15 PM",
+    "EndTime": "8:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 92,
     "Artist": "Kasablanca",
     "Scheduled": "Saturday",
     "Description": "Kasablanca is a DJ duo that appeared in 2020 as a signed artist with Electronic Elements. The duo has kept their background and identity relatively secret. There are rumblings that it is a project backed by well-known producers and others involved in the Canadian underground EDM scene. Kasablanca self-describes their music as an “audio-visual experience” that blends the fundamentals of house and techno. Their music is a mix of Rufus De Soul and Justice. So far they have only released singles and EPs, but their music has already gained the support of main-stage DJs.",
@@ -803,7 +1012,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 73,
+    "AOTD #": 93,
     "Artist": "Gregory Alan Isakov",
     "Scheduled": "Saturday",
     "Description": "Gregory Alan Isakov is an indie folk singer-songwriter born in South Africa but raised in Philadelphia. He began touring with a band at the age of 16 before he moved to Colorado to pursue a solo career. He released his debut album in 2003 titled Rust Colored Stones via his independent label Suitcase Town Music. He has since released all of his music under his own label. In 2007, he found commercial success with his album That Sea, The Gambler. Gregory started getting placements in television including the shows Girls, Rectify, Californication, and The Blacklist. In 2016, he released an album recorded with the Colorado Symphony which was a rework of older songs with a full orchestra. In addition to his music, Gregory sells vegetable seeds and grows his own market crops on his three-acre farm. In 2018, he received a Grammy nomination for Best Folk Album. After a five-year hiatus, he released his latest album Appaloosa Bones in 2023.",
@@ -814,7 +1023,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 74,
+    "AOTD #": 94,
     "Artist": "Reneé Rapp",
     "Scheduled": "Saturday",
     "Description": "Renee Rapp is an American actress and singer, best known for her dynamic performances on stage and screen. Born on January 10, 2000, in Huntersville, North Carolina, Renee's passion for the arts was evident from a young age. She gained significant recognition for her portrayal of Regina George in the Broadway production of \"Mean Girls,\" a role that showcased her powerful vocal abilities and strong stage presence. Her talents extend beyond the theater, as she has also made a mark in television and music, capturing audiences with her versatile performances and emotive singing. Renee's journey in the arts began in her local community theater before she attended the Northwest School of the Arts, where she honed her skills and won numerous awards for her performances. Her breakthrough came when she won the prestigious Jimmy Award for Best Performance by an Actress in 2018, which catapulted her into the national spotlight. With a growing fanbase and a bright future ahead, Renee Rapp continues to inspire and entertain with her exceptional talent and dedication to her craft.",
@@ -825,10 +1034,10 @@
     "Favorited": false
   },
   {
-    "AOTD #": 75,
+    "AOTD #": 95,
     "Artist": "Dashboard Confessional Emo Superjam",
     "Scheduled": "Saturday",
-    "Description": "This year's Bonnaroo Super Jam promises to bring a nostalgic wave to fans of the emo genre with a special Emo Super Jam hosted by Dashboard Confessional. Known for their heartfelt lyrics and acoustic-driven sound, Dashboard Confessional, fronted by Chris Carrabba, is set to curate an unforgettable musical event like no other. The Super Jam is expected to feature an array of iconic hits with unique collaborations that will captivate the audience. The anticipated setlist will likely include performances of timeless anthems from the early 2000s, alongside surprise guest appearances from prominent artists on the Bonnaroo lineup. This year's Super Jam aims to celebrate the emotional intensity and raw authenticity of emo music, highlighting its enduring influence on contemporary artists and fans alike.",
+    "Description": "This year's Bonnaroo Super Jam promises to bring a nostalgic wave to fans of the emo genre with a special Emo Super Jam hosted by Dashboard Confessional. Known for their heartfelt lyrics and acoustic-driven sound, Dashboard Confessional, fronted by Chris Carrabba, is set to curate an unforgettable musical event like no other. The Super Jam is expected to feature an array of iconic hits with unique collaborations that will captivate the audience. The anticipated setlist will likely include performances of timeless anthems from the early 2000s, alongside surprise guest appearances from prominent artists on the Bonnaroo lineup. This year's Super Jam aims to celebrate the emotional intensity and raw authenticity of emo music, highlighting its enduring influence on contemporary artists and fans alike. This year's Super Jam is confirmed to include Andrew McMahon, Anthony Green, The Beaches, Derek Sanders of \"Mayday Parade\", Geoff Rickly from \"Thursday\", Ian Grushka from \"New Found Glory\", John O'Callaghan of \"The Maine\", Medium Build, Mike Kensella of \"American Football\", Tim Kasher of \"Cursive\", Trousdale, and Yvette Young of \"Covet\"",
     "Genres": "Emo, Emo Rock, Alternative Rock, Rock, Jam Band",
     "Stage": "This Tent",
     "StartTime": "8:15 PM",
@@ -836,7 +1045,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 76,
+    "AOTD #": 96,
     "Artist": "Cage the Elephant",
     "Scheduled": "Saturday",
     "Description": "Cage the Elephant is an American rock band formed in 2006 in Bowling Green, Kentucky. The group consists of brothers Matt and Brad Shultz, Jared Champion, Daniel Tichenor, and Nick Bockrath. Known for their eclectic sound blending elements of rock, punk, blues, and alternative music, Cage the Elephant quickly rose to prominence with their energetic live performances and dynamic recordings. Their self-titled debut album, released in 2008, featured the hit single \"Ain't No Rest for the Wicked,\" which garnered significant radio play and established them as a force in the modern rock scene. Over the years, Cage the Elephant has released several critically acclaimed albums, including \"Thank You, Happy Birthday\" (2011), \"Melophobia\" (2013), \"Tell Me I'm Pretty\" (2015), and \"Social Cues\" (2019). The band has received numerous awards and nominations, including a Grammy Award for Best Rock Album. Known for their raw, authentic sound and introspective lyrics, Cage the Elephant continues to captivate audiences worldwide, cementing their place as one of the most influential rock bands of their generation.",
@@ -847,7 +1056,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 77,
+    "AOTD #": 97,
+    "Artist": "Jive Talk",
+    "Scheduled": "Saturday",
+    "Description": "Jive Talk is a funk band known for their infectious grooves and high-energy performances. Based in Atlanta, Georgia, the band combines elements of funk, soul, and disco to create a sound that is both nostalgic and fresh. Their debut album, \"Groove Machine,\" features tracks that showcase their tight rhythms and funky basslines. Jive Talk’s music is guaranteed to get audiences dancing and having a great time. The band’s ability to create a lively and engaging atmosphere has earned them a dedicated fanbase and critical acclaim. Jive Talk continues to captivate listeners with their dynamic performances and irresistible grooves.",
+    "Genres": "Funk, Soul, Disco",
+    "Stage": "Who Stage",
+    "StartTime": "8:30 PM",
+    "EndTime": "9:15 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 98,
     "Artist": "Whyte Fang",
     "Scheduled": "Saturday",
     "Description": "Whyte Fang, aka Alison Wonderland, aka Aussie artist, Alexandra Sholler. Die-hards will know that Sholler began making music under the Whyte Fang persona before the days of Alison Wonderland and wider commercial success. She describes this experimental project as “darker and more industrial,” and experienced a creative boon throughout her pregnancy in 2023. One of her many claims to fame is playing sets at major events while eight- and nine-months-pregnant before giving birth to her little one, Max. Sholler shifted more focus to Whyte Fang after releasing the Alison album, Loner, in 2022. Whyte Fang’s latest work, Genesis, opens with a disembodied computer voice sharing, “I’m going to be taking you away from here for a while…” before transporting listeners to a journey accompanied by an array of vocal collaborators. We can’t wait to take a trip with Whyte Fang on the Farm!",
@@ -858,7 +1078,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 78,
+    "AOTD #": 99,
     "Artist": "The Garden",
     "Scheduled": "Saturday",
     "Description": "The Garden is a punk bass and drums duo from Orange, California comprised of twin brothers Fletch and Wyatt Shears. They started the band at the age of 19 after a brief stint modeling for Yves Saint Laurent. Fletcher took on the drums while also habitually cross-dressing. Meanwhile, his brother Wyatt took on the bass guitar and vocals instead of the traditional guitar. Together as The Garden, they released their debut cassette EP titled Everything Is Perfect in 2012 followed by the EP The Life and Times of a Paperclip, both released via Burger Records. While releasing these EPs, Fletcher began a solo project doing electronic material under the name Puzzle while Wyatt did a synth/bass project called Enjoy. In 2014, The Garden toured throughout Tokyo, the U.S., and Europe before releasing their 17-track debut album Haha the following year. The album’s production was split between Burger and Epitaph Records. In 2018, they released their next album Mirror Might Steal Your Charm which featured a more guitar-forward sound. The next year they worked with Mac DeMarco on their single “Thy Mission.” The Garden’s latest album is 2022’s HORSESHIT ON ROUTE 66.",
@@ -869,7 +1089,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 79,
+    "AOTD #": 100,
     "Artist": "Cigarettes After Sex",
     "Scheduled": "Saturday",
     "Description": "Cigarettes After Sex is an American ambient pop band known for their ethereal, dreamlike soundscapes and introspective lyrics. Formed in 2008 in El Paso, Texas, the band was founded by lead vocalist and songwriter Greg Gonzalez. Their music is characterized by its slow, cinematic feel and lush, atmospheric production, which often explores themes of love, longing, and heartbreak. Cigarettes After Sex gained significant attention with their 2012 EP \"I.\", which included the viral hit \"Nothing's Gonna Hurt You Baby.\" The band's self-titled debut album, released in 2017, further solidified their unique sound and garnered widespread critical acclaim. The minimalist yet emotionally potent approach to music has earned them a dedicated global following. With a second album, \"Cry,\" released in 2019, Cigarettes After Sex continues to captivate audiences with their haunting melodies and Gonzalez's distinctive, androgynous vocals, making them a notable presence in the contemporary music scene.",
@@ -880,7 +1100,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 80,
+    "AOTD #": 101,
+    "Artist": "Boot Scootin’ Boogie Nights",
+    "Scheduled": "Saturday",
+    "Description": "Boot Scootin’ Boogie Nights is a country band that brings the fun of line dancing to life. With a repertoire of classic country hits and modern favorites, the band creates a lively atmosphere that gets everyone on the dance floor. Their performances are a celebration of country music and dance, making Boot Scootin’ Boogie Nights a hit at festivals and events. The band’s ability to engage audiences with their energetic performances and catchy tunes has earned them a dedicated following. Boot Scootin’ Boogie Nights continues to spread joy and fun through their music, making every performance a memorable experience for fans of all ages.",
+    "Genres": "Country, Line Dance",
+    "Stage": "Who Stage",
+    "StartTime": "9:45 PM",
+    "EndTime": "10:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 102,
     "Artist": "Knock2",
     "Scheduled": "Saturday",
     "Description": "Knock2, aka Richard Kahonethap, is a bass house DJ who came into the EDM scene in 2022. The previous year he released his now iconic bass house anthem “dashstar*” without any playlisting. This single exploded into millions of plays when major players including DJ Snake, Tiesto, and Joyryde got it to the 3rd slot on the 2023 EDCLV most-played list. Knock2 kept releasing other singles that garnered him millions of plays including “gettin’ hott” and PARANOiD,” which gave him a reputation for crafting a classic sound that EDM fans craved. In 2022, Knock2 debuted his headline show experience “Room202” at sold-out Los Angeles shows. These shows were conceptual warehouse sets that focused on having massive party energy instead of high production as seen in most EDM sets today. When Knock2 took his “Room202” show to San Francisco and Salt Lake City, the shows sold out in minutes. He then went to Japan to play three sold-out shows. After releasing his 2023 EP “Room 202,” Knock2 took “Room202” across the U.S. for his first debut headline tour, selling out all nine shows instantly. This led to venue upgrades and an additional four dates added to the tour. In 2023, he made his festival debut at Coachella and HITC NYC. Later that year, he made his first headline slot at Imagine Music Festival doing a b2b with the one and only Dillon Francis. His debut album NOLIMIT is slated to be released in 2024.",
@@ -891,7 +1122,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 81,
+    "AOTD #": 103,
     "Artist": "Red Hot Chili Peppers",
     "Scheduled": "Saturday",
     "Description": "The Red Hot Chili Peppers are an iconic American rock band formed in Los Angeles, California, in 1983. Known for their unique blend of rock, funk, punk, and psychedelic music, the band has enjoyed decades of success and influence in the music industry. The founding members, Anthony Kiedis (vocals), Flea (bass), Hillel Slovak (guitar), and Jack Irons (drums), brought a raw energy and innovative sound to the scene, quickly earning a dedicated fanbase. Despite facing early challenges, including the tragic death of Slovak in 1988, the band persisted and evolved, with guitarist John Frusciante and drummer Chad Smith joining the lineup and contributing to some of their most acclaimed works. The Red Hot Chili Peppers gained widespread recognition with the release of their fifth album, \"Blood Sugar Sex Magik,\" in 1991, which included hits like \"Give It Away\" and \"Under the Bridge.\" The album showcased their dynamic range and lyrical depth, solidifying their place in rock history. Over the years, they continued to release successful albums, such as \"Californication\" (1999), \"By the Way\" (2002), and \"Stadium Arcadium\" (2006). Known for their electrifying live performances and Kiedis's charismatic stage presence, the band has maintained a loyal following and achieved numerous awards, including multiple Grammy Awards. With their enduring appeal and ability to innovate while staying true to their roots, the Red Hot Chili Peppers remain one of the most influential bands in modern rock music.",
@@ -902,7 +1133,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 82,
+    "AOTD #": 104,
     "Artist": "Melanie Martinez",
     "Scheduled": "Saturday",
     "Description": "Melanie Martinez is a pop sensation from Astoria, Queens, New York. She was born in 1995 and grew up on Long Island. Growing up with Dominican and Puerto Rican heritage, she struggled to express herself as a child because of her family’s traditional values. Malanie taught herself how to play guitar and used songwriting as an outlet in her teens. In 2012, she won a spot on NBC’s The Voice with her cover of “Toxic” by Britney Spears. She made it to week five before getting eliminated by audience vote. Following this brief time in the spotlight, Melanie started working on solo material, and in 2014 she released the EP Dollhouse via Atlantic Records. The next year she released her debut album Cry Baby, featuring her huge breakout single “Pity Party.” The record reached number six on the Billboard 200 and made it to number one on Billboard’s Top Alternative Albums Chart. Melanie’s next album arrived in 2019 titled K-12 which included a full-length movie. The album continued the adventures of the character Cry Baby who was created in her debut album. The album made it to number one on the Top Alternative Albums Chart and hit number three on the Billboard 200. Melanie’s next album PORTALS was released in 2023 featuring the single “Death.”",
@@ -913,7 +1144,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 83,
+    "AOTD #": 105,
     "Artist": "Parcels",
     "Scheduled": "Saturday",
     "Description": "Parcels is an Australian funky, indie rock quintet. The band formed in 2014 after each member played in multiple other projects ranging from folk to metal. They relocated to Berlin after recording their first EP at the end of high school. After moving, Parcels caught the attention of the trendy label Kitsuné who signed the band and released a handful of singles and EPs. In 2017, the band collaborated with Daft Punk who produced their breakout single “Overnight.” The next year they released their self-titled debut album which made it to the top 100 on the ARIA charts. Their next album arrived in 2021 titled Day/Night.  In addition to these two albums, Parcels has released two live albums titled Live Volume 1 and Live Volume 2.",
@@ -924,7 +1155,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 84,
+    "AOTD #": 106,
     "Artist": "Idles",
     "Scheduled": "Saturday",
     "Description": "Idles is a self-proclaimed “angry” punk band from Bristol, England that formed in 2009. The band established a club night in Bristol they called Batcave that built them a strong local following. In 2012, Idles released their debut EP Welcome which earned positive press. Their next EP Meat didn’t come until 2015 as the band was self-financing their own recordings. The following year Idles released their single “Divide & Conquer” which was a critique on budget cuts for the U.K.’s National Health Service. This track became the first track off their debut album Brutalism which was released by Bally Records in 2017. This album was their breakout success with heavy touring following its release. In 2018, Idles started recording their next album which was fueled partly by some personal struggles for their frontman, including the death of his mother who he had been the caretaker for since he was 16 and his expected daughter being stillborn. The album was released in 2018 and titled Joy as an Act of Resistance. The band kept a steady release schedule despite the pandemic and started to collaborate with other artists, including Jehnny Beth of Savages, Warren Ellis of Nick Cave & the Bad Seeds, Sharon Van Etten, Tom Morello, and Metallica. Idels latest release is 2024’s TANGK.",
@@ -935,7 +1166,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 85,
+    "AOTD #": 107,
     "Artist": "Diplo",
     "Scheduled": "Saturday",
     "Description": "Diplo, aka Thomas Wesley Pentz, is a DJ who was born in Tupelo, Mississippi but mainly grew up in South Florida. He worked in his father’s bait shop as a kid while fixating on becoming a paleontologist. He started college in Florida, studying film studies, and finished his undergraduate degree at Temple University in Philly in 2003. Right before he went to Philly, he sent his beats to Big Dada Records who signed Diplo before he finished college. After graduating, he took on various jobs including social worker, after-school mentor, and movie theater employee all while being a gig-by-gig DJ. He was struggling to pay his rent, which drove him to team up with DJ Low Budget to start their own club nights in Philly playing as Hollertronix. It became a hot event that pulled people from all along the East Coast. In 2003, Diplo released his breakout mixtape Never Scared which made it to the top albums list for the New York Times. The next year he released his debut album Florida but didn’t find major success until he branched out into funk carioca, a derivation of Miami bass music inspired by Brazil. In 2005, Diplo started his label Mad Decent Records. Four years later, Major Lazer came about as a project started by Diplo and DJ Switch which was a fictional Jamaican bounty hunter turned DJ. From there, Diplo became what he is today, a superstar DJ sought after as a collaborator, working with artists including Sia, Travis Scott, Lil Yachty, Dua Lipa, and Sturgill Simpson.",
@@ -946,7 +1177,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 86,
+    "AOTD #": 108,
     "Artist": "Pretty Lights",
     "Scheduled": "Saturday",
     "Description": "Pretty Lights is a music project out of Colorado started by Derek Vincent Smith. He started making hip-hop in high school and dropped out of college during his freshman year at the University of Colorado at Boulder to pursue a career in producing music. Derek released his debut album in 2006 titled Taking Up Your Precious Time under the moniker Pretty Lights. He toured on this album supporting STS9, the Disco Biscuits, and Widespread Panic. By 2010, Derek had released two more albums and had toured major festivals including Coachella, Ultra, Movement, and Electric Zoo. The next year he created his Pretty Lights Music imprint to release albums by Michal Menert, Gramatik, and Eliot Lipp. In 2012, Derek started working on Pretty Lights’ fourth album, which featured drummer Adam Deitch, Soulive’s Eric Krasno, the Harlem Gospel Choir, and members of the Preservation Hall Jazz Band and the Treme Brass Band. The idea behind the album was to capture a vintage sound while making it sound like what Pretty Lights had been known to produce. The resulting album, A Color Map of the Sun, was nominated at the 2013 Grammy Awards. The Hidden Shades EP came the following year featuring remixes and B-side tracks.[PAGE_BREAK]Later in 2014, Derek moved to New Orleans to form a band he called Pretty Lights Live. This lineup toured for a few years with some Red Rocks shows included on the tour. Then, Derek fell off the map and became a whisper in the music community. He had to get himself sorted out with rumors of substance abuse being what stole him from the world and his fans. Then, after five years and a global pandemic, Derek rose from the ashes with Pretty Lights Live, featuring Alvin Ford Jr. on drums, Borahm Lee on keys, Michal Menert on guitar, and turntablist Chris Karns. The band toured in 2023 to sold-out venues across the country. Their live show now features drones, Lidar-crafted visuals, and free live streams that are available on YouTube.[PAGE_BREAK]To give a very simplified overview of how their set works, Derek acts as a conductor of sorts for all the other band members. Each member plays their instruments as a jam band and feeds in their audio to Derek. Derek then live mixes these sounds with a custom modular synthesizer to create what comes out of the PA systems at a show. Additionally, Derek will incorporate his own noise into the mix as well. While all this is going on, there are Lidar sensors onstage that are taking live 3-D mappings of the stage and sometimes the crowd and venue. On the screens behind the band, they project these mappings for visuals during the show. Oh, and they have a ton of lasers that light up the sky. And if that wasn’t enough, the rumor for Bonnaroo is that there will be a drone show above Pretty Lights on Thursday.",
@@ -957,18 +1188,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 87,
-    "Artist": "Libianca",
+    "AOTD #": 109,
+    "Artist": "Texas Hill",
     "Scheduled": "Sunday",
-    "Description": "Libianca Kenzonkinboum Fonji was born in Minneapolis in the early 2000s but relocated to Bamenda, Cameroon when she was four. She started writing songs at boarding school as a preteen and sang in choirs and at open mikes. She moved back to the States when she was a teenager. Libianca then competed in the 21st season of NBC’s The Voice in 2021. With Blake Shelton as her coach, she made it to the final 20 before being eliminated. This got her a record deal with 5k Records and Sony. In 2022, she made her major-label debut with “People (Check on Me)” which was inspired by her experiences in dealing with depression and cyclothymia. The track made it to number two on the charts in the U.K., Ireland, New Zealand, and the Netherlands. It also charted in Africa, Asia, and North America where it peaked at number 89 on the U.S. Hot 100. In 2023, Libianca joined Alicia Keys on tour.",
-    "Genres": "R&B, Afrobeats",
-    "Stage": "Which Stage",
-    "StartTime": "1:00 PM",
-    "EndTime": "1:45 PM",
+    "Description": "Texas Hill is a country band that blends the traditional sounds of country music with the grit of Southern rock. Comprised of former reality TV contestants Craig Wayne Boyd, Casey James, and Adam Wakefield, the band has quickly made a name for themselves with their rich harmonies and authentic sound. Their debut album, \"Heaven Down Here,\" features a mix of heartfelt ballads and foot-stomping anthems that showcase their musical prowess. Texas Hill’s live performances are known for their high energy and captivating stage presence. The band’s ability to connect with audiences through their powerful vocals and genuine lyrics has made them a standout act in the country music scene. Texas Hill continues to enchant listeners with their soulful sound and dynamic performances.",
+    "Genres": "Country, Southern Rock",
+    "Stage": "Who Stage",
+    "StartTime": "12:45 PM",
+    "EndTime": "1:30 PM",
     "Favorited": false
   },
   {
-    "AOTD #": 88,
+    "AOTD #": 110,
     "Artist": "S.G. Goodman",
     "Scheduled": "Sunday",
     "Description": "S.G. Goodman is a bluesy Americana artist from Hickman, Kentucky. She was raised as a farmer’s daughter and took voice lessons briefly before rejecting what was considered proper technique. She continued to sing in her town’s church until she went to college in Murray. S.G. Goodman contributed a song to a local benefit album Pine Mountain Music Sessions. Its producer Daniel Martin Moore introduced her music to a Jim Jams from My Morning Jacket. Jim then produced her debut album Old Time Feeling. It was released in 2020 by Verve Forecast. Her next album arrived in 2022 titled Teeth Marks. Around the same time, Tyler Childers covered her song “Space and Time.”",
@@ -979,7 +1210,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 89,
+    "AOTD #": 111,
+    "Artist": "Libianca",
+    "Scheduled": "Sunday",
+    "Description": "Libianca Kenzonkinboum Fonji was born in Minneapolis in the early 2000s but relocated to Bamenda, Cameroon when she was four. She started writing songs at boarding school as a preteen and sang in choirs and at open mikes. She moved back to the States when she was a teenager. Libianca then competed in the 21st season of NBC’s The Voice in 2021. With Blake Shelton as her coach, she made it to the final 20 before being eliminated. This got her a record deal with 5k Records and Sony. In 2022, she made her major-label debut with “People (Check on Me)” which was inspired by her experiences in dealing with depression and cyclothymia. The track made it to number two on the charts in the U.K., Ireland, New Zealand, and the Netherlands. It also charted in Africa, Asia, and North America where it peaked at number 89 on the U.S. Hot 100. In 2023, Libianca joined Alicia Keys on tour.",
+    "Genres": "R&B, Afrobeats",
+    "Stage": "Which Stage",
+    "StartTime": "1:15 PM",
+    "EndTime": "2:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 112,
     "Artist": "Armand Hammer",
     "Scheduled": "Sunday",
     "Description": "Armand Hammer is the art rap duo billy woods and ELUCID. Both artists have been in Armand Hammer while still pursuing their solo careers. In 2012, D.C. rapper billy woods dropped his EP History Will Absolve Me with New York’s ELUCID heavily featured on the album. The synergy between the two led them to form Armand Hammer where they pushed each other to experiment with their craft. In 2013, they dropped their first album Race Music which pushed the boundaries of hip-hop sonics by using off-kilter instrumentals and other odd sounds. The next year they dropped the Furtive Movements EP before going on a three-year hiatus. Upon their return in 2017, Armand Hammer released their second album Rome which took a slightly electronic direction and ended up being a critical success, making a few end-of-year lists. Riding this high, the duo released their next album Paraffin in 2018 which also received much critical claim. Since then, Armand Hammer has kept on a steady release schedule including an album that featured the Alchemist. In 2023, they signed to Fat Possum Records for their 2023 album We Buy Diabetic Test Strips which has features from JEPGMAFIA, El-P, and DJ Haram.",
@@ -990,7 +1232,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 90,
+    "AOTD #": 113,
     "Artist": "Jake Wesley Rogers",
     "Scheduled": "Sunday",
     "Description": "Jake Wesley Rogers is a queer indie pop artist from Ozark, Missouri who mixes comedy bits into his act. He takes influences from Elton John and Florence + the Machine. At the young age of 12, Jake learned to play the piano and sing. In 2012, he made it to the quarter-finals of the seventh season of America’s Got Talent. In these teenage years, he continued his craft of emotive songwriting with a flamboyant visual aesthetic layered with heartfelt stories through a queer lens. His 2019 self-released singles “Little Queen” and “Jacob from the Bible” got him signed to Warner-affiliated Facet Records where he launched his first couple of EPs. From there, Jake kept releasing singles and EPs with his latest 2022 EP Love containing the hits “Lavender Forever” and “Hindsight.”",
@@ -1001,7 +1243,29 @@
     "Favorited": false
   },
   {
-    "AOTD #": 91,
+    "AOTD #": 114,
+    "Artist": "Molly Grace",
+    "Scheduled": "Sunday",
+    "Description": "Molly Grace is an indie pop singer-songwriter known for her ethereal voice and introspective lyrics. Based in Los Angeles, Molly has been captivating audiences with her dreamy sound and poignant songwriting. Her debut EP, \"Fading Lights,\" features songs that explore themes of love, identity, and self-discovery. With her haunting melodies and emotive performances, Molly Grace is quickly becoming a standout artist in the indie pop scene. Her ability to convey deep emotion through her music has earned her a dedicated fanbase and critical acclaim. Molly Grace continues to captivate listeners with her heartfelt songs and powerful voice.",
+    "Genres": "Indie Pop, Singer-Songwriter",
+    "Stage": "Who Stage",
+    "StartTime": "2:15 PM",
+    "EndTime": "3:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 115,
+    "Artist": "The Beaches",
+    "Scheduled": "Sunday",
+    "Description": "The Beaches is a Canadian indie band that formed while the members were in high school. The band was originally called Done with Dolls and got signed by Disney who released their self-titled EP in 2009. This was before the group reached high school. When the members all started high school, they wanted a more mature sound and became the Beaches after a minor lineup change. The Beaches released their debut EP in 2013 followed by their second EP Heights the following year. Their debut album, produced by Metric’s Emily Haines and Jimmy Shaw, titled Late Show came out in 2017. The single “T-Shirt” off the album topped the Canadian Rock charts for nine weeks and helped win Breakthrough Act of the Year at the 2018 Juno Awards. In the following year, the Beaches did a headline tour in Canada, North America, and the U.K. In 2022, they released the double EP compilation album Sisters Not Twins which won the Juno Award for Rock Album of the Year. The next year the band released their true second album Blame My Ex which features the viral TikTok track “Blame Brett.” The album reached number 76 on the Canadian Albums Chart.",
+    "Genres": "Indie Rock, Glam Rock, Garage Pop",
+    "Stage": "This Tent",
+    "StartTime": "2:15 PM",
+    "EndTime": "3:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 116,
     "Artist": "veggi",
     "Scheduled": "Sunday",
     "Description": "veggi is a Los Angeles native DJ that takes his influences from house, hip-hop, and R&B. His career began during the huge rise in TikTok in 2020. His remixes and beats have gotten over 200 million plays, and his fanbase has now hit the 1.5 million mark across all platforms. He shows no signs of stopping now. Using his explosive online career, veggi has since toured with Two Another and Snakehips in addition to doing a headline tour in 2022. Now he has his sights on Bonnaroo on his journey as an up-and-coming EDM artist.",
@@ -1012,29 +1276,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 92,
-    "Artist": "Greensky Bluegrass",
-    "Scheduled": "Sunday",
-    "Description": "Greensky Bluegrass is a bluegrass band from Kalamazoo, Michigan. They formed in 2000 and spent several years gigging around their hometown, playing various open mics and house parties. In 2004, the band released their debut album Less Than Supper. Two years later the band won the band contest at Colorado’s Telluride Bluegrass Festival, getting them a main-stage slot the following year. Greensky Bluegrass then spent several years touring, sharing the stage with artists including Béla Fleck & the Flecktones, Sam Bush, Yonder Mountain String Band, and the Avett Brothers. In 2011, the band released their breakthrough fourth album Handguns which debuted at number three on the Billboard Bluegrass Chart. The band made bigger appearances while touring, including stops at Bonnaroo, Austin City Limits, and New Orleans Jazz Fest. Greensky Bluegrass released their fifth album If Sorrows Swim in 2014 which debuted at number one on the Billboard Bluegrass Chart. Their next big release was their seventh album from 2019 All for Money which landed at number 17 on Billboard’s Top Independent Albums Chart. During the pandemic, the band recorded a series of livestreams which became their digital five-volume release titled The Leap Year Sessions. Post-pandemic the band released their 2022 album Stress Dreams followed by the live album Courage For The Road the following year.",
-    "Genres": "Alternative Bluegrass",
-    "Stage": "Which Stage",
-    "StartTime": "2:30 PM",
-    "EndTime": "3:30 PM",
-    "Favorited": false
-  },
-  {
-    "AOTD #": 93,
-    "Artist": "The Beaches",
-    "Scheduled": "Sunday",
-    "Description": "The Beaches is a Canadian indie band that formed while the members were in high school. The band was originally called Done with Dolls and got signed by Disney who released their self-titled EP in 2009. This was before the group reached high school. When the members all started high school, they wanted a more mature sound and became the Beaches after a minor lineup change. The Beaches released their debut EP in 2013 followed by their second EP Heights the following year. Their debut album, produced by Metric’s Emily Haines and Jimmy Shaw, titled Late Show came out in 2017. The single “T-Shirt” off the album topped the Canadian Rock charts for nine weeks and helped win Breakthrough Act of the Year at the 2018 Juno Awards. In the following year, the Beaches did a headline tour in Canada, North America, and the U.K. In 2022, they released the double EP compilation album Sisters Not Twins which won the Juno Award for Rock Album of the Year. The next year the band released their true second album Blame My Ex which features the viral TikTok track “Blame Brett.” The album reached number 76 on the Canadian Albums Chart.",
-    "Genres": "Indie Rock, Glam Rock, Garage Pop",
-    "Stage": "This Tent",
-    "StartTime": "2:30 PM",
-    "EndTime": "3:15 PM",
-    "Favorited": false
-  },
-  {
-    "AOTD #": 94,
+    "AOTD #": 117,
     "Artist": "Irreversible Entaglements",
     "Scheduled": "Sunday",
     "Description": "Irreversible Entanglements are a free jazz group that started in 2015 with their first show at an event organized by Musicians Against Police Brutality. The group released their debut album in 2017 titled Irreversible Entanglements, hence the name of the group. The next two years had the group touring heavily, including stops at Pitchfork Fest and Jazzfest Berlin. In 2020, Irreversible Entanglements released their second album Who Sent You? which was followed by Open the Gates the following year. After some post-pandemic touring in North America and Europe, the group got signed to the iconic jazz label Impulse who released their 2023 album Protect Your Light. They’re going to be great at the Farm!",
@@ -1045,7 +1287,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 95,
+    "AOTD #": 118,
+    "Artist": "Chappell Roan",
+    "Scheduled": "Sunday",
+    "Description": "Chappell Roan, born Kayleigh Rose Amstutz on March 19, 1998, is an American singer-songwriter hailing from Willard, Missouri. Known for her distinctive blend of indie pop and dance-pop music, Chappell Roan has captivated audiences with her powerful voice, introspective lyrics, and vibrant stage presence. She first gained attention with her debut EP \"School Nights\" in 2017, which showcased her knack for storytelling and emotional depth. After a period of artistic development, Chappell Roan re-emerged with a bold new sound and image, embracing themes of self-discovery, empowerment, and queer identity. Her subsequent singles, including \"Pink Pony Club\" and \"California,\" have garnered critical acclaim and a growing fanbase, establishing her as a rising star in the pop music landscape. Roan's music is characterized by its catchy melodies, honest lyricism, and a sense of theatricality, making her a compelling and dynamic performer.",
+    "Genres": "Synth Pop, Dark Pop",
+    "Stage": "Which Stage",
+    "StartTime": "3:00 PM",
+    "EndTime": "4:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 119,
     "Artist": "Milky Chance",
     "Scheduled": "Sunday",
     "Description": "Milky Chance is the German duo of singer/songwriter Clemens Rehbein and DJ Philipp Dausch. The pair met while in high school in Kassel, Germany, where they played together in a local band. After graduation, the band broke up, but Clemens and DJ continued as a duo. In 2013, they started to work on their debut album and uploaded several tracks to YouTube including “Stolen Dance” which became a viral hit that got them several sold-out tour dates. The full album Sadnecessary arrived later in the year, charting on the Billboard Top 200. The single “Stolen Dance” was reissued and made the charts across Europe and the U.S. Milky Chance didn’t release their next album Blossom until 2017, and their third album arrived in 2019 with the single “Daydreaming” featuring Tash Sultana. The next year they released the single “Don’t Let Me Down” as a collaboration with Jack Johnson. In 2021, the duo released Trip Tape which consisted of remixes of their own material in addition to covers of artists including Nirvana and the Kid LAROI. Part two of the project Trip Tape II arrived in 2022 with the single “Troubled Man.” Their next album and most recent release Living in a Haze came out in 2023.",
@@ -1056,7 +1309,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 96,
+    "AOTD #": 120,
     "Artist": "TSHA",
     "Scheduled": "Sunday",
     "Description": "TSHA is a London-based producer and DJ who blends progressive house with Afro influences. Her self-taught production takes after the likes of Floating Points and Bonobo. Her debut release was her 2018 EP Dawn which got her signed with Ninja Tune. TSHA’s next single “Sacred” impressed Bonobo enough to have the track featured on his 2019 Fabric Presents mix, which is a huge accomplishment. She started getting slots on Rinse FM and played venues across the U.K., and kept a strong release schedule throughout the pandemic. In 2022, she released her debut album Capricorn Sun.",
@@ -1067,29 +1320,29 @@
     "Favorited": false
   },
   {
-    "AOTD #": 97,
-    "Artist": "Chappell Roan",
+    "AOTD #": 121,
+    "Artist": "Dean Johnson",
     "Scheduled": "Sunday",
-    "Description": "Chappell Roan, born Kayleigh Rose Amstutz on March 19, 1998, is an American singer-songwriter hailing from Willard, Missouri. Known for her distinctive blend of indie pop and dance-pop music, Chappell Roan has captivated audiences with her powerful voice, introspective lyrics, and vibrant stage presence. She first gained attention with her debut EP \"School Nights\" in 2017, which showcased her knack for storytelling and emotional depth. After a period of artistic development, Chappell Roan re-emerged with a bold new sound and image, embracing themes of self-discovery, empowerment, and queer identity. Her subsequent singles, including \"Pink Pony Club\" and \"California,\" have garnered critical acclaim and a growing fanbase, establishing her as a rising star in the pop music landscape. Roan's music is characterized by its catchy melodies, honest lyricism, and a sense of theatricality, making her a compelling and dynamic performer.",
-    "Genres": "Synth Pop, Dark Pop",
+    "Description": "Dean Johnson is an indie rock artist known for his gritty vocals and powerful guitar riffs. Hailing from Detroit, Michigan, Dean’s music is influenced by the raw energy of the city’s rock scene. His debut album, \"Rust Belt Dreams,\" features songs that explore themes of struggle and resilience. Dean’s live performances are known for their intensity and authenticity. His ability to connect with audiences through his powerful music and relatable lyrics has earned him a dedicated following. Dean Johnson continues to make waves in the indie rock world with his dynamic sound and compelling performances.",
+    "Genres": "Indie Rock, Alternative",
+    "Stage": "Who Stage",
+    "StartTime": "3:45 PM",
+    "EndTime": "4:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 122,
+    "Artist": "Yves Tumor",
+    "Scheduled": "Sunday",
+    "Description": "Yves Tumor, aka Sean Bowie, is an experimental R&B artist from Tennessee. They learned to play several instruments as a teenager, including the bass, guitar, and keyboard. They began making electronic music soon after that had an element of noise produced by using their computer’s built-in microphone. At age 20, Sean relocated to California where they became a part of the Los Angeles experimental music scene. In 2012, they met artist Mykki Blanco who took Sean on tour and connected them with the Dog Food label. Then Sean moved to Europe and began working on their project titled Yves Tumor which debuted in 2015 with the debut album When Man Fails You. Yves Tumor soon became a commercial success with later releases getting critical acclaim and making it on end-of-year lists. During the pandemic, they dove into hobbies including designing furniture and writing music. Yves Tumor’s most recent album came in 2023 titled Praise a Lord Who Chews but Which Does Not Consume (Or Simply, Hot Between Worlds).",
+    "Genres": "Experimental, R&B, Neo-Psychedelia, Post-Chillwave",
     "Stage": "This Tent",
     "StartTime": "4:00 PM",
     "EndTime": "5:00 PM",
     "Favorited": false
   },
   {
-    "AOTD #": 98,
-    "Artist": "Charles Wesley Godwin",
-    "Scheduled": "Sunday",
-    "Description": "Charles Wesley Godwin is a country artist who brings out his West Virginia heritage in his music. He was born and raised in West Virginia to a coal miner father and teacher mother. He had an interest in football growing up and even enrolled at West Virginia University to try his hand at the sport. However, Charles was cut from the team. He picked up the guitar to occupy his time and started writing songs in 2012 while in college. The next year he spent a year studying abroad in Estonia where his new friends loved his playing, with one of them setting up his first debut performance at a fashion show. He graduated in 2014 and after a year decided to pursue music as a full-time career. He helped start the band Union Sound Treaty, but it dissolved due to schedule conflicts within the band. Charles decided to start a solo career and relocated to Ohio when his wife got a job there. He started writing about his West Virginia heritage which came into the public eye as his 2019 debut album Seneca. Charles toured on this album, supporting artists including Luke Combs, Tyler Childers, and Colter Wall. The pandemic stopped him from touring, but he kept writing music, taking inspiration from his newfound parenthood as his first child came into the world. In 2021, his second album arrived titled How the Mighty Fall. Two years later he released his third album Family Ties.",
-    "Genres": "Country, Folk",
-    "Stage": "Which Stage",
-    "StartTime": "4:15 PM",
-    "EndTime": "5:15 PM",
-    "Favorited": false
-  },
-  {
-    "AOTD #": 99,
+    "AOTD #": 123,
     "Artist": "BADBADNOTGOOD",
     "Scheduled": "Sunday",
     "Description": "BadBadNotGood is an Ontario-based jazz ensemble that blends soul-jazz, alternative hip-hop, and electronica. The band was founded by students at the Humber College jazz program in Toronto. Their first composed piece was a take on the music of Odd Future that the group uploaded online. This performance was viewed by Tyler, the Creator. In 2011, BadBadNotGood released their debut album BBNG which included covers from Odd Future, a Tribe Called Quest, and Waka Flocka Flame. This album was recorded in a three-hour session. Following the album release, the group recorded a live session with Tyler, the Creator before performing at the Nujazz Festival and Gilles Peterson’s Worldwide Awards. BadBadNotGood released a second record BBNG2 in 2012 that was recorded within a ten-hour session and included originals as well as covers. The same year the band served as Coachella’s band in residence, playing as the backing band for Frank Ocean and six other sets. BadBadNotGood was then hired to work on music for the soundtrack to the movie The Man with the Iron Fists. The band continued to collaborate with many artists including Earl Sweatshirt, MC Ghostface Killah, Future Islands, and MF Doom for the track “The Chocolate Conquistadors” for the game Grand Theft Auto Online. The track was released in December of 2020 after MF Doom’s death but before it was announced to the public. BadBadNotGood’s most recent release is the 2024 EP Slow Burn.",
@@ -1100,7 +1353,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 100,
+    "AOTD #": 124,
+    "Artist": "Charles Wesley Godwin",
+    "Scheduled": "Sunday",
+    "Description": "Charles Wesley Godwin is a country artist who brings out his West Virginia heritage in his music. He was born and raised in West Virginia to a coal miner father and teacher mother. He had an interest in football growing up and even enrolled at West Virginia University to try his hand at the sport. However, Charles was cut from the team. He picked up the guitar to occupy his time and started writing songs in 2012 while in college. The next year he spent a year studying abroad in Estonia where his new friends loved his playing, with one of them setting up his first debut performance at a fashion show. He graduated in 2014 and after a year decided to pursue music as a full-time career. He helped start the band Union Sound Treaty, but it dissolved due to schedule conflicts within the band. Charles decided to start a solo career and relocated to Ohio when his wife got a job there. He started writing about his West Virginia heritage which came into the public eye as his 2019 debut album Seneca. Charles toured on this album, supporting artists including Luke Combs, Tyler Childers, and Colter Wall. The pandemic stopped him from touring, but he kept writing music, taking inspiration from his newfound parenthood as his first child came into the world. In 2021, his second album arrived titled How the Mighty Fall. Two years later he released his third album Family Ties.",
+    "Genres": "Country, Folk",
+    "Stage": "Which Stage",
+    "StartTime": "4:45 PM",
+    "EndTime": "5:45 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 125,
     "Artist": "Four Tet",
     "Scheduled": "Sunday",
     "Description": "Four Tet, aka Kieran Hebden, is a British DJ and producer who serves up indie electronic music, blending organic and engineered sounds. He started his career as the guitar player for Fridge, an instrumental group he co-founded in 1995 that mixed instrumentation with electronics. The band released several albums and EPs via Output Recordings and Go! Beat. The former label issued Kieran’s debut solo release of the single “Double Density” in 1997. It wasn’t until 1998 that Kieran debuted his Four Tet project with the single “Thirtysixtwentyfive” which was a jazzy track. Four Tet’s debut album Dialogue arrived in 1999. His second album Pause came out in 2001 after he signed to Domino. This album used more acoustic guitars than his previous releases, dubbing the sound as “folktronica” by the media. He started his own label called Text Recordings which released Fridge’s fourth album Happiness. In 2003, Four Tet released his sample-based 2003 album Rounds which received widespread critical claim. The album appeared on many year-end lists and also got Four Tet the opening slot for Radiohead’s European tour. In the following two decades, he collaborated with artists including Madvillain, Sia, Ellie Goulding, and eventually Skrillex in 2021. This collaboration got Four Tet working with Skrillex and Fred again.. for the 2023 single “Baby again..” and playing with them at Coachella 2023, Madison Square Garden, and in Times Square.",
@@ -1111,7 +1375,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 101,
+    "AOTD #": 126,
     "Artist": "Carly Rae Jepsen",
     "Scheduled": "Sunday",
     "Description": "When Grammy-nominated artist, Carly Rae Jepsen, debuted on Canadian Idol in 2007, she’d have only five years until her prolific single, “Call Me Maybe,” commanded the Billboard Hot 100 at number one for nine weeks and earned status as Billboard’s “Song of the Summer.” In 2012 she was inescapable, and her breakout stardom combined with her critical acclaim and cult following has cemented her status as a bona fide pop princess. In total Jepsen has released seven albums, including two pairs of companion albums. The most recent duo, The Loneliest Time and The Loveliest Time, feature a viral title track in Loneliest and an interesting juxtaposition of moods. Though most know Jepsen for her breakout hit, she’s spent time on musical theatre stages, including a run as Cinderella in the Rogers and Hammerstein classic. She holds her own and has opened on tours for giants like Justin Bieber and Katy Perry. Her set on the Farm featuring her unapologetically catchy catalogue will no doubt be a pop-filled fever-dream delight.",
@@ -1122,29 +1386,29 @@
     "Favorited": false
   },
   {
-    "AOTD #": 102,
-    "Artist": "Yves Tumor",
+    "AOTD #": 127,
+    "Artist": "Amira Elfeky",
     "Scheduled": "Sunday",
-    "Description": "Yves Tumor, aka Sean Bowie, is an experimental R&B artist from Tennessee. They learned to play several instruments as a teenager, including the bass, guitar, and keyboard. They began making electronic music soon after that had an element of noise produced by using their computer’s built-in microphone. At age 20, Sean relocated to California where they became a part of the Los Angeles experimental music scene. In 2012, they met artist Mykki Blanco who took Sean on tour and connected them with the Dog Food label. Then Sean moved to Europe and began working on their project titled Yves Tumor which debuted in 2015 with the debut album When Man Fails You. Yves Tumor soon became a commercial success with later releases getting critical acclaim and making it on end-of-year lists. During the pandemic, they dove into hobbies including designing furniture and writing music. Yves Tumor’s most recent album came in 2023 titled Praise a Lord Who Chews but Which Does Not Consume (Or Simply, Hot Between Worlds).",
-    "Genres": "Experimental, R&B, Neo-Psychedelia, Post-Chillwave",
+    "Description": "Amira Elfeky is an indie pop artist known for her vibrant sound and innovative production. Based in New York City, Amira’s music blends electronic elements with catchy pop melodies. Her debut EP, \"Neon Nights,\" features tracks that showcase her unique style and production skills. With her dynamic performances and bold musical vision, Amira Elfeky is quickly making a name for herself in the indie pop world. Her ability to create infectious hooks and compelling lyrics has earned her critical acclaim and a growing fanbase. Amira continues to push the boundaries of indie pop with her innovative sound and captivating performances.",
+    "Genres": "Indie Pop, Electro-Pop",
+    "Stage": "Who Stage",
+    "StartTime": "5:15 PM",
+    "EndTime": "6:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 128,
+    "Artist": "Greensky Bluegrass",
+    "Scheduled": "Sunday",
+    "Description": "Greensky Bluegrass is a bluegrass band from Kalamazoo, Michigan. They formed in 2000 and spent several years gigging around their hometown, playing various open mics and house parties. In 2004, the band released their debut album Less Than Supper. Two years later the band won the band contest at Colorado’s Telluride Bluegrass Festival, getting them a main-stage slot the following year. Greensky Bluegrass then spent several years touring, sharing the stage with artists including Béla Fleck & the Flecktones, Sam Bush, Yonder Mountain String Band, and the Avett Brothers. In 2011, the band released their breakthrough fourth album Handguns which debuted at number three on the Billboard Bluegrass Chart. The band made bigger appearances while touring, including stops at Bonnaroo, Austin City Limits, and New Orleans Jazz Fest. Greensky Bluegrass released their fifth album If Sorrows Swim in 2014 which debuted at number one on the Billboard Bluegrass Chart. Their next big release was their seventh album from 2019 All for Money which landed at number 17 on Billboard’s Top Independent Albums Chart. During the pandemic, the band recorded a series of livestreams which became their digital five-volume release titled The Leap Year Sessions. Post-pandemic the band released their 2022 album Stress Dreams followed by the live album Courage For The Road the following year.",
+    "Genres": "Alternative Bluegrass",
     "Stage": "This Tent",
     "StartTime": "5:45 PM",
     "EndTime": "6:45 PM",
     "Favorited": false
   },
   {
-    "AOTD #": 103,
-    "Artist": "Goth Babe",
-    "Scheduled": "Sunday",
-    "Description": "Goth Babe, whose name is Griff Washburn, is a music nomad who roams the U.S. in his custom camper. A Memphis native, he wrote his first recorded material while a student at Middle Tennessee State University that was later tracked at a Nashville studio. He left school a year later to spend more time on his music before making the journey up to Brooklyn where he worked as a model for Calvin Klein. After his brief stint in modeling, Goth Babe headed to Los Angeles where he started to build a following with his music. He then traveled the Pacific Northwest with his dog in his famous camper rig that includes solar power, a wood-burning stove, and a mobile studio to record his music. Eventually, he purchased a plot of land in Oregon that now serves as his home base. He is signed to Ongakubaka Records. In the last few years, Goth Babe has faced some bad luck but has kept his cheery disposition nonetheless. In 2021, he had to stop performing due to a traumatic brain injury but was able to bounce back and continue doing music. Then in 2022, his house on the Oregon plot burned down in a random house fire.",
-    "Genres": "Dream Pop, Indie Pop, Chillwave",
-    "Stage": "Which Stage",
-    "StartTime": "6:15 PM",
-    "EndTime": "7:15 PM",
-    "Favorited": false
-  },
-  {
-    "AOTD #": 104,
+    "AOTD #": 129,
     "Artist": "Ashnikko",
     "Scheduled": "Sunday",
     "Description": "You’ll recognize Ashnikko easily by her signature electric blue hair and anime-esque styling, and her music is as unique as her look with descriptors of hip hop, bubblegum and emo pop. Her infectious, electronic tracks will create a space for an absolutely electric set on the Farm. The artist created her stage persona by combining her first and middle names, Ashley and Nicole. She hails from North Carolina but moved to Europe with her parents in her teens, where they spent time in Estonia and Latvia before she set out for London on her own at 18. Ashnikko saw wild success with her 2019 viral single “STUPID.” Her first mixtape, “DEMIDEVIL” followed in 2021, and her first album, “WEEDKILLER,” was released in 2024, bolstered by a world tour.",
@@ -1155,7 +1419,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 105,
+    "AOTD #": 130,
+    "Artist": "Goth Babe",
+    "Scheduled": "Sunday",
+    "Description": "Goth Babe, whose name is Griff Washburn, is a music nomad who roams the U.S. in his custom camper. A Memphis native, he wrote his first recorded material while a student at Middle Tennessee State University that was later tracked at a Nashville studio. He left school a year later to spend more time on his music before making the journey up to Brooklyn where he worked as a model for Calvin Klein. After his brief stint in modeling, Goth Babe headed to Los Angeles where he started to build a following with his music. He then traveled the Pacific Northwest with his dog in his famous camper rig that includes solar power, a wood-burning stove, and a mobile studio to record his music. Eventually, he purchased a plot of land in Oregon that now serves as his home base. He is signed to Ongakubaka Records. In the last few years, Goth Babe has faced some bad luck but has kept his cheery disposition nonetheless. In 2021, he had to stop performing due to a traumatic brain injury but was able to bounce back and continue doing music. Then in 2022, his house on the Oregon plot burned down in a random house fire.",
+    "Genres": "Dream Pop, Indie Pop, Chillwave",
+    "Stage": "Which Stage",
+    "StartTime": "6:30 PM",
+    "EndTime": "7:30 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 131,
     "Artist": "Galantis",
     "Scheduled": "Sunday",
     "Description": "Galantis was the project of Christian Karlsson of Miike Snow and partner Linus Eklöw from Style of Eye. Linus left the project in 2017 but made appearances at shows until 2021. Christian is keeping Galantis alive as a solo DJ. Christian, who was behind hits including “Toxic” by Britney Spears, and Linus, who was behind “I Love It” by Icona Pop), met at the Robotberget studio in Stockholm in 2007. They started working together to create a more pop-driven style of EDM under the moniker Galantis and soon after came the sensational hit “Runaway (U & I) in 2014. The next year they released their debut album Pharmacy which featured singles “Gold Dust” and “Peanut Butter Jelly.” In 2016, Galantis released the single “No Money” which was their first song to debut on the Billboard Hot 100. The next year their album The Aviary was released, making it on the Billboard Top 200. This is when Linus left the group officially. In 2020, Galantis dropped their third album Church which features singles released previously including one with Dolly Parton. From here, Galantis released single hits featuring collaborations with artists including David Guetta and Steve Aoki.",
@@ -1166,7 +1441,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 106,
+    "AOTD #": 132,
+    "Artist": "Lily Fitts",
+    "Scheduled": "Sunday",
+    "Description": "Lily Fitts is a singer-songwriter known for her emotive voice and heartfelt lyrics. Originally from Vermont, Lily’s music is deeply influenced by the natural beauty of her surroundings. Her debut album, \"Wandering Hearts,\" features songs that explore themes of love, loss, and self-discovery. With her soulful performances and poignant songwriting, Lily Fitts has quickly become a beloved artist in the folk music scene. Her ability to connect with audiences through her genuine lyrics and soothing melodies has earned her critical acclaim and a dedicated fanbase. Lily continues to enchant listeners with her heartfelt songs and powerful voice.",
+    "Genres": "Singer-Songwriter, Folk",
+    "Stage": "Who Stage",
+    "StartTime": "6:45 PM",
+    "EndTime": "7:25 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 133,
     "Artist": "Megan Thee Stallion",
     "Scheduled": "Sunday",
     "Description": "Rap is in her blood, and she was writing her own bars by the tender age of 14. She’s the Texas-born-and-bred daughter of rapper Holly-Wood and credits legends like Three 6 Mafia as early inspiration. Her “Stallion” moniker came from comments about her statuesque height and frame. She hit the stage in 2016 and hasn’t looked back, while netting collaborations with female powerhouses like Beyonce, Cardi B and Dua Lipa and grabbing Grammys including 2021’s Best New Artist award.",
@@ -1177,7 +1463,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 107,
+    "AOTD #": 134,
     "Artist": "Taking Back Sunday",
     "Scheduled": "Sunday",
     "Description": "Taking Back Sunday is a New York post-hardcore band that has kept on the charts for over two decades. The band formed in 1999 and took their name from a Long Island band called the Waiting Process. The original lineup featured future Brand New frontman Jesse Lacey but was very short-lived. After releasing a pair of EPs and going through a lineup change including the addition of frontman Adam Lazzara, Taking Back Sunday signed with Victory Records to record and release their 2022 debut album Tell All Your Friends. The album would eventually reach platinum status after first entering the Billboard 200 at 183. More lineup changes followed after extensive touring. In 2004, Taking Back Sunday released their second album Where You Want to Be which debuted at number three on Billboard’s Top 200. This album made the band a critical success in the scene of emo bands, getting them a sold-out North American tour including the famous Warped Tour stops. In the next 20 years, the band signed with Warner Brothers, continued charting globally, went through more lineup changes, and kept releasing new albums, including 2023’s 152.",
@@ -1188,7 +1474,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 108,
+    "AOTD #": 135,
     "Artist": "Two Friends",
     "Scheduled": "Sunday",
     "Description": "Two Friends is the electronic duo of Eli Sones and Matthew Halper who have been friends since middle school. They started producing music together in high school, leveraging Matthew’s experience with guitar, choir, and music theory and Eli’s experience in DJing. Two Friends split ways to attend different colleges but continued to record music together, releasing remixes that were called the Friendly Sessions. In 2013, they released their debut EP You (Me). Two years later the pair both graduated college. From there, Two Friends kept releasing new singles and EPs but still have not released a proper full album. They have released a series of mixes titled Big Bootie Mixes that can be considered albums in themselves.",
@@ -1199,7 +1485,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 109,
+    "AOTD #": 136,
     "Artist": "Jason Isbell and the 400 Unit",
     "Scheduled": "Sunday",
     "Description": "Jason Isbell and the 400 Unit is a critically acclaimed American rock band known for its powerful blend of Southern rock, Americana, and heartfelt storytelling. The band is fronted by Jason Isbell, a former member of the Drive-By Truckers, who has gained recognition for his deeply personal and reflective songwriting. The 400 Unit includes talented musicians such as Derry deBorja on keyboards, Jimbo Hart on bass, Chad Gamble on drums, and Sadler Vaden on guitar, each bringing their own unique flair to the band's sound. Since forming in 2009, Jason Isbell and the 400 Unit have released several celebrated albums, including \"The Nashville Sound\" and \"Reunions,\" both of which received widespread critical acclaim and showcased Isbell's poignant lyricism and the band's cohesive musicianship. Their music often explores themes of love, loss, addiction, and redemption, resonating with a wide audience and earning them a loyal fan base. Known for their dynamic live performances, the band continues to be a powerful force in the contemporary music scene, blending raw emotion with masterful instrumentation.",
@@ -1210,7 +1496,18 @@
     "Favorited": false
   },
   {
-    "AOTD #": 110,
+    "AOTD #": 137,
+    "Artist": "Wolves of Glendale",
+    "Scheduled": "Sunday",
+    "Description": "Wolves of Glendale is a rock band known for their raw sound and gritty performances. Formed in Glendale, California, the band draws inspiration from the rich musical history of their hometown. Their debut album, \"City of Wolves,\" features tracks that highlight their powerful vocals and driving guitar riffs. Wolves of Glendale’s music is both intense and captivating, making their live shows an unforgettable experience. The band’s ability to create a powerful and authentic sound has earned them a dedicated following and critical acclaim. Wolves of Glendale continue to push the boundaries of rock music with their dynamic performances and bold sound.",
+    "Genres": "Rock, Indie",
+    "Stage": "Who Stage",
+    "StartTime": "8:15 PM",
+    "EndTime": "9:00 PM",
+    "Favorited": false
+  },
+  {
+    "AOTD #": 138,
     "Artist": "Joey Bada$$",
     "Scheduled": "Sunday",
     "Description": "Joey Bada$$, aka Jo-Vaughn Virginie Scott, is a Brooklyn-born rapper. Joey first started performing under the name JayOhVee but changed it to Joey Bada$$ before his group the Pro Era crew, featuring Powers Pleasant, Capital STEEZ, and Dirty Sanchez, signed to Cinematic Music in 2012. The same year, Joey debuted his solo mixtape 1999, which was followed by the Summer Knights EP later in the year. In 2015, he released his debut album B4.DA.$$ which featured a track with a lost beat from the great J Dilla that the Roots helped finish. The following year, Joey secured a role on the show Mr. Robot during the second season and appeared in the show until the final season in 2019. In 2017, he released his sophomore album All-Amerikkkan Bada$$ featuring ScHoolboy Q, Styles P, and J.Cole. Joey continued to star in various shows, including Boomerang, Grown-ish, and Wu-Tang: An American Saga. In 2022, Joey released his third and most recent album 2000 featuring JID, Larry June, and Diddy. The album debuted at number 25 on the Bilboard Top 200 Charts.",
@@ -1221,7 +1518,7 @@
     "Favorited": false
   },
   {
-    "AOTD #": 111,
+    "AOTD #": 139,
     "Artist": "Fred again..",
     "Scheduled": "Sunday",
     "Description": "Fred Again.., born Fred John Philip Gibson, is a British music producer, singer, and songwriter renowned for his emotive and innovative approach to electronic music. Rising to prominence in the late 2010s, Fred honed his skills working with a variety of high-profile artists, including Ed Sheeran, Stormzy, and George Ezra. His unique talent for blending personal narratives with compelling beats and melodies has garnered him critical acclaim and a dedicated following. Fred's production style is characterized by its introspective lyrics, often drawn from real-life experiences, and a soundscape that merges elements of house, pop, and ambient music. In 2021, Fred Again.. released his debut album \"Actual Life (April 14 - December 17 2020),\" which was met with widespread praise for its raw and intimate portrayal of life during the pandemic. The album features samples of voice notes, conversations, and sounds from his everyday life, creating a deeply personal and relatable listening experience. Following the success of his debut, Fred continued to push the boundaries of electronic music with subsequent releases, solidifying his place as a leading figure in the genre. His ability to convey deep emotions through his music has resonated with fans worldwide, making Fred Again.. a standout artist in the contemporary music scene.",

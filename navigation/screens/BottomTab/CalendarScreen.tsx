@@ -1,4 +1,3 @@
-// CalendarScreen.tsx
 import React, { useState, useRef } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -58,6 +57,28 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
     return (isSameDay && artistStartMinutes >= 12 * 60) || isAfterMidnight;
   });
 
+  const renderArtistName = (artist: Artist) => {
+    if (artist.Artist.includes('&')) {
+      const parts = artist.Artist.split('&');
+      return (
+        <Text style={styles.artistName}>
+          <Text>{parts[0].trim()} </Text>
+          <Text style={styles.artistNameSmall}>& {parts[1].trim()}</Text>
+        </Text>
+      );
+    } else if (artist.Artist === "Lowdown Brass Band") {
+      const parts = artist.Artist.split(' ');
+      return (
+        <Text style={styles.artistName}>
+          <Text>{parts[0]}</Text>
+          {'\n'}
+          <Text style={styles.artistNameSmall}>{parts.slice(1).join(' ')}</Text>
+        </Text>
+      );
+    }
+    return <Text style={styles.artistName}>{artist.Artist}</Text>;
+  };
+
   const renderStageColumn = (stage: string) => {
     const stageData = filteredData.filter((artist: Artist) => artist.Stage === stage);
     return stageData.map((artist: Artist, index: number) => {
@@ -69,7 +90,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
           onPress={() => navigation.navigate('ArtistBio', { artist: { ...artist, favorited: isFavorited } })}
           onLongPress={() => toggleFavorite(artist)}
         >
-          <Text style={styles.artistName}>{artist.Artist}</Text>
+          {renderArtistName(artist)}
           <Text style={styles.artistTime}>{artist.StartTime} - {artist.EndTime}</Text>
         </TouchableOpacity>
       );
@@ -79,7 +100,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
   return (
     <ScrollView style={styles.dayContainer} horizontal={true}>
       <View style={styles.stagesContainer}>
-        {['What Stage', 'Which Stage', 'The Other Stage', 'This Tent', 'That Tent'].map(stage => (
+        {['What Stage', 'Which Stage', 'The Other Stage', 'This Tent', 'That Tent', 'Who Stage'].map(stage => (
           <View key={stage} style={styles.stageColumn}>
             <Text style={styles.stageHeader}>{stage}</Text>
             {renderStageColumn(stage)}
@@ -234,6 +255,9 @@ const styles = StyleSheet.create({
   artistName: {
     fontSize: 11,
     fontWeight: 'bold',
+  },
+  artistNameSmall: {
+    fontSize: 7, // Adjust the size as needed
   },
   artistTime: {
     fontSize: 10.5,
