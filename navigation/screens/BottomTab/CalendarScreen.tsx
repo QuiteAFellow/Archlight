@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: '#f0f0f0',
     zIndex: 2,
-    marginTop: 45
+    marginTop: 5
   },
   favoriteToggle: {
     justifyContent: 'center',

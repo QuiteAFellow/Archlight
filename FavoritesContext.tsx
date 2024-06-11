@@ -1,6 +1,6 @@
-// FavoritesContext.tsx
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json'; // Adjust the path as needed
 
 interface Artist {
   "AOTD #": number;
@@ -17,12 +17,14 @@ interface Artist {
 interface FavoriteContextProps {
   favorites: { [key: string]: boolean };
   toggleFavorite: (artist: Artist) => void;
+  artists: Artist[];
 }
 
 const FavoritesContext = createContext<FavoriteContextProps | undefined>(undefined);
 
 export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({});
+  const [artists, setArtists] = useState<Artist[]>(artistsData);
 
   useEffect(() => {
     const loadFavorites = async () => {
@@ -61,7 +63,7 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children 
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoritesContext.Provider value={{ favorites, toggleFavorite, artists }}>
       {children}
     </FavoritesContext.Provider>
   );

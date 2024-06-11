@@ -4,7 +4,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 export type RootStackParamList = {
   Home: undefined;
   Calendar: undefined;
-  Lineup: undefined; // Keep this as Lineup for the top-level screen
+  Lineup: undefined;
   Map: undefined;
   ArtistBio: { artist: Artist & { favorited: boolean } };
   'Food Vendors': undefined;
@@ -13,7 +13,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Home: NavigatorScreenParams<RootStackParamList>;
   Calendar: NavigatorScreenParams<RootStackParamList>;
-  Lineup: NavigatorScreenParams<RootStackParamList>; // Keep this as Lineup for the top-level screen
+  Lineup: NavigatorScreenParams<RootStackParamList>;
   Map: NavigatorScreenParams<RootStackParamList>;
   'Food Vendors': NavigatorScreenParams<RootStackParamList>;
 };
@@ -37,10 +37,16 @@ export interface Artist {
 }
 
 export type LineupStackParamList = {
-  FestivalLineup: undefined; // Use this for the nested screen
+  Lineup: undefined;
   ArtistBio: { artist: Artist & { favorited: boolean } };
 };
 
 export type ArtistBioScreenRouteParams = {
   artist: Artist;
 };
+
+export interface FavoriteContextProps {
+  favorites: { [key: string]: boolean };
+  toggleFavorite: (artist: Artist) => void;
+  artists: Artist[]; // Ensure this is included
+}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions, Image } from 'react-native';
-import ImageZoom from 'react-native-image-pan-zoom';
-import { IOnClick } from 'react-native-image-pan-zoom';
+import ImageViewing from 'react-native-image-viewing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const centerooImage = require('../../../assets/Maps/Roo24_Centeroo.jpg');
@@ -27,6 +26,7 @@ const MapScreen: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingPinId, setEditingPinId] = useState<number | null>(null);
   const [newPinCoords, setNewPinCoords] = useState<{ x: number; y: number } | null>(null);
+  const [isImageViewVisible, setIsImageViewVisible] = useState(false);
 
   useEffect(() => {
     const loadPins = async () => {
@@ -61,9 +61,9 @@ const MapScreen: React.FC = () => {
 
   const currentImage = currentMap === 'centeroo' ? centerooImage : outerooImage;
 
-  const handleMapPress = (eventParams: IOnClick) => {
+  const handleMapPress = (event: { nativeEvent: { locationX: number; locationY: number } }) => {
     if (addingPin) {
-      const { locationX, locationY } = eventParams;
+      const { locationX, locationY } = event.nativeEvent;
       setNewPinCoords({ x: locationX, y: locationY });
       setShowModal(true);
     }
@@ -120,16 +120,7 @@ const MapScreen: React.FC = () => {
       <TouchableOpacity onPress={() => setAddingPin(true)} style={styles.addButton}>
         <Text style={styles.addButtonText}>Add Pin</Text>
       </TouchableOpacity>
-      <ImageZoom
-        cropWidth={Dimensions.get('window').width}
-        cropHeight={Dimensions.get('window').height}
-        imageWidth={Dimensions.get('window').width}
-        imageHeight={Dimensions.get('window').height}
-        onClick={handleMapPress}
-        minScale={1}
-        maxScale={3}
-        style={styles.mapContainer}
-      >
+      <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>
         <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
         {pins
           .filter((pin) => pin.map === currentMap)
@@ -145,7 +136,13 @@ const MapScreen: React.FC = () => {
               <Text style={[styles.pinLabel, { color: pin.color === 'yellow' ? 'black' : 'white' }]}>{pin.label}</Text>
             </TouchableOpacity>
           ))}
-      </ImageZoom>
+      </TouchableOpacity>
+      <ImageViewing
+        images={[{ uri: Image.resolveAssetSource(currentImage).uri }]}
+        imageIndex={0}
+        visible={isImageViewVisible}
+        onRequestClose={() => setIsImageViewVisible(false)}
+      />
 
       <Modal visible={showModal} animationType="slide" transparent>
         <View style={styles.modalContainer}>
@@ -201,7 +198,7 @@ const styles = StyleSheet.create({
   },
   switchButton: {
     position: 'absolute',
-    top: 50,
+    top: 5,
     left: 10,
     padding: 10,
     backgroundColor: '#007bff',
@@ -213,7 +210,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     position: 'absolute',
-    top: 50,
+    top: 5,
     right: 10,
     padding: 10,
     backgroundColor: '#007bff',

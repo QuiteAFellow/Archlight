@@ -18,7 +18,7 @@ interface Artist {
   StartTime: string;
   EndTime: string;
   Favorited: number;
-  favorited: boolean; // Add this property
+  favorited: boolean;
 }
 
 const LineupScreen: React.FC = () => {
@@ -45,7 +45,7 @@ const LineupScreen: React.FC = () => {
   );
 
   const handleToggleFavorite = (artist: Artist) => {
-    //console.log('Favorite button clicked for:', artist.Artist);
+    console.log('Favorite button clicked for:', artist.Artist);
     toggleFavorite(artist);
   };
 
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderColor: '#ccc',
-    marginTop: 45
+    marginTop: 5
   },
   artistContainer: {
     flexDirection: 'row',
