@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FestivalScheduleScreen from '../BottomTab/CalendarScreen'; // Adjust the path
-import ArtistBioScreen from '../ArtistBioScreen'; // Adjust the path
+import FestivalScheduleScreen from '../BottomTab/CalendarScreen';
+import ArtistBioScreen from '../ArtistBioScreen';
 
 const Stack = createNativeStackNavigator();
 

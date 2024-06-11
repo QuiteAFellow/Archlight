@@ -1,17 +1,6 @@
+// notifications.tsx
 import PushNotification from 'react-native-push-notification';
-
-// Define the type for an artist
-interface Artist {
-  "AOTD #": number;
-  Artist: string;
-  Scheduled: string;
-  Description: string;
-  Genres: string;
-  Stage: string;
-  StartTime: string;
-  EndTime: string;
-  Favorited: number;
-}
+import { Artist } from './navigation/types';
 
 // Schedule a notification
 const scheduleNotification = (message: string, date: Date): void => {

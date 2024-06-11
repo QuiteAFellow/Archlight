@@ -8,7 +8,7 @@
     "Stage": "This Tent",
     "StartTime": "2:00 PM",
     "EndTime": "2:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 2,
@@ -19,7 +19,7 @@
     "Stage": "That Tent",
     "StartTime": "2:30 PM",
     "EndTime": "3:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 3,
@@ -30,7 +30,7 @@
     "Stage": "This Tent",
     "StartTime": "3:15 PM",
     "EndTime": "4:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 4,
@@ -41,7 +41,7 @@
     "Stage": "That Tent",
     "StartTime": "3:45 PM",
     "EndTime": "4:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 5,
@@ -52,7 +52,7 @@
     "Stage": "This Tent",
     "StartTime": "4:30 PM",
     "EndTime": "5:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 5,
@@ -63,7 +63,7 @@
     "Stage": "That Tent",
     "StartTime": "5:00 PM",
     "EndTime": "5:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 6,
@@ -74,7 +74,7 @@
     "Stage": "This Tent",
     "StartTime": "6:00 PM",
     "EndTime": "7:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 7,
@@ -85,7 +85,7 @@
     "Stage": "That Tent",
     "StartTime": "6:30 PM",
     "EndTime": "7:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 8,
@@ -96,7 +96,7 @@
     "Stage": "The Other Stage",
     "StartTime": "7:45 PM",
     "EndTime": "8:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 9,
@@ -107,7 +107,7 @@
     "Stage": "This Tent",
     "StartTime": "7:45 PM",
     "EndTime": "8:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 10,
@@ -118,7 +118,7 @@
     "Stage": "That Tent",
     "StartTime": "8:15 PM",
     "EndTime": "9:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 11,
@@ -129,7 +129,7 @@
     "Stage": "What Stage",
     "StartTime": "8:30 PM",
     "EndTime": "12:15 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 12,
@@ -140,7 +140,7 @@
     "Stage": "The Other Stage",
     "StartTime": "9:00 PM",
     "EndTime": "10:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 13,
@@ -151,7 +151,7 @@
     "Stage": "This Tent",
     "StartTime": "9:30 PM",
     "EndTime": "10:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 14,
@@ -162,7 +162,7 @@
     "Stage": "That Tent",
     "StartTime": "10:00 PM",
     "EndTime": "11:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 15,
@@ -173,7 +173,7 @@
     "Stage": "The Other Stage",
     "StartTime": "10:15 PM",
     "EndTime": "11:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 16,
@@ -184,7 +184,7 @@
     "Stage": "This Tent",
     "StartTime": "11:15 PM",
     "EndTime": "12:15 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 17,
@@ -195,7 +195,7 @@
     "Stage": "The Other Stage",
     "StartTime": "11:30 PM",
     "EndTime": "12:30 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 18,
@@ -206,7 +206,7 @@
     "Stage": "That Tent",
     "StartTime": "11:45 PM",
     "EndTime": "12:45 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 19,
@@ -217,7 +217,7 @@
     "Stage": "The Other Stage",
     "StartTime": "12:45 AM",
     "EndTime": "2:00 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 20,
@@ -228,7 +228,7 @@
     "Stage": "This Tent",
     "StartTime": "1:00 AM",
     "EndTime": "2:00 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 21,
@@ -239,7 +239,7 @@
     "Stage": "That Tent",
     "StartTime": "1:30 AM",
     "EndTime": "2:30 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 22,
@@ -250,7 +250,7 @@
     "Stage": "That Tent",
     "StartTime": "1:15 PM",
     "EndTime": "2:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 23,
@@ -261,7 +261,7 @@
     "Stage": "This Tent",
     "StartTime": "1:30 PM",
     "EndTime": "2:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 24,
@@ -272,7 +272,7 @@
     "Stage": "Which Stage",
     "StartTime": "2:00 PM",
     "EndTime": "3:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 25,
@@ -283,7 +283,7 @@
     "Stage": "That Tent",
     "StartTime": "2:45 PM",
     "EndTime": "3:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 26,
@@ -294,7 +294,7 @@
     "Stage": "What Stage",
     "StartTime": "3:00 PM",
     "EndTime": "4:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 27,
@@ -305,7 +305,7 @@
     "Stage": "This Tent",
     "StartTime": "3:00 PM",
     "EndTime": "3:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 28,
@@ -316,7 +316,7 @@
     "Stage": "Which Stage",
     "StartTime": "3:45 PM",
     "EndTime": "4:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 29,
@@ -327,7 +327,7 @@
     "Stage": "The Other Stage",
     "StartTime": "4:00 PM",
     "EndTime": "5:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 30,
@@ -338,7 +338,7 @@
     "Stage": "That Tent",
     "StartTime": "4:15 PM",
     "EndTime": "5:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 31,
@@ -349,7 +349,7 @@
     "Stage": "This Tent",
     "StartTime": "4:30 PM",
     "EndTime": "5:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 32,
@@ -360,7 +360,7 @@
     "Stage": "What Stage",
     "StartTime": "4:45 PM",
     "EndTime": "5:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 33,
@@ -371,7 +371,7 @@
     "Stage": "The Other Stage",
     "StartTime": "5:15 PM",
     "EndTime": "6:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 34,
@@ -382,7 +382,7 @@
     "Stage": "That Tent",
     "StartTime": "5:45 PM",
     "EndTime": "6:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 35,
@@ -393,7 +393,7 @@
     "Stage": "Which Stage",
     "StartTime": "5:45 PM",
     "EndTime": "6:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 36,
@@ -404,7 +404,7 @@
     "Stage": "This Tent",
     "StartTime": "6:15 PM",
     "EndTime": "7:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 37,
@@ -415,7 +415,7 @@
     "Stage": "The Other Stage",
     "StartTime": "6:30 PM",
     "EndTime": "7:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 38,
@@ -426,7 +426,7 @@
     "Stage": "What Stage",
     "StartTime": "6:45 PM",
     "EndTime": "7:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 39,
@@ -437,7 +437,7 @@
     "Stage": "That Tent",
     "StartTime": "7:30 PM",
     "EndTime": "8:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 40,
@@ -448,7 +448,7 @@
     "Stage": "Which Stage",
     "StartTime": "7:45 PM",
     "EndTime": "8:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 41,
@@ -459,7 +459,7 @@
     "Stage": "The Other Stage",
     "StartTime": "7:45 PM",
     "EndTime": "8:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 42,
@@ -470,7 +470,7 @@
     "Stage": "This Tent",
     "StartTime": "8:00 PM",
     "EndTime": "9:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 43,
@@ -481,7 +481,7 @@
     "Stage": "What Stage",
     "StartTime": "8:45 PM",
     "EndTime": "10:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 44,
@@ -492,7 +492,7 @@
     "Stage": "The Other Stage",
     "StartTime": "9:00 PM",
     "EndTime": "10:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 45,
@@ -503,7 +503,7 @@
     "Stage": "That Tent",
     "StartTime": "9:15 PM",
     "EndTime": "10:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 46,
@@ -514,7 +514,7 @@
     "Stage": "Which Stage",
     "StartTime": "9:45 PM",
     "EndTime": "11:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 47,
@@ -525,7 +525,7 @@
     "Stage": "This Tent",
     "StartTime": "9:45 PM",
     "EndTime": "11:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 48,
@@ -536,7 +536,7 @@
     "Stage": "The Other Stage",
     "StartTime": "10:15 PM",
     "EndTime": "11:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 49,
@@ -547,7 +547,7 @@
     "Stage": "What Stage",
     "StartTime": "11:00 PM",
     "EndTime": "12:30 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 50,
@@ -558,7 +558,7 @@
     "Stage": "The Other Stage",
     "StartTime": "12:00 AM",
     "EndTime": "1:00 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 51,
@@ -569,7 +569,7 @@
     "Stage": "Which Stage",
     "StartTime": "12:30 AM",
     "EndTime": "1:45 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 52,
@@ -580,7 +580,7 @@
     "Stage": "This Tent",
     "StartTime": "12:30 AM",
     "EndTime": "1:45 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 53,
@@ -591,7 +591,7 @@
     "Stage": "That Tent",
     "StartTime": "12:45 AM",
     "EndTime": "2:00 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 54,
@@ -602,7 +602,7 @@
     "Stage": "The Other Stage",
     "StartTime": "1:15 AM",
     "EndTime": "2:15 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 55,
@@ -613,7 +613,7 @@
     "Stage": "That Tent",
     "StartTime": "1:30 PM",
     "EndTime": "2:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 56,
@@ -624,7 +624,7 @@
     "Stage": "This Tent",
     "StartTime": "1:30 PM",
     "EndTime": "2:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 57,
@@ -635,7 +635,7 @@
     "Stage": "Which Stage",
     "StartTime": "2:00 PM",
     "EndTime": "3:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 58,
@@ -646,7 +646,7 @@
     "Stage": "This Tent",
     "StartTime": "2:45 PM",
     "EndTime": "3:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 59,
@@ -657,7 +657,7 @@
     "Stage": "What Stage",
     "StartTime": "2:45 PM",
     "EndTime": "3:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 60,
@@ -668,7 +668,7 @@
     "Stage": "That Tent",
     "StartTime": "3:00 PM",
     "EndTime": "3:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 61,
@@ -679,7 +679,7 @@
     "Stage": "Which Stage",
     "StartTime": "3:45 PM",
     "EndTime": "4:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 62,
@@ -690,7 +690,7 @@
     "Stage": "The Other Stage",
     "StartTime": "3:45 PM",
     "EndTime": "4:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 63,
@@ -701,7 +701,7 @@
     "Stage": "What Stage",
     "StartTime": "4:30 PM",
     "EndTime": "5:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 64,
@@ -712,7 +712,7 @@
     "Stage": "That Tent",
     "StartTime": "4:30 PM",
     "EndTime": "5:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 65,
@@ -723,7 +723,7 @@
     "Stage": "This Tent",
     "StartTime": "4:30 PM",
     "EndTime": "5:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 66,
@@ -734,7 +734,7 @@
     "Stage": "The Other Stage",
     "StartTime": "5:00 PM",
     "EndTime": "6:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 67,
@@ -745,7 +745,7 @@
     "Stage": "Which Stage",
     "StartTime": "5:30 PM",
     "EndTime": "6:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 68,
@@ -756,7 +756,7 @@
     "Stage": "That Tent",
     "StartTime": "6:00 PM",
     "EndTime": "7:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 69,
@@ -767,7 +767,7 @@
     "Stage": "The Other Stage",
     "StartTime": "6:15 PM",
     "EndTime": "7:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 70,
@@ -778,7 +778,7 @@
     "Stage": "What Stage",
     "StartTime": "6:30 PM",
     "EndTime": "7:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 71,
@@ -789,7 +789,7 @@
     "Stage": "This Tent",
     "StartTime": "6:30 PM",
     "EndTime": "7:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 72,
@@ -800,7 +800,7 @@
     "Stage": "The Other Stage",
     "StartTime": "7:30 PM",
     "EndTime": "8:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 73,
@@ -811,7 +811,7 @@
     "Stage": "That Tent",
     "StartTime": "7:45 PM",
     "EndTime": "8:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 74,
@@ -822,7 +822,7 @@
     "Stage": "Which Stage",
     "StartTime": "7:45 PM",
     "EndTime": "8:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 75,
@@ -833,7 +833,7 @@
     "Stage": "This Tent",
     "StartTime": "8:15 PM",
     "EndTime": "10:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 76,
@@ -844,7 +844,7 @@
     "Stage": "What Stage",
     "StartTime": "8:30 PM",
     "EndTime": "9:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 77,
@@ -855,7 +855,7 @@
     "Stage": "The Other Stage",
     "StartTime": "8:45 PM",
     "EndTime": "9:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 78,
@@ -866,7 +866,7 @@
     "Stage": "That Tent",
     "StartTime": "9:30 PM",
     "EndTime": "10:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 79,
@@ -877,7 +877,7 @@
     "Stage": "Which Stage",
     "StartTime": "9:45 PM",
     "EndTime": "10:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 80,
@@ -888,7 +888,7 @@
     "Stage": "The Other Stage",
     "StartTime": "10:00 PM",
     "EndTime": "11:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 81,
@@ -899,7 +899,7 @@
     "Stage": "What Stage",
     "StartTime": "10:45 PM",
     "EndTime": "12:15 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 82,
@@ -910,7 +910,7 @@
     "Stage": "Which Stage",
     "StartTime": "12:15 AM",
     "EndTime": "1:45 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 83,
@@ -921,7 +921,7 @@
     "Stage": "This Tent",
     "StartTime": "12:45 AM",
     "EndTime": "1:45 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 84,
@@ -932,7 +932,7 @@
     "Stage": "That Tent",
     "StartTime": "12:45 AM",
     "EndTime": "2:00 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 85,
@@ -943,7 +943,7 @@
     "Stage": "The Other Stage",
     "StartTime": "1:00 AM",
     "EndTime": "3:00 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 86,
@@ -954,7 +954,7 @@
     "Stage": "The Other Stage",
     "StartTime": "3:30 AM",
     "EndTime": "5:15 AM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 87,
@@ -965,7 +965,7 @@
     "Stage": "Which Stage",
     "StartTime": "1:00 PM",
     "EndTime": "1:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 88,
@@ -976,7 +976,7 @@
     "Stage": "This Tent",
     "StartTime": "1:00 PM",
     "EndTime": "1:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 89,
@@ -987,7 +987,7 @@
     "Stage": "That Tent",
     "StartTime": "1:15 PM",
     "EndTime": "2:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 90,
@@ -998,7 +998,7 @@
     "Stage": "What Stage",
     "StartTime": "1:45 PM",
     "EndTime": "2:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 91,
@@ -1009,7 +1009,7 @@
     "Stage": "The Other Stage",
     "StartTime": "2:30 PM",
     "EndTime": "3:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 92,
@@ -1020,7 +1020,7 @@
     "Stage": "Which Stage",
     "StartTime": "2:30 PM",
     "EndTime": "3:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 93,
@@ -1031,7 +1031,7 @@
     "Stage": "This Tent",
     "StartTime": "2:30 PM",
     "EndTime": "3:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 94,
@@ -1042,7 +1042,7 @@
     "Stage": "That Tent",
     "StartTime": "2:45 PM",
     "EndTime": "3:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 95,
@@ -1053,7 +1053,7 @@
     "Stage": "What Stage",
     "StartTime": "3:30 PM",
     "EndTime": "4:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 96,
@@ -1064,7 +1064,7 @@
     "Stage": "The Other Stage",
     "StartTime": "3:45 PM",
     "EndTime": "4:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 97,
@@ -1075,7 +1075,7 @@
     "Stage": "This Tent",
     "StartTime": "4:00 PM",
     "EndTime": "5:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 98,
@@ -1086,7 +1086,7 @@
     "Stage": "Which Stage",
     "StartTime": "4:15 PM",
     "EndTime": "5:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 99,
@@ -1097,7 +1097,7 @@
     "Stage": "That Tent",
     "StartTime": "4:30 PM",
     "EndTime": "5:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 100,
@@ -1108,7 +1108,7 @@
     "Stage": "The Other Stage",
     "StartTime": "5:00 PM",
     "EndTime": "6:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 101,
@@ -1119,7 +1119,7 @@
     "Stage": "What Stage",
     "StartTime": "5:15 PM",
     "EndTime": "6:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 102,
@@ -1130,7 +1130,7 @@
     "Stage": "This Tent",
     "StartTime": "5:45 PM",
     "EndTime": "6:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 103,
@@ -1141,7 +1141,7 @@
     "Stage": "Which Stage",
     "StartTime": "6:15 PM",
     "EndTime": "7:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 104,
@@ -1152,7 +1152,7 @@
     "Stage": "That Tent",
     "StartTime": "6:15 PM",
     "EndTime": "7:15 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 105,
@@ -1163,7 +1163,7 @@
     "Stage": "The Other Stage",
     "StartTime": "6:45 PM",
     "EndTime": "7:45 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 106,
@@ -1174,7 +1174,7 @@
     "Stage": "What Stage",
     "StartTime": "7:15 PM",
     "EndTime": "8:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 107,
@@ -1185,7 +1185,7 @@
     "Stage": "This Tent",
     "StartTime": "7:45 PM",
     "EndTime": "9:00 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 108,
@@ -1196,7 +1196,7 @@
     "Stage": "The Other Stage",
     "StartTime": "8:15 PM",
     "EndTime": "9:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 109,
@@ -1207,7 +1207,7 @@
     "Stage": "Which Stage",
     "StartTime": "8:15 PM",
     "EndTime": "9:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 110,
@@ -1218,7 +1218,7 @@
     "Stage": "That Tent",
     "StartTime": "8:30 PM",
     "EndTime": "9:30 PM",
-    "Favorited": 0
+    "Favorited": false
   },
   {
     "AOTD #": 111,
@@ -1229,6 +1229,6 @@
     "Stage": "What Stage",
     "StartTime": "9:30 PM",
     "EndTime": "11:00 PM",
-    "Favorited": 0
+    "Favorited": false
   }
 ]

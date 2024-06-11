@@ -1,12 +1,13 @@
+// ArtistBioScreen.tsx
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import artistImages from '../../assets/utils/artistImages';
-import { Artist } from '../types';
+import { ArtistBioScreenRouteParams, Artist } from '../types';
 import { useFavorites } from '../../context/FavoritesContext';
 
-type ArtistBioRouteProp = RouteProp<{ ArtistBio: { artist: Artist & { favorited: boolean } } }, 'ArtistBio'>;
+type ArtistBioRouteProp = RouteProp<{ ArtistBio: ArtistBioScreenRouteParams }, 'ArtistBio'>;
 
 const ArtistBioScreen: React.FC = () => {
   const route = useRoute<ArtistBioRouteProp>();

@@ -1,21 +1,11 @@
+// CalendarScreen.tsx
 import React, { useState, useRef } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import { useFavorites } from '../../../context/FavoritesContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-interface Artist {
-  "AOTD #": number;
-  Artist: string;
-  Scheduled: string;
-  Description: string;
-  Genres: string;
-  Stage: string;
-  StartTime: string;
-  EndTime: string;
-  Favorited: number;
-}
+import { Artist } from '../../types'; // Ensure correct import path
 
 interface FestivalDayProps {
   day: string;
@@ -61,7 +51,7 @@ function getArtistStyle(startTime: string, endTime: string): { top: number, heig
 }
 
 const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favorites, toggleFavorite }) => {
-  const filteredData = data.filter(artist => {
+  const filteredData = data.filter((artist: Artist) => {
     const artistStartMinutes = timeToMinutes(artist.StartTime);
     const isSameDay = artist.Scheduled === day;
     const isAfterMidnight = artist.Scheduled === getPreviousDay(day) && artistStartMinutes < 5 * 60;
@@ -69,8 +59,8 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
   });
 
   const renderStageColumn = (stage: string) => {
-    const stageData = filteredData.filter(artist => artist.Stage === stage);
-    return stageData.map((artist, index) => {
+    const stageData = filteredData.filter((artist: Artist) => artist.Stage === stage);
+    return stageData.map((artist: Artist, index: number) => {
       const isFavorited = favorites[artist.Artist] || false;
       return (
         <TouchableOpacity
@@ -108,8 +98,8 @@ function getPreviousDay(day: string): string {
 
 const CalendarScreen: React.FC = () => {
   const { favorites, toggleFavorite } = useFavorites();
-  const [selectedDay, setSelectedDay] = useState('Thursday');
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [selectedDay, setSelectedDay] = useState<string>('Thursday');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState<boolean>(false);
   const navigation = useNavigation();
   const scrollViewRef = useRef<ScrollView>(null);
   const timeColumnRef = useRef<ScrollView>(null);
@@ -134,7 +124,7 @@ const CalendarScreen: React.FC = () => {
   };
 
   const filteredData = showFavoritesOnly
-    ? artistsData.filter(artist => favorites[artist.Artist])
+    ? artistsData.filter((artist: Artist) => favorites[artist.Artist])
     : artistsData;
 
   return (

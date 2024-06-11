@@ -11,7 +11,7 @@ interface Artist {
   Stage: string;
   StartTime: string;
   EndTime: string;
-  Favorited: number;
+  Favorited: boolean;
 }
 
 interface FestivalDayProps {

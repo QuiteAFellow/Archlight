@@ -1,46 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import artistImages from '../../../assets/utils/artistImages';
-import { LineupStackParamList } from '../../types';
+import { LineupStackParamList, Artist } from '../../types'; // Ensure correct import path
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFavorites } from '../../../context/FavoritesContext';
 
-interface Artist {
-  "AOTD #": number;
-  Artist: string;
-  Scheduled: string;
-  Description: string;
-  Genres: string;
-  Stage: string;
-  StartTime: string;
-  EndTime: string;
-  Favorited: number;
-  favorited: boolean;
-}
-
 const LineupScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<LineupStackParamList>>();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const { favorites, toggleFavorite } = useFavorites();
 
-  const [artistList, setArtistList] = useState<Artist[]>(() => {
+  const initializeArtistList = (): Artist[] => {
     const uniqueArtists = new Set<string>();
     const uniqueArtistList: Artist[] = [];
 
-    artistsData.forEach((artist: Omit<Artist, 'Favorited' | 'favorited'>) => {
+    artistsData.forEach((artist: Artist) => {
       if (!uniqueArtists.has(artist.Artist)) {
         uniqueArtists.add(artist.Artist);
-        uniqueArtistList.push({ ...artist, Favorited: 0, favorited: false });
+        uniqueArtistList.push({
+          ...artist,
+          Favorited: favorites[artist.Artist] || false
+        });
       }
     });
 
     return uniqueArtistList.sort((a, b) => a.Artist.toLowerCase().localeCompare(b.Artist.toLowerCase()));
-  });
+  };
 
-  const filteredArtistList = artistList.filter(artist =>
+  const [artistList, setArtistList] = useState<Artist[]>(initializeArtistList);
+
+  useEffect(() => {
+    setArtistList(prevArtistList =>
+      prevArtistList.map(artist => ({
+        ...artist,
+        Favorited: favorites[artist.Artist] || false,
+      }))
+    );
+  }, [favorites]);
+
+  const filteredArtistList = artistList.filter((artist: Artist) =>
     artist.Artist.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -58,8 +59,8 @@ const LineupScreen: React.FC = () => {
         value={searchQuery}
       />
       <ScrollView contentContainerStyle={styles.container}>
-        {filteredArtistList.map((artist, index) => {
-          const isFavorited = favorites[artist.Artist] || false;
+        {filteredArtistList.map((artist: Artist, index: number) => {
+          const isFavorited = artist.Favorited;
           return (
             <View key={artist.Artist}>
               <TouchableOpacity onPress={() => navigation.navigate('ArtistBio', { artist: { ...artist, favorited: isFavorited } })}>
