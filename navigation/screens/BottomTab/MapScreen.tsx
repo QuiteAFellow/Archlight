@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
 import ImageViewing from 'react-native-image-viewing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -17,6 +17,9 @@ interface Pin {
 }
 
 const colors = ['white', 'red', 'orange', 'yellow', 'green', 'lightgreen', 'blue', 'purple'];
+
+const X_ADJUSTMENT = -15;
+const Y_ADJUSTMENT = -20;
 
 const MapScreen: React.FC = () => {
   const [currentMap, setCurrentMap] = useState('centeroo');
@@ -64,8 +67,9 @@ const MapScreen: React.FC = () => {
   const handleMapPress = (event: { nativeEvent: { locationX: number; locationY: number } }) => {
     if (addingPin) {
       const { locationX, locationY } = event.nativeEvent;
-      setNewPinCoords({ x: locationX, y: locationY });
+      setNewPinCoords({ x: locationX + X_ADJUSTMENT, y: locationY + Y_ADJUSTMENT });
       setShowModal(true);
+      setAddingPin(false);  // Reset adding pin state
     }
   };
 
@@ -97,7 +101,6 @@ const MapScreen: React.FC = () => {
       setPins(updatedPins);
       setPinDetails({ label: '', description: '', color: 'red' });
       setShowModal(false);
-      setAddingPin(false);
       setEditingPinId(null);
       setNewPinCoords(null);
     }
@@ -112,83 +115,101 @@ const MapScreen: React.FC = () => {
     }
   };
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={switchMap} style={styles.switchButton}>
-        <Text style={styles.switchButtonText}>Switch Map</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => setAddingPin(true)} style={styles.addButton}>
-        <Text style={styles.addButtonText}>Add Pin</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>
-        <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
-        {pins
-          .filter((pin) => pin.map === currentMap)
-          .map((pin) => (
-            <TouchableOpacity
-              key={pin.id}
-              onPress={() => handlePinPress(pin.id)}
-              style={[
-                styles.pin,
-                { left: pin.x - 15, top: pin.y - 15, backgroundColor: pin.color },
-              ]}
-            >
-              <Text style={[styles.pinLabel, { color: pin.color === 'yellow' ? 'black' : 'white' }]}>{pin.label}</Text>
-            </TouchableOpacity>
-          ))}
-      </TouchableOpacity>
-      <ImageViewing
-        images={[{ uri: Image.resolveAssetSource(currentImage).uri }]}
-        imageIndex={0}
-        visible={isImageViewVisible}
-        onRequestClose={() => setIsImageViewVisible(false)}
-      />
+  const cancelAddPin = () => {
+    setAddingPin(false);
+    setNewPinCoords(null);
+    setShowModal(false);
+  };
 
-      <Modal visible={showModal} animationType="slide" transparent>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>{editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}</Text>
-            <TextInput
-              placeholder="Label"
-              value={pinDetails.label}
-              onChangeText={(text) => setPinDetails({ ...pinDetails, label: text })}
-              style={styles.input}
-            />
-            <TextInput
-              placeholder="Description"
-              value={pinDetails.description}
-              onChangeText={(text) => setPinDetails({ ...pinDetails, description: text })}
-              style={styles.input}
-            />
-            <View style={styles.colorContainer}>
-              <Text style={styles.colorLabel}>Color</Text>
-              <View style={styles.colors}>
-                {colors.map((color) => (
-                  <TouchableOpacity
-                    key={color}
-                    onPress={() => setPinDetails({ ...pinDetails, color })}
-                    style={[styles.colorSwatch, { backgroundColor: color, borderColor: pinDetails.color === color ? 'black' : 'transparent' }]}
-                  />
-                ))}
+  return (
+    <TouchableWithoutFeedback onPress={addingPin ? handleMapPress : undefined}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={switchMap} style={styles.switchButton}>
+          <Text style={styles.switchButtonText}>Switch Map</Text>
+        </TouchableOpacity>
+        {addingPin ? (
+          <TouchableOpacity onPress={cancelAddPin} style={styles.cancelAddButton}>
+            <Text style={styles.cancelAddButtonText}>Cancel Add Pin</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={() => setAddingPin(true)} style={styles.addButton}>
+            <Text style={styles.addButtonText}>Add Pin</Text>
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>
+          <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
+          {pins
+            .filter((pin) => pin.map === currentMap)
+            .map((pin) => (
+              <TouchableOpacity
+                key={pin.id}
+                onPress={() => handlePinPress(pin.id)}
+                style={[
+                  styles.pin,
+                  { left: pin.x, top: pin.y, backgroundColor: pin.color },
+                ]}
+              >
+                <Text style={[styles.pinLabel, { color: pin.color === 'yellow' ? 'black' : 'white' }]}>{pin.label}</Text>
+              </TouchableOpacity>
+            ))}
+        </TouchableOpacity>
+        <ImageViewing
+          images={[{ uri: Image.resolveAssetSource(currentImage).uri }]}
+          imageIndex={0}
+          visible={isImageViewVisible}
+          onRequestClose={() => setIsImageViewVisible(false)}
+        />
+        {addingPin && (
+          <View style={styles.overlay}>
+            <Text style={styles.overlayText}>Tap on the map to add a pin</Text>
+          </View>
+        )}
+        <Modal visible={showModal} animationType="slide" transparent>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>{editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}</Text>
+              <TextInput
+                placeholder="Label"
+                value={pinDetails.label}
+                onChangeText={(text) => setPinDetails({ ...pinDetails, label: text })}
+                style={styles.input}
+              />
+              <TextInput
+                placeholder="Description"
+                value={pinDetails.description}
+                onChangeText={(text) => setPinDetails({ ...pinDetails, description: text })}
+                style={styles.input}
+              />
+              <View style={styles.colorContainer}>
+                <Text style={styles.colorLabel}>Color</Text>
+                <View style={styles.colors}>
+                  {colors.map((color) => (
+                    <TouchableOpacity
+                      key={color}
+                      onPress={() => setPinDetails({ ...pinDetails, color })}
+                      style={[styles.colorSwatch, { backgroundColor: color, borderColor: pinDetails.color === color ? 'black' : 'transparent' }]}
+                    />
+                  ))}
+                </View>
+              </View>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton]}>
+                  <Text style={styles.buttonText}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
+                </TouchableOpacity>
+                {editingPinId !== null && (
+                  <TouchableOpacity onPress={removePin} style={[styles.button, styles.removeButton]}>
+                    <Text style={styles.buttonText}>Remove Pin</Text>
+                  </TouchableOpacity>
+                )}
+                <TouchableOpacity onPress={() => setShowModal(false)} style={[styles.button, styles.cancelButton]}>
+                  <Text style={styles.buttonText}>Cancel</Text>
+                </TouchableOpacity>
               </View>
             </View>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton]}>
-                <Text style={styles.buttonText}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
-              </TouchableOpacity>
-              {editingPinId !== null && (
-                <TouchableOpacity onPress={removePin} style={[styles.button, styles.removeButton]}>
-                  <Text style={styles.buttonText}>Remove Pin</Text>
-                </TouchableOpacity>
-              )}
-              <TouchableOpacity onPress={() => setShowModal(false)} style={[styles.button, styles.cancelButton]}>
-                <Text style={styles.buttonText}>Cancel</Text>
-              </TouchableOpacity>
-            </View>
           </View>
-        </View>
-      </Modal>
-    </View>
+        </Modal>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -203,7 +224,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#007bff',
     zIndex: 10,
-    borderRadius: 5
+    borderRadius: 5,
   },
   switchButtonText: {
     color: 'white',
@@ -215,9 +236,21 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#007bff',
     zIndex: 10,
-    borderRadius: 5
+    borderRadius: 5,
   },
   addButtonText: {
+    color: 'white',
+  },
+  cancelAddButton: {
+    position: 'absolute',
+    top: 5,
+    right: 10,
+    padding: 10,
+    backgroundColor: 'red',
+    zIndex: 10,
+    borderRadius: 5,
+  },
+  cancelAddButtonText: {
     color: 'white',
   },
   mapContainer: {
@@ -247,7 +280,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    width: 300,
+    width: 325,
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
@@ -292,16 +325,33 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   saveButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#007bff',
   },
   removeButton: {
     backgroundColor: 'red',
   },
   cancelButton: {
     backgroundColor: 'gray',
+    justifyContent: 'center'
   },
   buttonText: {
     color: 'white',
+    textAlign: 'center',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 5,
+  },
+  overlayText: {
+    color: 'white',
+    fontSize: 20,
     textAlign: 'center',
   },
 });

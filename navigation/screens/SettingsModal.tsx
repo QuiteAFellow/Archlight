@@ -1,44 +1,40 @@
-import React, { useState } from 'react';
-import { Modal, View, Text, Button, StyleSheet, TouchableOpacity, TextInput, TouchableWithoutFeedback } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { Modal, View, Text, Button, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import Toast from 'react-native-toast-message';
 import { useFavorites } from '../../context/FavoritesContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface SettingsModalProps {
   visible: boolean;
   onClose: () => void;
-  onSave: (times: number[]) => void;
 }
 
-const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave }) => {
-  const [notificationTimes, setNotificationTimes] = useState<string[]>(['']);
-  const { setNotificationTimes: saveNotificationTimes } = useFavorites();
+const notificationOptions = [5, 10, 15, 30, 45, 60, 90];
 
-  const addNotificationTime = () => {
-    if (notificationTimes.length < 5) {
-      setNotificationTimes([...notificationTimes, '']);
-    }
-  };
+const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose }) => {
+  const { notificationTimes, setNotificationTimes } = useFavorites();
+  const [selectedTimes, setSelectedTimes] = useState<number[]>([]);
 
-  const removeNotificationTime = (index: number) => {
-    const newTimes = notificationTimes.filter((_, i) => i !== index);
-    setNotificationTimes(newTimes);
-  };
+  useEffect(() => {
+    setSelectedTimes(notificationTimes);
+  }, [notificationTimes]);
 
-  const handleTimeChange = (text: string, index: number) => {
-    const newTimes = [...notificationTimes];
-    newTimes[index] = text;
-    setNotificationTimes(newTimes);
-  };
-
-  const handleSave = () => {
-    const times = notificationTimes.filter(time => time !== '').map(time => parseInt(time, 10));
-    saveNotificationTimes(times);
-    onSave(times);
+  const handleSave = async () => {
+    setNotificationTimes(selectedTimes);
+    await AsyncStorage.setItem('notificationTimes', JSON.stringify(selectedTimes));
     Toast.show({
       type: 'success',
       text1: 'Notification settings updated successfully',
     });
     onClose();
+  };
+
+  const toggleTime = (time: number) => {
+    setSelectedTimes((prevTimes) =>
+      prevTimes.includes(time)
+        ? prevTimes.filter((t) => t !== time)
+        : [...prevTimes, time]
+    );
   };
 
   return (
@@ -48,24 +44,29 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
           <TouchableWithoutFeedback>
             <View style={styles.container}>
               <Text style={styles.title}>Notification Settings</Text>
-              <Text>Set up to 5 notification times (in minutes) before the artist's start time:</Text>
-              {notificationTimes.map((time, index) => (
-                <View key={index} style={styles.timeContainer}>
-                  <TextInput
-                    style={styles.input}
-                    keyboardType="numeric"
-                    value={time}
-                    onChangeText={(text) => handleTimeChange(text, index)}
-                    placeholder="Minutes before start time"
-                  />
-                  <TouchableOpacity onPress={() => removeNotificationTime(index)} style={styles.removeButton}>
-                    <Text style={styles.removeButtonText}>Remove</Text>
+              <Text>Set notification times (in minutes) before the artist's start time:</Text>
+              <View style={styles.optionsContainer}>
+                {notificationOptions.map((time) => (
+                  <TouchableOpacity
+                    key={time}
+                    onPress={() => toggleTime(time)}
+                    style={[
+                      styles.option,
+                      selectedTimes.includes(time) && styles.selectedOption,
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.optionText,
+                        selectedTimes.includes(time) && styles.selectedOptionText,
+                      ]}
+                    >
+                      {time} minutes
+                    </Text>
                   </TouchableOpacity>
-                </View>
-              ))}
+                ))}
+              </View>
               <View style={styles.buttonContainer}>
-                <Button title="Add Notification Time" onPress={addNotificationTime} disabled={notificationTimes.length >= 5} />
-                <View style={styles.buttonSpacing} />
                 <Button title="Save" onPress={handleSave} />
               </View>
             </View>
@@ -94,29 +95,32 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  timeContainer: {
+  optionsContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: 20,
+    marginTop: 30
   },
-  input: {
-    flex: 1,
-    borderColor: '#ccc',
-    borderWidth: 1,
+  option: {
     padding: 10,
+    borderWidth: 1,
+    borderColor: 'grey',
     borderRadius: 5,
+    margin: 5,
   },
-  removeButton: {
-    marginLeft: 10,
+  selectedOption: {
+    backgroundColor: '#007bff',
+    borderColor: '#007bff'
   },
-  removeButtonText: {
-    color: 'red',
+  optionText: {
+    color: 'black',
+  },
+  selectedOptionText: {
+    color: 'white',
   },
   buttonContainer: {
     marginTop: 10,
-  },
-  buttonSpacing: {
-    height: 10, // Add padding between buttons
   },
 });
 
