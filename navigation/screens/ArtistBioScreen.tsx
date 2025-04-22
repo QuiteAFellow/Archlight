@@ -1,37 +1,33 @@
-// ArtistBioScreen.tsx
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { Artist, ArtistBioScreenRouteParams } from '../types';
 import artistImages from '../../assets/utils/artistImages';
-import { ArtistBioScreenRouteParams, Artist } from '../types';
 import { useFavorites } from '../../context/FavoritesContext';
 
 type ArtistBioRouteProp = RouteProp<{ ArtistBio: ArtistBioScreenRouteParams }, 'ArtistBio'>;
 
-const ArtistBioScreen: React.FC = () => {
-  const route = useRoute<ArtistBioRouteProp>();
-  const { artist } = route.params;
+type ArtistBioContentProps = {
+  artist: Artist;
+};
+
+export const ArtistBioContent: React.FC<ArtistBioContentProps> = ({ artist }) => {
   const { favorites, toggleFavorite } = useFavorites();
-  const isFavorited = favorites[artist.Artist] || false;
+  const isFavorited = favorites[artist["AOTD #"]] || false;
+  const descriptionSegments = artist.Description.split('[PAGE_BREAK]');
   const navigation = useNavigation();
 
-  const descriptionSegments = artist.Description.split('[PAGE_BREAK]');
-
   const handleToggleFavorite = () => {
-    console.log('Favorite button clicked for:', artist.Artist);
+    console.log('Favorite button clicked for:', artist["AOTD #"]);
     toggleFavorite(artist);
-  };
-
-  const handleGoBack = () => {
-    navigation.goBack();
   };
 
   return (
     <ScrollView style={styles.container}>
       <View>
         <Image source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
-        <TouchableOpacity onPress={handleGoBack} style={styles.backButton}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
       </View>
@@ -39,7 +35,11 @@ const ArtistBioScreen: React.FC = () => {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{artist.Artist}</Text>
           <TouchableOpacity onPress={handleToggleFavorite} style={styles.heartContainer}>
-            <Ionicons name={isFavorited ? 'heart' : 'heart-outline'} size={35} color={isFavorited ? 'red' : 'black'} />
+            <Ionicons
+              name={isFavorited ? 'heart' : 'heart-outline'}
+              size={35}
+              color={isFavorited ? 'red' : 'black'}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.infoContainer}>
@@ -48,7 +48,9 @@ const ArtistBioScreen: React.FC = () => {
         </View>
         <View style={styles.infoContainer}>
           <Ionicons name="time" size={20} color="darkgrey" />
-          <Text style={styles.infoText}>{artist.StartTime} - {artist.EndTime}</Text>
+          <Text style={styles.infoText}>
+            {artist.StartTime} - {artist.EndTime}
+          </Text>
         </View>
         <View style={styles.infoContainer}>
           <Ionicons name="location" size={20} color="darkgrey" />
@@ -58,17 +60,25 @@ const ArtistBioScreen: React.FC = () => {
           <Ionicons name="disc-outline" size={20} color="darkgrey" />
           <Text style={styles.infoText}>{artist.Genres}</Text>
         </View>
-        <Text style={styles.description}>
+        <View style={styles.description}>
           {descriptionSegments.map((segment, index) => (
-            <Text key={index}>
+            <Text key={index} style={styles.descriptionText}>
               {segment}
-              {index < descriptionSegments.length - 1 && '\n\n'} {/* Add a new line between segments */}
+              {index < descriptionSegments.length - 1 ? '\n\n' : ''}
             </Text>
           ))}
-        </Text>
+        </View>
       </View>
     </ScrollView>
   );
+};
+
+// Fallback route-based screen version
+const ArtistBioScreen: React.FC = () => {
+  const route = useRoute<ArtistBioRouteProp>();
+  const { artists, initialIndex } = route.params;
+
+  return <ArtistBioContent artist={artists[initialIndex]} />;
 };
 
 const styles = StyleSheet.create({
@@ -82,8 +92,8 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 40, // Adjust based on your need
-    left: 20, // Adjust based on your need
+    top: 40,
+    left: 20,
     width: 40,
     height: 40,
     borderRadius: 20,
@@ -104,6 +114,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
+    flex: 1,
+    flexWrap: 'wrap',
   },
   heartContainer: {
     marginLeft: 10,
@@ -119,10 +131,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   description: {
-    fontSize: 16,
-    color: 'black',
     marginTop: 10,
     marginBottom: 10,
+  },
+  descriptionText: {
+    fontSize: 16,
+    color: 'black',
   },
 });
 

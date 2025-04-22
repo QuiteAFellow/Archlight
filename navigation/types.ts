@@ -1,4 +1,4 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
+import { NavigatorScreenParams, PrivateValueStore } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 export interface Artist {
@@ -36,13 +36,25 @@ export type RootNavigationScreenProps<T extends keyof RootStackParamList> = {
   navigation: BottomTabNavigationProp<RootStackParamList, T>;
 };
 
+export type ArtistCarouselParams = {
+  artists: Artist[];
+  initialIndex: number;
+}
+
 export type LineupStackParamList = {
-  Lineup: undefined;
+  FestivalLineup: undefined;
   ArtistBio: { artist: Artist & { favorited: boolean } };
+  ArtistCarousel: { artists: Artist[]; initialIndex: number};
 };
 
-export type ArtistBioScreenRouteParams = {
-  artist: Artist & { favorited: boolean };
+export type CalendarStackParamList = {
+  FestivalSchedule: undefined;
+  ArtistBio: { artist: Artist & { favorited: boolean } };
+  ArtistCarousel: ArtistCarouselParams;
+}
+
+export type ArtistBioScreenRouteParams = ArtistCarouselParams & {
+  favorited: boolean;
 };
 
 export interface FavoriteContextProps {

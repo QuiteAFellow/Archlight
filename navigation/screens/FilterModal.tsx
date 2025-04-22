@@ -107,7 +107,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
           <ScrollView contentContainerStyle={styles.scrollView}>
             {renderMultiSelectList('Type', uniqueOptions.type.sort(), selectedTypes, setSelectedTypes)}
             {renderMultiSelectList('Tags', uniqueOptions.tags.sort(), selectedTags, setSelectedTags)}
-            {renderMultiSelectList('Dietary', ['V', 'VG', 'GF'], selectedDietary, setSelectedDietary)}
+            {renderMultiSelectList('Dietary', ['Vegetarian', 'Vegan', 'Gluten Free'], selectedDietary, setSelectedDietary)}
             {renderMultiSelectList('Price', ['$', '$$', '$$$'], selectedPrices, setSelectedPrices)}
             {renderMultiSelectList('Location', locationOptions, selectedLocations, setSelectedLocations)}
           </ScrollView>

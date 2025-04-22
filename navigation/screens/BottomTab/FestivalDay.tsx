@@ -61,7 +61,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
   const renderStageColumn = (stage: string) => {
     const stageData = filteredData.filter(artist => artist.Stage === stage);
     return stageData.map((artist, index) => {
-      const isFavorited = favorites[artist.Artist] || false;
+      const isFavorited = favorites[artist["AOTD #"]] || false;
       return (
         <TouchableOpacity
           key={`${artist["AOTD #"]}-${day}-${index}`}
@@ -79,7 +79,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
   return (
     <ScrollView style={styles.dayContainer} horizontal={true}>
       <View style={styles.stagesContainer}>
-        {['What Stage', 'Which Stage', 'The Other Stage', 'This Tent', 'That Tent'].map(stage => (
+        {['What Stage', 'Which Stage', 'The Other', 'Infinity Stage', 'This Tent', 'That Tent'].map(stage => (
           <View key={stage} style={styles.stageColumn}>
             <Text style={styles.stageHeader}>{stage}</Text>
             {renderStageColumn(stage)}

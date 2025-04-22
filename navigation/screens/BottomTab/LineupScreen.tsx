@@ -1,12 +1,25 @@
+// LineupScreen.tsx
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-import artistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
+import rawArtistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import artistImages from '../../../assets/utils/artistImages';
-import { LineupStackParamList, Artist } from '../../types'; // Ensure correct import path
+import { LineupStackParamList, Artist } from '../../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFavorites } from '../../../context/FavoritesContext';
+
+const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
+  "AOTD #": parseInt(artist["AOTD #"], 10),
+  Artist: artist.Artist,
+  Description: artist.Description,
+  Genres: artist.Genres,
+  Scheduled: artist.Scheduled,
+  Stage: artist.Stage,
+  StartTime: artist.StartTime || artist["Start Time"],
+  EndTime: artist.EndTime || artist["End Time"],
+  Favorited: artist.Favorited === 'true' || artist.Favorited === true,
+}));
 
 const LineupScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<LineupStackParamList>>();
@@ -22,12 +35,12 @@ const LineupScreen: React.FC = () => {
         uniqueArtists.add(artist.Artist);
         uniqueArtistList.push({
           ...artist,
-          Favorited: favorites[artist.Artist] || false
+          Favorited: favorites[artist["AOTD #"]] || false
         });
       }
     });
 
-    return uniqueArtistList.sort((a, b) => a.Artist.toLowerCase().localeCompare(b.Artist.toLowerCase()));
+    return uniqueArtistList.sort((a, b) => a.Artist.localeCompare(b.Artist));
   };
 
   const [artistList, setArtistList] = useState<Artist[]>(initializeArtistList);
@@ -36,7 +49,7 @@ const LineupScreen: React.FC = () => {
     setArtistList(prevArtistList =>
       prevArtistList.map(artist => ({
         ...artist,
-        Favorited: favorites[artist.Artist] || false,
+        Favorited: favorites[artist["AOTD #"]] || false,
       }))
     );
   }, [favorites]);
@@ -50,6 +63,16 @@ const LineupScreen: React.FC = () => {
     toggleFavorite(artist);
   };
 
+  const handleNavigateToArtist = (selectedArtist: Artist) => {
+    const sortedArtists = [...artistList].sort((a, b) => a.Artist.localeCompare(b.Artist));
+    const initialIndex = sortedArtists.findIndex((a) => a.Artist === selectedArtist.Artist);
+
+    navigation.navigate('ArtistCarousel', {
+      artists: sortedArtists,
+      initialIndex: initialIndex,
+    });
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <TextInput
@@ -59,11 +82,11 @@ const LineupScreen: React.FC = () => {
         value={searchQuery}
       />
       <ScrollView contentContainerStyle={styles.container}>
-        {filteredArtistList.map((artist: Artist, index: number) => {
+        {filteredArtistList.map((artist: Artist) => {
           const isFavorited = artist.Favorited;
           return (
-            <View key={artist.Artist}>
-              <TouchableOpacity onPress={() => navigation.navigate('ArtistBio', { artist: { ...artist, favorited: isFavorited } })}>
+            <View key={artist["AOTD #"]}>
+              <TouchableOpacity onPress={() => handleNavigateToArtist(artist)}>
                 <View style={styles.artistContainer}>
                   <View style={styles.artistContent}>
                     <Image

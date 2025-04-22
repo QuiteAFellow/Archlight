@@ -24,7 +24,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bonnaroo 2024</Text>
+      <Text style={styles.title}>Bonnaroo 2025</Text>
       <View style={styles.buttonContainer}>
         <CustomButton
           title="Calendar"

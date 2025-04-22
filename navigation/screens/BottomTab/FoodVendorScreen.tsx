@@ -53,7 +53,7 @@ const FoodVendorScreen: React.FC = () => {
   const uniqueOptions = {
     type: getUniqueValues(foodVendorsData, 'Type'),
     tags: getUniqueValues(foodVendorsData, 'Food tags'),
-    dietary: ['V', 'VG', 'GF'],
+    dietary: ['Vegetarian', 'Vegan', 'Gluten Free'],
     price: ['$', '$$', '$$$'],
     location: getUniqueValues(foodVendorsData, 'Location'),
   };
@@ -92,9 +92,16 @@ const FoodVendorScreen: React.FC = () => {
       );
     }
     if (filters.dietary.length) {
-      filtered = filtered.filter(vendor =>
-        filters.dietary.some((dietary: string) => vendor["Dietary Tags"].toLowerCase().includes(dietary.toLowerCase()))
-      );
+      filtered = filtered.filter(vendor => {
+        const rawDietary = vendor["Dietary Tags"] || '';
+        const vendorDietaryTags = rawDietary
+          .split(',')
+          .map((tag: string) => tag.trim().toLowerCase());
+        const matches = filters.dietary.some((filterTag: string) =>
+          vendorDietaryTags.includes(filterTag.toLowerCase())
+        );
+        return matches;
+      });
     }
     if (filters.price.length) {
       filtered = filtered.filter(vendor =>

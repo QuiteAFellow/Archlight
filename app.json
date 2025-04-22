@@ -3,13 +3,14 @@
     "name": "Bonnaroo App",
     "slug": "your-app-slug",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "entryPoint": "./index.tsx",
     "notification": {
       "icon": "./assets/notification-icons/android/android-launchericon-48-48.png",
       "color": "#000000",
@@ -21,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/loading-icons/android/android-launchericon-1024-1024.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "newArchEnabled": true
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
@@ -33,7 +35,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.marina.bonnarooapp",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.0",
+      "newArchEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,6 +46,9 @@
         "projectId": "8ca33188-9b28-439a-a688-0b09b8eda6c8"
       }
     },
-    "runtimeVersion": "1.0.0"
+    "runtimeVersion": "1.0.0",
+    "plugins": [
+      "expo-asset"
+    ]
   }
 }

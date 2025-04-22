@@ -50,9 +50,10 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
   }, [notificationTimes]);
 
   const toggleFavorite = (artist: Artist) => {
+    const artistKey = artist["AOTD #"].toString();
     setFavorites(prev => {
-      const newFavorites = { ...prev, [artist.Artist]: !prev[artist.Artist] };
-      if (!prev[artist.Artist]) {
+      const newFavorites = { ...prev, [artistKey]: !prev[artistKey] };
+      if (!prev[artistKey]) {
         scheduleNotificationsForArtist(artist, notificationTimes);
       }
       return newFavorites;

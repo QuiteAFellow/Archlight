@@ -43,12 +43,12 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-      <FavoritesProvider>
-        <NavigationContainer>
-          <MainContainer />
-          <Toast />
-        </NavigationContainer>
-      </FavoritesProvider>
+        <FavoritesProvider>
+          <NavigationContainer>
+            <MainContainer />
+            <Toast />
+          </NavigationContainer>
+        </FavoritesProvider>
     </>
   );
 };
