@@ -7,6 +7,7 @@ import rawArtistsData from '../../../database/Artist Bios, Timesheet, Image Path
 import { Artist } from '../../types';
 import { LineupStackParamList } from '../../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTheme } from '../ThemeContext';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -28,8 +29,8 @@ const timeSlots = [
 const scale = 1;
 const STAGE_NAMES = ['What Stage', 'Which Stage', 'The Other', 'Infinity Stage', 'This Tent', 'That Tent'];
 
-const extraMinutes = 17 * 60
-const scrollableHeight = extraMinutes * scale
+const extraMinutes = 17 * 60;
+const scrollableHeight = extraMinutes * scale;
 
 function timeToMinutes(time: string): number {
   const [hours, minutesPart] = time.split(':');
@@ -59,7 +60,7 @@ function getArtistStyle(startTime: string, endTime: string): { top: number, heig
   };
 }
 
-function getNowLineStyle(): { top: number } {
+function getNowLineStyle(selectedDay: string): { top: number, showNowLine: boolean } {
   const margin = 30; // same as used in getArtistStyle
   const now = new Date();
   const hours = now.getHours();
@@ -67,12 +68,13 @@ function getNowLineStyle(): { top: number } {
   const totalMinutes = hours * 60 + minutes;
 
   const offsetMinutes = totalMinutes - 12 * 60;
+  const currentDay = now.toLocaleString('en-us', { weekday: 'long' }); // Get current day as string
 
-  if (offsetMinutes < 0 || offsetMinutes > 17 * 60) {
-    return { top: -1000 }; // hide line
+  if (offsetMinutes < 0 || offsetMinutes > 17 * 60 || currentDay !== selectedDay) {
+    return { top: -1000, showNowLine: false }; // hide line if not selected day
   }
 
-  return { top: offsetMinutes * scale + margin };
+  return { top: offsetMinutes * scale + margin, showNowLine: true };
 }
 
 function getPreviousDay(day: string): string {
@@ -83,6 +85,7 @@ function getPreviousDay(day: string): string {
 
 const CalendarScreen: React.FC = () => {
   const { favorites, toggleFavorite } = useFavorites();
+  const { themeData, theme, setTheme } = useTheme();
   const [selectedDay, setSelectedDay] = useState<string>('Thursday');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState<boolean>(false);
   const [_, forceUpdate] = useState(false);
@@ -95,6 +98,7 @@ const CalendarScreen: React.FC = () => {
   const stageWidth = isLandscape
     ? (width - 45) / STAGE_NAMES.length // Full screen width minus the fixed time column
     : defaultStageWidth;
+
   useEffect(() => {
     const interval = setInterval(() => {
       forceUpdate(prev => !prev); // trigger re-render every minute
@@ -102,9 +106,9 @@ const CalendarScreen: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-const contentWidth = isLandscape
-  ? width - 45 // Same as above, no scrolling
-  : STAGE_NAMES.length * defaultStageWidth; // Scroll in portrait
+  const contentWidth = isLandscape
+    ? width - 45 // Same as above, no scrolling
+    : STAGE_NAMES.length * defaultStageWidth; // Scroll in portrait
   const filteredData = showFavoritesOnly
     ? artistsData.filter((artist: Artist) => favorites[artist["AOTD #"]])
     : artistsData;
@@ -121,15 +125,27 @@ const contentWidth = isLandscape
       <TouchableOpacity
         key={day}
         onPress={() => setSelectedDay(day)}
-        style={[styles.dayButton, selectedDay === day && styles.selectedDayButton]}
+        style={[
+          styles.dayButton,
+          selectedDay === day &&
+            { backgroundColor: themeData.highlightColor, borderColor: 'transparent' },
+            selectedDay !== day && { borderColor: themeData.unselectedborder }
+        ]}
       >
-        <Text style={[styles.dayButtonText, selectedDay === day && styles.selectedDayButtonText]}>{day}</Text>
+        <Text style={[
+          styles.dayButtonText,
+          selectedDay === day
+            ? { color: theme === 'Light' ? 'white' : themeData.highlightTextColor }
+            : { color: themeData.textColor }
+        ]}>
+          {day}
+        </Text>
       </TouchableOpacity>
     ))
   );
 
   const renderArtistName = (artist: Artist) => (
-    <Text style={styles.artistName}>{artist.Artist}</Text>
+    <Text style={[styles.artistName, { color: themeData.textColor }]}>{artist.Artist}</Text>
   );
 
   const renderStageColumn = (stage: string) => {
@@ -142,6 +158,14 @@ const contentWidth = isLandscape
 
     return filtered.map((artist: Artist, index: number) => {
       const isFavorited = favorites[artist["AOTD #"]] || false;
+      const stageColor = isFavorited
+        ? themeData.FavoritedstageColors[stage]
+        : themeData.stageColors[stage];
+
+      const stageTextColor = isFavorited
+        ? themeData.FavoritedstageTextColors[stage]
+        : themeData.stageTextColors[stage];
+
       const sortedArtists = filteredData
         .filter(a => {
           const startMinutes = timeToMinutes(a.StartTime);
@@ -160,7 +184,16 @@ const contentWidth = isLandscape
       return (
         <TouchableOpacity
           key={`${artist["AOTD #"]}-${selectedDay}-${index}`}
-          style={[styles.artistSlot, getArtistStyle(artist.StartTime, artist.EndTime), isFavorited && styles.favoritedArtistSlot]}
+          style={[
+            styles.artistSlot,
+            getArtistStyle(artist.StartTime, artist.EndTime),
+            {
+              backgroundColor: isFavorited
+                ? themeData.FavoritedstageColors[stage]  // Use favorited stage colors when the artist is favorited
+                : themeData.stageColors[stage],  // Use default stage color when not favorited
+            },
+            isFavorited && { borderColor: themeData.FavoritedstageColors[stage] }, // Use the favorited border color
+          ]}
           onPress={() =>
             navigation.navigate('ArtistCarousel', {
               artists: sortedArtists,
@@ -169,34 +202,40 @@ const contentWidth = isLandscape
           }
           onLongPress={() => toggleFavorite(artist)}
         >
-          {renderArtistName(artist)}
-          <Text style={styles.artistTime}>{artist.StartTime} - {artist.EndTime}</Text>
+          <Text style={[styles.artistName, { color: isFavorited ? themeData.FavoritedstageTextColors[stage] : themeData.stageTextColors[stage] }]}>{artist.Artist}</Text>
+          <Text style={[styles.artistTime, { color: isFavorited ? themeData.FavoritedstageTextColors[stage] : themeData.stageTextColors[stage] }]}>{artist.StartTime} - {artist.EndTime}</Text>
         </TouchableOpacity>
       );
     });
   };
 
+  const { top, showNowLine } = getNowLineStyle(selectedDay);
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => setShowFavoritesOnly(!showFavoritesOnly)}
-          style={[styles.favoriteToggle, showFavoritesOnly && styles.favoriteToggleActive, { opacity: Object.values(favorites).some(f => f) ? 1 : 0.2 }]}
+          style={[
+            styles.favoriteToggle,
+            { backgroundColor: showFavoritesOnly ? themeData.highlightColor : 'transparent' },
+            { borderColor: showFavoritesOnly ? 'transparent' : themeData.textColor }
+          ]}
           disabled={!Object.values(favorites).some(f => f)}
         >
-          <Ionicons name="heart" size={20} color={showFavoritesOnly ? 'white' : 'grey'} />
+          <Ionicons name="heart" size={20} color={ showFavoritesOnly ? themeData.highlightTextColor : themeData.textColor } />
         </TouchableOpacity>
         {renderDayButtons()}
       </View>
       <View style={styles.scheduleContainer}>
         <ScrollView
           ref={timeColumnRef}
-          style={styles.fixedTimeColumn}
+          style={[styles.fixedTimeColumn, { backgroundColor: themeData.backgroundColor }]}
           scrollEnabled={false}
           contentContainerStyle={{ height: scrollableHeight }}
         >
           {timeSlots.map((time, i) => (
-            <Text key={i} style={styles.timeLabel}>{time}</Text>
+            <Text key={i} style={[styles.timeLabel, { color: themeData.textColor }]}>{time}</Text>
           ))}
         </ScrollView>
         <ScrollView
@@ -206,22 +245,23 @@ const contentWidth = isLandscape
           scrollEventThrottle={16}
         >
           <ScrollView horizontal contentContainerStyle={{ width: contentWidth }}>
-            <View style = {{height: scrollableHeight}}>
+            <View style={{ height: scrollableHeight }}>
               <View style={styles.stageHeadersRow}>
                 {STAGE_NAMES.map(stage => (
-                  <Text key={stage} style={[styles.stageHeader, { width: stageWidth }]}>{stage}</Text>
+                  <Text key={stage} style={[styles.stageHeader, { width: stageWidth, color: themeData.textColor }]}>{stage}</Text>
                 ))}
               </View>
-              <View style={[styles.nowLine, getNowLineStyle()]}>
-              <View style={styles.nowDot} />
-              <View style={styles.nowLineBar} />
-              </View>
+              {showNowLine && (
+                <View style={[styles.nowLine, { top }]}>
+                  <View style={styles.nowDot} />
+                  <View style={styles.nowLineBar} />
+                </View>
+              )}
               <View style={styles.stagesRow}>
                 {STAGE_NAMES.map(stage => (
-                  <View key={stage} style={[styles.stageColumn, {
-                    width: stageWidth,
-                    height: scrollableHeight,
-                  }]}>{renderStageColumn(stage)}</View>
+                  <View key={stage} style={[styles.stageColumn, { width: stageWidth, height: scrollableHeight }]}>
+                    {renderStageColumn(stage)}
+                  </View>
                 ))}
               </View>
             </View>
@@ -232,18 +272,18 @@ const contentWidth = isLandscape
   );
 };
 
+// Styles are adjusted to work with themes
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   scheduleContainer: {
     flexDirection: 'row',
-    flex: 1
+    flex: 1,
   },
   fixedTimeColumn: {
     width: 45,
     paddingHorizontal: 9,
-    backgroundColor: '#f0f0f0',
     position: 'absolute',
     left: 0,
     top: 0,
@@ -252,7 +292,7 @@ const styles = StyleSheet.create({
   },
   scrollableContainer: {
     flex: 1,
-    marginLeft: 45
+    marginLeft: 45,
   },
   timeLabel: {
     height: 60,
@@ -263,7 +303,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 5,
-    backgroundColor: '#f0f0f0',
     zIndex: 2,
     marginTop: 5,
   },
@@ -287,20 +326,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#888',
     padding: 5,
     borderRadius: 5,
     marginHorizontal: 5,
     height: 40,
+    borderWidth: 1, // Add borderWidth to ensure it shows
   },
   selectedDayButton: {
-    backgroundColor: '#007bff'
+    backgroundColor: '#007bff',
   },
   dayButtonText: {
-    color: 'white'
+    color: 'white',
   },
   selectedDayButtonText: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   stageHeader: {
     fontWeight: 'bold',
@@ -339,11 +378,11 @@ const styles = StyleSheet.create({
   },
   artistName: {
     fontSize: 11,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   artistTime: {
     fontSize: 10.5,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
   },
   nowLine: {
     position: 'absolute',

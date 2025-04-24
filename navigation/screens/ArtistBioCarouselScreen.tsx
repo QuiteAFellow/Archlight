@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { FlatList, View, Dimensions } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { Artist } from '../types';
-import { ArtistBioContent } from './ArtistBioScreen';
+import ArtistBioContent from './ArtistBioContent';
 
 const { width } = Dimensions.get('window');
 

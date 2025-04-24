@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
+import { useTheme } from './ThemeContext';
 
 interface FilterModalProps {
   visible: boolean;
@@ -34,6 +35,7 @@ const locationOptions = [
 ].sort();
 
 const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilters, existingFilters, uniqueOptions }) => {
+  const { themeData } = useTheme();  // Extract theme data to dynamically set the colors
   const [selectedTypes, setSelectedTypes] = useState<string[]>(existingFilters.type || []);
   const [selectedTags, setSelectedTags] = useState<string[]>(existingFilters.tags || []);
   const [selectedDietary, setSelectedDietary] = useState<string[]>(existingFilters.dietary || []);
@@ -63,25 +65,26 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
   const renderMultiSelectList = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void) => (
     <View style={styles.filterSection}>
       <TouchableOpacity onPress={() => setExpandedCategory(expandedCategory === label ? null : label)} style={styles.filterCategory}>
-        <Text style={styles.label}>{label}</Text>
+        <Text style={[styles.label, { color: themeData.textColor }]}>{label}</Text>
         <FontAwesome
           name={expandedCategory === label ? 'angle-down' : 'angle-right'}
           size={20}
-          color="black"
+          color={themeData.textColor}
         />
       </TouchableOpacity>
       {expandedCategory === label && (
         <ScrollView style={styles.scrollableList}>
           <View style={styles.listItem}>
-            <Text style={styles.selectAllText}>Select All</Text>
+            <Text style={[styles.selectAllText, { color: themeData.textColor }]}>Select All</Text>
             <Checkbox
               status={selectedItems.length === items.length ? 'checked' : 'unchecked'}
               onPress={() => toggleSelectAll(selectedItems, onSelectedItemsChange, items)}
+              color={themeData.highlightColor}  // Set color based on theme
             />
           </View>
           {items.map((item) => (
             <View key={item} style={styles.listItem}>
-              <Text>{item}</Text>
+              <Text style={{ color: themeData.textColor }}>{item}</Text>
               <Checkbox
                 status={selectedItems.includes(item) ? 'checked' : 'unchecked'}
                 onPress={() => {
@@ -91,6 +94,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
                     onSelectedItemsChange([...selectedItems, item]);
                   }
                 }}
+                color={themeData.highlightColor}  // Set color based on theme
               />
             </View>
           ))}
@@ -102,8 +106,8 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose} transparent>
       <View style={styles.modalOverlay}>
-        <View style={styles.container}>
-          <Text style={styles.title}>Filter Vendors</Text>
+        <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+          <Text style={[styles.title, { color: themeData.textColor }]}>Filter Vendors</Text>
           <ScrollView contentContainerStyle={styles.scrollView}>
             {renderMultiSelectList('Type', uniqueOptions.type.sort(), selectedTypes, setSelectedTypes)}
             {renderMultiSelectList('Tags', uniqueOptions.tags.sort(), selectedTags, setSelectedTags)}
@@ -112,11 +116,11 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
             {renderMultiSelectList('Location', locationOptions, selectedLocations, setSelectedLocations)}
           </ScrollView>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
+            <TouchableOpacity style={[styles.applyButton, { backgroundColor: themeData.highlightColor }]} onPress={applyFilters}>
               <Text style={styles.applyButtonText}>Apply Filters</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
-              <Text style={styles.cancelButtonText}>Cancel</Text>
+            <TouchableOpacity style={[styles.cancelButton, { backgroundColor: themeData.textColor }]} onPress={onClose}>
+              <Text style={[styles.cancelButtonText, {color: themeData.backgroundColor}]}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -136,7 +140,6 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '80%',
     padding: 20,
-    backgroundColor: 'white',
     borderRadius: 10,
   },
   title: {
@@ -183,7 +186,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   applyButton: {
-    backgroundColor: '#007bff',
     padding: 10,
     borderRadius: 5,
     flex: 1,
@@ -195,7 +197,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   cancelButton: {
-    backgroundColor: '#f44336',
     padding: 10,
     borderRadius: 5,
     flex: 1,

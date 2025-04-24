@@ -6,12 +6,15 @@ import LineupStackNavigator from './screens/Stack/LineupStackNavigator';
 import { HomeScreen, MapScreen, FoodVendorScreen } from './screens/BottomTab';
 import SettingsModal from './screens/SettingsModal';
 import { BottomTabParamList } from './types';
+import { useTheme } from './screens/ThemeContext'; // Import useTheme to get the current theme
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const MainContainer: React.FC = () => {
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [notificationTimes, setNotificationTimes] = useState<number[]>([]);
+
+  const { themeData } = useTheme();  // Extract theme data to dynamically set the colors
 
   const openSettings = () => setSettingsVisible(true);
   const closeSettings = () => setSettingsVisible(false);
@@ -47,10 +50,12 @@ const MainContainer: React.FC = () => {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: '#007bff',
-          tabBarInactiveTintColor: '#000000',
+          tabBarActiveTintColor: themeData.highlightColor, // Use highlightColor for active tint
+          tabBarInactiveTintColor: themeData.textColor, // Use textColor for inactive tint
+          tabBarStyle: { backgroundColor: themeData.backgroundColor } // Set the background color for the entire screen
         })}
       >
+
         <Tab.Screen name="Home">
           {props => <HomeScreen {...props} openSettings={openSettings} />}
         </Tab.Screen>

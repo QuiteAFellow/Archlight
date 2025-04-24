@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 
 import foodVendorsData from '../../../database/Food Vendor Info 2024.json';
 import FilterModal from '../FilterModal';
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '../ThemeContext';  // Import theme context
 
 interface FoodVendor {
   "Food Vendor": string;
@@ -38,6 +39,7 @@ const splitParenthesisText = (text: string) => {
 };
 
 const FoodVendorScreen: React.FC = () => {
+  const { themeData } = useTheme();  // Extract theme data to dynamically set the colors
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredVendors, setFilteredVendors] = useState<FoodVendor[]>(foodVendorsData);
   const [filters, setFilters] = useState({
@@ -133,42 +135,48 @@ const FoodVendorScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       <TextInput
-        style={styles.searchBar}
+        style={[styles.searchBar, { color: themeData.textColor, borderColor: themeData.textColor }]}
         placeholder="Search"
         value={searchQuery}
         onChangeText={handleSearch}
+        placeholderTextColor={themeData.textColor} // Set placeholder text color based on the theme
       />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.filterButton} onPress={handleOpenFilterModal}>
-          <Text style={styles.filterButtonText}>Filter</Text>
+        <TouchableOpacity style={[styles.filterButton, { backgroundColor: themeData.highlightColor }]} onPress={handleOpenFilterModal}>
+          <Text style={[styles.filterButtonText, { color: themeData.textColor }]}>Filter</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setShowRecommendedOnly(!showRecommendedOnly)}
-          style={[styles.recommendedButton,showRecommendedOnly && styles.recommendedButtonActive]}>
-          <Ionicons name="star" size={24} color={showRecommendedOnly ? 'white' : 'grey'} />
+          style={[
+            styles.recommendedButton,
+            { backgroundColor: showRecommendedOnly ? themeData.highlightColor : 'transparent' },
+            { borderColor: showRecommendedOnly ? 'transparent' : themeData.textColor }
+          ]}
+        >
+          <Ionicons name="star" size={24} color={showRecommendedOnly ? themeData.backgroundColor: themeData.textColor } />
         </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {filteredVendors.map((vendor: FoodVendor) => (
-          <View key={vendor["Food Vendor"]} style={styles.vendorContainer}>
+          <View key={vendor["Food Vendor"]} style={[styles.vendorContainer, { backgroundColor: themeData.backgroundColor }]}>
             <View style={styles.vendorHeader}>
-              <Text style={styles.vendorName}>{vendor["Food Vendor"]}</Text>
+              <Text style={[styles.vendorName, { color: themeData.textColor }]}>{vendor["Food Vendor"]}</Text>
               {vendor.Recommended && <Text style={styles.recommended}>⭐</Text>}
             </View>
-            <Text>Type: {vendor.Type}</Text>
-            <Text>Tags: {vendor["Food tags"]}</Text>
-            <Text>Dietary: {vendor["Dietary Tags"]}</Text>
-            <Text>Price: {vendor.Price}</Text>
-            <Text>Location: {vendor.Location}</Text>
+            <Text style={{ color: themeData.textColor }}>Type: {vendor.Type}</Text>
+            <Text style={{ color: themeData.textColor }}>Tags: {vendor["Food tags"]}</Text>
+            <Text style={{ color: themeData.textColor }}>Dietary: {vendor["Dietary Tags"]}</Text>
+            <Text style={{ color: themeData.textColor }}>Price: {vendor.Price}</Text>
+            <Text style={{ color: themeData.textColor }}>Location: {vendor.Location}</Text>
             {vendor["Food Menu"] && (
               <>
-                <Text style={styles.menuSectionHeader}>Food Menu:</Text>
+                <Text style={[styles.menuSectionHeader, { color: themeData.textColor }]}>Food Menu:</Text>
                 {vendor["Food Menu"].split('|').map((item, index) => (
                   <View key={index} style={styles.menuItem}>
-                    <Text>{item.split('(')[0]}</Text>
+                    <Text style={{ color: themeData.textColor }}>{item.split('(')[0]}</Text>
                     {item.includes('(') && item.includes(')') && (
-                      <Text style={styles.parenthesisText}>
+                      <Text style={[styles.parenthesisText, { color: themeData.textColor }]}>
                         {`(${item.split('(')[1].split(')')[0]})`}
                       </Text>
                     )}
@@ -178,12 +186,12 @@ const FoodVendorScreen: React.FC = () => {
             )}
             {vendor["Drink/Desert Menu"] && (
               <>
-                <Text style={styles.menuSectionHeader}>Drink/Desert Menu:</Text>
+                <Text style={[styles.menuSectionHeader, { color: themeData.textColor }]}>Drink/Desert Menu:</Text>
                 {vendor["Drink/Desert Menu"].split('|').map((item, index) => (
                   <View key={index} style={styles.menuItem}>
-                    <Text>{item.split('(')[0]}</Text>
+                    <Text style={{ color: themeData.textColor }}>{item.split('(')[0]}</Text>
                     {item.includes('(') && item.includes(')') && (
-                      <Text style={styles.parenthesisText}>
+                      <Text style={[styles.parenthesisText, { color: themeData.textColor }]}>
                         {`(${item.split('(')[1].split(')')[0]})`}
                       </Text>
                     )}
@@ -225,13 +233,11 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     flex: 1,
-    backgroundColor: '#007bff',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
   },
   filterButtonText: {
-    color: 'white',
     fontWeight: 'bold',
   },
   recommendedButton: {

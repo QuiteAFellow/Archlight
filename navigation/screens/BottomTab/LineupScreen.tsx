@@ -1,4 +1,3 @@
-// LineupScreen.tsx
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -8,6 +7,7 @@ import artistImages from '../../../assets/utils/artistImages';
 import { LineupStackParamList, Artist } from '../../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFavorites } from '../../../context/FavoritesContext';
+import { useTheme } from '../ThemeContext'; // Import the theme context
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -25,6 +25,7 @@ const LineupScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<LineupStackParamList>>();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const { favorites, toggleFavorite } = useFavorites();
+  const { themeData, theme } = useTheme();  // Get themeData from context
 
   const initializeArtistList = (): Artist[] => {
     const uniqueArtists = new Set<string>();
@@ -74,16 +75,19 @@ const LineupScreen: React.FC = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: themeData.backgroundColor }}>
       <TextInput
-        style={styles.searchBar}
+        style={[styles.searchBar, { color: themeData.textColor, borderColor: themeData.textColor }]}
         placeholder="Search for artists"
         onChangeText={text => setSearchQuery(text)}
         value={searchQuery}
+        placeholderTextColor={themeData.textColor}
       />
       <ScrollView contentContainerStyle={styles.container}>
         {filteredArtistList.map((artist: Artist) => {
           const isFavorited = artist.Favorited;
+          const heartColor = isFavorited ? (theme === 'Light' ? 'red' : themeData.highlightColor) : themeData.textColor;  // Black heart for unfavorited
+          const heartIcon = isFavorited ? 'heart' : 'heart-outline';  // Heart outline for unfavorited artists
           return (
             <View key={artist["AOTD #"]}>
               <TouchableOpacity onPress={() => handleNavigateToArtist(artist)}>
@@ -94,18 +98,18 @@ const LineupScreen: React.FC = () => {
                       style={styles.profileImage}
                       onError={(error) => console.log('Image loading error:', error)}
                     />
-                    <Text style={styles.artistName}>{artist.Artist}</Text>
+                    <Text style={[styles.artistName, { color: themeData.textColor }]}>{artist.Artist}</Text>
                   </View>
                   <TouchableOpacity onPress={() => handleToggleFavorite(artist)} style={styles.heartContainer}>
                     <Ionicons
-                      name={isFavorited ? 'heart' : 'heart-outline'}
+                      name={heartIcon}
                       size={35}
-                      color={isFavorited ? 'red' : 'black'}
+                      color={heartColor}  // Set heart color based on whether the artist is favorited or not
                     />
                   </TouchableOpacity>
                 </View>
               </TouchableOpacity>
-              <View style={styles.line} />
+              <View style={[styles.line, { borderColor: themeData.textColor }]} />
             </View>
           );
         })}
@@ -123,8 +127,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderColor: '#ccc',
-    marginTop: 5
+    marginTop: 5,
   },
   artistContainer: {
     flexDirection: 'row',

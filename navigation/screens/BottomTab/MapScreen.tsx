@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
 import ImageViewing from 'react-native-image-viewing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTheme } from '../ThemeContext';  // Import the theme context
 
 const centerooImage = require('../../../assets/Maps/Roo24_Centeroo.jpg');
 const outerooImage = require('../../../assets/Maps/Roo24_Outeroo.jpg');
@@ -22,6 +23,7 @@ const X_ADJUSTMENT = -15;
 const Y_ADJUSTMENT = -20;
 
 const MapScreen: React.FC = () => {
+  const { themeData } = useTheme();  // Extract theme data to dynamically set the colors
   const [currentMap, setCurrentMap] = useState('centeroo');
   const [pins, setPins] = useState<Pin[]>([]);
   const [addingPin, setAddingPin] = useState(false);
@@ -123,17 +125,17 @@ const MapScreen: React.FC = () => {
 
   return (
     <TouchableWithoutFeedback onPress={addingPin ? handleMapPress : undefined}>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={switchMap} style={styles.switchButton}>
-          <Text style={styles.switchButtonText}>Switch Map</Text>
+      <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+        <TouchableOpacity onPress={switchMap} style={[styles.switchButton, { backgroundColor: themeData.highlightColor }]}>
+          <Text style={[styles.switchButtonText, { color: themeData.textColor }]}>Switch Map</Text>
         </TouchableOpacity>
         {addingPin ? (
-          <TouchableOpacity onPress={cancelAddPin} style={styles.cancelAddButton}>
+          <TouchableOpacity onPress={cancelAddPin} style={[styles.cancelAddButton, { backgroundColor: 'red' }]}>
             <Text style={styles.cancelAddButtonText}>Cancel Add Pin</Text>
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity onPress={() => setAddingPin(true)} style={styles.addButton}>
-            <Text style={styles.addButtonText}>Add Pin</Text>
+          <TouchableOpacity onPress={() => setAddingPin(true)} style={[styles.addButton, { backgroundColor: themeData.highlightColor }]}>
+            <Text style={[styles.addButtonText, { color: themeData.textColor }]}>Add Pin</Text>
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>
@@ -161,27 +163,31 @@ const MapScreen: React.FC = () => {
         />
         {addingPin && (
           <View style={styles.overlay}>
-            <Text style={styles.overlayText}>Tap on the map to add a pin</Text>
+            <Text style={[styles.overlayText, { color: themeData.textColor }]}>Tap on the map to add a pin</Text>
           </View>
         )}
         <Modal visible={showModal} animationType="slide" transparent>
           <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>{editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}</Text>
+            <View style={[styles.modalContent, { backgroundColor: themeData.backgroundColor }]}>
+              <Text style={[styles.modalTitle, { color: themeData.textColor }]}>
+                {editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}
+              </Text>
               <TextInput
                 placeholder="Label"
                 value={pinDetails.label}
                 onChangeText={(text) => setPinDetails({ ...pinDetails, label: text })}
-                style={styles.input}
+                style={[styles.input, { borderColor: themeData.textColor, color: themeData.textColor }]}
+                placeholderTextColor={themeData.textColor} // Set placeholder text color
               />
               <TextInput
                 placeholder="Description"
                 value={pinDetails.description}
                 onChangeText={(text) => setPinDetails({ ...pinDetails, description: text })}
-                style={styles.input}
+                style={[styles.input, { borderColor: themeData.textColor, color: themeData.textColor }]}
+                placeholderTextColor={themeData.textColor} // Set placeholder text color
               />
               <View style={styles.colorContainer}>
-                <Text style={styles.colorLabel}>Color</Text>
+                <Text style={[styles.colorLabel, { color: themeData.textColor }]}>Color</Text>
                 <View style={styles.colors}>
                   {colors.map((color) => (
                     <TouchableOpacity
@@ -222,7 +228,6 @@ const styles = StyleSheet.create({
     top: 5,
     left: 10,
     padding: 10,
-    backgroundColor: '#007bff',
     zIndex: 10,
     borderRadius: 5,
   },
@@ -234,7 +239,6 @@ const styles = StyleSheet.create({
     top: 5,
     right: 10,
     padding: 10,
-    backgroundColor: '#007bff',
     zIndex: 10,
     borderRadius: 5,
   },
@@ -246,7 +250,6 @@ const styles = StyleSheet.create({
     top: 5,
     right: 10,
     padding: 10,
-    backgroundColor: 'red',
     zIndex: 10,
     borderRadius: 5,
   },
@@ -282,7 +285,6 @@ const styles = StyleSheet.create({
   modalContent: {
     width: 325,
     padding: 20,
-    backgroundColor: 'white',
     borderRadius: 10,
   },
   modalTitle: {

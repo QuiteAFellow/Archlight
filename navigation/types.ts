@@ -13,12 +13,17 @@ export interface Artist {
   Favorited: boolean;
 }
 
+export type ArtistBioScreenRouteParams = {
+  artists: Artist[];
+  initialIndex: number;
+};
+
 export type RootStackParamList = {
   Home: undefined;
   Calendar: undefined;
   Lineup: undefined;
   Map: undefined;
-  ArtistBio: { artist: Artist & { favorited: boolean } };
+  ArtistBio: { artist: Artist };
   'Food Vendors': undefined;
 };
 
@@ -43,19 +48,15 @@ export type ArtistCarouselParams = {
 
 export type LineupStackParamList = {
   FestivalLineup: undefined;
-  ArtistBio: { artist: Artist & { favorited: boolean } };
+  ArtistBio: ArtistBioScreenRouteParams;
   ArtistCarousel: { artists: Artist[]; initialIndex: number};
 };
 
 export type CalendarStackParamList = {
   FestivalSchedule: undefined;
-  ArtistBio: { artist: Artist & { favorited: boolean } };
+  ArtistBio: { artist: Artist };
   ArtistCarousel: ArtistCarouselParams;
 }
-
-export type ArtistBioScreenRouteParams = ArtistCarouselParams & {
-  favorited: boolean;
-};
 
 export interface FavoriteContextProps {
   favorites: { [key: string]: boolean };

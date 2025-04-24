@@ -5,6 +5,7 @@ import MainContainer from './navigation/MainContainer';
 import Toast from 'react-native-toast-message';
 import { StatusBar } from 'react-native';
 import * as Notifications from 'expo-notifications';
+import { ThemeProvider } from './navigation/screens/ThemeContext';
 
 const App = () => {
   useEffect(() => {
@@ -43,12 +44,14 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-        <FavoritesProvider>
-          <NavigationContainer>
-            <MainContainer />
-            <Toast />
-          </NavigationContainer>
-        </FavoritesProvider>
+        <ThemeProvider>
+          <FavoritesProvider>
+            <NavigationContainer>
+              <MainContainer />
+              <Toast />
+            </NavigationContainer>
+          </FavoritesProvider>
+        </ThemeProvider>
     </>
   );
 };

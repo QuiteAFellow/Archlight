@@ -1,55 +1,106 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, View, Text, Button, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Modal, View, Text, Button, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Switch } from 'react-native';
 import { useFavorites } from '../../context/FavoritesContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Toast from 'react-native-toast-message';  // Import Toast
+import Toast from 'react-native-toast-message';
+import { useTheme } from './ThemeContext';
+import { themes } from '../../theme';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const notificationOptions = [5, 10, 15, 30, 45, 60, 90];
 
-const SettingsModal: React.FC<{ visible: boolean; onClose: () => void }> = ({ visible, onClose }) => {
+interface SettingsModalProps {
+  visible: boolean;
+  onClose: () => void;
+  onSave: (times: number[]) => void;  // Accept onSave as a prop
+}
+
+const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave }) => {
+  const { theme, setTheme, themeData } = useTheme();
   const { notificationTimes, setNotificationTimes } = useFavorites();
   const [selectedTimes, setSelectedTimes] = useState<number[]>([]);
   const [isHydrationEnabled, setIsHydrationEnabled] = useState(false);
   const [isSunscreenEnabled, setIsSunscreenEnabled] = useState(false);
+
+  const currentTheme = theme;
 
   useEffect(() => {
     const loadSettings = async () => {
       const storedHydration = await AsyncStorage.getItem('hydrationReminder');
       const storedSunscreen = await AsyncStorage.getItem('sunscreenReminder');
       const storedNotificationTimes = await AsyncStorage.getItem('notificationTimes');
+      const storedTheme = await AsyncStorage.getItem('theme');
 
       if (storedHydration !== null) setIsHydrationEnabled(JSON.parse(storedHydration));
       if (storedSunscreen !== null) setIsSunscreenEnabled(JSON.parse(storedSunscreen));
       if (storedNotificationTimes) setSelectedTimes(JSON.parse(storedNotificationTimes));
+      if (storedTheme) setTheme(storedTheme as 'Light' | 'Bonnaroo' | 'OLED' );
     };
     loadSettings();
-  }, [notificationTimes]);
+  },[setTheme]);
 
   const handleSave = async () => {
     setNotificationTimes(selectedTimes);
     await AsyncStorage.setItem('notificationTimes', JSON.stringify(selectedTimes));
     await AsyncStorage.setItem('hydrationReminder', JSON.stringify(isHydrationEnabled));
     await AsyncStorage.setItem('sunscreenReminder', JSON.stringify(isSunscreenEnabled));
+    await AsyncStorage.setItem('theme', theme);
     Toast.show({
       type: 'success',
-      text1: 'Notification settings updated successfully',
+      text1: 'Settings updated successfully',
     });
+    onSave(selectedTimes);
     onClose();
   };
+
+  const highlightColor = themes[theme].highlightColor;
+  const highlightTextColor = themes[theme].highlightTextColor;
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay}>
           <TouchableWithoutFeedback>
-            <View style={styles.container}>
-              <View style={styles.closeContainer}>
-                <TouchableOpacity onPress={onClose}>
-                  <Text style={styles.closeText}>✕</Text>
-                </TouchableOpacity>
+            <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+              <Text style={[styles.title, { color: themeData.textColor }]}>Settings</Text>
+              {/* Close Button (X) */}
+              <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                <Ionicons name="close" size={30} color={themeData.textColor} />
+              </TouchableOpacity>
+
+              {/* Theme Selector */}
+              <Text style={[styles.subHeader, { color: themeData.textColor }]}>App Theme</Text>
+              <View style={styles.optionsContainer}>
+                {['Light', 'Bonnaroo', 'OLED'].map((option) => (
+                  <TouchableOpacity
+                    key={option}
+                    onPress={() => setTheme(option as 'Light' | 'Bonnaroo' | 'OLED')}
+                    style={[
+                      styles.option,
+                      theme === option && {
+                        backgroundColor: highlightColor,
+                        borderColor: 'transparent'
+                      },
+                      theme !== option && { borderColor: themeData.unselectedborder },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.optionText,
+                        theme === option
+                          ? { color: theme === 'Light' ? 'white' : highlightTextColor }  // Set text to white for Light theme, or use highlight text color for others
+                          : { color: themeData.textColor }  // Default text color
+                      ]}
+                    >
+                      {option}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
               </View>
-              <Text style={styles.title}>Notification Settings</Text>
-              <Text>Set notification times (in minutes) before the artist's start time:</Text>
+
+              {/* Notification Selector */}
+              <Text style={[styles.subHeader, { color: themeData.textColor }]}>Notification Settings</Text>
+              <Text style={{ color: themeData.textColor }}>Set notification times (in minutes) before a favorited artist's start time:</Text>
               <View style={styles.optionsContainer}>
                 {notificationOptions.map((time) => (
                   <TouchableOpacity
@@ -63,13 +114,16 @@ const SettingsModal: React.FC<{ visible: boolean; onClose: () => void }> = ({ vi
                     }}
                     style={[
                       styles.option,
-                      selectedTimes.includes(time) && styles.selectedOption,
+                      selectedTimes.includes(time) ?
+                        { backgroundColor: highlightColor, borderColor: 'transparent' }
+                        : { borderColor: themeData.unselectedborder },
                     ]}
                   >
                     <Text
                       style={[
-                        styles.optionText,
-                        selectedTimes.includes(time) && styles.selectedOptionText,
+                        styles.optionText, { color: themeData.textColor },
+                        selectedTimes.includes(time) ? { color: theme === 'Light' ? 'white' : highlightTextColor }  // Set text to white for Light theme, or use highlight text color for others
+                          : { color: themeData.textColor }  // Default text color
                       ]}
                     >
                       {time} minutes
@@ -78,52 +132,45 @@ const SettingsModal: React.FC<{ visible: boolean; onClose: () => void }> = ({ vi
                 ))}
               </View>
 
-              {/* Hydration Reminder */}
-              <View style={styles.sectionContainer}>
-                <View style={styles.sectionHeader}>
-                  <Text style={styles.toggleLabel}>Hydration Reminder</Text>
-                  <TouchableOpacity
-                    onPress={() => setIsHydrationEnabled((prev) => !prev)}
-                    style={[styles.inlineToggle, isHydrationEnabled && styles.inlineToggleActive]}
-                  >
-                    <Text
-                      style={[styles.inlineToggleText, isHydrationEnabled && styles.inlineToggleTextActive]}
-                    >
-                      {isHydrationEnabled ? 'ON' : 'OFF'}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.toggleSubText}>
-                  <Text style={{ fontStyle: 'italic' }}>
-                    Reminds you to hydrate every 2 hours from 11am to 9pm.
-                  </Text>
-                </Text>
-              </View>
-
               {/* Sunscreen Reminder */}
               <View style={styles.sectionContainer}>
                 <View style={styles.sectionHeader}>
-                  <Text style={styles.toggleLabel}>Sunscreen Reminder</Text>
-                  <TouchableOpacity
-                    onPress={() => setIsSunscreenEnabled((prev) => !prev)}
-                    style={[styles.inlineToggle, isSunscreenEnabled && styles.inlineToggleActive]}
-                  >
-                    <Text
-                      style={[styles.inlineToggleText, isSunscreenEnabled && styles.inlineToggleTextActive]}
-                    >
-                      {isSunscreenEnabled ? 'ON' : 'OFF'}
-                    </Text>
-                  </TouchableOpacity>
+                  <Text style={[styles.toggleLabel, { color: themeData.textColor }]}>Sunscreen Reminder</Text>
+                  <Switch
+                    value={isSunscreenEnabled}
+                    onValueChange={setIsSunscreenEnabled}
+                    style={styles.switch}
+                    trackColor={{ false: '#767577', true: themeData.highlightColor }}  // Track color when ON
+                    thumbColor={isSunscreenEnabled ? '#ffffff' : '#f4f3f4'}  // Thumb color when ON
+                  />
                 </View>
-                <Text style={styles.toggleSubText}>
+                <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
                   <Text style={{ fontStyle: 'italic' }}>
-                    Reminds you to reapply sunscreen every 2 hours from 10am to 6pm. Alternates with the Hydration reminder.
+                    Reminds you to reapply sunscreen every 2 hours from 10am to 6pm. Assumes maximum sunlight throughout the entire day, actual weather may vary.
                   </Text>
                 </Text>
               </View>
 
+              {/* Hydration Reminder */}
+              <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                  <Text style={[styles.toggleLabel, { color: themeData.textColor }]}>Hydration Reminder</Text>
+                  <Switch
+                    value={isHydrationEnabled}
+                    onValueChange={setIsHydrationEnabled}
+                    style={styles.switch}
+                    trackColor={{ false: '#767577', true: themeData.highlightColor }}  // Track color when ON
+                    thumbColor={isHydrationEnabled ? '#ffffff' : '#f4f3f4'}  // Thumb color when ON
+                  />
+                </View>
+                <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
+                  <Text style={{ fontStyle: 'italic' }}>
+                    Reminds you to hydrate every 2 hours from 11am to 9pm. Alternates with the Sunscreen reminder.
+                  </Text>
+                </Text>
+              </View>
               <View style={styles.buttonContainer}>
-                <Button title="Save" onPress={handleSave} />
+                <Button title="Save" onPress={handleSave} color={highlightColor}/>
               </View>
             </View>
           </TouchableWithoutFeedback>
@@ -146,13 +193,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
   },
-  closeContainer: {
-    alignItems: 'flex-end',
-  },
-  closeText: {
-    fontSize: 20,
-    color: 'grey',
-  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -164,9 +204,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   optionsContainer: {
-    flexDirection: 'row',
+    flexDirection: 'row', // Align buttons horizontally
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between', // Spread buttons evenly
     marginBottom: 20,
     marginTop: 20,
   },
@@ -177,15 +217,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 5,
     width: '30%',
-    minWidth: 70,
+    minWidth: 90,  // Make sure buttons have consistent size
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'transparent', // Keep button background transparent
   },
   selectedOption: {
     backgroundColor: '#007bff',
   },
   selectedOptionText: {
-    color: 'white',
+    color: 'white', // Set text color to white when selected
   },
   optionText: {
     color: 'black',
@@ -195,7 +236,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   sectionContainer: {
-    marginTop: 20,
+    marginTop: 0,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -203,7 +244,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleLabel: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   inlineToggle: {
@@ -229,6 +270,27 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'gray',
   },
+  subHeader: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  switch: {
+    marginRight: 10,
+    color: '#007bff'
+  },
+  closeText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    padding: 10,
+  }
 });
 
 export default SettingsModal;
+
+// TODO: unify the border color between selected and unselected options between settingsmodal, calendarscreen, etc.

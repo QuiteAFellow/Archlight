@@ -1,6 +1,8 @@
 import React from 'react';
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useFavorites } from '../../../context/FavoritesContext';
+import { useTheme } from '../ThemeContext'; // Import theme context
 
 interface Artist {
   "AOTD #": number;
@@ -51,6 +53,8 @@ const getArtistStyle = (startTime: string, endTime: string): { top: number, heig
 };
 
 const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favorites, toggleFavorite }) => {
+  const { themeData } = useTheme();  // Get themeData from context
+
   const filteredData = data.filter(artist => {
     const artistStartMinutes = timeToMinutes(artist.StartTime);
     const isSameDay = artist.Scheduled === day;
@@ -62,15 +66,20 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
     const stageData = filteredData.filter(artist => artist.Stage === stage);
     return stageData.map((artist, index) => {
       const isFavorited = favorites[artist["AOTD #"]] || false;
+      const heartColor = isFavorited ? (themeData.highlightColor) : themeData.textColor; // Heart color based on theme
       return (
         <TouchableOpacity
           key={`${artist["AOTD #"]}-${day}-${index}`}
-          style={[styles.artistSlot, getArtistStyle(artist.StartTime, artist.EndTime), isFavorited && styles.favoritedArtistSlot]}
+          style={[
+            styles.artistSlot,
+            getArtistStyle(artist.StartTime, artist.EndTime),
+            isFavorited && { backgroundColor: themeData.highlightColor },  // Favorited artist styling
+          ]}
           onPress={() => navigation.navigate('ArtistBio', { artist: { ...artist, favorited: isFavorited } })}
           onLongPress={() => toggleFavorite(artist)}
         >
-          <Text style={styles.artistName}>{artist.Artist}</Text>
-          <Text style={styles.artistTime}>{artist.StartTime} - {artist.EndTime}</Text>
+          <Text style={[styles.artistName, { color: themeData.textColor }]}>{artist.Artist}</Text>
+          <Text style={[styles.artistTime, { color: themeData.textColor }]}>{artist.StartTime} - {artist.EndTime}</Text>
         </TouchableOpacity>
       );
     });
@@ -81,7 +90,7 @@ const FestivalDay: React.FC<FestivalDayProps> = ({ day, data, navigation, favori
       <View style={styles.stagesContainer}>
         {['What Stage', 'Which Stage', 'The Other', 'Infinity Stage', 'This Tent', 'That Tent'].map(stage => (
           <View key={stage} style={styles.stageColumn}>
-            <Text style={styles.stageHeader}>{stage}</Text>
+            <Text style={[styles.stageHeader, { color: themeData.textColor }]}>{stage}</Text>
             {renderStageColumn(stage)}
           </View>
         ))}
@@ -118,7 +127,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 5,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   artistSlot: {
     position: 'absolute',
@@ -129,10 +138,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     left: 4,
-  },
-  favoritedArtistSlot: {
-    backgroundColor: 'lightblue',
-    borderColor: '#00d0ff',
   },
   artistName: {
     fontSize: 11,
