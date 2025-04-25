@@ -16,8 +16,8 @@ dependencyResolutionManagement {
 apply from: "../node_modules/expo/scripts/autolinking.gradle"
 useExpoModules()
 
-apply from: "../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"
-applyNativeModulesSettingsGradle(settings)
+//apply from: "../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"
+//applyNativeModulesSettingsGradle(settings)
 
 include ':app'
 includeBuild("../node_modules/@react-native/gradle-plugin")
