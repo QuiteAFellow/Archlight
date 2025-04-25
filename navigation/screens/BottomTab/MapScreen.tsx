@@ -127,7 +127,7 @@ const MapScreen: React.FC = () => {
     <TouchableWithoutFeedback onPress={addingPin ? handleMapPress : undefined}>
       <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
         <TouchableOpacity onPress={switchMap} style={[styles.switchButton, { backgroundColor: themeData.highlightColor }]}>
-          <Text style={[styles.switchButtonText, { color: themeData.textColor }]}>Switch Map</Text>
+          <Text style={[styles.switchButtonText, { color: themeData.buttonText }]}>Switch Map</Text>
         </TouchableOpacity>
         {addingPin ? (
           <TouchableOpacity onPress={cancelAddPin} style={[styles.cancelAddButton, { backgroundColor: 'red' }]}>
@@ -135,7 +135,7 @@ const MapScreen: React.FC = () => {
           </TouchableOpacity>
         ) : (
           <TouchableOpacity onPress={() => setAddingPin(true)} style={[styles.addButton, { backgroundColor: themeData.highlightColor }]}>
-            <Text style={[styles.addButtonText, { color: themeData.textColor }]}>Add Pin</Text>
+            <Text style={[styles.addButtonText, { color: themeData.buttonText }]}>Add Pin</Text>
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>

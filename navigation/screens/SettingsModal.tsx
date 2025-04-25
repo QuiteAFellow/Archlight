@@ -6,6 +6,21 @@ import Toast from 'react-native-toast-message';
 import { useTheme } from './ThemeContext';
 import { themes } from '../../theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { scheduleNotificationsForArtist, cancelAllNotifications, loadReminderPreferences, cancelNotificationsForArtist } from '../../notifications';
+import rawArtistsData from '../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
+import { Artist } from '../types';
+
+const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
+  "AOTD #": parseInt(artist["AOTD #"], 10),  // Convert "AOTD #" to a number
+  Artist: artist.Artist,
+  Description: artist.Description,
+  Genres: artist.Genres,
+  Scheduled: artist.Scheduled,
+  Stage: artist.Stage,
+  StartTime: artist.StartTime || artist["Start Time"], // fallback
+  EndTime: artist.EndTime || artist["End Time"],       // fallback
+  Favorited: artist.Favorited === 'true' || artist.Favorited === true,
+}));
 
 const notificationOptions = [5, 10, 15, 30, 45, 60, 90];
 
@@ -17,7 +32,7 @@ interface SettingsModalProps {
 
 const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave }) => {
   const { theme, setTheme, themeData } = useTheme();
-  const { notificationTimes, setNotificationTimes } = useFavorites();
+  const { favorites, notificationTimes, setNotificationTimes } = useFavorites();
   const [selectedTimes, setSelectedTimes] = useState<number[]>([]);
   const [isHydrationEnabled, setIsHydrationEnabled] = useState(false);
   const [isSunscreenEnabled, setIsSunscreenEnabled] = useState(false);
@@ -40,15 +55,34 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   },[setTheme]);
 
   const handleSave = async () => {
+    // Cancel all previous notifications
+    await cancelAllNotifications(); // Cancel all notifications before rescheduling
+
+    // Save new notification settings
     setNotificationTimes(selectedTimes);
+
     await AsyncStorage.setItem('notificationTimes', JSON.stringify(selectedTimes));
     await AsyncStorage.setItem('hydrationReminder', JSON.stringify(isHydrationEnabled));
     await AsyncStorage.setItem('sunscreenReminder', JSON.stringify(isSunscreenEnabled));
     await AsyncStorage.setItem('theme', theme);
+
+    // Schedule new notifications based on the updated settings for each favorited artist
+    for (const artistKey of Object.keys(favorites)) {
+      if (favorites[artistKey]) {
+        // Find the artist object from the artistsData array using the artistId (AOTD #)
+        const artist = artistsData.find((artist: Artist) => artist["AOTD #"] === parseInt(artistKey, 10));
+        if (artist) {
+          // Schedule new notifications for this artist
+          await scheduleNotificationsForArtist(artist, selectedTimes);
+        }
+      }
+    }
+
     Toast.show({
       type: 'success',
       text1: 'Settings updated successfully',
     });
+
     onSave(selectedTimes);
     onClose();
   };
@@ -292,5 +326,3 @@ const styles = StyleSheet.create({
 });
 
 export default SettingsModal;
-
-// TODO: unify the border color between selected and unselected options between settingsmodal, calendarscreen, etc.

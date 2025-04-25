@@ -1,7 +1,7 @@
-import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { scheduleNotificationsForArtist } from '../notifications';
+import React, { createContext, useState, useContext, useEffect, useCallback, ReactNode } from 'react';
+import { scheduleNotificationsForArtist, cancelNotificationsForArtist } from '../notifications';
 import { Artist } from '../navigation/types';
+import { saveToStorage, loadFromStorage } from '../storageService';
 
 interface FavoriteContextProps {
   favorites: { [key: string]: boolean };
@@ -20,45 +20,54 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
   const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({});
   const [notificationTimes, setNotificationTimes] = useState<number[]>([]);
 
+  // Load favorites and notificationTimes when the component is mounted
   useEffect(() => {
-    const loadFavorites = async () => {
-      const storedFavorites = await AsyncStorage.getItem('favorites');
+    const loadData = async () => {
+      const storedFavorites = await loadFromStorage('favorites');
+      const storedNotificationTimes = await loadFromStorage('notificationTimes');
+
       if (storedFavorites) {
-        setFavorites(JSON.parse(storedFavorites));
+        setFavorites(storedFavorites);
+      }
+
+      if (storedNotificationTimes) {
+        setNotificationTimes(storedNotificationTimes);
       }
     };
 
-    const loadNotificationTimes = async () => {
-      const storedTimes = await AsyncStorage.getItem('notificationTimes');
-      if (storedTimes) {
-        setNotificationTimes(JSON.parse(storedTimes));
-      }
-    };
-
-    loadFavorites();
-    loadNotificationTimes();
+    loadData();
   }, []);
 
+  // Save favorites and notificationTimes whenever they change
   useEffect(() => {
-    AsyncStorage.setItem('favorites', JSON.stringify(favorites));
+    saveToStorage('favorites', favorites);
   }, [favorites]);
 
   useEffect(() => {
-    AsyncStorage.setItem('notificationTimes', JSON.stringify(notificationTimes))
-      .then(() => console.log('Notification settings saved to AsyncStorage:', notificationTimes))
-      .catch(error => console.error('Failed to save notification settings to AsyncStorage:', error));
+    saveToStorage('notificationTimes', notificationTimes);
   }, [notificationTimes]);
 
-  const toggleFavorite = (artist: Artist) => {
-    const artistKey = artist["AOTD #"].toString();
-    setFavorites(prev => {
-      const newFavorites = { ...prev, [artistKey]: !prev[artistKey] };
-      if (!prev[artistKey]) {
-        scheduleNotificationsForArtist(artist, notificationTimes);
-      }
-      return newFavorites;
-    });
-  };
+  // Callback for toggling favorite status
+  const toggleFavorite = useCallback(
+    (artist: Artist) => {
+      const artistKey = artist["AOTD #"].toString();
+
+      setFavorites(prev => {
+        const newFavorites = { ...prev, [artistKey]: !prev[artistKey] };
+
+        // If the artist is now favorited, schedule notifications
+        if (!prev[artistKey]) {
+          scheduleNotificationsForArtist(artist, notificationTimes);
+        } else {
+          // If the artist is unfavorited, cancel notifications
+          cancelNotificationsForArtist(artist);
+        }
+
+        return newFavorites;
+      });
+    },
+    [notificationTimes] // Only rerun if notificationTimes change
+  );
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite, notificationTimes, setNotificationTimes }}>

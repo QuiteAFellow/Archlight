@@ -18,6 +18,7 @@ interface ThemeContextProps {
         FavoritedstageTextColors: Record<string, string>;
         buttonColors: Record<string, string>;
         NowBar: string;
+        buttonText: string;
     };
 }
 

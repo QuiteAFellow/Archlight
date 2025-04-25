@@ -18,7 +18,7 @@ const artistImages: { [key: string]: any } = {
 'Claptone': require('../artist-images/Claptone.jpg'),
 'Crankdat': require('../artist-images/Crankdat.jpg'),
 'Cults': require('../artist-images/Cults.jpg'),
-'Dadi Freyr': require('../artist-images/Dadi Freyr.jpg'),
+'Daði Freyr': require('../artist-images/Dadi Freyr.jpg'),
 'Daniel Donato\'s Cosmic Country': require('../artist-images/Daniel Donato\'s Cosmic Country.jpg'),
 'Destroy Boys': require('../artist-images/Destroy Boys.jpg'),
 'Detox Unit': require('../artist-images/Detox Unit.jpg'),

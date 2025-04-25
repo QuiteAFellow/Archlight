@@ -5,11 +5,25 @@ import { Artist } from './navigation/types';
 const HYDRATION_PREF_KEY = 'hydrationReminderEnabled';
 const SUNSCREEN_PREF_KEY = 'sunscreenReminderEnabled';
 
+// Store the notifications for each artist so we can cancel them when the artist is unfavorited
+let artistNotifications: { [key: string]: string[] } = {}; // Holds notification IDs for each artist
+
+const convertToLocalTimeFormat = (dateString: string, timeString: string): Date => {
+  const [time, period] = timeString.split(' ');
+  let [hours, minutes] = time.split(':').map(Number);
+
+  if (period === 'PM' && hours !== 12) hours += 12;
+  if (period === 'AM' && hours === 12) hours = 0;
+
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day, hours, minutes);
+};
+
 // Schedule a single notification
-const scheduleNotification = async (message: string, date: Date): Promise<void> => {
+const scheduleNotification = async (message: string, date: Date): Promise<string> => {
   if (!message) {
     console.warn('Attempted to schedule a notification with an empty message');
-    return;
+    return '';
   }
 
   console.log('Scheduling notification:', { message, date });
@@ -28,37 +42,56 @@ const scheduleNotification = async (message: string, date: Date): Promise<void> 
   };
 
   try {
-    await Notifications.scheduleNotificationAsync(notificationContent);
+    const notificationId = await Notifications.scheduleNotificationAsync(notificationContent);
     console.log('Notification scheduled successfully:', notificationContent);
+    return notificationId; // Return the notification ID for future reference
   } catch (error) {
     console.error('Error scheduling notification:', error);
+    return '';
   }
 };
 
-// Cancel all scheduled notifications
-const cancelAllNotifications = async () => {
+// Cancel a specific notification by ID
+const cancelNotification = async (notificationId: string): Promise<void> => {
   try {
-    await Notifications.cancelAllScheduledNotificationsAsync();
-    console.log('All notifications cancelled.');
+    await Notifications.cancelScheduledNotificationAsync(notificationId);
+    console.log('Notification cancelled:', notificationId);
   } catch (error) {
-    console.error('Failed to cancel notifications:', error);
+    console.error('Failed to cancel notification:', error);
   }
 };
 
-// Convert artist start time to Date object
-const convertToLocalTimeFormat = (dateString: string, timeString: string): Date => {
-  const [time, period] = timeString.split(' ');
-  let [hours, minutes] = time.split(':').map(Number);
+// Cancel all scheduled notifications for a particular artist
+const cancelNotificationsForArtist = async (artist: Artist) => {
+  const notifications = artistNotifications[artist["AOTD #"]] || [];
+  console.log(`Cancelling notifications for artist: ${artist.Artist}, AOTD #: ${artist["AOTD #"]}`);
+  for (const notificationId of notifications) {
+    await cancelNotification(notificationId);  // Cancel each notification
+  }
+  artistNotifications[artist["AOTD #"]] = []; // Clear stored notifications for this artist
+  console.log(`All notifications for ${artist.Artist} have been cancelled.`);
+};
 
-  if (period === 'PM' && hours !== 12) hours += 12;
-  if (period === 'AM' && hours === 12) hours = 0;
-
-  const [year, month, day] = dateString.split('-').map(Number);
-  return new Date(year, month - 1, day, hours, minutes);
+// Cancel notifications for all artists when editing notification settings
+const cancelAllArtistNotifications = async () => {
+  console.log('Cancelling all artist notifications...');
+  for (const artistId in artistNotifications) {
+    const notifications = artistNotifications[artistId];
+    for (const notificationId of notifications) {
+      await cancelNotification(notificationId);  // Cancel each notification
+    }
+  }
+  artistNotifications = {}; // Clear all stored notifications
+  console.log('All artist notifications cancelled.');
 };
 
 // Schedule notifications for favorited artists
 const scheduleNotificationsForArtist = async (artist: Artist, notificationTimes: number[]): Promise<void> => {
+  if (typeof artist["AOTD #"] !== 'number') {
+    console.error('Invalid artist data: AOTD # is not a number');
+    return;
+  }
+
   const dayToExactDate: { [key: string]: string } = {
     Tuesday: '2025-06-10',
     Wednesday: '2025-06-11',
@@ -74,11 +107,21 @@ const scheduleNotificationsForArtist = async (artist: Artist, notificationTimes:
   console.log('Artist:', artist.Artist);
   console.log('Start time:', startTime);
 
+  // Cancel any existing notifications for this artist
+  await cancelNotificationsForArtist(artist);
+
+  // Schedule new notifications
+  const notificationIds: string[] = [];
   for (const time of notificationTimes) {
     const notificationTime = new Date(startTime.getTime() - time * 60000);
     console.log(`Scheduling notification for ${artist.Artist} at ${notificationTime}`);
-    await scheduleNotification(`${artist.Artist} is performing at ${artist.Stage} in ${time} minutes!`, notificationTime);
+    const notificationId = await scheduleNotification(`${artist.Artist} is performing at ${artist.Stage} in ${time} minutes!`, notificationTime);
+    if (notificationId) notificationIds.push(notificationId);
   }
+
+  // Store the new notification IDs
+  artistNotifications[artist["AOTD #"]] = notificationIds;
+  console.log(`Scheduled notifications for ${artist.Artist}:`, notificationIds);
 };
 
 // Schedule recurring hydration/sunscreen reminders
@@ -108,6 +151,7 @@ const scheduleRecurringReminders = async (hydrate: boolean, sunscreen: boolean) 
   }
 };
 
+// Handle saving notification preferences
 export const saveReminderPreferences = async (hydrate: boolean, sunscreen: boolean) => {
   try {
     await AsyncStorage.multiSet([
@@ -115,6 +159,10 @@ export const saveReminderPreferences = async (hydrate: boolean, sunscreen: boole
       [SUNSCREEN_PREF_KEY, JSON.stringify(sunscreen)]
     ]);
     console.log('Reminder preferences saved.');
+
+    // Cancel all existing notifications and reschedule
+    await cancelAllNotifications(); // Cancel all notifications for existing preferences
+    await scheduleRecurringReminders(hydrate, sunscreen); // Reschedule based on new preferences
   } catch (error) {
     console.error('Failed to save reminder preferences:', error);
   }
@@ -137,10 +185,27 @@ export const loadReminderPreferences = async (): Promise<{ hydrate: boolean; sun
   }
 };
 
+export const cancelAllNotifications = async () => {
+  try {
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    console.log('All notifications cancelled.');
+  } catch (error) {
+    console.error('Failed to cancel notifications:', error);
+  }
+};
+
+export const getNotifications = async () => {
+  // Mock function to get all scheduled notifications
+  // Depending on the platform, you might want to access the Expo notifications module directly
+  const scheduledNotifications = await Notifications.getAllScheduledNotificationsAsync();
+  console.log('Scheduled notifications:', scheduledNotifications);
+  return scheduledNotifications;
+};
 
 export {
   scheduleNotification,
   scheduleNotificationsForArtist,
   scheduleRecurringReminders,
-  cancelAllNotifications,
+  cancelNotificationsForArtist,
+  cancelAllArtistNotifications,
 };
