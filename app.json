@@ -48,7 +48,7 @@
     },
     "runtimeVersion": "1.0.0",
     "plugins": [
-      "expo-asset"
+      "expo-dev-client"
     ]
   }
 }

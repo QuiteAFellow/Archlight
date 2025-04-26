@@ -25,6 +25,7 @@
     "deprecated-react-native-prop-types": "^5.0.0",
     "expo": "^52.0.44",
     "expo-asset": "~11.0.5",
+    "expo-dev-client": "~5.0.20",
     "expo-file-system": "~18.0.12",
     "expo-notifications": "~0.29.14",
     "expo-sqlite": "~15.1.4",
