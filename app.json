@@ -46,9 +46,6 @@
         "projectId": "8ca33188-9b28-439a-a688-0b09b8eda6c8"
       }
     },
-    "runtimeVersion": "1.0.0",
-    "plugins": [
-      "expo-dev-client"
-    ]
+    "runtimeVersion": "1.0.0"
   }
 }
