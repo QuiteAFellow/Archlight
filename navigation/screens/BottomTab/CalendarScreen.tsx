@@ -61,18 +61,39 @@ function getArtistStyle(startTime: string, endTime: string): { top: number, heig
 }
 
 function getNowLineStyle(selectedDay: string): { top: number, showNowLine: boolean } {
-  const margin = 30; // same as used in getArtistStyle
+  const margin = 30;
   const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const totalMinutes = hours * 60 + minutes;
 
-  const offsetMinutes = totalMinutes - 12 * 60;
-  const currentDay = now.toLocaleString('en-us', { weekday: 'long' }); // Get current day as string
+  // Map each festival day to a date range
+  const dayOrder = ['Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const selectedDayIndex = dayOrder.indexOf(selectedDay);
 
-  if (offsetMinutes < 0 || offsetMinutes > 17 * 60 || currentDay !== selectedDay) {
-    return { top: -1000, showNowLine: false }; // hide line if not selected day
+  if (selectedDayIndex === -1) {
+    return { top: -1000, showNowLine: false };
   }
+
+  const currentDayIndex = now.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
+  const mappedDayIndex = (selectedDayIndex + 4) % 7; // Map to 0 = Sunday, etc.
+
+  const isWithinFestivalDay = (
+    (now.getHours() >= 12 && currentDayIndex === mappedDayIndex) || // 12pm - 11:59pm of selected day
+    (now.getHours() < 4 && currentDayIndex === (mappedDayIndex + 1) % 7) // 12am - 4am of next day
+  );
+
+  if (!isWithinFestivalDay) {
+    return { top: -1000, showNowLine: false };
+  }
+
+  let adjustedMinutes = totalMinutes;
+
+  if (hours < 12) {
+    adjustedMinutes += 24 * 60; // Shift early morning hours past midnight
+  }
+
+  const offsetMinutes = adjustedMinutes - 12 * 60;
 
   return { top: offsetMinutes * scale + margin, showNowLine: true };
 }
