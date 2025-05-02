@@ -6,6 +6,7 @@ import artistImages from '../../assets/utils/artistImages';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from './ThemeContext';
+import FastImage from 'react-native-fast-image';
 
 type Props = {
   artist: Artist;  // Pass the artist object as prop
@@ -29,7 +30,7 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
     return (
         <ScrollView style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
         <View>
-            <Image source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
+            <FastImage source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Ionicons name="arrow-back" size={24} color='#000000' />
             </TouchableOpacity>

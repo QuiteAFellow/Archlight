@@ -8,6 +8,7 @@ import { LineupStackParamList, Artist } from '../../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFavorites } from '../../../context/FavoritesContext';
 import { useTheme } from '../ThemeContext'; // Import the theme context
+import FastImage from 'react-native-fast-image';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -93,10 +94,11 @@ const LineupScreen: React.FC = () => {
               <TouchableOpacity onPress={() => handleNavigateToArtist(artist)}>
                 <View style={styles.artistContainer}>
                   <View style={styles.artistContent}>
-                    <Image
+                    <FastImage
                       source={artistImages[artist.Artist]}
                       style={styles.profileImage}
-                      onError={(error) => console.log('Image loading error:', error)}
+                      resizeMode={FastImage.resizeMode.cover}
+                      onError={() => console.log('Image loading error')}
                     />
                     <Text style={[styles.artistName, { color: themeData.textColor }]}>{artist.Artist}</Text>
                   </View>
