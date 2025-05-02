@@ -6,6 +6,7 @@ import Toast from 'react-native-toast-message';
 import { StatusBar } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { ThemeProvider } from './navigation/screens/ThemeContext';
+import { useTheme } from './navigation/screens/ThemeContext';
 
 const App = () => {
   useEffect(() => {
@@ -40,10 +41,15 @@ const App = () => {
       Notifications.removeNotificationSubscription(responseListener);
     };
   }, []);
+  const { theme, themeData } = useTheme();
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <StatusBar
+      translucent = {false}
+      barStyle={theme === 'Light' ? 'dark-content' : 'light-content'}
+      backgroundColor={themeData.statusBarColor || themeData.backgroundColor}
+      />
         <ThemeProvider>
           <FavoritesProvider>
             <NavigationContainer>

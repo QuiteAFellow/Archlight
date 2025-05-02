@@ -25,6 +25,7 @@ export const themes: Record<ThemeType, {
     subtextColor: string;
     NowBar: string;
     buttonText: string;
+    statusBarColor: string;
     }> = {
     Light: {
         // Light Theme color scheme
@@ -73,7 +74,8 @@ export const themes: Record<ThemeType, {
         textColor: '#000000', // Black text
         subtextColor: 'grey',
         NowBar: 'red',
-        buttonText: '#ffffff'
+        buttonText: '#ffffff',
+        statusBarColor: '#ffffff'
     },
     Bonnaroo: {
         // Bonnaroo Theme color scheme
@@ -122,7 +124,8 @@ export const themes: Record<ThemeType, {
         textColor: '#ffffff', // White text
         subtextColor: 'grey',
         NowBar: '#000000',
-        buttonText: '#ffffff'
+        buttonText: '#ffffff',
+        statusBarColor: '#333333'
     },
     OLED: {
         // OLED Theme color scheme
@@ -171,6 +174,7 @@ export const themes: Record<ThemeType, {
         textColor: '#ffffff', // White text
         subtextColor: 'grey',
         NowBar: '#000000',
-        buttonText: '#ffffff'
+        buttonText: '#ffffff',
+        statusBarColor: '#000000'
     },
 };

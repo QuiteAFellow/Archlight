@@ -19,6 +19,7 @@ interface ThemeContextProps {
         buttonColors: Record<string, string>;
         NowBar: string;
         buttonText: string;
+        statusBarColor: string;
     };
 }
 
