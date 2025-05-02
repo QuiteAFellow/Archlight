@@ -8,6 +8,18 @@ import * as Notifications from 'expo-notifications';
 import { ThemeProvider } from './navigation/screens/ThemeContext';
 import { useTheme } from './navigation/screens/ThemeContext';
 
+const StatusBarWrapper = () => {
+  const { theme, themeData } = useTheme();
+
+  return (
+    <StatusBar
+      translucent={false}
+      barStyle={theme === 'Light' ? 'dark-content' : 'light-content'}
+      backgroundColor={themeData.statusBarColor || themeData.backgroundColor}
+    />
+  );
+};
+
 const App = () => {
   useEffect(() => {
     const requestPermissions = async () => {
@@ -41,23 +53,18 @@ const App = () => {
       Notifications.removeNotificationSubscription(responseListener);
     };
   }, []);
-  const { theme, themeData } = useTheme();
 
   return (
     <>
-      <StatusBar
-      translucent = {false}
-      barStyle={theme === 'Light' ? 'dark-content' : 'light-content'}
-      backgroundColor={themeData.statusBarColor || themeData.backgroundColor}
-      />
-        <ThemeProvider>
+      <ThemeProvider>
+        <StatusBarWrapper/>
           <FavoritesProvider>
             <NavigationContainer>
               <MainContainer />
               <Toast />
             </NavigationContainer>
           </FavoritesProvider>
-        </ThemeProvider>
+      </ThemeProvider>
     </>
   );
 };
