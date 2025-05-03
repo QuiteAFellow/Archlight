@@ -36,7 +36,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.marina.bonnarooapp",
       "buildNumber": "1.0.0",
-      "newArchEnabled": true
+      "newArchEnabled": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
