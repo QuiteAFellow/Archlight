@@ -12,7 +12,7 @@
     },
     "entryPoint": "./index.tsx",
     "notification": {
-      "icon": "./assets/notification-icons/android/android-launchericon-48-48.png",
+      "icon": "./assets/notification-icons/android/Custom Roo App Notification Icon Android-48-01.png",
       "color": "#000000",
       "androidMode": "default",
       "androidCollapsedTitle": "#${unread_notifications} new notifications"
@@ -20,7 +20,7 @@
     "android": {
       "package": "com.bonnaroo.app",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/loading-icons/android/android-launchericon-1024-1024.png",
+        "foregroundImage": "./assets/loading-icons/android/Icon-512.png",
         "backgroundColor": "#000000"
       },
       "newArchEnabled": true

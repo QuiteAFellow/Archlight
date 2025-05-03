@@ -46,7 +46,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
   return (
     <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       {logo && <Image source={logo} style={styles.logo} resizeMode="contain" />}
-      <Text style={[styles.yearText, { color: themeData.textColor }]}>2025</Text>
       <View style={styles.buttonContainer}>
         <CustomButton
           title="Calendar"
