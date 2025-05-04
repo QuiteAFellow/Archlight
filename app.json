@@ -2,7 +2,7 @@
   "expo": {
     "name": "Bonnaroo App",
     "slug": "your-app-slug",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
     "splash": {
@@ -35,7 +35,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.marina.bonnarooapp",
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.2.0",
       "newArchEnabled": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
