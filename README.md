@@ -18,6 +18,7 @@ Click on "Releases" on the right-hand side, navigate to the latest release, and 
 - Notification settings, including a reoccuring hydration and sunscreen reapplication reminder
 - As many as 9 push notifications between 5-90 minutes prior to a favorited artist's performance
 - A full food vendor screen, including varying categories, a full menu and price for each food vendor, and location.
+- No need to connect to the internet - all information is stored locally on the app!
 
 ## Why?
 

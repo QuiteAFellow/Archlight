@@ -30,16 +30,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
   useEffect(() => {
     switch (theme) {
       case 'Light':
-        setLogo(require('../../../assets/Icons/Bonnaroo Logo 2025 - White.png')); // Correct the path to the logo
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - W-B.png')); // Correct the path to the logo
         break;
       case 'Bonnaroo':
-        setLogo(require('../../../assets/Icons/Bonnaroo Logo 2025 - Bonnaroo.png')); // Correct path for Bonnaroo theme
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - W-B.png')); // Correct path for Bonnaroo theme
         break;
       case 'OLED':
-        setLogo(require('../../../assets/Icons/Bonnaroo Logo 2025 - OLED.png')); // Correct path for OLED theme
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct path for OLED theme
         break;
       default:
-        setLogo(require('../../../assets/Icons/Bonnaroo Logo 2025 - White.png')); // Fallback logo
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - W-B.png')); // Fallback logo
     }
   }, [theme]);
 
