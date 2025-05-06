@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'Bonnaroo App'
+rootProject.name = 'Archlight'
 
 dependencyResolutionManagement {
   versionCatalogs {
