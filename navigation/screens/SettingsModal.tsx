@@ -9,19 +9,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { scheduleNotificationsForArtist, cancelAllNotifications, loadReminderPreferences, cancelNotificationsForArtist } from '../../notifications';
 import rawArtistsData from '../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import { Artist } from '../types';
-import * as Notifications from 'expo-notifications';
-
-const sendTestNotification = async () => {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: "Test Notification",
-      body: "This is what your notifications will look like!",
-      sound: true,
-      priority: Notifications.AndroidNotificationPriority.MAX,
-    },
-    trigger: null, // Immediate
-  });
-};
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),  // Convert "AOTD #" to a number
@@ -217,7 +204,6 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                 </Text>
               </View>
               <View style={styles.buttonContainer}>
-                <Button title="Test" onPress={sendTestNotification} color={highlightColor} />
                 <Button title="Save" onPress={handleSave} color={highlightColor}/>
               </View>
             </View>
