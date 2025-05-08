@@ -1,24 +1,25 @@
 buildscript {
     ext {
-        buildToolsVersion = '35.0.0'
+        buildToolsVersion = '34.0.0' // Adjusted to a valid version
         minSdkVersion = 24
-        compileSdkVersion = 35
+        compileSdkVersion = 34
         targetSdkVersion = 34
-        kotlinVersion = '1.9.25'
+        kotlinVersion = '1.8.22' // Adjusted for compatibility
         ndkVersion = "26.1.10909125"
     }
 
     repositories {
+        maven { url 'https://android-sdk.store.expo.dev/maven' }
         google()
         mavenCentral()
-        maven { url 'https://plugins.gradle.org/m2/' } // ✅ Needed for expo-module-gradle-plugin:1.6.0
+        maven { url 'https://plugins.gradle.org/m2/' }
     }
 
     dependencies {
         classpath('com.android.tools.build:gradle:8.0.2')
         classpath('com.facebook.react:react-native-gradle-plugin')
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath('expo.modules:expo-module-gradle-plugin:1.7.0') // ✅ Older plugin version that works
+        classpath('expo.modules:expo-module-gradle-plugin:1.7.0')
     }
 }
 
@@ -26,14 +27,9 @@ apply plugin: "com.facebook.react.rootproject"
 
 allprojects {
     repositories {
-        maven {
-            url(new File(['node', '--print', "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), '../android'))
-        }
-        maven {
-            url(new File(['node', '--print', "require.resolve('jsc-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), '../dist'))
-        }
-
+        maven { url 'https://android-sdk.store.expo.dev/maven' }
         google()
         mavenCentral()
+        maven { url 'https://www.jitpack.io' }
     }
 }
