@@ -22,9 +22,9 @@
     "axios": "^1.6.8",
     "csv-parser": "^3.0.0",
     "deprecated-react-native-prop-types": "^5.0.0",
-    "expo": "^52.0.44",
+    "expo": "~52.0.0",
     "expo-asset": "~11.0.5",
-    "expo-dev-client": "^5.0.20",
+    "expo-dev-client": "~5.0.20",
     "expo-file-system": "~18.0.12",
     "expo-notifications": "~0.29.14",
     "expo-sqlite": "~15.1.4",
@@ -56,7 +56,7 @@
     "react-native-swiper": "^1.6.0",
     "react-native-toast-message": "^2.2.0",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-web": "~0.19.6",
+    "react-native-web": "~0.19.13",
     "react-native-zoom-view": "^1.0.2",
     "react-native-zoomable-view": "^0.3.1",
     "react-query": "^3.39.3",
@@ -71,7 +71,7 @@
     "@types/react-native-sqlite-storage": "^6.0.5",
     "@types/react-native-vector-icons": "^6.4.18",
     "@types/react-test-renderer": "^18.3.0",
-    "typescript": "~5.3.3"
+    "typescript": "~5.8.3"
   },
   "private": true
 }

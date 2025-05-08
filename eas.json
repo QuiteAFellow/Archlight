@@ -19,14 +19,17 @@
       "android": {
         "buildType": "apk"
       },
-      "ios": {}
+      "ios": {
+        "enterpriseProvisioning": "adhoc"
+      }
     }
   },
   "submit": {
     "production": {
       "ios": {
         "appleId": "hoffmanlhunter@gmail.com"
-      }
+      },
+      "android": {}
     }
   }
 }

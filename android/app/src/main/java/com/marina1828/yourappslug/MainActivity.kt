@@ -1,4 +1,4 @@
-package com.bonnaroo.app
+package com.marina1828.yourappslug
 
 import android.os.Build
 import android.os.Bundle
