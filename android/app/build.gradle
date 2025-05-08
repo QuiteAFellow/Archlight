@@ -86,7 +86,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.marina1828.yourappslug'
+    namespace "com.archlight"
     defaultConfig {
         applicationId 'com.marina1828.yourappslug'
         minSdkVersion rootProject.ext.minSdkVersion

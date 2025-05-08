@@ -20,7 +20,7 @@
       "package": "com.marina1828.yourappslug",
       "adaptiveIcon": {
         "foregroundImage": "./assets/Icons/Archlight-Logo.png",
-        "backgroundImage": "./assets/Icons/Archlight-Logo.png"
+        "backgroundColor": "#000000"
       }
     },
     "icon": "./assets/Icons/Archlight-Logo.png",
