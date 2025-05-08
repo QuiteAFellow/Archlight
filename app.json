@@ -17,21 +17,7 @@
       "expo-sqlite"
     ],
     "android": {
-      "package": "com.marina1828.yourappslug",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/Icons/Archlight-Logo.png",
-        "backgroundColor": "#000000"
-      }
-    },
-    "icon": "./assets/Icons/Archlight-Logo.png",
-    "splash": {
-      "image": "./assets/Icons/Archlight-Logo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "notification": {
-      "icon": "./assets/notification-icons/Archlight Notification Logo 3 - No Buffer.png",
-      "color": "#ffffff"
+      "package": "com.marina1828.yourappslug"
     }
   }
 }
