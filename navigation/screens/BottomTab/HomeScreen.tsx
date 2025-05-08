@@ -4,6 +4,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '../../types';
 import { useFavorites } from '../../../context/FavoritesContext';
 import { useTheme } from '../ThemeContext'; // Ensure correct import for the theme
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type HomeScreenNavigationProp = BottomTabNavigationProp<RootStackParamList, 'Home'>;
 
@@ -13,9 +14,19 @@ interface HomeScreenProps {
 }
 
 // CustomButton component
-const CustomButton: React.FC<{ title: string; onPress: () => void; buttonColor: string }> = ({ title, onPress, buttonColor }) => (
+const CustomButton: React.FC<{
+  title: string;
+  onPress: () => void;
+  buttonColor: string;
+  iconName: string;
+}> = ({ title, onPress, buttonColor, iconName }) => (
   <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: buttonColor }]}>
-    <Text style={styles.buttonText}>{title}</Text>
+    <View style={styles.iconContainer}>
+      <Ionicons name={iconName} size={40} color="#000" />
+    </View>
+    <View style={styles.textContainer}>
+      <Text style={styles.buttonText}>{title}</Text>
+    </View>
   </TouchableOpacity>
 );
 
@@ -30,16 +41,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
   useEffect(() => {
     switch (theme) {
       case 'Light':
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - W-B.png')); // Correct the path to the logo
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct the path to the logo
         break;
       case 'Bonnaroo':
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - W-B.png')); // Correct path for Bonnaroo theme
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct path for Bonnaroo theme
         break;
       case 'OLED':
         setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct path for OLED theme
         break;
       default:
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - W-B.png')); // Fallback logo
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Fallback logo
     }
   }, [theme]);
 
@@ -51,21 +62,25 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
           title="Calendar"
           onPress={() => navigation.navigate('Calendar')}
           buttonColor={themeData.buttonColors.calendar} // Pass color from theme
+          iconName="calendar-outline"
         />
         <CustomButton
           title="Lineup"
           onPress={() => navigation.navigate('Lineup')}
           buttonColor={themeData.buttonColors.lineup} // Pass color from theme
+          iconName="list-outline"
         />
         <CustomButton
           title="Centeroo/Outeroo Maps"
           onPress={() => navigation.navigate('Map')}
           buttonColor={themeData.buttonColors.map} // Pass color from theme
+          iconName="map-outline"
         />
         <CustomButton
           title="Theme/Notification Settings"
           onPress={openSettings}
           buttonColor={themeData.buttonColors.settings} // Pass color from theme
+          iconName="settings-outline"
         />
       </View>
     </View>
@@ -112,6 +127,16 @@ const styles = StyleSheet.create({
     marginTop: -50,
     marginBottom: 20,
     letterSpacing: 2,
+  },
+  iconContainer: {
+  flex: 2,
+  justifyContent: 'center',
+  alignItems: 'center',
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   }
 });
 

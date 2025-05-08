@@ -13,7 +13,7 @@
     },
     "entryPoint": "./index.tsx",
     "notification": {
-      "icon": "./assets/notification-icons/android/Custom Roo App Notification Icon Android-48-01.png",
+      "icon": "./assets/notification-icons/Roo Logo 3 - No Buffer-01.png",
       "color": "#000000",
       "androidMode": "default",
       "androidCollapsedTitle": "#${unread_notifications} new notifications"
