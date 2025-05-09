@@ -14,19 +14,19 @@
     },
     "icon": "./assets/icon.png",
     "notification": {
-      "icon": "./assets/notification-icon.png",
+      "icon": "./assets//notification-icons/Archlight Notification Logo 3 - No Buffer.png",
       "color": "#FFFFFF"
     },
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/Icons/Archlight-Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
     "android": {
       "package": "com.marina1828.yourappslug",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle.png",
+        "backgroundColor": "#000000"
       }
     }
   }
