@@ -1,7 +1,6 @@
 {
   "expo": {
     "name": "Archlight",
-    "slug": "archlight",
     "version": "1.2.0",
     "sdkVersion": "52.0.0",
     "runtimeVersion": "1.0.0",
@@ -22,7 +21,7 @@
       "backgroundColor": "#FFFFFF"
     },
     "android": {
-      "package": "com.marina1828.archlight",
+      "package": "com.marina1828.your-app-slug",
       "adaptiveIcon": {
         "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle.png",
         "backgroundColor": "#000000"
