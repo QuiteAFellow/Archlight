@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { scheduleNotificationsForArtist, cancelAllNotifications, loadReminderPreferences, cancelNotificationsForArtist } from '../../notifications';
 import rawArtistsData from '../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import { Artist } from '../types';
+import { scheduleNotificationAsync } from 'expo-notifications';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),  // Convert "AOTD #" to a number
@@ -32,11 +33,12 @@ interface SettingsModalProps {
 
 const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave }) => {
   const { theme, setTheme, themeData } = useTheme();
+  const [tapCount, setTapCount] = useState(0);
+  const [showTestButton, setShowTestButton] = useState(false);
   const { favorites, notificationTimes, setNotificationTimes } = useFavorites();
   const [selectedTimes, setSelectedTimes] = useState<number[]>([]);
   const [isHydrationEnabled, setIsHydrationEnabled] = useState(false);
   const [isSunscreenEnabled, setIsSunscreenEnabled] = useState(false);
-
   const currentTheme = theme;
 
   useEffect(() => {
@@ -53,6 +55,38 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
     };
     loadSettings();
   },[setTheme]);
+
+  useEffect(() => {
+    if (!visible) {
+      // Reset the selected times when the modal is closed
+      setTapCount(0);
+      setShowTestButton(false);
+    }
+  }, [visible]);
+
+  const handleTap = () => {
+    setTapCount((prevCount) => {
+      const newCount = prevCount + 1;
+      if (newCount === 10) {
+        setShowTestButton(true); // Show the test button after 10 taps
+        Toast.show({
+          type: 'info',
+          text1: 'Developer mode Unlocked!',
+        });
+      }
+      return newCount;
+    });
+  };
+
+  const sendTestNotification = async () => {
+    await scheduleNotificationAsync({
+      content: {
+        title: "Test Notification",
+        body: "This is what your notifications will look like!",
+      },
+      trigger: null // Trigger immediately for testing
+    });
+  };
 
   const handleSave = async () => {
     // Cancel all previous notifications
@@ -96,11 +130,21 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
         <View style={styles.overlay}>
           <TouchableWithoutFeedback>
             <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
-              <Text style={[styles.title, { color: themeData.textColor }]}>Settings</Text>
+              <TouchableOpacity onPress={handleTap}>
+                <Text style={[styles.title, { color: themeData.textColor }]}>Settings</Text>
+              </TouchableOpacity>
+
               {/* Close Button (X) */}
               <TouchableOpacity onPress={onClose} style={styles.closeButton}>
                 <Ionicons name="close" size={30} color={themeData.textColor} />
               </TouchableOpacity>
+
+              {/* Developer Test Button */}
+              {showTestButton && (
+                <View style={styles.testButtonContainer}>
+                  <Button title="Send Test Notification" onPress={sendTestNotification} color={themeData.highlightColor} />
+                </View>
+              )}
 
               {/* Theme Selector */}
               <Text style={[styles.subHeader, { color: themeData.textColor }]}>App Theme</Text>
@@ -322,6 +366,9 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     padding: 10,
+  },
+  testButtonContainer: {
+    marginVertical: 20,
   }
 });
 
