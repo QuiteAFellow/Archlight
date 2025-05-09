@@ -1,3 +1,27 @@
+diff --git a/node_modules/react-native-push-notification/android/.project b/node_modules/react-native-push-notification/android/.project
+index 3865e0f..3964dd3 100644
+--- a/node_modules/react-native-push-notification/android/.project
++++ b/node_modules/react-native-push-notification/android/.project
+@@ -5,11 +5,6 @@
+ 	<projects>
+ 	</projects>
+ 	<buildSpec>
+-		<buildCommand>
+-			<name>org.eclipse.jdt.core.javabuilder</name>
+-			<arguments>
+-			</arguments>
+-		</buildCommand>
+ 		<buildCommand>
+ 			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+ 			<arguments>
+@@ -17,7 +12,6 @@
+ 		</buildCommand>
+ 	</buildSpec>
+ 	<natures>
+-		<nature>org.eclipse.jdt.core.javanature</nature>
+ 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
+ 	</natures>
+ </projectDescription>
 diff --git a/node_modules/react-native-push-notification/android/build.gradle b/node_modules/react-native-push-notification/android/build.gradle
 index d6019f6..f14f66c 100644
 --- a/node_modules/react-native-push-notification/android/build.gradle
