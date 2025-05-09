@@ -22,7 +22,7 @@
       "backgroundColor": "#FFFFFF"
     },
     "android": {
-      "package": "com.marina1828.your-app-slug",
+      "package": "com.marina1828.archlight",
       "adaptiveIcon": {
         "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle - Anti-Crop-01.png",
         "backgroundColor": "#000000"

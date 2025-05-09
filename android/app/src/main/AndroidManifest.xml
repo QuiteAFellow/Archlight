@@ -30,7 +30,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="com.marina1828.archlight"/>
-        <data android:scheme="exp+archlight"/>
+        <data android:scheme="exp+your-app-slug"/>
       </intent-filter>
     </activity>
   </application>
