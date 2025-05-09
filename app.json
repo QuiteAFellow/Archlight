@@ -11,7 +11,7 @@
         "projectId": "8ca33188-9b28-439a-a688-0b09b8eda6c8"
       }
     },
-    "icon": "./assets/Icons/Archlight-Logo.png",
+    "icon": "./assets/Icons/Archlight Logo - Main - Circle - Anti-Crop-01.png",
     "notification": {
       "icon": "./assets/notification-icons/Archlight Notification Logo 3 - No Buffer.png",
       "color": "#FFFFFF"
@@ -24,7 +24,7 @@
     "android": {
       "package": "com.marina1828.your-app-slug",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle.png",
+        "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle - Anti-Crop-01.png",
         "backgroundColor": "#000000"
       },
       "buildType": "apk"
