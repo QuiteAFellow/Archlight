@@ -1,6 +1,20 @@
-# Archlight
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d1139aa6-134f-43ac-a928-bde47623d0eb" alt="Archlight Logo" width="300"/>
+</p>
+
+<h1 align="center">Archlight</h1>
 
 An app developed by someone who's been to Bonnaroo, for people going to Bonnaroo
+
+<p align="center">
+  <img src = "https://github.com/user-attachments/assets/1917c1f4-fc00-4388-a500-daefb36d4266" width="30%" />
+  <img src = "https://github.com/user-attachments/assets/bd041fbc-212d-4fc7-af82-507b5bfffb25" width="30%" />
+  <img src = "https://github.com/user-attachments/assets/96c06185-921d-4f5b-8f93-1c6e7b25aec5" width="30%" />
+  <img src = "https://github.com/user-attachments/assets/210b0840-23c0-4940-be44-f0b0c846f351" width="30%" />
+  <img src = "https://github.com/user-attachments/assets/6d6bdbf3-6b0c-4fcb-85bc-c3f52d8bad59" width="30%" />
+  <img src = "https://github.com/user-attachments/assets/f59853df-b560-4ecf-aadc-22c9343f6a58" width="30%" />
+
+</p>
 
 > Disclaimer: This is not an official app. All information was provided using information that was readily available through Bonnaroo's website amongst other sources. All rights belong to Bonnaroo and C3 Presents LLC
 
