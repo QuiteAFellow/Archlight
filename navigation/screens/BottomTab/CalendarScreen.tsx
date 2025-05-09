@@ -400,6 +400,7 @@ const styles = StyleSheet.create({
   artistName: {
     fontSize: 11,
     fontWeight: 'bold',
+    flexWrap: 'wrap',
   },
   artistTime: {
     fontSize: 10.5,
