@@ -12,6 +12,16 @@
         "projectId": "8ca33188-9b28-439a-a688-0b09b8eda6c8"
       }
     },
+    "icon": "./assets/icon.png",
+    "notification": {
+      "icon": "./assets/notification-icon.png",
+      "color": "#FFFFFF"
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
     "plugins": [
       "expo-asset",
       "expo-sqlite",
@@ -29,7 +39,11 @@
       "@react-native-community/masked-view"
     ],
     "android": {
-      "package": "com.marina1828.yourappslug"
+      "package": "com.marina1828.yourappslug",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     }
   }
 }
