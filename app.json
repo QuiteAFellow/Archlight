@@ -25,7 +25,6 @@
     "plugins": [
       "expo-asset",
       "expo-sqlite",
-      "@notifee/react-native",
       "@react-native-async-storage/async-storage",
       "@react-native-picker/picker",
       "react-native-screens",
