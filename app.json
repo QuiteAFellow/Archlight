@@ -26,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "buildType": "apk"
     }
   }
 }
