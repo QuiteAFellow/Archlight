@@ -1,7 +1,7 @@
 const artistImages: { [key: string]: any } = {
 '2Hollis': require('../artist-images/2Hollis.jpg'),
 'Action Bronson': require('../artist-images/Action Bronson.jpg'),
-'Ahee': require('../artist-images/Ahee.jpg'),
+'AHEE': require('../artist-images/Ahee.jpg'),
 'Alex Warren': require('../artist-images/Alex Warren.jpg'),
 'Alexandra Kay': require('../artist-images/Alexandra Kay.jpg'),
 'Aly & AJ': require('../artist-images/Aly & AJ.jpg'),
