@@ -1,4 +1,4 @@
-package com.marina1828.yourappslug
+package com.marina1828.archlight
 
 import android.app.Application
 import android.content.res.Configuration

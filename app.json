@@ -1,20 +1,19 @@
 {
   "expo": {
     "name": "Archlight",
-    "slug": "your-app-slug",
+    "slug": "archlight",
     "version": "1.2.0",
+    "sdkVersion": "52.0.0",
     "runtimeVersion": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "extra": {
       "eas": {
         "projectId": "8ca33188-9b28-439a-a688-0b09b8eda6c8"
       }
     },
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Icons/Archlight-Logo.png",
     "notification": {
-      "icon": "./assets//notification-icons/Archlight Notification Logo 3 - No Buffer.png",
+      "icon": "./assets/notification-icons/Archlight Notification Logo 3 - No Buffer.png",
       "color": "#FFFFFF"
     },
     "splash": {
@@ -23,11 +22,12 @@
       "backgroundColor": "#FFFFFF"
     },
     "android": {
-      "package": "com.marina1828.yourappslug",
+      "package": "com.marina1828.archlight",
       "adaptiveIcon": {
         "foregroundImage": "./assets/Icons/Archlight Logo - Main - Circle.png",
         "backgroundColor": "#000000"
       }
-    }
+    },
+    "plugins": ["expo-asset", "expo-sqlite"]
   }
 }

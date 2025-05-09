@@ -1,4 +1,4 @@
-package com.marina1828.yourappslug
+package com.marina1828.archlight
 
 import android.os.Build
 import android.os.Bundle
