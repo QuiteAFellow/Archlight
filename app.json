@@ -22,21 +22,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "plugins": [
-      "expo-asset",
-      "expo-sqlite",
-      "@react-native-async-storage/async-storage",
-      "@react-native-picker/picker",
-      "react-native-screens",
-      "react-native-safe-area-context",
-      "react-native-vector-icons",
-      "react-native-gesture-handler",
-      "react-native-reanimated",
-      "react-native-fast-image",
-      "react-native-push-notification",
-      "react-native-orientation-locker",
-      "@react-native-community/masked-view"
-    ],
     "android": {
       "package": "com.marina1828.yourappslug",
       "adaptiveIcon": {
