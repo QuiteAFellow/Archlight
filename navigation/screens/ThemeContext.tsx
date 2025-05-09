@@ -6,6 +6,7 @@ interface ThemeContextProps {
     theme: ThemeType;
     setTheme: (theme: ThemeType) => void;
     themeData: {
+        name: ThemeType;
         backgroundColor: string;
         textColor: string;
         subtextColor: string;

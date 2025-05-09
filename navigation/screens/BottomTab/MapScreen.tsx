@@ -193,7 +193,18 @@ const MapScreen: React.FC = () => {
                     <TouchableOpacity
                       key={color}
                       onPress={() => setPinDetails({ ...pinDetails, color })}
-                      style={[styles.colorSwatch, { backgroundColor: color, borderColor: pinDetails.color === color ? 'black' : 'transparent' }]}
+                      style={[
+                        styles.colorSwatch,
+                        {
+                          backgroundColor: color,
+                          borderColor:
+                            pinDetails.color === color
+                              ? themeData.name === 'Light'
+                                ? 'black'
+                                : 'white'
+                              : 'transparent',
+                        },
+                      ]}
                     />
                   ))}
                 </View>

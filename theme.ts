@@ -12,6 +12,7 @@ export type StageName =
 
 // Define the theme object, each theme has different color options
 export const themes: Record<ThemeType, {
+    name: ThemeType;
     stageColors: Record<StageName, string>;
     FavoritedstageColors: Record<StageName, string>;
     stageTextColors: Record<StageName, string>;
@@ -28,6 +29,7 @@ export const themes: Record<ThemeType, {
     statusBarColor: string;
     }> = {
     Light: {
+        name: 'Light',
         // Light Theme color scheme
         FavoritedstageColors: {
         'What Stage': '#84d443', // Green
@@ -78,6 +80,7 @@ export const themes: Record<ThemeType, {
         statusBarColor: '#ffffff'
     },
     Bonnaroo: {
+        name: 'Bonnaroo',
         // Bonnaroo Theme color scheme
         FavoritedstageColors: {
         'What Stage': '#84d443', // Green
@@ -128,6 +131,7 @@ export const themes: Record<ThemeType, {
         statusBarColor: '#333333'
     },
     OLED: {
+        name: 'OLED',
         // OLED Theme color scheme
         FavoritedstageColors: {
         'What Stage': '#84d443', // Green
