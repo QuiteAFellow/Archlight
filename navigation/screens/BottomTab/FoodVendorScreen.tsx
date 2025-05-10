@@ -4,6 +4,8 @@ import foodVendorsData from '../../../database/Food Vendor Info 2024.json';
 import FilterModal from '../FilterModal';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../ThemeContext';  // Import theme context
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 
 interface FoodVendor {
   "Food Vendor": string;
@@ -22,6 +24,12 @@ interface FoodVendor {
 const getUniqueValues = (data: FoodVendor[], key: keyof FoodVendor) => {
   const values = data.flatMap(vendor => vendor[key].split(',').map(item => item.trim()));
   return Array.from(new Set(values)).filter(Boolean); // Remove duplicates and empty strings
+};
+
+const dietaryTagMap: Record<string, string> = {
+  'Vegetarian': 'Vegetarian',
+  'Vegan': 'Vegan',
+  'Gluten Free': 'GF',
 };
 
 const splitParenthesisText = (text: string) => {
@@ -95,14 +103,13 @@ const FoodVendorScreen: React.FC = () => {
     }
     if (filters.dietary.length) {
       filtered = filtered.filter(vendor => {
-        const rawDietary = vendor["Dietary Tags"] || '';
-        const vendorDietaryTags = rawDietary
+        const vendorDietaryTags = (vendor["Dietary Tags"] || '')
           .split(',')
-          .map((tag: string) => tag.trim().toLowerCase());
-        const matches = filters.dietary.some((filterTag: string) =>
-          vendorDietaryTags.includes(filterTag.toLowerCase())
+          .map(tag => tag.trim());
+
+        return filters.dietary.some((userSelected: string) =>
+          vendorDietaryTags.includes(dietaryTagMap[userSelected])
         );
-        return matches;
       });
     }
     if (filters.price.length) {
@@ -134,8 +141,10 @@ const FoodVendorScreen: React.FC = () => {
     applyFilters(searchQuery, newFilters);
   };
 
+const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
   return (
-    <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+    <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       <TextInput
         style={[styles.searchBar, { color: themeData.textColor, borderColor: themeData.textColor }]}
         placeholder="Search"
@@ -145,7 +154,7 @@ const FoodVendorScreen: React.FC = () => {
       />
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={[styles.filterButton, { backgroundColor: themeData.highlightColor }]} onPress={handleOpenFilterModal}>
-          <Text style={[styles.filterButtonText, { color: themeData.textColor }]}>Filter</Text>
+          <Text style={[styles.filterButtonText, { color: themeData.buttonText }]}>Filter</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setShowRecommendedOnly(!showRecommendedOnly)}
           style={[
@@ -209,7 +218,7 @@ const FoodVendorScreen: React.FC = () => {
         existingFilters={filters}
         uniqueOptions={uniqueOptions}
       />
-    </View>
+    </Container>
   );
 };
 

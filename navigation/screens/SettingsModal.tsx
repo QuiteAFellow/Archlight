@@ -10,6 +10,7 @@ import { scheduleNotificationsForArtist, cancelAllNotifications, loadReminderPre
 import rawArtistsData from '../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
 import { Artist } from '../types';
 import { scheduleNotificationAsync } from 'expo-notifications';
+import { Platform } from 'react-native';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),  // Convert "AOTD #" to a number
@@ -309,6 +310,7 @@ const styles = StyleSheet.create({
   optionText: {
     color: 'black',
     textAlign: 'center',
+    fontSize: Platform.OS === 'ios' ? 12 : 14,
   },
   buttonContainer: {
     marginTop: 10,
@@ -368,7 +370,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   testButtonContainer: {
-    marginVertical: 20,
+    marginVertical: 10,
   }
 });
 

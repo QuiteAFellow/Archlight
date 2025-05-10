@@ -21,6 +21,7 @@ interface ThemeContextProps {
         NowBar: string;
         buttonText: string;
         statusBarColor: string;
+        scrollbarColor: string;
     };
 }
 

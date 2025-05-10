@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableOpacity, ScrollView, Platform, Animated } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { useTheme } from './ThemeContext';
@@ -34,6 +34,7 @@ const locationOptions = [
   "Who's Broo Pub"
 ].sort();
 
+
 const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilters, existingFilters, uniqueOptions }) => {
   const { themeData } = useTheme();  // Extract theme data to dynamically set the colors
   const [selectedTypes, setSelectedTypes] = useState<string[]>(existingFilters.type || []);
@@ -62,6 +63,16 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
     }
   };
 
+  const renderCheckbox = (checked: boolean, onPress: () => void) => {
+    return Platform.OS === 'ios' || Platform.OS === 'android' ? (
+      <Checkbox
+        status={checked ? 'checked' : 'unchecked'}
+        onPress={onPress}
+        color={themeData.highlightColor}
+      />
+    ) : null;
+  };
+
   const renderMultiSelectList = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void) => (
     <View style={styles.filterSection}>
       <TouchableOpacity onPress={() => setExpandedCategory(expandedCategory === label ? null : label)} style={styles.filterCategory}>
@@ -76,26 +87,24 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
         <ScrollView style={styles.scrollableList}>
           <View style={styles.listItem}>
             <Text style={[styles.selectAllText, { color: themeData.textColor }]}>Select All</Text>
-            <Checkbox
-              status={selectedItems.length === items.length ? 'checked' : 'unchecked'}
-              onPress={() => toggleSelectAll(selectedItems, onSelectedItemsChange, items)}
-              color={themeData.highlightColor}  // Set color based on theme
-            />
+            {renderCheckbox(
+              selectedItems.length === items.length,
+              () => toggleSelectAll(selectedItems, onSelectedItemsChange, items)
+            )}
           </View>
           {items.map((item) => (
             <View key={item} style={styles.listItem}>
               <Text style={{ color: themeData.textColor }}>{item}</Text>
-              <Checkbox
-                status={selectedItems.includes(item) ? 'checked' : 'unchecked'}
-                onPress={() => {
+              {renderCheckbox(
+                selectedItems.includes(item),
+                () => {
                   if (selectedItems.includes(item)) {
                     onSelectedItemsChange(selectedItems.filter(i => i !== item));
                   } else {
                     onSelectedItemsChange([...selectedItems, item]);
                   }
-                }}
-                color={themeData.highlightColor}  // Set color based on theme
-              />
+                }
+              )}
             </View>
           ))}
         </ScrollView>
@@ -119,7 +128,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
             <TouchableOpacity style={[styles.applyButton, { backgroundColor: themeData.highlightColor }]} onPress={applyFilters}>
               <Text style={styles.applyButtonText}>Apply Filters</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.cancelButton, { backgroundColor: themeData.textColor }]} onPress={onClose}>
+            <TouchableOpacity style={[styles.cancelButton, { backgroundColor: themeData.subtextColor }]} onPress={onClose}>
               <Text style={[styles.cancelButtonText, {color: themeData.backgroundColor}]}>Cancel</Text>
             </TouchableOpacity>
           </View>

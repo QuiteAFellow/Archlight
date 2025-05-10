@@ -9,6 +9,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFavorites } from '../../../context/FavoritesContext';
 import { useTheme } from '../ThemeContext'; // Import the theme context
 import FastImage from 'react-native-fast-image';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -75,8 +77,10 @@ const LineupScreen: React.FC = () => {
     });
   };
 
+  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
   return (
-    <View style={{ flex: 1, backgroundColor: themeData.backgroundColor }}>
+    <Container style={{ flex: 1, backgroundColor: themeData.backgroundColor }}>
       <TextInput
         style={[styles.searchBar, { color: themeData.textColor, borderColor: themeData.textColor }]}
         placeholder="Search for artists"
@@ -116,7 +120,7 @@ const LineupScreen: React.FC = () => {
           );
         })}
       </ScrollView>
-    </View>
+    </Container>
   );
 };
 
@@ -136,11 +140,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
-    marginTop: 10
+    marginTop: 10,
+    flexWrap: 'nowrap',
   },
   artistContent: {
     flexDirection: 'row',
     alignItems: 'center',
+    flexShrink: 1,
+    maxWidth: '85%',
   },
   profileImage: {
     width: 50,
@@ -151,10 +158,12 @@ const styles = StyleSheet.create({
   artistName: {
     fontWeight: 'bold',
     fontSize: 18,
-    flex: 1,
+    flexShrink: 1,
+    flexWrap: 'wrap',
+    marginRight: 10,
   },
   heartContainer: {
-    marginLeft: -70,
+    paddingLeft: 10,
   },
   line: {
     borderBottomWidth: 1,

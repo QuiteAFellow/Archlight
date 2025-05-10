@@ -5,6 +5,8 @@ import { RootStackParamList } from '../../types';
 import { useFavorites } from '../../../context/FavoritesContext';
 import { useTheme } from '../ThemeContext'; // Ensure correct import for the theme
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 
 type HomeScreenNavigationProp = BottomTabNavigationProp<RootStackParamList, 'Home'>;
 
@@ -50,8 +52,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
     }
   }, [theme]);
 
+  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
   return (
-    <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+    <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       {logo && <Image source={logo} style={styles.logo} resizeMode="contain" />}
       <View style={styles.buttonContainer}>
         <CustomButton
@@ -79,7 +83,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
           iconName="settings"
         />
       </View>
-    </View>
+    </Container>
   );
 };
 
@@ -112,7 +116,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#000000',
-    fontSize: 16,
+    fontSize: Platform.select({
+      ios: 13,
+      android: 14
+    }),
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 10,

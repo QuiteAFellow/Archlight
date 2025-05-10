@@ -27,6 +27,7 @@ export const themes: Record<ThemeType, {
     NowBar: string;
     buttonText: string;
     statusBarColor: string;
+    scrollbarColor: string;
     }> = {
     Light: {
         name: 'Light',
@@ -77,7 +78,8 @@ export const themes: Record<ThemeType, {
         subtextColor: 'grey',
         NowBar: 'red',
         buttonText: '#ffffff',
-        statusBarColor: '#ffffff'
+        statusBarColor: '#ffffff',
+        scrollbarColor: '#999999'
     },
     Bonnaroo: {
         name: 'Bonnaroo',
@@ -128,7 +130,8 @@ export const themes: Record<ThemeType, {
         subtextColor: 'grey',
         NowBar: '#000000',
         buttonText: '#ffffff',
-        statusBarColor: '#333333'
+        statusBarColor: '#333333',
+        scrollbarColor: '#77FF77'
     },
     OLED: {
         name: 'OLED',
@@ -179,6 +182,7 @@ export const themes: Record<ThemeType, {
         subtextColor: 'grey',
         NowBar: '#000000',
         buttonText: '#ffffff',
-        statusBarColor: '#000000'
+        statusBarColor: '#000000',
+        scrollbarColor: 'grey'
     },
 };

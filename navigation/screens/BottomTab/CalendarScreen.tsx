@@ -8,6 +8,8 @@ import { Artist } from '../../types';
 import { LineupStackParamList } from '../../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTheme } from '../ThemeContext';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -232,8 +234,10 @@ const CalendarScreen: React.FC = () => {
 
   const { top, showNowLine } = getNowLineStyle(selectedDay);
 
+  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
   return (
-    <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+    <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => setShowFavoritesOnly(!showFavoritesOnly)}
@@ -289,7 +293,7 @@ const CalendarScreen: React.FC = () => {
           </ScrollView>
         </ScrollView>
       </View>
-    </View>
+    </Container>
   );
 };
 
@@ -398,12 +402,18 @@ const styles = StyleSheet.create({
     borderColor: '#00d0ff',
   },
   artistName: {
-    fontSize: 11,
+    fontSize: Platform.select({
+      ios: 10,
+      android: 11
+    }),
     fontWeight: 'bold',
     flexWrap: 'wrap',
   },
   artistTime: {
-    fontSize: 10.5,
+    fontSize: Platform.select({
+      ios: 9.5,
+      android: 10.5
+    }),
     fontStyle: 'italic',
   },
   nowLine: {

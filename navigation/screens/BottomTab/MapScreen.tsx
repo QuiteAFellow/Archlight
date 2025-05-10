@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Dimensions,
 import ImageViewing from 'react-native-image-viewing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../ThemeContext';  // Import the theme context
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 
 const centerooImage = require('../../../assets/Maps/Roo24_Centeroo.jpg');
 const outerooImage = require('../../../assets/Maps/Roo24_Outeroo.jpg');
@@ -123,9 +125,11 @@ const MapScreen: React.FC = () => {
     setShowModal(false);
   };
 
+  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
   return (
     <TouchableWithoutFeedback onPress={addingPin ? handleMapPress : undefined}>
-      <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+      <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
         <TouchableOpacity onPress={switchMap} style={[styles.switchButton, { backgroundColor: themeData.highlightColor }]}>
           <Text style={[styles.switchButtonText, { color: themeData.buttonText }]}>Switch Map</Text>
         </TouchableOpacity>
@@ -210,8 +214,8 @@ const MapScreen: React.FC = () => {
                 </View>
               </View>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton]}>
-                  <Text style={styles.buttonText}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
+                <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton, { backgroundColor: themeData.highlightColor }]}>
+                  <Text style={[styles.buttonText, { backgroundColor: themeData.highlightColor }]}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
                 </TouchableOpacity>
                 {editingPinId !== null && (
                   <TouchableOpacity onPress={removePin} style={[styles.button, styles.removeButton]}>
@@ -225,7 +229,7 @@ const MapScreen: React.FC = () => {
             </View>
           </View>
         </Modal>
-      </View>
+      </Container>
     </TouchableWithoutFeedback>
   );
 };
@@ -233,6 +237,7 @@ const MapScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === 'ios' ? 20 : 0,
   },
   switchButton: {
     position: 'absolute',

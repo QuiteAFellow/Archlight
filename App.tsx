@@ -13,7 +13,6 @@ const StatusBarWrapper = () => {
 
   return (
     <StatusBar
-      translucent={false}
       barStyle={theme === 'Light' ? 'dark-content' : 'light-content'}
       backgroundColor={themeData.statusBarColor || themeData.backgroundColor}
     />
