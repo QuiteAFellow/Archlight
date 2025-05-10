@@ -129,7 +129,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
               <Text style={styles.applyButtonText}>Apply Filters</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.cancelButton, { backgroundColor: themeData.subtextColor }]} onPress={onClose}>
-              <Text style={[styles.cancelButtonText, {color: themeData.backgroundColor}]}>Cancel</Text>
+              <Text style={[styles.cancelButtonText, {color: themeData.buttonText}]}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
