@@ -23,8 +23,8 @@ These are scheduled only on the user's device and are not shared or transmitted 
 Archlight may request permission to:
 
      - Send local push notifications
-     
-4. Third-Party Services
+
+1. Third-Party Services
 
 Archlight does not integrate with third-party analytics, advertising, or data-collection services.
 
