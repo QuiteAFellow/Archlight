@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Platform } from 'react-native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '../../types';
 import { useFavorites } from '../../../context/FavoritesContext';
-import { useTheme } from '../ThemeContext'; // Ensure correct import for the theme
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { useTheme } from '../ThemeContext';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Platform } from 'react-native';
+import LottieView from 'lottie-react-native';
+
+const confetti = require('../../../assets/animations/Confetti.json');
 
 type HomeScreenNavigationProp = BottomTabNavigationProp<RootStackParamList, 'Home'>;
 
@@ -15,7 +17,6 @@ interface HomeScreenProps {
   openSettings: () => void;
 }
 
-// CustomButton component
 const CustomButton: React.FC<{
   title: string;
   onPress: () => void;
@@ -30,75 +31,169 @@ const CustomButton: React.FC<{
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => {
   const { favorites } = useFavorites();
-  const { theme, themeData } = useTheme(); // Use theme context
-  const hasFavoritedArtists = Object.keys(favorites).length > 0;
+  const { theme, themeData } = useTheme();
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [showHappyRoo, setShowHappyRoo] = useState(false);
+  const [logo, setLogo] = useState<any>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [simulate, setSimulate] = useState(false);
 
-  const [logo, setLogo] = useState<any>(null); // Use 'any' initially for logo state
-
-  // Set the correct logo based on the selected theme
   useEffect(() => {
     switch (theme) {
       case 'Light':
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct the path to the logo
-        break;
       case 'Bonnaroo':
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct path for Bonnaroo theme
-        break;
       case 'OLED':
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Correct path for OLED theme
-        break;
       default:
-        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png')); // Fallback logo
+        setLogo(require('../../../assets/Icons/Archlight Splash 2025 - O.png'));
     }
   }, [theme]);
+
+  useEffect(() => {
+    const targetDate = new Date('2025-06-12T12:00:00-05:00');
+    const endFreezeDate = new Date('2025-06-12T15:00:00-05:00');
+
+    const timer = setInterval(() => {
+      const now = simulate ? new Date('2025-06-12T12:30:00-05:00') : new Date();
+
+      if (now < targetDate) {
+        const diff = targetDate.getTime() - now.getTime();
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        setCountdown({ days, hours, minutes, seconds });
+        setShowHappyRoo(false);
+        setShowConfetti(false);
+      } else if (now >= targetDate && now < endFreezeDate) {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setShowHappyRoo(true);
+        setShowConfetti(true);
+      } else {
+        clearInterval(timer);
+        setShowConfetti(false);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [simulate]);
 
   const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   return (
-    <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
-      {logo && <Image source={logo} style={styles.logo} resizeMode="contain" />}
-      <View style={styles.buttonContainer}>
-        <CustomButton
-          title="Calendar"
-          onPress={() => navigation.navigate('Calendar')}
-          buttonColor={themeData.buttonColors.calendar} // Pass color from theme
-          iconName="calendar"
-        />
-        <CustomButton
-          title="Lineup"
-          onPress={() => navigation.navigate('Lineup')}
-          buttonColor={themeData.buttonColors.lineup} // Pass color from theme
-          iconName="list"
-        />
-        <CustomButton
-          title="Centeroo/Outeroo Maps"
-          onPress={() => navigation.navigate('Map')}
-          buttonColor={themeData.buttonColors.map} // Pass color from theme
-          iconName="map"
-        />
-        <CustomButton
-          title="Theme/Notification Settings"
-          onPress={openSettings}
-          buttonColor={themeData.buttonColors.settings} // Pass color from theme
-          iconName="settings"
-        />
-      </View>
-    </Container>
+    <View style={{ flex: 1 }}>
+      {showConfetti && (
+        <View pointerEvents='none' style={[StyleSheet.absoluteFillObject, { zIndex: 1000 }]}>
+          <LottieView
+            source={confetti}
+            autoPlay
+            loop
+            resizeMode="cover"
+            style={styles.lottie}
+          />
+        </View>
+      )}
+      <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+        {logo && <Image source={logo} style={styles.logo} resizeMode="contain" />}
+        <View style={styles.countdownContainer}>
+          <Text style={[styles.countdownlabel, { color: themeData.textColor }]}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: themeData.textColor }}>Countdown: </Text>
+            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.days}</Text>d{' '}
+            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.hours}</Text>h{' '}
+            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.minutes}</Text>m{' '}
+            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.seconds}</Text>s
+          </Text>
+          <View style={styles.happyRooWrapper}>
+            {showHappyRoo && (
+              <Text style={[styles.happyRooText, { color: themeData.highlightColor }]}>Happy Roo!</Text>
+            )}
+          </View>
+          {/* <TouchableOpacity onPress={() => setSimulate(!simulate)} style={styles.simButton}> */}
+            {/*<Text style={{ color: 'white' }}>{simulate ? 'Reset Timer' : 'Simulate Countdown End'}</Text>*/}
+          {/* </TouchableOpacity> */}
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            title="Calendar"
+            onPress={() => navigation.navigate('Calendar')}
+            buttonColor={themeData.buttonColors.calendar}
+            iconName="calendar"
+          />
+          <CustomButton
+            title="Lineup"
+            onPress={() => navigation.navigate('Lineup')}
+            buttonColor={themeData.buttonColors.lineup}
+            iconName="list"
+          />
+          <CustomButton
+            title="Centeroo/Outeroo Maps"
+            onPress={() => navigation.navigate('Map')}
+            buttonColor={themeData.buttonColors.map}
+            iconName="map"
+          />
+          <CustomButton
+            title="Theme/Notification Settings"
+            onPress={openSettings}
+            buttonColor={themeData.buttonColors.settings}
+            iconName="settings"
+          />
+        </View>
+      </Container>
+    </View>
   );
 };
 
-// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop: 40,  // Add some space at the top for the logo
+    paddingTop: 40,
   },
   logo: {
-    width: 250,  // Adjust the width of the logo
-    height: 250,  // Adjust the height of the logo
-    marginBottom: 30,  // Space between logo and buttons
+    width: 250,
+    height: 250,
+    marginBottom: -10,
+    marginTop: -10,
+  },
+  countdownContainer: {
+    alignItems: 'center',
+    marginBottom: -10,
+    marginTop: 10,
+  },
+  countdownlabel: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  number: {
+    fontSize: 36,
+    fontWeight: 'bold',
+  },
+  happyRooWrapper: {
+    minHeight: 34,
+    justifyContent: 'center',
+  },
+  happyRooText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginTop: -10,
+  },
+  lottie: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1000,
+    //pointerEvents: 'none',
+  },
+  simButton: {
+    marginTop: 10,
+    backgroundColor: '#888',
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    borderRadius: 5,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -111,30 +206,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 30,
     marginHorizontal: 15,
-    width: '40%', // Adjust width as needed
+    width: '40%',
     height: 150,
   },
   buttonText: {
     color: '#000000',
     fontSize: Platform.select({
       ios: 13,
-      android: 14
+      android: 14,
     }),
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 10,
   },
-  yearText: {
-    fontSize: 32,
-    fontWeight: '900', // Set a higher font weight to make the text thicker
-    textAlign: 'center',
-    marginTop: -50,
-    marginBottom: 20,
-    letterSpacing: 2,
-  },
   icon: {
     marginBottom: 5,
-  }
+  },
 });
 
 export default HomeScreen;

@@ -411,7 +411,7 @@ const styles = StyleSheet.create({
   },
   artistTime: {
     fontSize: Platform.select({
-      ios: 9.5,
+      ios: 9,
       android: 10.5
     }),
     fontStyle: 'italic',

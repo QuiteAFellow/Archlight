@@ -128,116 +128,117 @@ const MapScreen: React.FC = () => {
   const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   return (
-    <TouchableWithoutFeedback onPress={addingPin ? handleMapPress : undefined}>
-      <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
-        <TouchableOpacity onPress={switchMap} style={[styles.switchButton, { backgroundColor: themeData.highlightColor }]}>
-          <Text style={[styles.switchButtonText, { color: themeData.buttonText }]}>Switch Map</Text>
-        </TouchableOpacity>
-        {addingPin ? (
-          <TouchableOpacity onPress={cancelAddPin} style={[styles.cancelAddButton, { backgroundColor: 'red' }]}>
-            <Text style={styles.cancelAddButtonText}>Cancel Add Pin</Text>
+    <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+      <TouchableWithoutFeedback onPress={addingPin ? handleMapPress : undefined}>
+        <View style= {{ flex: 1 }}>
+          <TouchableOpacity onPress={switchMap} style={[styles.switchButton, { backgroundColor: themeData.highlightColor }]}>
+            <Text style={[styles.switchButtonText, { color: themeData.buttonText }]}>Switch Map</Text>
           </TouchableOpacity>
-        ) : (
-          <TouchableOpacity onPress={() => setAddingPin(true)} style={[styles.addButton, { backgroundColor: themeData.highlightColor }]}>
-            <Text style={[styles.addButtonText, { color: themeData.buttonText }]}>Add Pin</Text>
+          {addingPin ? (
+            <TouchableOpacity onPress={cancelAddPin} style={[styles.cancelAddButton, { backgroundColor: 'red' }]}>
+              <Text style={styles.cancelAddButtonText}>Cancel Add Pin</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={() => setAddingPin(true)} style={[styles.addButton, { backgroundColor: themeData.highlightColor }]}>
+              <Text style={[styles.addButtonText, { color: themeData.buttonText }]}>Add Pin</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>
+            <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
+            {pins
+              .filter((pin) => pin.map === currentMap)
+              .map((pin) => (
+                <TouchableOpacity
+                  key={pin.id}
+                  onPress={() => handlePinPress(pin.id)}
+                  style={[
+                    styles.pin,
+                    { left: pin.x, top: pin.y, backgroundColor: pin.color },
+                  ]}
+                >
+                  <Text style={[styles.pinLabel, { color: pin.color === 'yellow' ? 'black' : 'white' }]}>{pin.label}</Text>
+                </TouchableOpacity>
+              ))}
           </TouchableOpacity>
-        )}
-        <TouchableOpacity onPress={() => setIsImageViewVisible(true)} style={styles.mapContainer}>
-          <Image source={currentImage} style={styles.mapImage} resizeMode="contain" />
-          {pins
-            .filter((pin) => pin.map === currentMap)
-            .map((pin) => (
-              <TouchableOpacity
-                key={pin.id}
-                onPress={() => handlePinPress(pin.id)}
-                style={[
-                  styles.pin,
-                  { left: pin.x, top: pin.y, backgroundColor: pin.color },
-                ]}
-              >
-                <Text style={[styles.pinLabel, { color: pin.color === 'yellow' ? 'black' : 'white' }]}>{pin.label}</Text>
-              </TouchableOpacity>
-            ))}
-        </TouchableOpacity>
-        <ImageViewing
-          images={[{ uri: Image.resolveAssetSource(currentImage).uri }]}
-          imageIndex={0}
-          visible={isImageViewVisible}
-          onRequestClose={() => setIsImageViewVisible(false)}
-        />
-        {addingPin && (
-          <View style={styles.overlay}>
-            <Text style={[styles.overlayText, { color: themeData.textColor }]}>Tap on the map to add a pin</Text>
-          </View>
-        )}
-        <Modal visible={showModal} animationType="slide" transparent>
-          <View style={styles.modalContainer}>
-            <View style={[styles.modalContent, { backgroundColor: themeData.backgroundColor }]}>
-              <Text style={[styles.modalTitle, { color: themeData.textColor }]}>
-                {editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}
-              </Text>
-              <TextInput
-                placeholder="Label"
-                value={pinDetails.label}
-                onChangeText={(text) => setPinDetails({ ...pinDetails, label: text })}
-                style={[styles.input, { borderColor: themeData.textColor, color: themeData.textColor }]}
-                placeholderTextColor={themeData.textColor} // Set placeholder text color
-              />
-              <TextInput
-                placeholder="Description"
-                value={pinDetails.description}
-                onChangeText={(text) => setPinDetails({ ...pinDetails, description: text })}
-                style={[styles.input, { borderColor: themeData.textColor, color: themeData.textColor }]}
-                placeholderTextColor={themeData.textColor} // Set placeholder text color
-              />
-              <View style={styles.colorContainer}>
-                <Text style={[styles.colorLabel, { color: themeData.textColor }]}>Color</Text>
-                <View style={styles.colors}>
-                  {colors.map((color) => (
-                    <TouchableOpacity
-                      key={color}
-                      onPress={() => setPinDetails({ ...pinDetails, color })}
-                      style={[
-                        styles.colorSwatch,
-                        {
-                          backgroundColor: color,
-                          borderColor:
-                            pinDetails.color === color
-                              ? themeData.name === 'Light'
-                                ? 'black'
-                                : 'white'
-                              : 'transparent',
-                        },
-                      ]}
-                    />
-                  ))}
+          <ImageViewing
+            images={[{ uri: Image.resolveAssetSource(currentImage).uri }]}
+            imageIndex={0}
+            visible={isImageViewVisible}
+            onRequestClose={() => setIsImageViewVisible(false)}
+          />
+          {addingPin && (
+            <View style={styles.overlay}>
+              <Text style={[styles.overlayText, { color: themeData.textColor }]}>Tap on the map to add a pin</Text>
+            </View>
+          )}
+          <Modal visible={showModal} animationType="slide" transparent>
+            <View style={styles.modalContainer}>
+              <View style={[styles.modalContent, { backgroundColor: themeData.backgroundColor }]}>
+                <Text style={[styles.modalTitle, { color: themeData.textColor }]}>
+                  {editingPinId !== null ? 'Edit Pin' : 'New Pin Details'}
+                </Text>
+                <TextInput
+                  placeholder="Label"
+                  value={pinDetails.label}
+                  onChangeText={(text) => setPinDetails({ ...pinDetails, label: text })}
+                  style={[styles.input, { borderColor: themeData.textColor, color: themeData.textColor }]}
+                  placeholderTextColor={themeData.textColor} // Set placeholder text color
+                />
+                <TextInput
+                  placeholder="Description"
+                  value={pinDetails.description}
+                  onChangeText={(text) => setPinDetails({ ...pinDetails, description: text })}
+                  style={[styles.input, { borderColor: themeData.textColor, color: themeData.textColor }]}
+                  placeholderTextColor={themeData.textColor} // Set placeholder text color
+                />
+                <View style={styles.colorContainer}>
+                  <Text style={[styles.colorLabel, { color: themeData.textColor }]}>Color</Text>
+                  <View style={styles.colors}>
+                    {colors.map((color) => (
+                      <TouchableOpacity
+                        key={color}
+                        onPress={() => setPinDetails({ ...pinDetails, color })}
+                        style={[
+                          styles.colorSwatch,
+                          {
+                            backgroundColor: color,
+                            borderColor:
+                              pinDetails.color === color
+                                ? themeData.name === 'Light'
+                                  ? 'black'
+                                  : 'white'
+                                : 'transparent',
+                          },
+                        ]}
+                      />
+                    ))}
+                  </View>
+                </View>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton, { backgroundColor: themeData.highlightColor }]}>
+                    <Text style={[styles.buttonText, { backgroundColor: themeData.highlightColor }]}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
+                  </TouchableOpacity>
+                  {editingPinId !== null && (
+                    <TouchableOpacity onPress={removePin} style={[styles.button, styles.removeButton]}>
+                      <Text style={styles.buttonText}>Remove Pin</Text>
+                    </TouchableOpacity>
+                  )}
+                  <TouchableOpacity onPress={() => setShowModal(false)} style={[styles.button, styles.cancelButton]}>
+                    <Text style={styles.buttonText}>Cancel</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={savePin} style={[styles.button, styles.saveButton, { backgroundColor: themeData.highlightColor }]}>
-                  <Text style={[styles.buttonText, { backgroundColor: themeData.highlightColor }]}>{editingPinId !== null ? 'Save Changes' : 'Add Pin'}</Text>
-                </TouchableOpacity>
-                {editingPinId !== null && (
-                  <TouchableOpacity onPress={removePin} style={[styles.button, styles.removeButton]}>
-                    <Text style={styles.buttonText}>Remove Pin</Text>
-                  </TouchableOpacity>
-                )}
-                <TouchableOpacity onPress={() => setShowModal(false)} style={[styles.button, styles.cancelButton]}>
-                  <Text style={styles.buttonText}>Cancel</Text>
-                </TouchableOpacity>
-              </View>
             </View>
-          </View>
-        </Modal>
-      </Container>
-    </TouchableWithoutFeedback>
+          </Modal>
+        </View>
+      </TouchableWithoutFeedback>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'ios' ? 20 : 0,
   },
   switchButton: {
     position: 'absolute',
