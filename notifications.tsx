@@ -143,7 +143,7 @@ const scheduleRecurringReminders = async (hydrate: boolean, sunscreen: boolean) 
     }
 
     if (hydrate) {
-      for (let hour = 11; hour <= 21; hour += 2) {
+      for (let hour = 11; hour <= 23; hour += 2) {
         const time = createDateTime(day, hour);
         await scheduleNotification('Stay hydrated! Drink some water.', time);
       }

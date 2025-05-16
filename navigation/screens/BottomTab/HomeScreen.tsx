@@ -7,6 +7,8 @@ import { useTheme } from '../ThemeContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LottieView from 'lottie-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 const confetti = require('../../../assets/animations/Confetti.json');
 
@@ -37,6 +39,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
   const [logo, setLogo] = useState<any>(null);
   const [showConfetti, setShowConfetti] = useState(false);
   const [simulate, setSimulate] = useState(false);
+  const [countdownEnabled, setCountdownEnabled] = useState(false);
+
+  useFocusEffect(() => {
+    const loadCountdownSetting = async () => {
+      const storedCountdown = await AsyncStorage.getItem('countdownEnabled');
+      if (storedCountdown !== null) setCountdownEnabled(JSON.parse(storedCountdown));
+    };
+    loadCountdownSetting();
+  });
 
   useEffect(() => {
     switch (theme) {
@@ -94,24 +105,24 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, openSettings }) => 
       )}
       <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
         {logo && <Image source={logo} style={styles.logo} resizeMode="contain" />}
-        <View style={styles.countdownContainer}>
-          <Text style={[styles.countdownlabel, { color: themeData.textColor }]}>
-            <Text style={{ fontSize: 24, fontWeight: 'bold', color: themeData.textColor }}>Countdown: </Text>
-            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.days}</Text>d{' '}
-            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.hours}</Text>h{' '}
-            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.minutes}</Text>m{' '}
-            <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.seconds}</Text>s
-          </Text>
-          <View style={styles.happyRooWrapper}>
-            {showHappyRoo && (
-              <Text style={[styles.happyRooText, { color: themeData.highlightColor }]}>Happy Roo!</Text>
-            )}
-          </View>
-          {/* <TouchableOpacity onPress={() => setSimulate(!simulate)} style={styles.simButton}> */}
-            {/*<Text style={{ color: 'white' }}>{simulate ? 'Reset Timer' : 'Simulate Countdown End'}</Text>*/}
-          {/* </TouchableOpacity> */}
+        <View style={{ height: 90, justifyContent: 'center' }}>
+          {countdownEnabled && (
+            <View style={styles.countdownContainer}>
+              <Text style={[styles.countdownlabel, { color: themeData.textColor }]}>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', color: themeData.textColor }}>Countdown: </Text>
+                <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.days}</Text>d{' '}
+                <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.hours}</Text>h{' '}
+                <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.minutes}</Text>m{' '}
+                <Text style={[styles.number, { color: themeData.textColor }]}>{countdown.seconds}</Text>s
+              </Text>
+              <View style={styles.happyRooWrapper}>
+                {showHappyRoo && (
+                  <Text style={[styles.happyRooText, { color: themeData.highlightColor }]}>Happy Roo!</Text>
+                )}
+              </View>
+            </View>
+          )}
         </View>
-
         <View style={styles.buttonContainer}>
           <CustomButton
             title="Calendar"
@@ -153,13 +164,13 @@ const styles = StyleSheet.create({
   logo: {
     width: 250,
     height: 250,
-    marginBottom: -10,
-    marginTop: -10,
+    marginBottom: -25,
+    marginTop: -15,
   },
   countdownContainer: {
     alignItems: 'center',
     marginBottom: -10,
-    marginTop: 10,
+    marginTop: 30,
   },
   countdownlabel: {
     fontSize: 20,

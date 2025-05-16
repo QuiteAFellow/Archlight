@@ -41,6 +41,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   const [isHydrationEnabled, setIsHydrationEnabled] = useState(false);
   const [isSunscreenEnabled, setIsSunscreenEnabled] = useState(false);
   const currentTheme = theme;
+  const [isCountdownEnabled, setIsCountdownEnabled] = useState(false);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -48,11 +49,13 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
       const storedSunscreen = await AsyncStorage.getItem('sunscreenReminder');
       const storedNotificationTimes = await AsyncStorage.getItem('notificationTimes');
       const storedTheme = await AsyncStorage.getItem('theme');
+      const storedCountdown = await AsyncStorage.getItem('countdownEnabled');
 
       if (storedHydration !== null) setIsHydrationEnabled(JSON.parse(storedHydration));
       if (storedSunscreen !== null) setIsSunscreenEnabled(JSON.parse(storedSunscreen));
       if (storedNotificationTimes) setSelectedTimes(JSON.parse(storedNotificationTimes));
       if (storedTheme) setTheme(storedTheme as 'Light' | 'Bonnaroo' | 'OLED' );
+      if (storedCountdown !== null) setIsCountdownEnabled(JSON.parse(storedCountdown));
     };
     loadSettings();
   },[setTheme]);
@@ -100,6 +103,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
     await AsyncStorage.setItem('hydrationReminder', JSON.stringify(isHydrationEnabled));
     await AsyncStorage.setItem('sunscreenReminder', JSON.stringify(isSunscreenEnabled));
     await AsyncStorage.setItem('theme', theme);
+    await AsyncStorage.setItem('countdownEnabled', JSON.stringify(isCountdownEnabled));
 
     // Schedule new notifications based on the updated settings for each favorited artist
     for (const artistKey of Object.keys(favorites)) {
@@ -177,10 +181,29 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                 ))}
               </View>
 
+              {/* Countdown Toggle */}
+              <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                  <Text style={[styles.toggleLabel, { color: themeData.textColor }]}>Countdown Timer</Text>
+                  <Switch
+                    value={isCountdownEnabled}
+                    onValueChange={setIsCountdownEnabled}
+                    style={styles.switch}
+                    trackColor={{ false: '#767577', true: themeData.highlightColor }}  // Track color when ON
+                    thumbColor={isCountdownEnabled ? '#ffffff' : '#f4f3f4'}  // Thumb color when ON
+                  />
+                </View>
+                <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
+                  <Text style={{ fontStyle: 'italic' }}>
+                    Enables a countdown on the homescreen, counting down the days, hours, minutes, and seconds until Centeroo opens at noon on Tuesday.
+                  </Text>
+                </Text>
+              </View>
+
               {/* Notification Selector */}
               <Text style={[styles.subHeader, { color: themeData.textColor }]}>Notification Settings</Text>
               <Text style={{ color: themeData.textColor }}>Set notification times (in minutes) before a favorited artist's start time:</Text>
-              <View style={styles.optionsContainer}>
+              <View style={styles.notificationOptionsContainer}>
                 {notificationOptions.map((time) => (
                   <TouchableOpacity
                     key={time}
@@ -192,17 +215,18 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                       );
                     }}
                     style={[
-                      styles.option,
-                      selectedTimes.includes(time) ?
-                        { backgroundColor: highlightColor, borderColor: 'transparent' }
+                      styles.notificationOption,
+                      selectedTimes.includes(time)
+                        ? { backgroundColor: highlightColor, borderColor: 'transparent' }
                         : { borderColor: themeData.unselectedborder },
                     ]}
                   >
                     <Text
                       style={[
-                        styles.optionText, { color: themeData.textColor },
-                        selectedTimes.includes(time) ? { color: theme === 'Light' ? 'white' : highlightTextColor }  // Set text to white for Light theme, or use highlight text color for others
-                          : { color: themeData.textColor }  // Default text color
+                        styles.optionText,
+                        selectedTimes.includes(time)
+                          ? { color: theme === 'Light' ? 'white' : highlightTextColor }
+                          : { color: themeData.textColor },
                       ]}
                     >
                       {time} minutes
@@ -244,7 +268,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                 </View>
                 <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
                   <Text style={{ fontStyle: 'italic' }}>
-                    Reminds you to hydrate every 2 hours from 11am to 9pm. Alternates with the Sunscreen reminder.
+                    Reminds you to hydrate every 2 hours from 11am to 11pm. Alternates with the Sunscreen reminder.
                   </Text>
                 </Text>
               </View>
@@ -310,7 +334,7 @@ const styles = StyleSheet.create({
   optionText: {
     color: 'black',
     textAlign: 'center',
-    fontSize: Platform.OS === 'ios' ? 12 : 14,
+    fontSize: Platform.OS === 'ios' ? 11 : 12, // smaller font
   },
   buttonContainer: {
     marginTop: 10,
@@ -371,7 +395,28 @@ const styles = StyleSheet.create({
   },
   testButtonContainer: {
     marginVertical: 10,
-  }
+  },
+  notificationOptionsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start', // <-- changed from 'space-between'
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  notificationOption: {
+    width: '22%',
+    minWidth: 0,
+    marginVertical: 2,      // reduced vertical margin
+    marginHorizontal: 3,    // reduced horizontal margin
+    paddingVertical: 6,     // reduced vertical padding
+    paddingHorizontal: 0,   // no horizontal padding
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
 });
 
 export default SettingsModal;
