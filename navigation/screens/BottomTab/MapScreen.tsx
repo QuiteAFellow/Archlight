@@ -5,9 +5,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../ThemeContext';  // Import the theme context
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
-const centerooImage = require('../../../assets/Maps/Roo24_Centeroo.jpg');
-const outerooImage = require('../../../assets/Maps/Roo24_Outeroo.jpg');
+const centerooImage = require('../../../assets/Maps/Roo25_Centeroo.png');
+const outerooImage = require('../../../assets/Maps/Roo25_Outeroo.png');
 
 interface Pin {
   id: number;
@@ -61,6 +62,14 @@ const MapScreen: React.FC = () => {
 
     savePins();
   }, [pins]);
+
+  // Preload both map images on mount
+  useEffect(() => {
+    FastImage.preload([
+      { uri: Image.resolveAssetSource(centerooImage).uri },
+      { uri: Image.resolveAssetSource(outerooImage).uri },
+    ]);
+  }, []);
 
   const switchMap = () => {
     setCurrentMap(currentMap === 'centeroo' ? 'outeroo' : 'centeroo');

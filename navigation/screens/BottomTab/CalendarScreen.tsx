@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions, Animated } from 'react-native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFavorites } from '../../../context/FavoritesContext';
 import rawArtistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
@@ -10,6 +10,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTheme } from '../ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
+import type { CalendarStackParamList } from '../Stack/CalendarStackNavigator';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -107,6 +108,8 @@ function getPreviousDay(day: string): string {
 }
 
 const CalendarScreen: React.FC = () => {
+  const [scrollTarget, setScrollTarget] = useState<{ artistId: number; day: string } | null>(null);
+  const [highlightedArtistId, setHighlightedArtistId] = useState<number | null>(null);
   const { favorites, toggleFavorite } = useFavorites();
   const { themeData, theme, setTheme } = useTheme();
   const [selectedDay, setSelectedDay] = useState<string>('Thursday');
@@ -114,7 +117,9 @@ const CalendarScreen: React.FC = () => {
   const [_, forceUpdate] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
   const timeColumnRef = useRef<ScrollView>(null);
+  const horizontalScrollRef = useRef<ScrollView>(null);
   const navigation = useNavigation<NativeStackNavigationProp<LineupStackParamList>>();
+  const route = useRoute<RouteProp<CalendarStackParamList, 'FestivalSchedule'>>();
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
   const defaultStageWidth = 100;
@@ -122,12 +127,57 @@ const CalendarScreen: React.FC = () => {
     ? (width - 45) / STAGE_NAMES.length // Full screen width minus the fixed time column
     : defaultStageWidth;
 
+  const pulseAnim = useRef(new Animated.Value(0)).current;
+
   useEffect(() => {
     const interval = setInterval(() => {
       forceUpdate(prev => !prev); // trigger re-render every minute
     }, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (route.params?.day && route.params?.artistId) {
+      setSelectedDay(route.params.day);
+      setScrollTarget({ artistId: route.params.artistId, day: route.params.day });
+    }
+  }, [route.params]);
+
+  const [layoutReady, setLayoutReady] = useState(false);
+
+  useEffect(() => {
+    if (
+      scrollTarget &&
+      selectedDay === scrollTarget.day &&
+      layoutReady &&
+      scrollViewRef.current &&
+      horizontalScrollRef.current
+    ) {
+      const targetArtist = artistsData.find(
+        artist =>
+          artist["AOTD #"] === scrollTarget.artistId &&
+          artist.Scheduled === scrollTarget.day
+      );
+
+      if (targetArtist) {
+        const { top } = getArtistStyle(targetArtist.StartTime, targetArtist.EndTime);
+        const stageIndex = STAGE_NAMES.findIndex(stage => stage === targetArtist.Stage);
+        const horizontalOffset = stageIndex * stageWidth;
+
+        {/*console.log('Scrolling to', { top, horizontalOffset }); */} // logging scroll target for artist bio navigation
+
+        scrollViewRef.current.scrollTo({ y: top - 20, animated: true });
+        horizontalScrollRef.current.scrollTo({ x: horizontalOffset - 20, animated: true });
+
+        setHighlightedArtistId(targetArtist["AOTD #"]);
+        setTimeout(() => {
+          setHighlightedArtistId(null); // Clear highlight after a short time
+        }, 2000);
+
+        setScrollTarget(null);
+      }
+    }
+  }, [layoutReady, selectedDay, scrollTarget]);
 
   const contentWidth = isLandscape
     ? width - 45 // Same as above, no scrolling
@@ -204,30 +254,44 @@ const CalendarScreen: React.FC = () => {
           a.StartTime === artist.StartTime
       );
 
+
+
       return (
-        <TouchableOpacity
+        <Animated.View
           key={`${artist["AOTD #"]}-${selectedDay}-${index}`}
           style={[
             styles.artistSlot,
             getArtistStyle(artist.StartTime, artist.EndTime),
             {
               backgroundColor: isFavorited
-                ? themeData.FavoritedstageColors[stage]  // Use favorited stage colors when the artist is favorited
-                : themeData.stageColors[stage],  // Use default stage color when not favorited
-            },
-            isFavorited && { borderColor: themeData.FavoritedstageColors[stage] }, // Use the favorited border color
+                ? themeData.FavoritedstageColors[stage]
+                : themeData.stageColors[stage],
+              borderColor: highlightedArtistId === artist["AOTD #"]
+                ? themeData.unselectedborder // <-- pulse border color
+                : (isFavorited
+                    ? themeData.FavoritedstageColors[stage]
+                    : themeData.unselectedborder),
+              borderWidth: highlightedArtistId === artist["AOTD #"]
+                ? pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 4] })
+                : 1,
+            }
           ]}
-          onPress={() =>
-            navigation.navigate('ArtistCarousel', {
-              artists: sortedArtists,
-              initialIndex: currentIndex,
-            })
-          }
-          onLongPress={() => toggleFavorite(artist)}
         >
-          <Text style={[styles.artistName, { color: isFavorited ? themeData.FavoritedstageTextColors[stage] : themeData.stageTextColors[stage] }]}>{artist.Artist}</Text>
-          <Text style={[styles.artistTime, { color: isFavorited ? themeData.FavoritedstageTextColors[stage] : themeData.stageTextColors[stage] }]}>{artist.StartTime} - {artist.EndTime}</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() =>
+              navigation.navigate('ArtistCarousel', {
+                artists: sortedArtists,
+                initialIndex: currentIndex,
+              })
+            }
+            onLongPress={() => toggleFavorite(artist)}
+            activeOpacity={0.8}
+          >
+            <Text style={[styles.artistName, { color: stageTextColor }]}>{artist.Artist}</Text>
+            <Text style={[styles.artistTime, { color: stageTextColor }]}>{artist.StartTime} - {artist.EndTime}</Text>
+          </TouchableOpacity>
+        </Animated.View>
       );
     });
   };
@@ -235,6 +299,17 @@ const CalendarScreen: React.FC = () => {
   const { top, showNowLine } = getNowLineStyle(selectedDay);
 
   const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
+  useEffect(() => {
+    if (highlightedArtistId !== null) {
+      Animated.sequence([
+        Animated.timing(pulseAnim, { toValue: 1, duration: 120, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 120, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 120, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 120, useNativeDriver: false }),
+      ]).start();
+    }
+  }, [highlightedArtistId]);
 
   return (
     <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
@@ -269,8 +344,15 @@ const CalendarScreen: React.FC = () => {
           onScroll={syncScroll}
           scrollEventThrottle={16}
         >
-          <ScrollView horizontal contentContainerStyle={{ width: contentWidth }}>
-            <View style={{ height: scrollableHeight }}>
+          <ScrollView
+            horizontal
+            ref={horizontalScrollRef}
+            contentContainerStyle={{ width: contentWidth }}
+          >
+            <View
+              style={{ height: scrollableHeight }}
+              onLayout={() => setLayoutReady(true)}
+            >
               <View style={styles.stageHeadersRow}>
                 {STAGE_NAMES.map(stage => (
                   <Text key={stage} style={[styles.stageHeader, { width: stageWidth, color: themeData.textColor }]}>{stage}</Text>

@@ -14,4 +14,9 @@ const CalendarStackNavigator: React.FC = () => {
     );
 };
 
+export type CalendarStackParamList = {
+    FestivalSchedule: { day?: string; artistId?: number; startTime?: string };
+    ArtistCarousel: any;
+};
+
 export default CalendarStackNavigator;

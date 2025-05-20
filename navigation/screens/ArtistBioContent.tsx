@@ -4,22 +4,26 @@ import { Ionicons } from '@expo/vector-icons';
 import { Artist } from '../types';  // Import Artist type
 import artistImages from '../../assets/utils/artistImages';
 import { useFavorites } from '../../context/FavoritesContext';
-import { useNavigation } from '@react-navigation/native';
 import { useTheme } from './ThemeContext';
 import FastImage from 'react-native-fast-image';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { CalendarStackParamList } from '../screens/Stack/CalendarStackNavigator';  // Import CalendarStackParamList
+
+type CalendarNav = NativeStackNavigationProp<CalendarStackParamList, 'FestivalSchedule'>;
 
 type Props = {
-  artist: Artist;  // Pass the artist object as prop
+    artist: Artist;  // Pass the artist object as prop
 };
 
 const ArtistBioContent: React.FC<Props> = ({ artist }) => {
+    const navigation = useNavigation<CalendarNav>(); // <-- Move here!
     const { favorites, toggleFavorite } = useFavorites();
     const { themeData, theme } = useTheme();  // Get theme data from context
     const isFavorited = favorites[artist["AOTD #"]] || false;
     const descriptionSegments = artist.Description.split('[PAGE_BREAK]');
-    const navigation = useNavigation();
 
     const handleToggleFavorite = () => {
         toggleFavorite(artist);
@@ -53,13 +57,31 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                 </View>
                 <View style={styles.infoContainer}>
                 <Ionicons name="calendar" size={20} color="darkgrey" />
-                <Text style={[styles.infoText, { color: themeData.textColor }]}>{artist.Scheduled}</Text>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('FestivalSchedule', {
+                    day: artist.Scheduled, // or whatever property represents the day
+                    artistId: artist["AOTD #"], // or artist.Artist, etc.
+                    startTime: artist.StartTime
+                    })}
+                >
+                    <Text style={[styles.infoText, { color: themeData.textColor, textDecorationLine: 'underline' }]}>
+                    {artist.Scheduled}
+                    </Text>
+                </TouchableOpacity>
                 </View>
                 <View style={styles.infoContainer}>
                 <Ionicons name="time" size={20} color="darkgrey" />
-                <Text style={[styles.infoText, { color: themeData.textColor }]}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('FestivalSchedule', {
+                    day: artist.Scheduled,
+                    artistId: artist["AOTD #"],
+                    startTime: artist.StartTime
+                    })}
+                >
+                    <Text style={[styles.infoText, { color: themeData.textColor, textDecorationLine: 'underline' }]}>
                     {artist.StartTime} - {artist.EndTime}
-                </Text>
+                    </Text>
+                </TouchableOpacity>
                 </View>
                 <View style={styles.infoContainer}>
                 <Ionicons name="location" size={20} color="darkgrey" />
