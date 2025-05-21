@@ -253,8 +253,12 @@ const CalendarScreen: React.FC = () => {
           a.Stage === artist.Stage &&
           a.StartTime === artist.StartTime
       );
-
-
+      const animatedTextColor = highlightedArtistId === artist["AOTD #"]
+        ? pulseAnim.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['black', stageTextColor]
+          })
+        : stageTextColor;
 
       return (
         <Animated.View
@@ -263,17 +267,22 @@ const CalendarScreen: React.FC = () => {
             styles.artistSlot,
             getArtistStyle(artist.StartTime, artist.EndTime),
             {
-              backgroundColor: isFavorited
-                ? themeData.FavoritedstageColors[stage]
-                : themeData.stageColors[stage],
+              backgroundColor: highlightedArtistId === artist["AOTD #"]
+                ? pulseAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ['white', isFavorited
+                      ? themeData.FavoritedstageColors[stage]
+                      : themeData.stageColors[stage]]
+                  })
+                : isFavorited
+                  ? themeData.FavoritedstageColors[stage]
+                  : themeData.stageColors[stage],
               borderColor: highlightedArtistId === artist["AOTD #"]
-                ? themeData.unselectedborder // <-- pulse border color
+                ? themeData.unselectedborder // <-- pulse color
                 : (isFavorited
                     ? themeData.FavoritedstageColors[stage]
                     : themeData.unselectedborder),
-              borderWidth: highlightedArtistId === artist["AOTD #"]
-                ? pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 4] })
-                : 1,
+              borderWidth: 1,
             }
           ]}
         >
@@ -288,8 +297,8 @@ const CalendarScreen: React.FC = () => {
             onLongPress={() => toggleFavorite(artist)}
             activeOpacity={0.8}
           >
-            <Text style={[styles.artistName, { color: stageTextColor }]}>{artist.Artist}</Text>
-            <Text style={[styles.artistTime, { color: stageTextColor }]}>{artist.StartTime} - {artist.EndTime}</Text>
+            <Animated.Text style={[styles.artistName, { color: animatedTextColor }]}>{artist.Artist}</Animated.Text>
+            <Animated.Text style={[styles.artistTime, { color: animatedTextColor }]}>{artist.StartTime} - {artist.EndTime}</Animated.Text>
           </TouchableOpacity>
         </Animated.View>
       );
@@ -303,10 +312,13 @@ const CalendarScreen: React.FC = () => {
   useEffect(() => {
     if (highlightedArtistId !== null) {
       Animated.sequence([
-        Animated.timing(pulseAnim, { toValue: 1, duration: 120, useNativeDriver: false }),
-        Animated.timing(pulseAnim, { toValue: 0, duration: 120, useNativeDriver: false }),
-        Animated.timing(pulseAnim, { toValue: 1, duration: 120, useNativeDriver: false }),
-        Animated.timing(pulseAnim, { toValue: 0, duration: 120, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 150, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 150, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 150, useNativeDriver: false }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
       ]).start();
     }
   }, [highlightedArtistId]);
