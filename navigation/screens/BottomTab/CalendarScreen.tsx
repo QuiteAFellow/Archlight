@@ -373,7 +373,18 @@ const CalendarScreen: React.FC = () => {
             >
               <View style={styles.stageHeadersRow}>
                 {STAGE_NAMES.map(stage => (
-                  <Text key={stage} style={[styles.stageHeader, { width: stageWidth, color: themeData.textColor }]}>{stage}</Text>
+                  <View
+                    key={stage}
+                    style={[
+                      { width: stageWidth },
+                      styles.stageHeaderContainer,
+                      { borderBottomColor: '#444' } // <-- dynamic color
+                    ]}
+                  >
+                    <Text style={[styles.stageHeader, { color: themeData.textColor }]}>
+                      {stage}
+                    </Text>
+                  </View>
                 ))}
               </View>
               {showNowLine && (
@@ -471,8 +482,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     paddingVertical: 5,
+  },
+  stageHeaderContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
   },
   stageHeadersRow: {
     flexDirection: 'row',

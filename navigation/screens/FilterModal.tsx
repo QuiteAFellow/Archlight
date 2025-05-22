@@ -116,7 +116,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
     <Modal visible={visible} animationType="slide" onRequestClose={onClose} transparent>
       <View style={styles.modalOverlay}>
         <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
-          <Text style={[styles.title, { color: themeData.textColor }]}>Filter Vendors</Text>
+          <Text style={[styles.title, { color: themeData.textColor }]}>Food Vendor Filters</Text>
           <ScrollView contentContainerStyle={styles.scrollView}>
             {renderMultiSelectList('Type', uniqueOptions.type.sort(), selectedTypes, setSelectedTypes)}
             {renderMultiSelectList('Tags', uniqueOptions.tags.sort(), selectedTags, setSelectedTags)}
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   applyButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
     includeFontPadding: false,
     textAlignVertical: 'center',
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   clearButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
     includeFontPadding: false,
     textAlignVertical: 'center',
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
   cancelButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
     includeFontPadding: false,
     textAlignVertical: 'center',
