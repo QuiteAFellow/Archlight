@@ -334,7 +334,7 @@ const CalendarScreen: React.FC = () => {
 
   // Calculate the top position for 2:00 PM
   const shotgunarooMinutes = 14 * 60; // 2:00 PM in minutes
-  const shotgunarooTop = (shotgunarooMinutes - 12 * 60) * scale; // offset from 12 PM
+  const shotgunarooTop = (shotgunarooMinutes - 12 * 60) * scale+10;
 
   const [shotgunarooFavorited, setShotgunarooFavorited] = useState(false);
 

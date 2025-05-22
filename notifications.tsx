@@ -115,8 +115,11 @@ const scheduleNotificationsForArtist = async (artist: Artist, notificationTimes:
   const notificationIds: string[] = [];
   for (const time of notificationTimes) {
     const notificationTime = new Date(startTime.getTime() - time * 60000);
-    console.log(`Scheduling notification for ${artist.Artist} at ${notificationTime}`);
-    const notificationId = await scheduleNotification(`${artist.Artist} is performing at ${artist.Stage} in ${time} minutes!`, notificationTime);
+    const message =
+      time === 0
+        ? `${artist.Artist} is now live at ${artist.Stage}!`
+        : `${artist.Artist} is performing at ${artist.Stage} in ${time} minutes!`;
+    const notificationId = await scheduleNotification(message, notificationTime);
     if (notificationId) notificationIds.push(notificationId);
   }
 
@@ -208,10 +211,14 @@ export const scheduleShotgunarooNotifications = async (notificationTimes: number
   const notificationIds: string[] = [];
   for (const time of notificationTimes) {
     const notifyDate = new Date(eventDate.getTime() - time * 60000);
+    const body =
+      time === 0
+        ? "Bottoms up, it's time for Shotgunaroo at The Arch!"
+        : `Shotgunaroo is happening at The Arch in ${time} minutes!`;
     const id = await Notifications.scheduleNotificationAsync({
       content: {
         title: 'Shotgunaroo!',
-        body: `Shotgunaroo is happening at the Arch in ${time} minutes!`,
+        body: body,
         sound: true,
         priority: Notifications.AndroidNotificationPriority.HIGH,
       },

@@ -24,7 +24,7 @@ const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   Favorited: artist.Favorited === 'true' || artist.Favorited === true,
 }));
 
-const notificationOptions = [5, 10, 15, 30, 45, 60, 90];
+const notificationOptions = [0, 5, 10, 15, 30, 45, 60, 90];
 
 interface SettingsModalProps {
   visible: boolean;
@@ -202,7 +202,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
 
               {/* Notification Selector */}
               <Text style={[styles.subHeader, { color: themeData.textColor }]}>Notification Settings</Text>
-              <Text style={{ color: themeData.textColor }}>Set notification times (in minutes) before a favorited artist's start time:</Text>
+              <Text style={{ color: themeData.textColor }}>Set notification times (in minutes) on or before a favorited artist's start time:</Text>
               <View style={styles.notificationOptionsContainer}>
                 {notificationOptions.map((time) => (
                   <TouchableOpacity
