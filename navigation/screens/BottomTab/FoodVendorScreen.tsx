@@ -59,6 +59,7 @@ const FoodVendorScreen: React.FC = () => {
   });
   const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [showRecommendedOnly, setShowRecommendedOnly] = useState(false);
+  const [checkedVendors, setCheckedVendors] = useState<{ [vendorName: string]: boolean }>({});
 
   const uniqueOptions = {
     type: getUniqueValues(foodVendorsData, 'Type'),
@@ -141,6 +142,31 @@ const FoodVendorScreen: React.FC = () => {
     applyFilters(searchQuery, newFilters);
   };
 
+  type CustomCheckboxProps = {
+    checked: boolean;
+    onPress: () => void;
+  };
+
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ checked, onPress }) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={{
+      width: 24,
+      height: 24,
+      borderWidth: 2,
+      borderColor: '#888',
+      borderRadius: 4,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: checked ? '#007bff' : 'transparent',
+    }}
+  >
+    {checked && (
+      <Ionicons name="checkmark" size={18} color="#fff" />
+    )}
+  </TouchableOpacity>
+);
+
 const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   return (
@@ -208,6 +234,9 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
                 ))}
               </>
             )}
+            <CustomCheckbox checked={!!checkedVendors[vendor["Food Vendor"]]} onPress={() => {
+              setCheckedVendors(prev => ({ ...prev, [vendor["Food Vendor"]]: !prev[vendor["Food Vendor"]] }));
+            }} />
           </View>
         ))}
       </ScrollView>
