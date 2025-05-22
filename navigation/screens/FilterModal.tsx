@@ -125,11 +125,31 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
             {renderMultiSelectList('Location', locationOptions, selectedLocations, setSelectedLocations)}
           </ScrollView>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={[styles.applyButton, { backgroundColor: themeData.highlightColor }]} onPress={applyFilters}>
+            <TouchableOpacity
+              style={[styles.applyButton, { backgroundColor: themeData.highlightColor }]}
+              onPress={applyFilters}
+            >
               <Text style={styles.applyButtonText}>Apply Filters</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.cancelButton, { backgroundColor: themeData.subtextColor }]} onPress={onClose}>
-              <Text style={[styles.cancelButtonText, {color: themeData.buttonText}]}>Cancel</Text>
+            <TouchableOpacity
+              style={[styles.clearButton, { backgroundColor: 'red' }]}
+              onPress={() => {
+                setSelectedTypes([]);
+                setSelectedTags([]);
+                setSelectedDietary([]);
+                setSelectedPrices([]);
+                setSelectedLocations([]);
+              }}
+            >
+              <Text style={styles.clearButtonText} numberOfLines={1} ellipsizeMode="tail">
+                Clear All
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.cancelButton, { backgroundColor: themeData.subtextColor }]}
+              onPress={onClose}
+            >
+              <Text style={styles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -192,29 +212,60 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginTop: 20,
+    paddingHorizontal: 0, // remove horizontal padding for edge-to-edge
   },
   applyButton: {
-    padding: 10,
-    borderRadius: 5,
     flex: 1,
-    marginRight: 5,
+    minWidth: 0,
+    marginHorizontal: 5,
+    borderRadius: 6,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  clearButton: {
+    flex: 1,
+    minWidth: 0,
+    marginHorizontal: 5,
+    borderRadius: 6,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cancelButton: {
+    flex: 1,
+    minWidth: 0,
+    marginHorizontal: 5,
+    borderRadius: 6,
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   applyButtonText: {
     color: 'white',
-    textAlign: 'center',
     fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center',
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   },
-  cancelButton: {
-    padding: 10,
-    borderRadius: 5,
-    flex: 1,
-    marginLeft: 5,
+  clearButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center',
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   },
   cancelButtonText: {
     color: 'white',
-    textAlign: 'center',
     fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center',
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   },
 });
 
