@@ -4,6 +4,7 @@ import { Artist } from './navigation/types';
 
 const HYDRATION_PREF_KEY = 'hydrationReminderEnabled';
 const SUNSCREEN_PREF_KEY = 'sunscreenReminderEnabled';
+const SHOTGUNAROO_NOTIFICATION_KEY = 'shotgunarooNotificationIds';
 
 // Store the notifications for each artist so we can cancel them when the artist is unfavorited
 let artistNotifications: { [key: string]: string[] } = {}; // Holds notification IDs for each artist
@@ -200,6 +201,40 @@ export const getNotifications = async () => {
   const scheduledNotifications = await Notifications.getAllScheduledNotificationsAsync();
   console.log('Scheduled notifications:', scheduledNotifications);
   return scheduledNotifications;
+};
+
+export const scheduleShotgunarooNotifications = async (notificationTimes: number[]) => {
+  const eventDate = new Date(2025, 5, 12, 14, 0, 0, 0); // June 12, 2025, 2:00 PM
+  const notificationIds: string[] = [];
+  for (const time of notificationTimes) {
+    const notifyDate = new Date(eventDate.getTime() - time * 60000);
+    const id = await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Shotgunaroo!',
+        body: `Shotgunaroo is happening at the Arch in ${time} minutes!`,
+        sound: true,
+        priority: Notifications.AndroidNotificationPriority.HIGH,
+      },
+      trigger: { type: 'date', date: notifyDate } as any,
+    });
+    notificationIds.push(id);
+  }
+  await AsyncStorage.setItem(SHOTGUNAROO_NOTIFICATION_KEY, JSON.stringify(notificationIds));
+};
+
+export const cancelShotgunarooNotifications = async () => {
+  const idsString = await AsyncStorage.getItem(SHOTGUNAROO_NOTIFICATION_KEY);
+  if (idsString) {
+    const ids: string[] = JSON.parse(idsString);
+    for (const id of ids) {
+      try {
+        await Notifications.cancelScheduledNotificationAsync(id);
+      } catch (e) {
+        console.warn('Failed to cancel Shotgunaroo notification:', id, e);
+      }
+    }
+    await AsyncStorage.removeItem(SHOTGUNAROO_NOTIFICATION_KEY);
+  }
 };
 
 export {

@@ -11,6 +11,9 @@ import { useTheme } from '../ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
 import type { CalendarStackParamList } from '../Stack/CalendarStackNavigator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Notifications from 'expo-notifications';
+import { scheduleShotgunarooNotifications, cancelShotgunarooNotifications } from '../../../notifications';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),
@@ -329,6 +332,41 @@ const CalendarScreen: React.FC = () => {
     }
   }, [highlightedArtistId]);
 
+  // Calculate the top position for 2:00 PM
+  const shotgunarooMinutes = 14 * 60; // 2:00 PM in minutes
+  const shotgunarooTop = (shotgunarooMinutes - 12 * 60) * scale; // offset from 12 PM
+
+  const [shotgunarooFavorited, setShotgunarooFavorited] = useState(false);
+
+  const SHOTGUNAROO_KEY = 'shotgunarooFavorited';
+
+  useEffect(() => {
+    // Load favorited status on mount
+    AsyncStorage.getItem(SHOTGUNAROO_KEY).then(val => {
+      if (val === 'true') setShotgunarooFavorited(true);
+    });
+  }, []);
+
+  const [notificationTimes, setNotificationTimes] = useState<number[]>([5]); // default
+
+  useEffect(() => {
+    AsyncStorage.getItem('notificationTimes').then(val => {
+      if (val) setNotificationTimes(JSON.parse(val));
+    });
+  }, []);
+
+  const handleShotgunarooFavorite = async () => {
+    const newVal = !shotgunarooFavorited;
+    setShotgunarooFavorited(newVal);
+    await AsyncStorage.setItem(SHOTGUNAROO_KEY, newVal ? 'true' : 'false');
+
+    if (newVal) {
+      await scheduleShotgunarooNotifications(notificationTimes);
+    } else {
+      await cancelShotgunarooNotifications();
+    }
+  };
+
   return (
     <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       <View style={styles.buttonContainer}>
@@ -391,6 +429,47 @@ const CalendarScreen: React.FC = () => {
                 <View style={[styles.nowLine, { top }]}>
                   <View style={styles.nowDot} />
                   <View style={styles.nowLineBar} />
+                </View>
+              )}
+              {selectedDay === 'Thursday' && (
+                <View style={{
+                  position: 'absolute',
+                  left: 0, // Now relative to the scrollable area, so left: 0 is correct
+                  right: 0,
+                  top: shotgunarooTop,
+                  alignItems: 'center',
+                  zIndex: 10,
+                  pointerEvents: 'box-none'
+                }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
+                    <Text style={{
+                      backgroundColor: themeData.backgroundColor,
+                      color: shotgunarooFavorited ? themeData.highlightColor : themeData.textColor,
+                      fontWeight: 'bold',
+                      paddingHorizontal: 6,
+                      borderRadius: 4,
+                      fontSize: 12,
+                    }}>
+                      Shotgunaroo 🍻
+                    </Text>
+                    <TouchableOpacity
+                      onPress={handleShotgunarooFavorite}
+                      style={{ marginLeft: 6 }}
+                      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                    >
+                      <Ionicons
+                        name={shotgunarooFavorited ? 'heart' : 'heart-outline'}
+                        size={16}
+                        color={shotgunarooFavorited ? themeData.highlightColor : themeData.textColor}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{
+                    height: 2,
+                    width: '100%',
+                    backgroundColor: shotgunarooFavorited ? themeData.highlightColor : themeData.textColor,
+                    opacity: 0.7,
+                  }} />
                 </View>
               )}
               <View style={styles.stagesRow}>
