@@ -179,11 +179,13 @@ const CalendarScreen: React.FC = () => {
           setHighlightedArtistId(null); // Clear highlight after a short time
         }, 2000);
 
-        setScrollTarget(null);
-
-        navigation.dispatch(
-          CommonActions.setParams({ day: undefined, artistId: undefined })
-        );
+        // Only clear after scroll is performed
+        setTimeout(() => {
+          setScrollTarget(null);
+          navigation.dispatch(
+            CommonActions.setParams({ day: undefined, artistId: undefined })
+          );
+        }, 500); // Give time for scroll to complete
       }
     }
   }, [layoutReady, selectedDay, scrollTarget]);
