@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions, Animated } from 'react-native';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp, useFocusEffect, CommonActions } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFavorites } from '../../../context/FavoritesContext';
 import rawArtistsData from '../../../database/Artist Bios, Timesheet, Image Paths, Favorites.json';
@@ -136,12 +136,14 @@ const CalendarScreen: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (route.params?.day && route.params?.artistId) {
-      setSelectedDay(route.params.day);
-      setScrollTarget({ artistId: route.params.artistId, day: route.params.day });
-    }
-  }, [route.params]);
+  useFocusEffect(
+    React.useCallback(() => {
+      if (route.params?.day && route.params?.artistId) {
+        setSelectedDay(route.params.day);
+        setScrollTarget({ artistId: route.params.artistId, day: route.params.day });
+      }
+    }, [route.params])
+  );
 
   const [layoutReady, setLayoutReady] = useState(false);
 
@@ -175,6 +177,10 @@ const CalendarScreen: React.FC = () => {
         }, 2000);
 
         setScrollTarget(null);
+
+        navigation.dispatch(
+          CommonActions.setParams({ day: undefined, artistId: undefined })
+        );
       }
     }
   }, [layoutReady, selectedDay, scrollTarget]);

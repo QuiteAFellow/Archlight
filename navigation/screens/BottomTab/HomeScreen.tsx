@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     marginBottom: -25,
-    marginTop: -15,
+    marginTop: -35,
   },
   countdownContainer: {
     alignItems: 'center',
