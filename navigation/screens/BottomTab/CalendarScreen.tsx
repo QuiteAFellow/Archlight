@@ -73,7 +73,8 @@ function getArtistStyle(
 function getNowLineStyle(
   selectedDay: string,
   SCHEDULE_START_MINUTES: number,
-  pixelsPerMinute: number
+  pixelsPerMinute: number,
+  stageHeaderHeight: number
   ): { top: number, showNowLine: boolean } {
   const now = new Date();
   const hours = now.getHours();
@@ -101,15 +102,14 @@ function getNowLineStyle(
   }
 
   let adjustedMinutes = totalMinutes;
-
   if (hours < 12) {
     adjustedMinutes += 24 * 60; // Shift early morning hours past midnight
   }
 
-  let minutesSinceStart = totalMinutes < SCHEDULE_START_MINUTES
-      ? totalMinutes + 24 * 60 - SCHEDULE_START_MINUTES
-      : totalMinutes - SCHEDULE_START_MINUTES;
-    return { top: minutesSinceStart * pixelsPerMinute, showNowLine: true /* add your logic */ };
+  let minutesSinceStart = adjustedMinutes < SCHEDULE_START_MINUTES
+      ? adjustedMinutes + 24 * 60 - SCHEDULE_START_MINUTES
+      : adjustedMinutes - SCHEDULE_START_MINUTES;
+    return { top: stageHeaderHeight + minutesSinceStart * pixelsPerMinute, showNowLine: true };
 }
 
 function getPreviousDay(day: string): string {
@@ -147,6 +147,7 @@ const CalendarScreen: React.FC = () => {
   const pulseAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    forceUpdate(prev => !prev); // trigger immediately
     const interval = setInterval(() => {
       forceUpdate(prev => !prev); // trigger re-render every minute
     }, 60000);
@@ -330,7 +331,7 @@ const CalendarScreen: React.FC = () => {
     });
   };
 
-  const { top, showNowLine } = getNowLineStyle(selectedDay, SCHEDULE_START_MINUTES, pixelsPerMinute);
+  const { top, showNowLine } = getNowLineStyle(selectedDay, SCHEDULE_START_MINUTES, pixelsPerMinute, stageHeaderHeight);
 
   const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
@@ -351,7 +352,7 @@ const CalendarScreen: React.FC = () => {
   // Calculate the top position for 2:00 PM
   const SHOTGUNAROO_MINUTES = 14 * 60; // 2:00 PM in minutes
   const minutesSinceScheduleStart = SHOTGUNAROO_MINUTES - SCHEDULE_START_MINUTES;
-  const shotgunarooTop = stageHeaderHeight + minutesSinceScheduleStart * pixelsPerMinute;
+  const shotgunarooTop = stageHeaderHeight + minutesSinceScheduleStart * pixelsPerMinute; // Center the label vertically
 
   const [shotgunarooFavorited, setShotgunarooFavorited] = useState(false);
 
@@ -475,45 +476,54 @@ const CalendarScreen: React.FC = () => {
                 </View>
               )}
               {selectedDay === 'Thursday' && (
-                <View style={{
-                  position: 'absolute',
-                  left: 0, // Now relative to the scrollable area, so left: 0 is correct
-                  right: 0,
-                  top: shotgunarooTop,
-                  alignItems: 'center',
-                  zIndex: 10,
-                  pointerEvents: 'box-none'
-                }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
-                    <Text style={{
-                      backgroundColor: themeData.backgroundColor,
-                      color: shotgunarooFavorited ? themeData.highlightColor : themeData.textColor,
-                      fontWeight: 'bold',
-                      paddingHorizontal: 6,
-                      borderRadius: 4,
-                      fontSize: 12,
-                    }}>
-                      Shotgunaroo 🍻
-                    </Text>
-                    <TouchableOpacity
-                      onPress={handleShotgunarooFavorite}
-                      style={{ marginLeft: 6 }}
-                      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                    >
-                      <Ionicons
-                        name={shotgunarooFavorited ? 'heart' : 'heart-outline'}
-                        size={16}
-                        color={shotgunarooFavorited ? themeData.highlightColor : themeData.textColor}
-                      />
-                    </TouchableOpacity>
-                  </View>
+                <>
+                  {/* The Shotgunaroo line (unchanged) */}
                   <View style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: shotgunarooTop,
                     height: 2,
-                    width: '100%',
                     backgroundColor: shotgunarooFavorited ? themeData.highlightColor : themeData.textColor,
                     opacity: 0.7,
+                    zIndex: 10,
                   }} />
-                </View>
+
+                  {/* The Shotgunaroo label, aligned so its bottom is at the line */}
+                  <View style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: shotgunarooTop - 18, // 18 is an estimated label height, adjust as needed
+                    alignItems: 'center',
+                    zIndex: 11,
+                    pointerEvents: 'box-none'
+                  }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
+                      <Text style={{
+                        backgroundColor: themeData.backgroundColor,
+                        color: shotgunarooFavorited ? themeData.highlightColor : themeData.textColor,
+                        fontWeight: 'bold',
+                        paddingHorizontal: 6,
+                        borderRadius: 4,
+                        fontSize: 12,
+                      }}>
+                        Shotgunaroo 🍻
+                      </Text>
+                      <TouchableOpacity
+                        onPress={handleShotgunarooFavorite}
+                        style={{ marginLeft: 6 }}
+                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                      >
+                        <Ionicons
+                          name={shotgunarooFavorited ? 'heart' : 'heart-outline'}
+                          size={16}
+                          color={shotgunarooFavorited ? themeData.highlightColor : themeData.textColor}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </>
               )}
               <View style={styles.stagesRow}>
                 {STAGE_NAMES.map(stage => (

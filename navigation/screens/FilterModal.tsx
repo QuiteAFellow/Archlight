@@ -64,13 +64,37 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
   };
 
   const renderCheckbox = (checked: boolean, onPress: () => void) => {
-    return Platform.OS === 'ios' || Platform.OS === 'android' ? (
+    if (Platform.OS === 'ios') {
+      return (
+        <TouchableOpacity onPress={onPress} style={{
+          width: 24,
+          height: 24,
+          borderWidth: 2,
+          borderColor: checked ? themeData.highlightColor : '#888',
+          borderRadius: 4,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: checked ? themeData.highlightColor : 'transparent',
+        }}>
+          {checked && (
+            <View style={{
+              width: 12,
+              height: 12,
+              backgroundColor: 'white',
+              borderRadius: 2,
+            }}/>
+          )}
+        </TouchableOpacity>
+      );
+    }
+    // Android and others use the default
+    return (
       <Checkbox
         status={checked ? 'checked' : 'unchecked'}
         onPress={onPress}
         color={themeData.highlightColor}
       />
-    ) : null;
+    );
   };
 
   const renderMultiSelectList = (label: string, items: string[], selectedItems: string[], onSelectedItemsChange: (selected: string[]) => void) => (
@@ -93,7 +117,18 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
             )}
           </View>
           {items.map((item) => (
-            <View key={item} style={styles.listItem}>
+            <TouchableOpacity
+              key={item}
+              style={styles.listItem}
+              activeOpacity={0.7}
+              onPress={() => {
+                if (selectedItems.includes(item)) {
+                  onSelectedItemsChange(selectedItems.filter(i => i !== item));
+                } else {
+                  onSelectedItemsChange([...selectedItems, item]);
+                }
+              }}
+            >
               <Text style={{ color: themeData.textColor }}>{item}</Text>
               {renderCheckbox(
                 selectedItems.includes(item),
@@ -105,7 +140,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
                   }
                 }
               )}
-            </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       )}
