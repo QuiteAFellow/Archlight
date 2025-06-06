@@ -12,7 +12,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
 import type { CalendarStackParamList } from '../Stack/CalendarStackNavigator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Notifications from 'expo-notifications';
 import { scheduleShotgunarooNotifications, cancelShotgunarooNotifications } from '../../../notifications';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
@@ -51,23 +50,31 @@ function timeToMinutes(time: string): number {
   return hourNumber * 60 + minuteNumber;
 }
 
-function getArtistStyle(startTime: string, endTime: string): { top: number, height: number } {
-  const startMinutes = timeToMinutes(startTime);
-  const endMinutes = timeToMinutes(endTime);
-  let durationMinutes = endMinutes - startMinutes;
-  if (durationMinutes < 0) {
-    durationMinutes += 24 * 60;
-  }
-  const margin = 0;
-  const top = (startMinutes < 12 * 60 ? startMinutes + 12 * 60 : startMinutes - 12 * 60) * scale + margin;
-  return {
-    top,
-    height: durationMinutes * scale
-  };
+function getArtistStyle(
+  startTime: string,
+  endTime: string,
+  SCHEDULE_START_MINUTES: number,
+  pixelsPerMinute: number
+  ): { top: number, height: number } {
+    const startMinutes = timeToMinutes(startTime);
+    const endMinutes = timeToMinutes(endTime);
+    let durationMinutes = endMinutes - startMinutes;
+    if (durationMinutes < 0) durationMinutes += 24 * 60;
+    // Map startMinutes to schedule window (12pm–5am)
+    let minutesSinceStart = startMinutes < SCHEDULE_START_MINUTES
+      ? startMinutes + 24 * 60 - SCHEDULE_START_MINUTES
+      : startMinutes - SCHEDULE_START_MINUTES;
+    return {
+      top: minutesSinceStart * pixelsPerMinute,
+      height: durationMinutes * pixelsPerMinute
+    };
 }
 
-function getNowLineStyle(selectedDay: string): { top: number, showNowLine: boolean } {
-  const margin = 30;
+function getNowLineStyle(
+  selectedDay: string,
+  SCHEDULE_START_MINUTES: number,
+  pixelsPerMinute: number
+  ): { top: number, showNowLine: boolean } {
   const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
@@ -99,9 +106,10 @@ function getNowLineStyle(selectedDay: string): { top: number, showNowLine: boole
     adjustedMinutes += 24 * 60; // Shift early morning hours past midnight
   }
 
-  const offsetMinutes = adjustedMinutes - 12 * 60;
-
-  return { top: offsetMinutes * scale + margin, showNowLine: true };
+  let minutesSinceStart = totalMinutes < SCHEDULE_START_MINUTES
+      ? totalMinutes + 24 * 60 - SCHEDULE_START_MINUTES
+      : totalMinutes - SCHEDULE_START_MINUTES;
+    return { top: minutesSinceStart * pixelsPerMinute, showNowLine: true /* add your logic */ };
 }
 
 function getPreviousDay(day: string): string {
@@ -129,6 +137,11 @@ const CalendarScreen: React.FC = () => {
   const stageWidth = isLandscape
     ? (width - 45) / STAGE_NAMES.length // Full screen width minus the fixed time column
     : defaultStageWidth;
+  const SCHEDULE_START_MINUTES = 12 * 60; // 12:00 PM
+  const SCHEDULE_END_MINUTES = 5 * 60 + 24 * 60; // 5:00 AM next day (i.e., 29 * 60)
+  const TOTAL_SCHEDULE_MINUTES = SCHEDULE_END_MINUTES - SCHEDULE_START_MINUTES; // 1020
+  const [scheduleHeight, setScheduleHeight] = useState<number>(0);
+  const pixelsPerMinute = scheduleHeight > 0 ? scheduleHeight / TOTAL_SCHEDULE_MINUTES : 1;
 
   const pulseAnim = useRef(new Animated.Value(0)).current;
 
@@ -165,7 +178,7 @@ const CalendarScreen: React.FC = () => {
       );
 
       if (targetArtist) {
-        const { top } = getArtistStyle(targetArtist.StartTime, targetArtist.EndTime);
+        const { top } = getArtistStyle(targetArtist.StartTime, targetArtist.EndTime, SCHEDULE_START_MINUTES, pixelsPerMinute);
         const stageIndex = STAGE_NAMES.findIndex(stage => stage === targetArtist.Stage);
         const horizontalOffset = stageIndex * stageWidth;
 
@@ -276,7 +289,7 @@ const CalendarScreen: React.FC = () => {
           key={`${artist["AOTD #"]}-${selectedDay}-${index}`}
           style={[
             styles.artistSlot,
-            getArtistStyle(artist.StartTime, artist.EndTime),
+            getArtistStyle(artist.StartTime, artist.EndTime, SCHEDULE_START_MINUTES, pixelsPerMinute),
             {
               backgroundColor: highlightedArtistId === artist["AOTD #"]
                 ? pulseAnim.interpolate({
@@ -316,7 +329,7 @@ const CalendarScreen: React.FC = () => {
     });
   };
 
-  const { top, showNowLine } = getNowLineStyle(selectedDay);
+  const { top, showNowLine } = getNowLineStyle(selectedDay, SCHEDULE_START_MINUTES, pixelsPerMinute);
 
   const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
@@ -390,10 +403,12 @@ const CalendarScreen: React.FC = () => {
           ref={timeColumnRef}
           style={[styles.fixedTimeColumn, { backgroundColor: themeData.backgroundColor }]}
           scrollEnabled={false}
-          contentContainerStyle={{ height: scrollableHeight }}
+          contentContainerStyle={{ height: scheduleHeight }}
         >
           {timeSlots.map((time, i) => (
-            <Text key={i} style={[styles.timeLabel, { color: themeData.textColor }]}>{time}</Text>
+            <Text key={i} style={[styles.timeLabel, { color: themeData.textColor }]}>
+              {time}
+            </Text>
           ))}
         </ScrollView>
         <ScrollView
@@ -409,7 +424,7 @@ const CalendarScreen: React.FC = () => {
           >
             <View
               style={{ height: scrollableHeight }}
-              onLayout={() => setLayoutReady(true)}
+              onLayout={e => setScheduleHeight(e.nativeEvent.layout.height)}
             >
               <View style={styles.stageHeadersRow}>
                 {STAGE_NAMES.map(stage => (
