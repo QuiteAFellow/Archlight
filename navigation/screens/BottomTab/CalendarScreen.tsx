@@ -166,6 +166,12 @@ const CalendarScreen: React.FC = () => {
   const [layoutReady, setLayoutReady] = useState(false);
 
   useEffect(() => {
+    if (scheduleHeight > 0 && stageHeaderHeight > 0) {
+      setLayoutReady(true);
+    }
+  }, [scheduleHeight, stageHeaderHeight]);
+
+  useEffect(() => {
     if (
       scrollTarget &&
       selectedDay === scrollTarget.day &&
@@ -180,30 +186,32 @@ const CalendarScreen: React.FC = () => {
       );
 
       if (targetArtist) {
-        const { top } = getArtistStyle(targetArtist.StartTime, targetArtist.EndTime, SCHEDULE_START_MINUTES, pixelsPerMinute);
+        const { top } = getArtistStyle(
+          targetArtist.StartTime,
+          targetArtist.EndTime,
+          SCHEDULE_START_MINUTES,
+          pixelsPerMinute
+        );
         const stageIndex = STAGE_NAMES.findIndex(stage => stage === targetArtist.Stage);
         const horizontalOffset = stageIndex * stageWidth;
-
-        {/*console.log('Scrolling to', { top, horizontalOffset }); */} // logging scroll target for artist bio navigation
 
         scrollViewRef.current.scrollTo({ y: top - 20, animated: true });
         horizontalScrollRef.current.scrollTo({ x: horizontalOffset - 20, animated: true });
 
         setHighlightedArtistId(targetArtist["AOTD #"]);
         setTimeout(() => {
-          setHighlightedArtistId(null); // Clear highlight after a short time
+          setHighlightedArtistId(null);
         }, 2000);
 
-        // Only clear after scroll is performed
         setTimeout(() => {
           setScrollTarget(null);
           navigation.dispatch(
             CommonActions.setParams({ day: undefined, artistId: undefined })
           );
-        }, 500); // Give time for scroll to complete
+        }, 500);
       }
     }
-  }, [layoutReady, selectedDay, scrollTarget]);
+  }, [layoutReady, selectedDay, scrollTarget, scheduleHeight, stageHeaderHeight]);
 
   const contentWidth = isLandscape
     ? width - 45 // Same as above, no scrolling
