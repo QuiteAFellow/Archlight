@@ -199,16 +199,14 @@ const CalendarScreen: React.FC = () => {
         horizontalScrollRef.current.scrollTo({ x: horizontalOffset - 20, animated: true });
 
         setHighlightedArtistId(targetArtist["AOTD #"]);
-        setTimeout(() => {
-          setHighlightedArtistId(null);
-        }, 2000);
 
+        // Wait for animation to finish before clearing scrollTarget and params
         setTimeout(() => {
           setScrollTarget(null);
           navigation.dispatch(
             CommonActions.setParams({ day: undefined, artistId: undefined })
           );
-        }, 500);
+        }, 1100); // 1050ms for animation, add a small buffer
       }
     }
   }, [layoutReady, selectedDay, scrollTarget, scheduleHeight, stageHeaderHeight]);
@@ -353,7 +351,9 @@ const CalendarScreen: React.FC = () => {
         Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
         Animated.timing(pulseAnim, { toValue: 0, duration: 150, useNativeDriver: false }),
         Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
-      ]).start();
+      ]).start(() => {
+        setHighlightedArtistId(null); // Only clear after animation completes
+      });
     }
   }, [highlightedArtistId]);
 
