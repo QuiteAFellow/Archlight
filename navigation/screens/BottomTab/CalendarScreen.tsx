@@ -278,7 +278,12 @@ const CalendarScreen: React.FC = () => {
           const isAfterMidnight = a.Scheduled === getPreviousDay(selectedDay) && startMinutes < 5 * 60;
           return isSameDay || isAfterMidnight;
         })
-        .sort((a, b) => a.Artist.localeCompare(b.Artist));
+        .sort((a, b) => {
+          const aStart = timeToMinutes(a.StartTime);
+          const bStart = timeToMinutes(b.StartTime);
+          if (aStart !== bStart) return aStart - bStart;
+          return a["AOTD #"] - b["AOTD #"];
+        });
       const currentIndex = sortedArtists.findIndex(
         (a) =>
           a.Artist === artist.Artist &&
