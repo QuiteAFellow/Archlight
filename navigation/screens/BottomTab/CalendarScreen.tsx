@@ -142,6 +142,7 @@ const CalendarScreen: React.FC = () => {
   const TOTAL_SCHEDULE_MINUTES = SCHEDULE_END_MINUTES - SCHEDULE_START_MINUTES; // 1020
   const [scheduleHeight, setScheduleHeight] = useState<number>(0);
   const pixelsPerMinute = scheduleHeight > 0 ? scheduleHeight / TOTAL_SCHEDULE_MINUTES : 1;
+  const [stageHeaderHeight, setStageHeaderHeight] = useState(0);
 
   const pulseAnim = useRef(new Animated.Value(0)).current;
 
@@ -399,18 +400,39 @@ const CalendarScreen: React.FC = () => {
         {renderDayButtons()}
       </View>
       <View style={styles.scheduleContainer}>
-        <ScrollView
-          ref={timeColumnRef}
-          style={[styles.fixedTimeColumn, { backgroundColor: themeData.backgroundColor }]}
-          scrollEnabled={false}
-          contentContainerStyle={{ height: scheduleHeight }}
-        >
-          {timeSlots.map((time, i) => (
-            <Text key={i} style={[styles.timeLabel, { color: themeData.textColor }]}>
-              {time}
-            </Text>
-          ))}
-        </ScrollView>
+        <View style={{ position: 'relative' }}>
+          <ScrollView
+            ref={timeColumnRef}
+            style={[styles.fixedTimeColumn, { backgroundColor: themeData.backgroundColor }]}
+            scrollEnabled={false}
+            contentContainerStyle={{ height: scheduleHeight }}
+          >
+            {/* Render time labels */}
+            {timeSlots.map((time, i) => (
+              <Text key={i} style={[styles.timeLabel, { color: themeData.textColor }]}>
+                {time}
+              </Text>
+            ))}
+            {/* Render hour lines */}
+            {timeSlots.map((_, i) => (
+              <View
+                key={`line-${i}`}
+                style={{
+                  position: 'absolute',
+                  left: 32,
+                  width: 5,
+                  // Fix the first line only:
+                  top: (i === 0
+                    ? stageHeaderHeight + i * 60 * pixelsPerMinute - 0.90 // adjust -1 as needed
+                    : stageHeaderHeight + i * 60 * pixelsPerMinute),
+                  height: 1,
+                  backgroundColor: '#444',
+                  zIndex: 2,
+                }}
+              />
+            ))}
+          </ScrollView>
+        </View>
         <ScrollView
           ref={scrollViewRef}
           style={styles.scrollableContainer}
@@ -426,7 +448,10 @@ const CalendarScreen: React.FC = () => {
               style={{ height: scrollableHeight }}
               onLayout={e => setScheduleHeight(e.nativeEvent.layout.height)}
             >
-              <View style={styles.stageHeadersRow}>
+              <View
+                style={styles.stageHeadersRow}
+                onLayout={e => setStageHeaderHeight(e.nativeEvent.layout.height)}
+              >
                 {STAGE_NAMES.map(stage => (
                   <View
                     key={stage}
