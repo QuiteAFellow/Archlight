@@ -350,7 +350,6 @@ const CalendarScreen: React.FC = () => {
         Animated.timing(pulseAnim, { toValue: 0, duration: 150, useNativeDriver: false }),
         Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
         Animated.timing(pulseAnim, { toValue: 0, duration: 150, useNativeDriver: false }),
-        Animated.timing(pulseAnim, { toValue: 1, duration: 150, useNativeDriver: false }),
       ]).start(() => {
         setHighlightedArtistId(null); // Only clear after animation completes
       });
