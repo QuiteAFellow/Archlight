@@ -349,8 +349,9 @@ const CalendarScreen: React.FC = () => {
   }, [highlightedArtistId]);
 
   // Calculate the top position for 2:00 PM
-  const shotgunarooMinutes = 14 * 60; // 2:00 PM in minutes
-  const shotgunarooTop = (shotgunarooMinutes - 12 * 60) * scale+10;
+  const SHOTGUNAROO_MINUTES = 14 * 60; // 2:00 PM in minutes
+  const minutesSinceScheduleStart = SHOTGUNAROO_MINUTES - SCHEDULE_START_MINUTES;
+  const shotgunarooTop = stageHeaderHeight + minutesSinceScheduleStart * pixelsPerMinute;
 
   const [shotgunarooFavorited, setShotgunarooFavorited] = useState(false);
 
