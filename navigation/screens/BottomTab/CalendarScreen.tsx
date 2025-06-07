@@ -133,7 +133,7 @@ const CalendarScreen: React.FC = () => {
   const route = useRoute<RouteProp<CalendarStackParamList, 'FestivalSchedule'>>();
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
-  const defaultStageWidth = 100;
+  const defaultStageWidth = Platform.OS === 'ios' ? 110 : 100;
   const stageWidth = isLandscape
     ? (width - 45) / STAGE_NAMES.length // Full screen width minus the fixed time column
     : defaultStageWidth;
@@ -623,7 +623,10 @@ const styles = StyleSheet.create({
   },
   stageHeader: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: Platform.select({
+      ios: 14,
+      android: 16
+    }),
     textAlign: 'center',
     paddingVertical: 5,
   },
