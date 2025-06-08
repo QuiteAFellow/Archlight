@@ -325,6 +325,7 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                                             backgroundColor: themeData.backgroundColor,
                                             borderColor: '#ccc',
                                             zIndex: 1500,
+                                            maxHeight: 300,
                                         }}
                                         listMode="SCROLLVIEW"
                                         placeholder="Select Stage"
