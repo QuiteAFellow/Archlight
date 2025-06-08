@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, View, Text, Button, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Switch } from 'react-native';
+import { Modal, View, Text, Button, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Switch, ScrollView } from 'react-native';
 import { useFavorites } from '../../context/FavoritesContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
@@ -42,6 +42,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   const [isSunscreenEnabled, setIsSunscreenEnabled] = useState(false);
   const currentTheme = theme;
   const [isCountdownEnabled, setIsCountdownEnabled] = useState(false);
+  const [allowArtistEdit, setAllowArtistEdit] = useState(false);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -61,6 +62,16 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   },[setTheme]);
 
   useEffect(() => {
+    const loadDevSettings = async () => {
+      const devMode = await AsyncStorage.getItem('devMode');
+      const artistEdit = await AsyncStorage.getItem('allowArtistEdit');
+      if (devMode === 'true') setShowTestButton(true);
+      if (artistEdit === 'true') setAllowArtistEdit(true);
+    };
+    loadDevSettings();
+  }, []);
+
+  useEffect(() => {
     if (!visible) {
       // Reset the selected times when the modal is closed
       setTapCount(0);
@@ -68,15 +79,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
     }
   }, [visible]);
 
+  // When dev mode is unlocked
   const handleTap = () => {
     setTapCount((prevCount) => {
       const newCount = prevCount + 1;
       if (newCount === 10) {
-        setShowTestButton(true); // Show the test button after 10 taps
-        Toast.show({
-          type: 'info',
-          text1: 'Developer mode Unlocked!',
-        });
+        setShowTestButton(true);
+        AsyncStorage.setItem('devMode', 'true');
+        Toast.show({ type: 'info', text1: 'Developer mode Unlocked!' });
       }
       return newCount;
     });
@@ -90,6 +100,18 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
       },
       trigger: null // Trigger immediately for testing
     });
+  };
+
+  // Save artist edit toggle
+  const handleArtistEditToggle = async (val: boolean) => {
+    setAllowArtistEdit(val);
+    await AsyncStorage.setItem('allowArtistEdit', val ? 'true' : 'false');
+  };
+
+  // Revert all changes
+  const handleRevertAll = async () => {
+    await AsyncStorage.removeItem('artistEdits');
+    Toast.show({ type: 'success', text1: 'All artist changes reverted.' });
   };
 
   const handleSave = async () => {
@@ -131,10 +153,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
-      <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay}>
-          <TouchableWithoutFeedback>
-            <View style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+            <ScrollView contentContainerStyle={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
               <TouchableOpacity onPress={handleTap}>
                 <Text style={[styles.title, { color: themeData.textColor }]}>Settings</Text>
               </TouchableOpacity>
@@ -146,9 +166,28 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
 
               {/* Developer Test Button */}
               {showTestButton && (
-                <View style={styles.testButtonContainer}>
-                  <Button title="Send Test Notification" onPress={sendTestNotification} color={themeData.highlightColor} />
-                </View>
+                <>
+                  <View style={styles.testButtonContainer}>
+                    <Button title="Send Test Notification" onPress={sendTestNotification} color={themeData.highlightColor} />
+                  </View>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                    <Text style={{ color: themeData.textColor, flex: 1 }}>Allow editing of artist information</Text>
+                    <Switch
+                      value={allowArtistEdit}
+                      onValueChange={handleArtistEditToggle}
+                      trackColor={{ false: '#767577', true: themeData.highlightColor }}
+                      thumbColor={allowArtistEdit ? '#fff' : '#f4f3f4'}
+                    />
+                  </View>
+                  {allowArtistEdit && (
+                    <TouchableOpacity
+                      style={{ backgroundColor: 'red', padding: 10, borderRadius: 5, marginBottom: 10 }}
+                      onPress={handleRevertAll}
+                    >
+                      <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>Revert all changes</Text>
+                    </TouchableOpacity>
+                  )}
+                </>
               )}
 
               {/* Theme Selector */}
@@ -275,10 +314,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
               <View style={styles.buttonContainer}>
                 <Button title="Save" onPress={handleSave} color={highlightColor}/>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
+            </ScrollView>
         </View>
-      </TouchableWithoutFeedback>
     </Modal>
   );
 };

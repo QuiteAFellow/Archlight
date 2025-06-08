@@ -29,3 +29,16 @@ export const loadFromStorage = async (key: string): Promise<any> => {
         return null;
     }
 };
+
+/**
+ * Clear data from AsyncStorage
+ * @param key - The key of the value to clear
+ */
+export const clearFromStorage = async (key: string): Promise<void> => {
+    try {
+        await AsyncStorage.removeItem(key);
+        console.log(`Cleared data from ${key}`);
+    } catch (error) {
+        console.error(`Error clearing data from ${key}:`, error);
+    }
+};

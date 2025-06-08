@@ -14,17 +14,17 @@ import type { CalendarStackParamList } from '../Stack/CalendarStackNavigator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { scheduleShotgunarooNotifications, cancelShotgunarooNotifications } from '../../../notifications';
 
-const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
-  "AOTD #": parseInt(artist["AOTD #"], 10),
-  Artist: artist.Artist,
-  Description: artist.Description,
-  Genres: artist.Genres,
-  Scheduled: artist.Scheduled,
-  Stage: artist.Stage,
-  StartTime: artist.StartTime || artist["Start Time"], // fallback
-  EndTime: artist.EndTime || artist["End Time"],       // fallback
-  Favorited: artist.Favorited === 'true' || artist.Favorited === true,
-}));
+//const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
+  //"AOTD #": parseInt(artist["AOTD #"], 10),
+  //Artist: artist.Artist,
+  //Description: artist.Description,
+  //Genres: artist.Genres,
+  //Scheduled: artist.Scheduled,
+  //Stage: artist.Stage,
+  //StartTime: artist.StartTime || artist["Start Time"], // fallback
+  //EndTime: artist.EndTime || artist["End Time"],       // fallback
+  //Favorited: artist.Favorited === 'true' || artist.Favorited === true,
+//}));
 
 const timeSlots = [
   '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM',
@@ -119,6 +119,7 @@ function getPreviousDay(day: string): string {
 }
 
 const CalendarScreen: React.FC = () => {
+  const [mergedArtistsData, setMergedArtistsData] = useState<Artist[]>([]);
   const [scrollTarget, setScrollTarget] = useState<{ artistId: number; day: string } | null>(null);
   const [highlightedArtistId, setHighlightedArtistId] = useState<number | null>(null);
   const { favorites, toggleFavorite } = useFavorites();
@@ -143,8 +144,36 @@ const CalendarScreen: React.FC = () => {
   const [scheduleHeight, setScheduleHeight] = useState<number>(0);
   const pixelsPerMinute = scheduleHeight > 0 ? scheduleHeight / TOTAL_SCHEDULE_MINUTES : 1;
   const [stageHeaderHeight, setStageHeaderHeight] = useState(0);
-
   const pulseAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const loadMergedArtists = async () => {
+      const json = await AsyncStorage.getItem('artistEdits');
+      const edits = json ? JSON.parse(json) : {};
+      const merged = rawArtistsData.map((artist: any) => {
+        const id = parseInt(artist["AOTD #"], 10);
+        const edit = edits[id];
+        return {
+          "AOTD #": id,
+          Artist: artist.Artist,
+          Description: artist.Description,
+          Genres: artist.Genres,
+          Scheduled: edit?.Scheduled ?? artist.Scheduled,
+          Stage: edit?.Stage ?? artist.Stage,
+          StartTime: edit?.StartTime ?? (artist.StartTime || artist["Start Time"]),
+          EndTime: edit?.EndTime ?? (artist.EndTime || artist["End Time"]),
+          Favorited: artist.Favorited === 'true' || artist.Favorited === true,
+        };
+      });
+      setMergedArtistsData(merged);
+    };
+
+    loadMergedArtists();
+
+    // Optionally, reload when screen is focused:
+    const unsubscribe = navigation.addListener('focus', loadMergedArtists);
+    return unsubscribe;
+  }, [navigation]);
 
   useEffect(() => {
     forceUpdate(prev => !prev); // trigger immediately
@@ -179,7 +208,7 @@ const CalendarScreen: React.FC = () => {
       scrollViewRef.current &&
       horizontalScrollRef.current
     ) {
-      const targetArtist = artistsData.find(
+      const targetArtist = mergedArtistsData.find(
         artist =>
           artist["AOTD #"] === scrollTarget.artistId &&
           artist.Scheduled === scrollTarget.day
@@ -215,8 +244,8 @@ const CalendarScreen: React.FC = () => {
     ? width - 45 // Same as above, no scrolling
     : STAGE_NAMES.length * defaultStageWidth; // Scroll in portrait
   const filteredData = showFavoritesOnly
-    ? artistsData.filter((artist: Artist) => favorites[artist["AOTD #"]])
-    : artistsData;
+    ? mergedArtistsData.filter((artist: Artist) => favorites[artist["AOTD #"]])
+    : mergedArtistsData;
 
   const syncScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
