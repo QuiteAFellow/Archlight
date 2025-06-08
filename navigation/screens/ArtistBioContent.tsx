@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Platform } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Artist } from '../types';
 import artistImages from '../../assets/utils/artistImages';
@@ -133,7 +133,7 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
 
         // Calendar runs from 12:00 PM (720) to 5:00 AM (299 next day)
         const isInCalendarWindow = (min: number) =>
-            (min >= 720 && min < 1440) || (min >= 0 && min < 300);
+            (min >= 720 && min < 1440) || (min >= 0 && min <= 300);
 
         if (!isInCalendarWindow(startMinutes) || !isInCalendarWindow(endMinutes)) {
             Toast.show({ type: 'error', text1: 'Times must be between 12:00 PM and 5:00 AM' });
@@ -142,10 +142,15 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
 
         // Check order: start must be before end, allowing for overnight sets
         let isOrderValid = false;
-        if (startMinutes < endMinutes && startMinutes >= 720 && endMinutes < 1440) {
-            // Same day, e.g. 5:45 PM - 6:30 PM
+        if (
+            startMinutes < endMinutes &&
+            (
+                (startMinutes >= 720 && endMinutes < 1440) || // Same day PM
+                (startMinutes >= 0 && startMinutes < 300 && endMinutes >= 0 && endMinutes <= 300) // Both AM
+            )
+        ) {
             isOrderValid = true;
-        } else if (startMinutes >= 720 && endMinutes < 300) {
+        } else if (startMinutes >= 720 && endMinutes <= 300) {
             // Overnight, e.g. 11:30 PM - 2:00 AM
             isOrderValid = true;
         }
