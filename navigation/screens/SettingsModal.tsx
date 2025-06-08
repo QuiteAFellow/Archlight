@@ -195,7 +195,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                 </View>
                 <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
                   <Text style={{ fontStyle: 'italic' }}>
-                    Enables a countdown on the homescreen, counting down the days, hours, minutes, and seconds until Centeroo opens at noon on Tuesday.
+                    Enables a countdown on the homescreen, counting down the days, hours, minutes, and seconds until Centeroo opens at noon on Thursday.
                   </Text>
                 </Text>
               </View>
