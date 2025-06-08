@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Artist } from '../types';
 import artistImages from '../../assets/utils/artistImages';
@@ -12,6 +12,8 @@ import type { CalendarStackParamList } from '../screens/Stack/CalendarStackNavig
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { getMergedArtist, scheduleNotificationsForArtist, cancelNotificationsForArtist } from '../../notifications';
+import FastImage from 'react-native-fast-image';
 
 type CalendarNav = NativeStackNavigationProp<CalendarStackParamList, 'FestivalSchedule'>;
 
@@ -53,6 +55,11 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
     const heartIcon = isFavorited ? 'heart' : 'heart-outline';
 
     const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+
+    const getNotificationTimes = async (): Promise<number[]> => {
+        const stored = await AsyncStorage.getItem('notificationTimes');
+        return stored ? JSON.parse(stored) : [0];
+    };
 
     // Load allowArtistEdit from AsyncStorage
     useEffect(() => {
@@ -162,6 +169,13 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
             setEditStage(stageValue);
             setEditMode(false);
             Toast.show({ type: 'success', text1: 'Artist info updated!' });
+            if (isFavorited) {
+                const mergedArtist = await getMergedArtist(artist);
+                const notificationTimes = await getNotificationTimes();
+                await cancelNotificationsForArtist(mergedArtist);
+                await scheduleNotificationsForArtist(mergedArtist, notificationTimes);
+                console.log('Notifications updated for favorited artist:', mergedArtist.Artist);
+            }
         } catch (e) {
             Toast.show({ type: 'error', text1: 'Failed to save edits.' });
         }
@@ -189,7 +203,7 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
         <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
             <ScrollView style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
                 <View>
-                    <Image source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
+                    <FastImage source={artistImages[artist.Artist]} style={styles.imageHeader} resizeMode="cover" />
                     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                         <Ionicons name="arrow-back" size={24} color='#000000' />
                     </TouchableOpacity>

@@ -20,6 +20,13 @@ const convertToLocalTimeFormat = (dateString: string, timeString: string): Date 
   return new Date(year, month - 1, day, hours, minutes);
 };
 
+export async function getMergedArtist(artist: Artist): Promise<Artist> {
+  const json = await AsyncStorage.getItem('artistEdits');
+  const edits = json ? JSON.parse(json) : {};
+  const edit = edits[artist["AOTD #"]];
+  return edit ? { ...artist, ...edit } : artist;
+}
+
 // Schedule a single notification
 const scheduleNotification = async (message: string, date: Date): Promise<string> => {
   if (!message) {

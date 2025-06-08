@@ -11,6 +11,7 @@ import rawArtistsData from '../../database/Artist Bios, Timesheet, Image Paths, 
 import { Artist } from '../types';
 import { scheduleNotificationAsync } from 'expo-notifications';
 import { Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const artistsData: Artist[] = rawArtistsData.map((artist: any) => ({
   "AOTD #": parseInt(artist["AOTD #"], 10),  // Convert "AOTD #" to a number
@@ -43,6 +44,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   const currentTheme = theme;
   const [isCountdownEnabled, setIsCountdownEnabled] = useState(false);
   const [allowArtistEdit, setAllowArtistEdit] = useState(false);
+
+  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -153,6 +156,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
+      <Container style={{ flex: 1 }}>
         <View style={styles.overlay}>
             <ScrollView contentContainerStyle={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
               <TouchableOpacity onPress={handleTap}>
@@ -316,6 +320,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
               </View>
             </ScrollView>
         </View>
+      </Container>
     </Modal>
   );
 };
