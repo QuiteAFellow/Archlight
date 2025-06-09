@@ -45,7 +45,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   const [isCountdownEnabled, setIsCountdownEnabled] = useState(false);
   const [allowArtistEdit, setAllowArtistEdit] = useState(false);
 
-  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+  //const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -156,11 +156,10 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
-        <View style={styles.overlay}>
-          <Container
-          {...(Platform.OS === 'ios'
-              ? { edges: ['top', 'bottom'] }
-              : {})}
+      <View style={styles.overlay}>
+        {Platform.OS === 'ios' ? (
+          <SafeAreaView
+            edges={['top', 'bottom']}
             style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center' }}
           >
             <ScrollView contentContainerStyle={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
@@ -324,8 +323,175 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                 <Button title="Save" onPress={handleSave} color={highlightColor}/>
               </View>
             </ScrollView>
-          </Container>
-        </View>
+          </SafeAreaView>
+        ) : (
+          <View
+            style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center' }}
+          >
+            <ScrollView contentContainerStyle={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+              <TouchableOpacity onPress={handleTap}>
+                <Text style={[styles.title, { color: themeData.textColor }]}>Settings</Text>
+              </TouchableOpacity>
+
+              {/* Close Button (X) */}
+              <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                <Ionicons name="close" size={30} color={themeData.textColor} />
+              </TouchableOpacity>
+
+              {/* Developer Test Button */}
+              {showTestButton && (
+                <>
+                  <View style={styles.testButtonContainer}>
+                    <Button title="Send Test Notification" onPress={sendTestNotification} color={themeData.highlightColor} />
+                  </View>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                    <Text style={{ color: themeData.textColor, flex: 1 }}>Allow editing of artist information</Text>
+                    <Switch
+                      value={allowArtistEdit}
+                      onValueChange={handleArtistEditToggle}
+                      trackColor={{ false: '#767577', true: themeData.highlightColor }}
+                      thumbColor={allowArtistEdit ? '#fff' : '#f4f3f4'}
+                    />
+                  </View>
+                  {allowArtistEdit && (
+                    <TouchableOpacity
+                      style={{ backgroundColor: 'red', padding: 10, borderRadius: 5, marginBottom: 10 }}
+                      onPress={handleRevertAll}
+                    >
+                      <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>Revert all changes</Text>
+                    </TouchableOpacity>
+                  )}
+                </>
+              )}
+
+              {/* Theme Selector */}
+              <Text style={[styles.subHeader, { color: themeData.textColor }]}>App Theme</Text>
+              <View style={styles.optionsContainer}>
+                {['Light', 'Bonnaroo', 'OLED'].map((option) => (
+                  <TouchableOpacity
+                    key={option}
+                    onPress={() => setTheme(option as 'Light' | 'Bonnaroo' | 'OLED')}
+                    style={[
+                      styles.option,
+                      theme === option && {
+                        backgroundColor: highlightColor,
+                        borderColor: 'transparent'
+                      },
+                      theme !== option && { borderColor: themeData.unselectedborder },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.optionText,
+                        theme === option
+                          ? { color: theme === 'Light' ? 'white' : highlightTextColor }  // Set text to white for Light theme, or use highlight text color for others
+                          : { color: themeData.textColor }  // Default text color
+                      ]}
+                    >
+                      {option}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
+              {/* Countdown Toggle */}
+              <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                  <Text style={[styles.toggleLabel, { color: themeData.textColor }]}>Countdown Timer</Text>
+                  <Switch
+                    value={isCountdownEnabled}
+                    onValueChange={setIsCountdownEnabled}
+                    style={styles.switch}
+                    trackColor={{ false: '#767577', true: themeData.highlightColor }}  // Track color when ON
+                    thumbColor={isCountdownEnabled ? '#ffffff' : '#f4f3f4'}  // Thumb color when ON
+                  />
+                </View>
+                <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
+                  <Text style={{ fontStyle: 'italic' }}>
+                    Enables a countdown on the homescreen, counting down the days, hours, minutes, and seconds until Centeroo opens at noon on Thursday.
+                  </Text>
+                </Text>
+              </View>
+
+              {/* Notification Selector */}
+              <Text style={[styles.subHeader, { color: themeData.textColor }]}>Notification Settings</Text>
+              <Text style={{ color: themeData.textColor }}>Set notification times (in minutes) on or before a favorited artist's start time:</Text>
+              <View style={styles.notificationOptionsContainer}>
+                {notificationOptions.map((time) => (
+                  <TouchableOpacity
+                    key={time}
+                    onPress={() => {
+                      setSelectedTimes((prevTimes) =>
+                        prevTimes.includes(time)
+                          ? prevTimes.filter((t) => t !== time)
+                          : [...prevTimes, time]
+                      );
+                    }}
+                    style={[
+                      styles.notificationOption,
+                      selectedTimes.includes(time)
+                        ? { backgroundColor: highlightColor, borderColor: 'transparent' }
+                        : { borderColor: themeData.unselectedborder },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.optionText,
+                        selectedTimes.includes(time)
+                          ? { color: theme === 'Light' ? 'white' : highlightTextColor }
+                          : { color: themeData.textColor },
+                      ]}
+                    >
+                      {time} minutes
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
+              {/* Sunscreen Reminder */}
+              <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                  <Text style={[styles.toggleLabel, { color: themeData.textColor }]}>Sunscreen Reminder</Text>
+                  <Switch
+                    value={isSunscreenEnabled}
+                    onValueChange={setIsSunscreenEnabled}
+                    style={styles.switch}
+                    trackColor={{ false: '#767577', true: themeData.highlightColor }}  // Track color when ON
+                    thumbColor={isSunscreenEnabled ? '#ffffff' : '#f4f3f4'}  // Thumb color when ON
+                  />
+                </View>
+                <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
+                  <Text style={{ fontStyle: 'italic' }}>
+                    Reminds you to reapply sunscreen every 2 hours from 10am to 6pm. Assumes maximum sunlight throughout the entire day, actual weather may vary.
+                  </Text>
+                </Text>
+              </View>
+
+              {/* Hydration Reminder */}
+              <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                  <Text style={[styles.toggleLabel, { color: themeData.textColor }]}>Hydration Reminder</Text>
+                  <Switch
+                    value={isHydrationEnabled}
+                    onValueChange={setIsHydrationEnabled}
+                    style={styles.switch}
+                    trackColor={{ false: '#767577', true: themeData.highlightColor }}  // Track color when ON
+                    thumbColor={isHydrationEnabled ? '#ffffff' : '#f4f3f4'}  // Thumb color when ON
+                  />
+                </View>
+                <Text style={[styles.toggleSubText, { color: themeData.textColor }]}>
+                  <Text style={{ fontStyle: 'italic' }}>
+                    Reminds you to hydrate every 2 hours from 11am to 11pm. Alternates with the Sunscreen reminder.
+                  </Text>
+                </Text>
+              </View>
+              <View style={styles.buttonContainer}>
+                <Button title="Save" onPress={handleSave} color={highlightColor}/>
+              </View>
+            </ScrollView>
+          </View>
+        )}
+      </View>
     </Modal>
   );
 };
