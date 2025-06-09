@@ -45,7 +45,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   const [isCountdownEnabled, setIsCountdownEnabled] = useState(false);
   const [allowArtistEdit, setAllowArtistEdit] = useState(false);
 
-  //const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+  const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -157,9 +157,11 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
   return (
     <Modal visible={visible} animationType="slide" transparent>
         <View style={styles.overlay}>a
-          <SafeAreaView
-          edges={['top', 'bottom']}
-          style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center' }}
+          <Container
+          {...(Platform.OS === 'ios'
+              ? { edges: ['top', 'bottom'] }
+              : {})}
+            style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center' }}
           >
             <ScrollView contentContainerStyle={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
               <TouchableOpacity onPress={handleTap}>
@@ -322,7 +324,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
                 <Button title="Save" onPress={handleSave} color={highlightColor}/>
               </View>
             </ScrollView>
-          </SafeAreaView>
+          </Container>
         </View>
     </Modal>
   );
