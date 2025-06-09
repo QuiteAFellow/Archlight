@@ -156,7 +156,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose, onSave 
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
-        <View style={styles.overlay}>a
+        <View style={styles.overlay}>
           <Container
           {...(Platform.OS === 'ios'
               ? { edges: ['top', 'bottom'] }
