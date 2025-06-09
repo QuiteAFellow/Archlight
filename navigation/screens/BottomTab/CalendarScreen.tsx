@@ -282,6 +282,24 @@ const CalendarScreen: React.FC = () => {
     <Text style={[styles.artistName, { color: themeData.textColor }]}>{artist.Artist}</Text>
   );
 
+  function getMinutes(timeStr: string): number {
+    const [time, period] = timeStr.trim().split(' ');
+    let [hour, minute] = time.split(':').map(Number);
+    if (period.toLowerCase() === 'pm' && hour !== 12) hour += 12;
+    if (period.toLowerCase() === 'am' && hour === 12) hour = 0;
+    return hour * 60 + minute;
+  }
+
+  function pmFirstSort(a: Artist, b: Artist): number {
+    const aMin = getMinutes(a.StartTime);
+    const bMin = getMinutes(b.StartTime);
+    const aIsPM = aMin >= 720 && aMin < 1440;
+    const bIsPM = bMin >= 720 && bMin < 1440;
+    if (aIsPM && !bIsPM) return -1;
+    if (!aIsPM && bIsPM) return 1;
+    return aMin - bMin;
+  }
+
   const renderStageColumn = (stage: string) => {
     const filtered = filteredData.filter((artist: Artist) => {
       const startMinutes = timeToMinutes(artist.StartTime);
@@ -307,12 +325,7 @@ const CalendarScreen: React.FC = () => {
           const isAfterMidnight = a.Scheduled === getPreviousDay(selectedDay) && startMinutes < 5 * 60;
           return isSameDay || isAfterMidnight;
         })
-        .sort((a, b) => {
-          const aStart = timeToMinutes(a.StartTime);
-          const bStart = timeToMinutes(b.StartTime);
-          if (aStart !== bStart) return aStart - bStart;
-          return a["AOTD #"] - b["AOTD #"];
-        });
+        .sort(pmFirstSort);
       const currentIndex = sortedArtists.findIndex(
         (a) =>
           a.Artist === artist.Artist &&
