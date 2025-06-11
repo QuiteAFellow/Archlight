@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Modal } from 'react-native';
 import foodVendorsData from '../../../database/Food Vendor Info 2024.json';
 import FilterModal from '../FilterModal';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../ThemeContext';  // Import theme context
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface FoodVendor {
   "Food Vendor": string;
@@ -19,10 +20,17 @@ interface FoodVendor {
   "Notes": string;
   "Recommended": string;
   "Recommended Item(s)": string;
+  NewFor2025?: boolean;
 }
 
 const getUniqueValues = (data: FoodVendor[], key: keyof FoodVendor) => {
-  const values = data.flatMap(vendor => vendor[key].split(',').map(item => item.trim()));
+  const values = data.flatMap(vendor => {
+    const value = vendor[key];
+    if (typeof value === 'string') {
+      return value.split(',').map((item: string) => item.trim());
+    }
+    return []; // Ignore booleans or undefined
+  });
   return Array.from(new Set(values)).filter(Boolean); // Remove duplicates and empty strings
 };
 
@@ -60,6 +68,8 @@ const FoodVendorScreen: React.FC = () => {
   const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [showRecommendedOnly, setShowRecommendedOnly] = useState(false);
   const [checkedVendors, setCheckedVendors] = useState<{ [vendorName: string]: boolean }>({});
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
 
   const uniqueOptions = {
     type: getUniqueValues(foodVendorsData, 'Type'),
@@ -68,6 +78,13 @@ const FoodVendorScreen: React.FC = () => {
     price: ['$', '$$', '$$$'],
     location: getUniqueValues(foodVendorsData, 'Location'),
   };
+
+  useEffect(() => {
+    // Check if disclaimer should be shown
+    AsyncStorage.getItem('hideFoodVendorDisclaimer').then((value) => {
+      if (value !== 'true') setShowDisclaimer(true);
+    });
+  }, []);
 
   useEffect(() => {
     applyFilters(searchQuery, filters);
@@ -147,9 +164,76 @@ const FoodVendorScreen: React.FC = () => {
     onPress: () => void;
   };
 
+  const handleCloseDisclaimer = async () => {
+    setShowDisclaimer(false);
+    if (dontShowAgain) {
+      await AsyncStorage.setItem('hideFoodVendorDisclaimer', 'true');
+    }
+  };
+
 const Container = Platform.OS === 'ios' ? SafeAreaView : View;
 
   return (
+    <>
+    <Modal
+      visible={showDisclaimer}
+      transparent
+      animationType="fade"
+    >
+      <View style={{
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <View style={{
+          backgroundColor: themeData.backgroundColor,
+          padding: 24,
+          borderRadius: 12,
+          width: '85%',
+          alignItems: 'center'
+        }}>
+          <Text style={{ color: themeData.textColor, fontWeight: 'bold', fontSize: 18, marginBottom: 12, textAlign: 'center' }}>
+            Food Vendor Information Disclaimer
+          </Text>
+          <Text style={{ color: themeData.textColor, marginBottom: 20, textAlign: 'center' }}>
+            Food vendor information is being sourced from 2024. While dietary tags and locations are accurate, some menu items, prices, tags, and types may be inaccurate or unavailable.
+          </Text>
+          <TouchableOpacity
+            style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
+            onPress={() => setDontShowAgain(!dontShowAgain)}
+          >
+            <View style={{
+              width: 22,
+              height: 22,
+              borderRadius: 4,
+              borderWidth: 2,
+              borderColor: themeData.textColor,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: 8,
+              backgroundColor: dontShowAgain ? themeData.highlightColor : 'transparent'
+            }}>
+              {dontShowAgain && (
+                <Ionicons name="checkmark" size={18} color={themeData.backgroundColor} />
+              )}
+            </View>
+            <Text style={{ color: themeData.textColor }}>Don't show again</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: themeData.highlightColor,
+              paddingVertical: 10,
+              paddingHorizontal: 32,
+              borderRadius: 6
+            }}
+            onPress={handleCloseDisclaimer}
+          >
+            <Text style={{ color: themeData.buttonText, fontWeight: 'bold' }}>Okay</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
     <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
       <TextInput
         style={[styles.searchBar, { color: themeData.textColor, borderColor: themeData.textColor }]}
@@ -177,6 +261,11 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
           <View key={vendor["Food Vendor"]} style={[styles.vendorContainer, { backgroundColor: themeData.backgroundColor }]}>
             <View style={styles.vendorHeader}>
               <Text style={[styles.vendorName, { color: themeData.textColor }]}>{vendor["Food Vendor"]}</Text>
+              {vendor.NewFor2025 && (
+                <View style={styles.newBadge}>
+                  <Text style={styles.newBadgeText}>NEW</Text>
+                </View>
+              )}
               {vendor.Recommended && <Text style={styles.recommended}>⭐</Text>}
             </View>
             <Text style={{ color: themeData.textColor }}>Type: {vendor.Type}</Text>
@@ -225,6 +314,7 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
         uniqueOptions={uniqueOptions}
       />
     </Container>
+    </>
   );
 };
 
@@ -306,6 +396,19 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontStyle: 'italic',
     marginBottom: 0
+  },
+  newBadge: {
+    backgroundColor: '#ff4081',
+    borderRadius: 4,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    marginLeft: 8,
+    alignSelf: 'center',
+  },
+  newBadgeText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 12,
   },
 });
 
