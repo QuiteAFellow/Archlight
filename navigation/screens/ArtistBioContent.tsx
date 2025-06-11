@@ -280,10 +280,10 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                     {/* Editable Info Fields */}
                     {editMode ? (
                         <>
-                            {/* Day Dropdown */}
-                            <View style={styles.infoContainer}>
+                            {/* Day Dropdown with Icon */}
+                            <View style={[styles.infoContainer, { alignItems: 'center', zIndex: openDay ? 2000 : 1 }]}>
                                 <Ionicons name="calendar" size={20} color="darkgrey" />
-                                <View style={{ flex: 1, marginLeft: 10, zIndex: openDay ? 2000 : 1 }}>
+                                <View style={{ flex: 1, marginLeft: 10, backgroundColor: themeData.backgroundColor }}>
                                     <DropDownPicker
                                         open={openDay}
                                         value={dayValue}
@@ -302,9 +302,11 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                                         }}
                                         textStyle={{ color: themeData.textColor }}
                                         dropDownContainerStyle={{
-                                            backgroundColor: themeData.backgroundColor,
+                                            backgroundColor: themeData.backgroundColor || '#fff',
                                             borderColor: '#ccc',
                                             zIndex: 2000,
+                                            elevation: 10,
+                                            shadowColor: '#000',
                                         }}
                                         listMode="SCROLLVIEW"
                                         placeholder="Select Day"
@@ -319,10 +321,10 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                                     />
                                 </View>
                             </View>
-                            {/* Stage Dropdown */}
-                            <View style={styles.infoContainer}>
+                            {/* Stage Dropdown with Icon */}
+                            <View style={[styles.infoContainer, { alignItems: 'center', zIndex: openStage ? 1500 : 1 }]}>
                                 <Ionicons name="location" size={20} color="darkgrey" />
-                                <View style={{ flex: 1, marginLeft: 10, zIndex: openStage ? 1500 : 1 }}>
+                                <View style={{ flex: 1, marginLeft: 10, backgroundColor: themeData.backgroundColor }}>
                                     <DropDownPicker
                                         open={openStage}
                                         value={stageValue}
@@ -341,9 +343,11 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                                         }}
                                         textStyle={{ color: themeData.textColor }}
                                         dropDownContainerStyle={{
-                                            backgroundColor: themeData.backgroundColor,
+                                            backgroundColor: themeData.backgroundColor || '#fff',
                                             borderColor: '#ccc',
                                             zIndex: 1500,
+                                            elevation: 10,
+                                            shadowColor: '#000',
                                             maxHeight: 300,
                                         }}
                                         listMode="SCROLLVIEW"
@@ -354,7 +358,6 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                                         TickIconComponent={({ style }) => (
                                             <Ionicons name="checkmark" size={20} color={themeData.textColor} style={style} />
                                         )}
-                                        // Optionally, for more control:
                                         iconContainerStyle={{ backgroundColor: 'transparent' }}
                                         arrowIconContainerStyle={{ backgroundColor: 'transparent' }}
                                     />
@@ -481,7 +484,7 @@ const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 10,
+        marginBottom: 15,
     },
     infoText: {
         fontSize: 16,

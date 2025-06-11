@@ -126,8 +126,8 @@ const artistImages: { [key: string]: any } = {
 'DJ Python': require('../artist-images/DJ Python.jpg'),
 'Airrica': require('../artist-images/Airrica.jpg'),
 'Kamino': require('../artist-images/Kamino.jpg'),
-'OMNOM': require('../artist-images/OMNOM.jpg'),
-'AYYBO': require('../artist-images/AYYBO.jpg'),
+'OMNOM': require('../artist-images/Omnom.jpg'),
+'AYYBO': require('../artist-images/Ayybo.jpg'),
 'it\'s murph': require('../artist-images/it\'s murph.jpg'),
 };
 
