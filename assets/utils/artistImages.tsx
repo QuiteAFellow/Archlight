@@ -4,7 +4,7 @@ const artistImages: { [key: string]: any } = {
 'AHEE': require('../artist-images/Ahee.jpg'),
 'Alex Warren': require('../artist-images/Alex Warren.jpg'),
 'Alexandra Kay': require('../artist-images/Alexandra Kay.jpg'),
-'Aly & AJ': require('../artist-images/Aly & AJ.jpg'),
+'Aly & AJ': require('../artist-images/Aly and AJ.jpg'),
 'Arcade Fire\'s "Santa Pirata"': require('../artist-images/Arcade Fire\'s Santa Pirata.jpg'),
 'ATLiens': require('../artist-images/ATLiens.jpg'),
 'Avril Lavigne': require('../artist-images/Avril Lavigne.jpg'),

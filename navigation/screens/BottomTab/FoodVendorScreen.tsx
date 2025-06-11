@@ -182,7 +182,9 @@ const FoodVendorScreen: React.FC = () => {
     }
   };
 
-const Container = Platform.OS === 'ios' ? SafeAreaView : View;
+const Container = Platform.OS === 'ios'
+  ? (props: any) => <SafeAreaView edges={['top', 'left', 'right']} {...props} />
+  : View;
 
   return (
     <>
@@ -245,7 +247,10 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
         </View>
       </View>
     </Modal>
-    <Container style={[styles.container, { backgroundColor: themeData.backgroundColor }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: themeData.backgroundColor }]}
+      {...(Platform.OS === 'ios' ? { edges: ['top', 'left', 'right'] } : {})}
+    >
       <TextInput
         style={[styles.searchBar, { color: themeData.textColor, borderColor: themeData.textColor }]}
         placeholder="Search"
@@ -329,7 +334,7 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
         existingFilters={filters}
         uniqueOptions={uniqueOptions}
       />
-    </Container>
+    </SafeAreaView>
     </>
   );
 };
