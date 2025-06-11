@@ -197,7 +197,7 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
             Food Vendor Information Disclaimer
           </Text>
           <Text style={{ color: themeData.textColor, marginBottom: 20, textAlign: 'center' }}>
-            Food vendor information is being sourced from 2024. While dietary tags and locations are accurate, some menu items, prices, tags, and types may be inaccurate or unavailable.
+            Food vendor information is being sourced from 2024. While dietary tags and locations are accurate, some menu items, prices, tags, and types may be inaccurate, complete guesses, or unavailable.
           </Text>
           <TouchableOpacity
             style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
