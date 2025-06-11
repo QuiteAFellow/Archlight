@@ -302,7 +302,7 @@ const ArtistBioContent: React.FC<Props> = ({ artist }) => {
                                         }}
                                         textStyle={{ color: themeData.textColor }}
                                         dropDownContainerStyle={{
-                                            backgroundColor: themeData.backgroundColor,
+                                            backgroundColor: themeData.backgroundColor || '#222',
                                             borderColor: '#ccc',
                                             zIndex: 2000,
                                         }}
