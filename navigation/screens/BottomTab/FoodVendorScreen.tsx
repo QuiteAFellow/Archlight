@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Modal } from 'react-native';
-import foodVendorsData from '../../../database/Food Vendor Info 2024.json';
+import rawFoodVendorsData from '../../../database/Food Vendor Info 2025.json';
 import FilterModal from '../FilterModal';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../ThemeContext';  // Import theme context
@@ -20,8 +20,19 @@ interface FoodVendor {
   "Notes": string;
   "Recommended": string;
   "Recommended Item(s)": string;
-  NewFor2025?: boolean;
+  "NewFor2025?": boolean;
 }
+
+// Convert "NewFor2025?" to boolean
+const foodVendorsData: FoodVendor[] = (rawFoodVendorsData as any[]).map(vendor => ({
+  ...vendor,
+  // Accepts true, "true", "yes", "Yes", "*" as true, everything else as false
+  "NewFor2025?": vendor["NewFor2025?"] === true ||
+                  vendor["NewFor2025?"] === "true" ||
+                  vendor["NewFor2025?"] === "yes" ||
+                  vendor["NewFor2025?"] === "Yes" ||
+                  vendor["NewFor2025?"] === "*"
+}));
 
 const getUniqueValues = (data: FoodVendor[], key: keyof FoodVendor) => {
   const values = data.flatMap(vendor => {
@@ -197,7 +208,7 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
             Food Vendor Information Disclaimer
           </Text>
           <Text style={{ color: themeData.textColor, marginBottom: 20, textAlign: 'center' }}>
-            Food vendor information is being sourced from 2024. While dietary tags and locations are accurate, some menu items, prices, tags, and types may be inaccurate, complete guesses, or unavailable.
+            Some food vendor information is being sourced from 2024. While dietary tags and locations should be accurate, some menu items, prices, tags, and types may be inaccurate, complete guesses, or unavailable. Always double check with the food vendors directly for dietary restrictions, allergies, and other concerns.
           </Text>
           <TouchableOpacity
             style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
@@ -260,12 +271,17 @@ const Container = Platform.OS === 'ios' ? SafeAreaView : View;
         {filteredVendors.map((vendor: FoodVendor) => (
           <View key={vendor["Food Vendor"]} style={[styles.vendorContainer, { backgroundColor: themeData.backgroundColor }]}>
             <View style={styles.vendorHeader}>
-              <Text style={[styles.vendorName, { color: themeData.textColor }]}>{vendor["Food Vendor"]}</Text>
-              {vendor.NewFor2025 && (
-                <View style={styles.newBadge}>
-                  <Text style={styles.newBadgeText}>NEW</Text>
-                </View>
-              )}
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={[styles.vendorName, { color: themeData.textColor }]}>
+                  {vendor["Food Vendor"]}
+                </Text>
+                {vendor["NewFor2025?"] && (
+                  <View style={styles.newBadge}>
+                    <Text style={styles.newBadgeText}>NEW</Text>
+                  </View>
+                )}
+              </View>
+              <View style={{ flex: 1 }} />
               {vendor.Recommended && <Text style={styles.recommended}>⭐</Text>}
             </View>
             <Text style={{ color: themeData.textColor }}>Type: {vendor.Type}</Text>
@@ -376,7 +392,7 @@ const styles = StyleSheet.create({
   vendorName: {
     fontWeight: 'bold',
     fontSize: 18,
-    flex: 1,
+    marginright: 4
   },
   recommended: {
     color: 'gold',
