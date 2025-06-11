@@ -31,7 +31,9 @@ const locationOptions = [
   "Where in the Woods",
   "Which",
   "Which Stage",
-  "Who's Broo Pub"
+  "Who's Broo Pub",
+  "GA+ Lounge",
+  "VIP Lounge",
 ].sort();
 
 
@@ -108,7 +110,10 @@ const FilterModal: React.FC<FilterModalProps> = ({ visible, onClose, onApplyFilt
         />
       </TouchableOpacity>
       {expandedCategory === label && (
-        <ScrollView style={styles.scrollableList}>
+        <ScrollView
+          style={styles.scrollableList}
+          nestedScrollEnabled={true}
+        >
           <View style={styles.listItem}>
             <Text style={[styles.selectAllText, { color: themeData.textColor }]}>Select All</Text>
             {renderCheckbox(
